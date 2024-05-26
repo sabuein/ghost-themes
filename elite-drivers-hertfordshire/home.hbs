@@ -1,0 +1,8 @@
+{{!< default}}
+<!-- home.hbs -->
+{{#is "home"}}
+<header>
+    <h1 class="page-title">{{@site.title}}</h1>
+    {{#if @site.description}}<h2 class="page-description">{{@site.description}}</h2>{{/if}}
+</header>
+{{/is}}

@@ -1,0 +1,20 @@
+{{!< default}}
+<!-- author.hbs -->
+{{#is "author"}}
+{{#author}}
+<header>
+    {{#if profile_image}}<img src="{{img_url profile_image}}" alt="{{name}}'s Picture" />{{/if}}
+</header>
+<section class="author-profile">
+    <h1 class="author-title">{{name}}</h1>
+    {{#if bio}}<h2 class="author-bio">{{bio}}</h2>{{/if}}
+    <div class="author-meta">
+        {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}
+    </div>
+</section>
+{{/author}}
+<section class="author-loop">
+    {{> "loop"}}
+</section>
+{{pagination}}
+{{/is}}
