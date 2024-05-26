@@ -1,0 +1,43 @@
+{
+    "name": "elite-drivers-hertfordshire",
+    "description": "A ghost theme for airport transfer and ground transportation services",
+    "demo": "https://servex.business/",
+    "version": "0.5.0",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "sabuein@ashaam.co.uk",
+        "url": "https://sabuein.github.io/"
+    },
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg",
+        "mobile": "assets/screenshot-mobile.jpg"
+    },
+    "scripts": {
+        "start": "ghost start -d ~/my/instances/ghost-servex",
+        "restart": "ghost restart -d ~/my/instances/ghost-servex",
+        "update": "ghost update -d ~/my/instances/ghost-servex",
+        "stop": "ghost stop -d ~/my/instances/ghost-servex",
+        "log": "ghost log -d ~/my/instances/ghost-servex",
+        "scan": "gscan .",
+        "scan-zip": "gscan -z /path/to/downloads/theme.zip",
+        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/elite-drivers-hertfordshire ~/my/instances/ghost-servex/content/themes"
+    },
+    "config": {
+        "posts_per_page": 10,
+        "image_sizes": {},
+        "card_assets": true
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TryGhost/Casper.git"
+    }
+}
