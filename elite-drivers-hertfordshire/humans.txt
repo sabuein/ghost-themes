@@ -1,2 +1,9 @@
+A theme for Ghost CMS
+
 Thanks to:
+
+- https://www.svgminify.com/
+- https://www.shapedivider.app/
+- https://nekocalc.com/px-to-rem-converter
+- https://gwfh.mranftl.com/fonts
 - https://bcrypt-generator.com/
