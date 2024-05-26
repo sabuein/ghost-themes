@@ -1,0 +1,17 @@
+{{!< default}}
+<!-- tag.hbs -->
+{{#is "tag"}}
+{{#tag}}
+<header>
+    {{#if feature_image}}<img src="{{feature_image}}" alt="{{name}}" />{{/if}}
+</header>
+<section class="author-profile">
+    <h1>{{name}}</h1>
+    {{#if description}}<h2>{{description}}</h2>{{else}}<p>A collection of {{plural ../pagination.total empty='zero posts' singular='% post' plural='% posts'}}</p>{{/if}}
+</section>
+{{/tag}}
+<section class="tag-loop">
+    {{#foreach posts}}{{> "loop"}}{{/foreach}}
+</section>
+{{pagination}}
+{{/is}}
