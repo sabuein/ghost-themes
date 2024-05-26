@@ -1,0 +1,77 @@
+/* Required by Ghost */
+
+*.kg-width-wide,
+*.kg-width-full {
+    color: currentColor;
+}
+
+:root {
+    color-scheme: light dark;
+    --color-blue: #1d70b8;
+    --color-dark-blue: #003078;
+    --color-light-blue: #5694ca;
+    --color-black: #0b0c0c;
+    --color-text-background: #f7f7f7;
+}
+
+*::selection {
+    cursor: text;
+    user-select: text;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    opacity: 1;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: inherit;
+}
+
+* {
+    background-color: inherit;
+}
+
+*::after,
+*::before {
+    background-color: transparent;
+}
+
+*.flexy {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+
+    *.row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+html:has(dialog[open]) {
+    overflow: hidden;
+}
+
+body:has(dialog[open]) {
+    -webkit-filter: blur(.1rem);
+    filter: blur(.1rem);
+}
+
+body {
+    background-color: var(--color-text-background);
+}
