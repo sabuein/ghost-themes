@@ -1,0 +1,13 @@
+<!-- partials/navigation.hbs -->
+{{#if isSecondary}}
+<ul class="nav flexy row" role="menu">
+    {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+</ul>
+{{else}}<nav class="flexy">
+    <ul class="nav flexy row" role="menu">
+        {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem">
+            <a href="{{url absolute='true'}}" title="{{label}}"><span>{{label}}</span></a>
+        </li>{{/foreach}}
+    </ul>
+</nav>
+<button type="button" data-html-symbol="trigram-for-heaven" title="Menu">&#9776;</button>{{/if}}

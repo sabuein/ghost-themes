@@ -11,10 +11,6 @@
 </section>
 <aside class="read-more-wrap outer">
     <div class="read-more inner">
-        {{#get "posts" include="authors" limit="3" as |more_posts|}}
-        {{#if more_posts}}{{#foreach more_posts}}
-        {{> "loop"}}
-        {{/foreach}}{{/if}}
-        {{/get}}
+        {{#get "posts" include="authors" limit="3" as |more_posts|}}{{#if more_posts}}{{#foreach more_posts}}{{> "loop"}}{{/foreach}}{{/if}}{{/get}}
     </div>
 </aside>

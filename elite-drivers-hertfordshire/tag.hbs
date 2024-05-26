@@ -10,9 +10,8 @@
     {{#if description}}<h2>{{description}}</h2>{{else}}<p>A collection of {{plural ../pagination.total empty='zero posts' singular='% post' plural='% posts'}}</p>{{/if}}
 </section>
 {{/tag}}
-<section>
-    {{> "loop"}}
-    {{#foreach posts}}{{> "vehicle-card"}}{{/foreach}}
+<section class="tag-loop">
+    {{#foreach posts}}{{> "loop"}}{{/foreach}}
 </section>
 {{pagination}}
 {{/is}}
