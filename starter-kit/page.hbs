@@ -1,0 +1,24 @@
+{{!< default}}
+<!-- page.hbs -->
+{{#is "page"}}
+{{#post}}
+<article class="page {{post_class}}">
+    {{#match @page.show_title_and_feature_image}}<header class="page-header">
+        <h1 class="page-title">{{title}}</h1>
+        {{#if feature_image}}<figure class="page-image">
+            {{!-- This is a responsive image, it loads different sizes depending on device
+            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+            <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+            {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>{{/if}}
+        <section class="page-meta">
+            <time class="page-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+            {{tags prefix=" on "}}
+        </section>
+    </header>{{/match}}
+    <section class="page-content">
+        {{content}}
+    </section>
+</article>
+{{/post}}
+{{/is}}
