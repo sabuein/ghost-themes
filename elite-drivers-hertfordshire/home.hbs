@@ -5,4 +5,14 @@
     <h1 class="page-title">{{@site.title}}</h1>
     {{#if @site.description}}<h2 class="page-description">{{@site.description}}</h2>{{/if}}
 </header>
+<section>
+    {{#get "posts" limit="all" filter="featured:true"}}
+    {{#foreach posts}}
+        <a href="{{slug}}">{{title}}</a>
+    {{/foreach}}
+{{/get}}
+</section>
+<section class="home-loop">
+    {{#foreach posts}}{{> "loop"}}{{/foreach}}
+</section>
 {{/is}}

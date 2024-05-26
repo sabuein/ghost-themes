@@ -50,7 +50,6 @@
 {{#if access}}
 <section class="footer-cta outer">
     <div class="inner">
-        {{#if @custom.email_signup_text}}<h2 class="footer-cta-title">{{@custom.email_signup_text}}</h2>{{/if}}
         <a class="footer-cta-button" href="#/portal" data-portal><div class="footer-cta-input">Enter your email</div><span>Subscribe</span></a>
     </div>
 </section>
@@ -59,21 +58,14 @@
 {{/unless}}
 {{/if}}
 
-{{!-- Read more links, just above the footer --}}
-{{#if @custom.show_recent_posts_footer}}
-{{!-- The {#get} helper below fetches some of the latest posts here
-so that people have something else to read when they finish this one.
-
-This query gets the latest 3 posts on the site, but adds a filter to
-exclude the post we're currently on from being included. --}}
-{{#get "posts" filter="id:-{{id}}" limit="3" as |more_posts|}}
-{{#if more_posts}}<aside class="read-more-wrap outer">
-    <div class="read-more inner">
-        {{#foreach more_posts}}{{> "vehicle-card"}}{{/foreach}}
-    </div>
-</aside>{{/if}}
-{{/get}}
-{{/if}}
+{{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" as |more_posts|}}{{#if more_posts}}<aside class="read-more-wrap outer">
+    <h3 class="read-more heading">More posts by this author:</h3>
+    <ol>
+        {{#foreach more_posts}}
+        <li><a href="{{url}}">{{title}}</a></li>
+        {{/foreach}}
+    </ol>
+</aside>{{/if}}{{/get}}
 
 {{/post}}
 {{/is}}
