@@ -1,7 +1,7 @@
 <!-- partials/header.hbs --> 
 <header class="site-header flexy row">
     {{#if @site.logo}}<figure class="flexy">
-        <a class="site-logo" href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="xs"}}" alt="{{@site.title}}" loading="lazy" /></a>
+        <a class="site-logo" href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" /></a>
     </figure>{{else}}<a class="site-logo" href="{{@site.url}}">{{@site.title}}</a>{{/if}}   
     {{navigation}}
 </header>
