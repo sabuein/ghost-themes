@@ -1,0 +1,10 @@
+<!-- partials/social-media.hbs -->
+<div class="flexy">
+    <p>Stay updated on the latest news, offers, and travel inspiration by following us on our social media platforms&colon;</p>
+    <ul class="flexy row social-media">
+        {{#if @site.twitter}}<li class="x"><a href="{{twitter_url @site.twitter}}" title="X" target="_blank" rel="noopener noreferrer" aria-label="X">X</a></li>{{/if}}
+        {{#if @site.facebook}}<li class="facebook"><a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a></li>{{/if}}
+        <li class="instagram"><a href="https://www.instagram.com/elitedrivershertfordshire/" title="Instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a></li>
+        <li class="linkedin"><a href="https://www.linkedin.com/company/elite-drivers-hertfordshire-ltd/" title="LinkedIn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a></li>
+    </ul>
+</div>
