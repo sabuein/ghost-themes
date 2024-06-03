@@ -21,7 +21,7 @@
         "restart": "ghost restart -d ~/my/instances/ghost-servex",
         "update": "ghost update -d ~/my/instances/ghost-servex",
         "stop": "ghost stop -d ~/my/instances/ghost-servex",
-        "debug": "ghost run -D -d ~/my/instances/ghost-servex",
+        "debug": "ghost start -D -d ~/my/instances/ghost-servex",
         "log": "ghost log -d ~/my/instances/ghost-servex",
         "zip": "zip -r /home/sabuein/Desktop/elite-drivers-hertfordshire.zip * -x *.zip /assets/labs/* .gitignore",
         "scan": "npx gscan .",
@@ -59,9 +59,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/TryGhost/Casper.git"
+        "url": "https://github.com/sabuein/ghost-themes.git"
     },
-    "bugs": "https://github.com/sabuein/rapid-is/issues",
+    "bugs": "https://github.com/sabuein/ghost-themes/issues",
     "gpm": {
         "type": "theme",
         "categories": [
