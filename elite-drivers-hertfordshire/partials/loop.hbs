@@ -1,6 +1,9 @@
 <!-- partials/loop.hbs -->
-<article class="{{post_class}}">
-    <h2 class="post-title"><a href="{{url}}">{{title}}</a></h2>
-    <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">&raquo;</a></p>
-    <p class="post-footer">Posted by {{#primary_author}}<a href="{{url}}">{{name}}</a>{{/primary_author}} {{tags prefix=" on "}} at <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>&period;</p>
-</article>
+<section class="flexy loop">
+    <h2>Loop&hellip;</h2>
+    {{#foreach posts}}<article class="flexy {{post_class}}">
+        <h3 class="post-title"><a href="{{url}}">{{title}}</a></h3>
+        <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">&raquo;</a></p>
+        <p class="post-footer">Posted by {{#primary_author}}<a href="{{url}}">{{name}}</a>{{/primary_author}} {{tags prefix=" on "}} at <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>&period;</p>
+    </article>{{/foreach}}
+</section>
