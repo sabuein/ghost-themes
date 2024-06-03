@@ -1,18 +1,16 @@
 {{!< default}}
 <!-- home.hbs -->
 {{#is "home"}}
-<header>
-    <h1 class="page-title">{{@site.title}}</h1>
-    {{#if @site.description}}<h2 class="page-description">{{@site.description}}</h2>{{/if}}
+{{#if @site.cover_image}}<figure class="flexy site-cover" title="{{@site.title}}" style="background-image: url({{@site.cover_image}});">
+    <img src="{{@site.cover_image}}" alt="{{@site.title}}" loading="lazy" />
+</figure>{{/if}}
+<header class="flexy main-header">
+    <h1 class="site-title">{{@site.title}}</h1>
+    {{#if @site.description}}<h2 class="site-description">{{@site.description}}</h2>{{/if}}
 </header>
-<section>
-    {{#get "posts" limit="all" filter="featured:true"}}
-    {{#foreach posts}}
-        <a href="{{slug}}">{{title}}</a>
-    {{/foreach}}
-{{/get}}
-</section>
-<section class="home-loop">
-    {{#foreach posts}}{{> "loop"}}{{/foreach}}
-</section>
+{{> "featured"}}
+{{> "clients"}}
+{{> "vehicles"}}
+{{> "form-book-now"}}
+{{> "loop"}}
 {{/is}}
