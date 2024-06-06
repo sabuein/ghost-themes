@@ -1,9 +1,11 @@
 <!-- partials/navigation.hbs -->
-{{#if isSecondary}}
-<ul class="flexy row secondary-nav" role="menu">
-    {{#foreach navigation}}<li class="flexy row {{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
-</ul>
-{{else}}<nav class="flexy row site-navigation">
+{{#if isSecondary}}<section class="flexy">
+    <ul class="flexy row secondary-nav" role="menu">
+        {{#foreach navigation}}<li class="flexy row {{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+        <!--li class="flexy row" role="menuitem"><a href="https://ghost.org/" title="Powered by Ghost" target="_blank" rel="noopener">Powered by Ghost</a></li-->
+        <li class="flexy row" role="menuitem"><a href="/ghost/#/dashboard" title="Customise Ghost" target="_blank">Customise Ghost</a></li>
+    </ul>
+</section>{{else}}<nav class="flexy row site-navigation">
     <ul class="flexy row primary-nav" role="menu">
         {{#foreach navigation}}<li class="flexy row {{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem">
             <a href="{{url absolute='true'}}" title="{{label}}"><span>{{label}}</span></a>
@@ -15,4 +17,3 @@
         {{#unless @site.members_invite_only}}<a class="header-button" href="#/portal/signin" title="Sign in" data-portal="signin">Sign in</a><a class="header-button" href="#/portal/signup" title="Sign up" data-portal="signup">Sign up</a>{{else}}<a class="header-button" href="#/portal/signin" title="Sign in" data-portal="signin">Sign in</a>{{/unless}}{{else}}<a class="header-button" href="#/portal/account" title="Account" data-portal="account">Account</a>{{/unless}}
     </div>{{/unless}}
 </nav>{{/if}}
-
