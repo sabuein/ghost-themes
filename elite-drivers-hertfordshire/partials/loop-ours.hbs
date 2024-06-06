@@ -1,0 +1,9 @@
+<!-- partials/loop-ours.hbs -->
+{{#get "posts" filter="tags:[hash-ours]+id:-{{id}}" limit="all" as |more_posts|}}{{#if more_posts}}<section class="flexy loop">
+    <h2 class="headings">Learn more about {{@site.title}}&hellip;</h2>
+    {{#foreach more_posts}}<article class="flexy {{post_class}}">
+        <h3 class="headings"><a href="{{url}}" title="{{title}}" target="_top">{{title}}</a></h3>
+        <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">&raquo;</a></p>
+        <p class="post-footer">Posted by {{#primary_author}}<a href="{{url}}">{{name}}</a>{{/primary_author}} {{tags prefix=" on "}} at <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>&period;</p>
+    </article>{{/foreach}}
+</section>{{/if}}{{/get}}

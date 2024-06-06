@@ -1,0 +1,29 @@
+<!-- partials/cta-signup.hbs -->
+{{!-- A signup call to action is displayed here, unless viewed as a logged-in member --}}
+{{#if @site.members_enabled}}{{#unless @member}}{{#unless @site.comments_enabled}}{{#if access}}<section class="flexy cta">
+    <form class="flexy" onsubmit="return validateForm();" action="." method="post" enctype="multipart/form-data" autocomplete="on" spellcheck="false" accept-charset="utf-8" target="_top" rel="opener">
+        <fieldset class="flexy">
+            <legend class="flexy"><h3>Subscribe to our web app</h3></legend>
+            {{> "form-validity"}}
+        </fieldset>
+        <fieldset class="flexy row">
+            <label for="cta-signup-name" title="Name" class="flexy"><span aria-label="required">*</span><strong>Name</strong><input type="text" name="name" id="cta-signup-name" placeholder="Your full name" autocomplete="name" required="required" aria-required="true" /></label>
+            <label for="cta-signup-email" title="Email" class="flexy"><span aria-label="required">*</span><strong>Email</strong><input type="email" name="email" id="cta-signup-email" placeholder="Your email address" autocomplete="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" minlength="8" required="required" aria-required="true" /></label>
+        </fieldset>
+        <fieldset class="flexy row controls">
+            <p class="flexy row required-fields" title="Required fields">Required fields</p>
+            <div class="flexy">
+                <label for="cta-signup-terms-conditions" class="flexy row" title="I have read and agreed with the terms &amp; conditions&period;"><span aria-label="required">*</span><input type="checkbox" id="cta-signup-terms-conditions" name="tandc" value="agree" required="required" aria-required="true" /><span>I have read and agreed with the <a href="/terms-and-conditions/" title="terms and conditions">terms &amp; conditions</a>&period;</span></label>
+                <div class="flexy row">
+                    <input type="submit" value="Subscribe" title="Subscribe" />
+                    <input type="reset" value="Reset" title="Reset" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</section>
+{{/if}}
+{{/unless}}
+{{> "portal-links"}}
+{{/unless}}
+{{/if}}
