@@ -7,7 +7,7 @@
     "start_url": "/?launcher=homescreen",
     "display": "standalone",
     "orientation": "landscape",
-    "theme_color": "aliceblue",
+    "theme_color": "#121212",
     "background_color": "#fff",
     "icons": [
         {
