@@ -1,0 +1,30 @@
+<!-- partials/portal-links.hbs -->
+<section class="flexy portal-links">
+    <hgroup class="flexy">
+        <h5>Links</h5>
+        <p>To show pages of Portal</p>
+    </hgroup>
+    <h6>Generic</h6>
+    <ul class="flexy row">
+        <li><a href="{{@site.url}}/#/portal" title="Default" target="_top" rel="opener" data-portal="">Default</a></li>
+        <li><a href="{{@site.url}}/#/portal/signin" title="Sign in" target="_top" rel="opener" data-portal="signin">Sign in</a></li>
+        <li><a href="{{@site.url}}/#/portal/signup" title="Sign up" target="_top" rel="opener" data-portal="signup">Sign up</a></li>
+    </ul>
+    <h6>Tiers</h6>
+    <label for="portal-links-tier" title="Tier" class="flexy row"><span aria-label="required">*</span>Tier&colon;<select name="tier" id="portal-links-tier" class="flexy row" required="required" aria-required="true">
+        <option value="" disabled="disabled" hidden="hidden" title="Please choose an option">Please choose an option</option>
+        <option value="xxx" title="{{@site.title}}" selected="selected">{{@site.title}}</option>
+    </select></label>
+    <ul class="flexy row">
+        <li><a href="{{@site.url}}/#/portal/signup/665672c40fe7556b677ed89e/monthly" title="Signup &sol; Monthly" target="_top" rel="opener" data-portal="signup/665672c40fe7556b677ed89e/monthly">Signup &sol; Monthly</a></li>
+        <li><a href="{{@site.url}}/#/portal/signup/665672c40fe7556b677ed89e/yearly" title="Signup &sol; Yearly" target="_top" rel="opener" data-portal="signup/665672c40fe7556b677ed89e/yearly">Signup &sol; Yearly</a></li>
+        <li><a href="{{@site.url}}/#/portal/signup/free" title="Signup &sol; Free" target="_top" rel="opener" data-portal="signup/free">Signup &sol; Free</a></li>
+    </ul>
+    <h6>Account</h6>
+    <ul class="flexy row">
+        <li><a href="{{@site.url}}/#/portal/account" title="Account" target="_top" rel="opener" data-portal="account">Account</a></li>
+        <li><a href="{{@site.url}}/#/portal/account/plans" title="Account &sol; Plans" target="_top" rel="opener" data-portal="account/plans">Account &sol; Plans</a></li>
+        <li><a href="{{@site.url}}/#/portal/account/profile" title="Account &sol; Profile" target="_top" rel="opener" data-portal="account/profile">Account &sol; Profile</a></li>
+        <li><a href="{{@site.url}}/#/portal/account/newsletters" title="Account &sol; Newsletters" target="_top" rel="opener" data-portal="account/newsletters">Account &sol; Newsletters</a></li>
+    </ul>
+</section>
