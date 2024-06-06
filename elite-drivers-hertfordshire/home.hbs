@@ -1,16 +1,27 @@
 {{!< default}}
 <!-- home.hbs -->
 {{#is "home"}}
-{{#if @site.cover_image}}<figure class="flexy site-cover" title="{{@site.title}}" style="background-image: url({{@site.cover_image}});">
-    <img src="{{@site.cover_image}}" alt="{{@site.title}}" loading="lazy" />
+{{#if @site.cover_image}}<figure class="flexy apply-full-cover" title="{{@site.title}}" style="{{#if @site.accent_color}}--cover-color: {{@site.accent_color}}; {{/if}}--cover-url: url({{img_url @site.cover_image}})">
+    <img srcset="{{img_url @site.cover_image size='s'}} 300w, {{img_url @site.cover_image size='m'}} 600w, {{img_url @site.cover_image size='l'}} 1000w, {{img_url @site.cover_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url @site.cover_image size='xl'}}" alt="{{@site.title}}" loading="lazy" />
 </figure>{{/if}}
-<header class="flexy main-header">
+<hgroup class="flexy main-header">
     <h1 class="site-title">{{@site.title}}</h1>
-    {{#if @site.description}}<h2 class="site-description">{{@site.description}}</h2>{{/if}}
-</header>
+    {{#if @site.description}}<p class="site-description">{{@site.description}}</p>{{/if}}
+    <p>We are a team of friendly, professional chauffeurs. We provide executive ground transportation and chauffeur services across Hertfordshire and London. Our expert chauffeur team pride themselves on offering a first class and professional service. Our drivers always go the extra mile to ensure you have a safe and relaxing journey, reaching your destination on time.</p>
+</hgroup>
 {{> "featured"}}
 {{> "clients"}}
 {{> "vehicles"}}
 {{> "form-book-now"}}
 {{> "loop"}}
+{{> "footer"}}
+{{#contentFor "scripts"}}<script type="text/javascript">
+    $(document).ready(function () {
+        
+        // FitVids - Makes video embeds responsive
+        $(".gh-content").fitVids();
+
+        console.log("Hello from home.hbs!");
+    });
+</script>{{/contentFor}}
 {{/is}}
