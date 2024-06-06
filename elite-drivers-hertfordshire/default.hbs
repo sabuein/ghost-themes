@@ -7,8 +7,10 @@
         <meta http-equiv="cleartype" content="on" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
-        <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+        <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121212" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
         {{!-- Preload scripts --}}
         <link rel="preload" href="{{asset 'js/application.mjs'}}" type="text/javascript" crossorigin="anonymous" as="script" />
         <link rel="preload" href="{{asset 'css/screen.css'}}" type="text/css" as="style" />
@@ -43,19 +45,23 @@
         {{> "cookies"}}
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="{{asset 'js/lib/jquery.fitvids.js'}}" type="text/javascript"></script>
-        <script>
+        <script type="text/javascript">
             $(document).ready(function () {
                 // Mobile Menu Trigger
                 $(".gh-burger").click(function () {
                     $("body").toggleClass("gh-head-open");
                 });
-                
-                // FitVids - Makes video embeds responsive
-                $(".gh-content").fitVids();
 
-                console.log("Hello from Ghost!");
+                console.log("Hello from default.hbs!");
             });
         </script>
+        {{{block "scripts"}}}
         {{ghost_foot}}
     </body>
+    {{!-- Some notes:
+
+    Let the image loads different sizes depending on device
+    https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433
+    
+    --}}
 </html>

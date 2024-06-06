@@ -6,8 +6,6 @@
     {{#match @page.show_title_and_feature_image}}<header class="post-header">
         <h1 class="post-title">{{title}}</h1>
         {{#if feature_image}}<figure class="post-image">
-            {{!-- This is a responsive image, it loads different sizes depending on device
-            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
             <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
             {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
         </figure>{{/if}}
@@ -38,34 +36,19 @@
     <section class="post-content">
         {{content}}
     </section>
-    {{#if comments}}<section class="article-comments gh-canvas">
-        {{comments}}
-    </section>{{/if}}
+    {{> "discussion"}}
+    {{> "loop-services"}}
 </article>
+{{> "cta-signup"}}
+{{#contentFor "scripts"}}<script type="text/javascript">
+    $(document).ready(function () {
+        
+        // FitVids - Makes video embeds responsive
+        $(".gh-content").fitVids();
 
-{{!-- A signup call to action is displayed here, unless viewed as a logged-in member --}}
-{{#if @site.members_enabled}}
-{{#unless @member}}
-{{#unless @site.comments_enabled}}
-{{#if access}}
-<section class="footer-cta outer">
-    <div class="inner">
-        <a class="footer-cta-button" href="#/portal" data-portal><div class="footer-cta-input">Enter your email</div><span>Subscribe</span></a>
-    </div>
-</section>
-{{/if}}
-{{/unless}}
-{{/unless}}
-{{/if}}
-
-{{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" as |more_posts|}}{{#if more_posts}}<aside class="read-more-wrap outer">
-    <h3 class="read-more heading">More posts by this author:</h3>
-    <ol>
-        {{#foreach more_posts}}
-        <li><a href="{{url}}">{{title}}</a></li>
-        {{/foreach}}
-    </ol>
-</aside>{{/if}}{{/get}}
+        console.log("Hello from post.hbs!");
+    });
+</script>{{/contentFor}}
 {{/post}}
 {{/is}}
 {{> "footer"}}
