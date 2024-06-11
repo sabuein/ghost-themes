@@ -1,0 +1,47 @@
+<!-- partials/modal-contact.hbs -->
+<section class="flexy modal">
+    <h2>Let&apos;s discuss more about our services&excl;</h2>
+    <hr />
+    <p class="flexy row">If you have any further questions or inquiries not covered in our FAQ&comma; please don&apos;t hesitate to reach out to our dedicated customer support team&period; Your satisfaction and comfort are our top priorities&period;</p>
+    <p>Your inquiries matter to us. Whether you're seeking information about our services, making a booking, or simply want to say hello, we're here to provide you with the utmost care and assistance. Your journey with {{@site.name}} begins with a connection &dash; and we can't wait to connect with you.</p>
+    <dialog class="get-in-touch" aria-modal="true" role="dialog">
+        <h3 title="Please fill out the form below">Please fill out the form below&hellip;</h3>
+        <button type="button" title="Close" autofocus="autofocus" formnovalidate="formnovalidate" aria-label="Close" value="Cancel">&cross; Close</button>
+        <form class="flexy" onsubmit="return validateForm();" action="." method="dialog" enctype="multipart/form-data" autocomplete="on" spellcheck="false" accept-charset="utf-8" target="_top" rel="nofollow">
+            {{> "form-validity"}}
+            <fieldset class="flexy">
+                <label for="category" title="Category" class="flexy"><span aria-label="required">*</span><strong>Category</strong><select name="category" id="category" class="flexy row" required="required" aria-required="true">
+                    <option value="" disabled="disabled" selected="selected" hidden="hidden" title="Please choose an option">Please choose an option</option>
+                    <option value="quote" title="Request a quote">Request a quote</option>
+                    <option value="cv" title="Send CV">Send CV</option>
+                    <option value="other" title="Other">Other</option>
+                </select></label>
+            </fieldset>
+            <fieldset class="flexy">
+                <legend class="flexy"><h4>Your details &amp; enquiry</h4></legend>
+                <div class="flexy row">
+                    <label for="fname" title="First name" class="flexy"><span aria-label="required">*</span><strong>First name</strong><input type="text" name="fname" id="fname" placeholder="Your first name" autocomplete="given-name" pattern="[A-Za-z]*" maxlength="35" required="required" aria-required="true" /></label>
+                    <label for="surname" title="Surname" class="flexy"><span aria-label="required">*</span><strong>Surname</strong><input type="text" name="surname" id="surname" placeholder="Your surname" autocomplete="family-name" pattern="[A-Za-z]*" maxlength="35" required="required" aria-required="true" /></label>
+                </div>
+                <div class="flexy row">
+                    <label for="email" title="Email" class="flexy"><span aria-label="required">*</span><strong>Email</strong><input type="email" name="email" id="email" placeholder="Your email address" autocomplete="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" minlength="8" required="required" aria-required="true" /></label>
+                    <label for="phone" title="Phone" class="flexy"><strong>Phone</strong><input type="tel" name="phone" id="phone" placeholder="Your phone number" autocomplete="tel" pattern="\d+" /></label>
+                </div>
+                <label for="enquiry" title="Enquiry" class="flexy"><span aria-label="required">*</span><strong>Enquiry</strong><textarea name="enquiry" id="enquiry" placeholder="Write something&hellip;" cols="60" rows="5" minlength="10" wrap="hard" required="required" aria-required="true"></textarea></label>
+                <label for="file-upload" title="File upload" class="flexy row"><strong>File upload</strong><input type="file" id="file-upload" name="filename" /></label>
+            </fieldset>
+            <fieldset class="flexy row controls">
+                <p class="flexy row required-fields" title="Required fields">Required fields</p>
+                <div class="flexy">
+                    <label for="terms-conditions" class="flexy row" title="I have read and agreed with the terms &amp; conditions&period;"><span aria-label="required">*</span><input type="checkbox" id="terms-conditions" name="tandc" value="agree" required="required" aria-required="true" /><span>I have read and agreed with the <a href="/terms-and-conditions/" title="terms and conditions">terms &amp; conditions</a>&period;</span></label>
+                    <div class="flexy row">
+                        <input type="submit" value="Send" title="Send" />
+                        <input type="reset" value="Reset" title="Reset" />
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </dialog>
+    <button type="button" title="Click to open contact form">Contact form</button>
+    <output class="flexy"></output>
+</section>
