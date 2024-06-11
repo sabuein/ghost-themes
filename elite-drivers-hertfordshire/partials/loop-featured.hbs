@@ -1,0 +1,6 @@
+<!-- partials/loop-featured.hbs -->
+{{#get "posts" filter="featured:true" include="authors" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h2>Featured&hellip;</h2>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
