@@ -3,7 +3,7 @@
 {{#is "page"}}
 {{#post}}
 <article class="flexy page {{post_class}}">
-    {{#match @page.show_title_and_feature_image}}<header class="flexy page-header">
+    {{#match @page.show_title_and_feature_image}}<header class="flexy">
         <h1 class="flexy row page-title">{{title}}</h1>
         {{#if feature_image}}<figure class="flexy apply-full-cover" style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
             <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" />
@@ -19,24 +19,19 @@
             {{tags prefix="<strong>Tagged in&colon;</strong>" separator="<span>&bull;</span>" autolink="true" limit="5" visibility="all"}}{{!-- all / internal / public --}}
         </div>
     </section>
-    <section class="flexy page-content">
-        {{content}}
-    </section>
-    {{#has slug="contact-us"}}{{> "form-get-in-touch"}}
-<article>
+    {{#has slug="contact-us"}}<div class="flexy row container">
+        {{> "general-enquiries"}}
+        {{> "modal-contact"}}
+    </div>
+</article>
 {{> "loop-ours"}}
-{{> "footer"}}{{else}}
+{{> "footer"}}{{else}}<section class="flexy page-content">{{content}}</section>
 </article>
 {{> "footer"}}{{/has}}
-</article>
 {{#contentFor "scripts"}}<script type="text/javascript">
-    $(document).ready(function () {
-        
-        // FitVids - Makes video embeds responsive
-        $(".gh-content").fitVids();
-
-        console.log("Hello from page.hbs!");
-    });
+    // FitVids - Makes video embeds responsive
+    $(document).ready(() => $("*.html5-main-video").fitVids());
+    console.log("Hello from page.hbs!");
 </script>{{/contentFor}}
 {{/post}}
 {{/is}}

@@ -1,20 +1,21 @@
 <!-- partials/cookies.hbs -->
 <aside id="cookies" class="flexy cookies">
-    <button type="button" id="close-cookies" title="Close">&cross; Close</button>
+    <button type="button" id="close-cookies" title="Close" autofocus="autofocus">&cross; Close</button>
     <hgroup class="flexy">
         <h4 title="We use cookies">We use cookies&excl;</h4>
-        <p>We use cookies on this site to enhance your user experience&comma; ensure website functionality&comma; analyze traffic&comma; and for marketing purposes&period; By browsing our website&comma; you agree to our cookie policy&period; Learn more in our <a href="/cookie-policy/" title="Cookie policy">Cookie policy</a>&period;</p>
+        <p>This website stores cookies on your computer. These cookies are used to collect information about how you interact with our website and allow us to remember you. We use this information to improve and customize your browsing experience and for analytics and metrics about our visitors both on this website and other media. To learn more about the cookies we use, see our <a href="/cookie-policy/" title="Cookie policy">Cookie policy</a>&period;</p>
+        <p>If you decline, your information won’t be tracked when you visit this website. A single cookie will be used in your browser to remember your preference not to be tracked&period;</p>
     </hgroup>
-    <form class="flexy row">
-        <input type="submit" id="cookies-agreed" value="Ok&comma; I agree" title="Ok&comma; I agree" />
-        <input type="reset" id="more-cookies-info" value="No&comma; give me more info" title="No&comma; give me more information" class="invert" />
-    </form>
-    <div class="flexy cookies-accepted">
+    <div class="flexy row">
+        <button type="button" id="accept-cookies" title="Accept cookies">Accept</button>
+        <button type="button" id="decline-cookies" title="Decline cookies">Decline</button>
+    </div>
+    {{!-- <div class="flexy cookies-accepted">
         <p>Thank you for accepting cookies&period;</p>
         <p>You can now hide this message or find out more about cookies&period;</p>
         <div class="flexy row">
             <button type="button" id="hide-cookies" title="Hide">Hide</button>
             <button type="button" id="more-cookies" title="More information">More info</button>
         </div>
-    </div>
+    </div> --}}
 </aside>

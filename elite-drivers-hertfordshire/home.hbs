@@ -6,22 +6,40 @@
 </figure>{{/if}}
 <hgroup class="flexy main-header">
     <h1 class="site-title">{{@site.title}}</h1>
-    {{#if @site.description}}<p class="site-description">{{@site.description}}</p>{{/if}}
+    {{#if @site.description}}<h2 class="site-description">{{@site.description}}</h2>{{/if}}
     <p>We are a team of friendly, professional chauffeurs. We provide executive ground transportation and chauffeur services across Hertfordshire and London. Our expert chauffeur team pride themselves on offering a first class and professional service. Our drivers always go the extra mile to ensure you have a safe and relaxing journey, reaching your destination on time.</p>
 </hgroup>
-{{> "featured"}}
 {{> "clients"}}
-{{> "vehicles"}}
-{{> "form-book-now"}}
-{{> "loop"}}
+{{> "loop-featured"}}
+{{> "loop-services"}}
+<section class="flexy row booking-online">
+    <hgroup class="flexy">
+        <h2>Experience Luxury in Motion</h2>
+        <hr />
+        <h3>Have an enquery or simply want to send a message?</h3>
+        <p>Elevate your transportation experience with {{@site.title}}&period; Book your journey today and indulge in the luxury&comma; comfort&comma; and professionalism that define us&period; Your destination awaits&comma; and we&apos;re here to take you there in style&period;</p>
+        <p>Step into a world of luxury as you embark on a journey with our professional chauffeurs who are not just drivers but curators of your travel experience&period; Impeccably trained&comma; discreet&comma; and knowledgeable&comma; our chauffeurs ensure that every moment of your journey is seamless and enjoyable&period;</p>
+        <p>For those who prefer a more personalized touch and wish to reach out directly&comma; we understand the importance of human connection&period; Feel free to contact us directly&comma; and let us elevate your transportation experience&period;</p>
+        <h4>Reach out to us through the following channels&colon;</h4>
+        <ul class="flexy">
+            <li><strong>Phone&colon;</strong> Our dedicated customer service team is just a call away&period; We&apos;re here to ensure your journey with us is seamless from the start&period; Contact us at 01707 527 111&period;</li>
+            <li><strong>E-mail&colon;</strong> Prefer to communicate through email&quest; Reach us at office@elitedrivershertfordshire.co.uk for prompt responses to your questions or requests&period; Our inbox is always open to your inquiries&period;</li>
+            <li><strong>Online inquiry&colon;</strong> Have a specific question or request&quest; Our online inquiry form makes it easy to get in touch&period; Simply submit your inquiry and we&apos;ll get back to you promptly&period;</li>
+        </ul>
+        <p>We are committed to our clients&period; Instagram&comma; FB and WhatApp &lpar;00447437 06 06 06&rpar; &dash; you&apos;re welcome to contact us on any of them&period; Our team is ready to greet and assist you with any travel plans you have in mind&period;</p>
+    </hgroup>
+    {{> "modal-booking"}}
+</section>
+{{> "loop-fleet"}}
+{{#if posts}}<section class="flexy loop">
+    <h2>Simple looping&hellip;</h2>
+    <hr />
+    {{> "loop"}}
+</section>{{/if}}
 {{> "footer"}}
 {{#contentFor "scripts"}}<script type="text/javascript">
-    $(document).ready(function () {
-        
-        // FitVids - Makes video embeds responsive
-        $(".gh-content").fitVids();
-
-        console.log("Hello from home.hbs!");
-    });
+    // FitVids - Makes video embeds responsive
+    $(document).ready(() => $(".gh-content").fitVids());
+    console.log("Hello from home.hbs!");
 </script>{{/contentFor}}
 {{/is}}
