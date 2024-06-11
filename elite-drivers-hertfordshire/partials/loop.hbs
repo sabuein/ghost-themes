@@ -1,9 +1,18 @@
-<!-- partials/loop.hbs -->
-<section class="flexy loop">
-    <h2>Loop&hellip;</h2>
-    {{#foreach posts}}<article class="flexy {{post_class}}">
-        <h3 class="post-title"><a href="{{url}}">{{title}}</a></h3>
-        <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">&raquo;</a></p>
-        <p class="post-footer">Posted by {{#primary_author}}<a href="{{url}}">{{name}}</a>{{/primary_author}} {{tags prefix=" on "}} at <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>&period;</p>
-    </article>{{/foreach}}
-</section>
+<!-- partials/loop-ours.hbs -->
+{{#foreach posts}}<article class="flexy row {{post_class}}">
+    {{#if feature_image}}<figure class="flexy" style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
+        <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{/if}}
+    <hgroup class="flexy">
+        <h3><a href="{{url}}" title="{{title}}" target="_top">{{title}}</a></h3>
+        <p>{{excerpt words="26"}}&hellip;</p>
+        <a type="text/html" href="{{url}}" title="Learn more" target="_top" class="learn-more" >Learn more</a>
+    </hgroup>
+    <footer class="flexy">
+        <pre class="flexy row"><strong>Posted by&colon;</strong>{{#primary_author}}<a href="{{url}}" title="{{name}}" target="_top">{{name}}</a>{{/primary_author}}</pre>
+        {{#if tags}}<pre class="flexy row"><strong>Tagged in&colon;</strong>{{#foreach tags}}<a type="text/html" href="{{url}}" title="{{name}}"{{#if accent_color}} style="--tag-accent-color: {{accent_color}};"{{/if}}>{{name}}</a>{{/foreach}}</pre>{{/if}}
+        <pre class="flexy row"><strong>Published on&colon;</strong><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time></pre>
+    </footer>
+</article>{{/foreach}}
+{{pagination}}

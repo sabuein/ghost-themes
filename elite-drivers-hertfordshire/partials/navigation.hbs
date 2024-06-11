@@ -5,15 +5,12 @@
         <!--li class="flexy row" role="menuitem"><a href="https://ghost.org/" title="Powered by Ghost" target="_blank" rel="noopener">Powered by Ghost</a></li-->
         <li class="flexy row" role="menuitem"><a href="/ghost/#/dashboard" title="Customise Ghost" target="_blank">Customise Ghost</a></li>
     </ul>
+    <small class="flexy row"><span>&copy;</span><span>{{date format="YYYY"}}</span><span>{{@site.title}}&period;</span><span>All Rights Reserved&period;</span></small>
 </section>{{else}}<nav class="flexy row site-navigation">
     <ul class="flexy row primary-nav" role="menu">
         {{#foreach navigation}}<li class="flexy row {{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem">
-            <a href="{{url absolute='true'}}" title="{{label}}"><span>{{label}}</span></a>
+            <a type="text/html" href="{{url absolute='true'}}" title="{{label}}" target="_top"><span>{{label}}</span></a>
         </li>{{/foreach}}
     </ul>
-    <button type="button" data-html-symbol="trigram-for-heaven" title="Menu">&#9776;</button>
-    {{#unless @site.members_enabled}}<button type="button" class="search gh-icon-btn" title="Search this site" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>{{else}}<button type="button" class="search gh-icon-btn" title="Search this site" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
-    {{#unless @member}}<div class="flexy row members">
-        {{#unless @site.members_invite_only}}<a class="header-button" href="#/portal/signin" title="Sign in" data-portal="signin">Sign in</a><a class="header-button" href="#/portal/signup" title="Sign up" data-portal="signup">Sign up</a>{{else}}<a class="header-button" href="#/portal/signin" title="Sign in" data-portal="signin">Sign in</a>{{/unless}}{{else}}<a class="header-button" href="#/portal/account" title="Account" data-portal="account">Account</a>{{/unless}}
-    </div>{{/unless}}
-</nav>{{/if}}
+</nav>
+{{> "nav-extra"}}{{/if}}

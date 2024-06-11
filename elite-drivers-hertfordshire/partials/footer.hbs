@@ -5,22 +5,12 @@
             <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{asset 'images/essentials/ed-blue-green.png'}}" alt="{{@site.title}}" loading="lazy" /></a>
         </figure>
         <div class="flexy">
-            <small class="flexy row"><span>{{@site.title}}</span><strong>&copy;</strong><strong>{{date format="YYYY"}}</strong></small>
+            <strong class="flexy row"><span>{{@site.title}}</span></strong>
             {{#if @site.description}}<small class="flexy row">{{@site.description}}</small>{{/if}}
             <small class="flexy row"><span>Timezone&colon;</span><strong>{{@site.timezone}}</strong></small>
         </div>
     </header>
     {{> "social-media"}}
-    <section class="flexy general-enquiries">
-        <hgroup class="flexy">
-            <h3>General enquiries</h3>
-        </hgroup>
-        <ul class="flexy">
-            <li class="flexy row"><strong>Call center&colon;</strong><a href="tel:01707527111" target="_blank">01707 527 111</a></li>
-            <li class="flexy row"><strong>Mpbile number&colon;</strong><a href="tel:07437060606" target="_blank">07437 060 606</a></li>
-            <li class="flexy row"><strong>Email&colon;</strong><a href="mailto:office@elitedrivershertfordshire.co.uk" target="_blank">office&commat;elitedrivershertfordshire&period;co&period;uk</a></li>
-            <li class="flexy row"><strong>Address&colon;</strong><address>12 Longcroft Gardens,<br />Welwyn Garden City AL8 6JR,<br />United Kingdom<br /><a href="https://maps.app.goo.gl/79K8LJX48rSS1Br77" title="Google Maps" target="_blank">Google Maps</a></address></li>
-        </ul>
-    </section>
+    {{> "general-enquiries"}}
     {{navigation type="secondary"}}
 </footer>
