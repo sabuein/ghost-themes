@@ -15,13 +15,13 @@
             {{#if custom_excerpt}}<p class="article-excerpt">{{custom_excerpt}}</p>{{/if}}
         </section>
         <div class="article-tag post-card-tags">
-            {{#primary_tag}}<span class="post-card-primary-tag"><a href="{{url}}">{{name}}</a></span>{{/primary_tag}}
+            {{#primary_tag}}<span class="post-card-primary-tag"><a type="text/html" href="{{url}}" target="_top">{{name}}</a></span>{{/primary_tag}}
             {{#if featured}}<span class="post-card-featured">{{> "icons/fire"}} Featured</span>{{/if}}
         </div>
         <section class="article-byline-content">
             <ul class="author-list">
                 {{#foreach authors}}<li class="author-list-item">
-                    {{#if profile_image}}<a href="{{url}}" class="author-avatar" aria-label="Read more of {{name}}"><img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" /></a>{{else}}<a href="{{url}}" class="author-avatar author-profile-image" aria-label="Read more of {{name}}">{{> "icons/avatar"}}</a>{{/if}}
+                    {{#if profile_image}}<a type="text/html" href="{{url}}" target="_top" class="author-avatar" aria-label="Read more of {{name}}"><img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" /></a>{{else}}<a type="text/html" href="{{url}}" target="_top" class="author-avatar author-profile-image" aria-label="Read more of {{name}}">{{> "icons/avatar"}}</a>{{/if}}
                 </li>{{/foreach}}
             </ul>
             <div class="article-byline-meta">
@@ -41,13 +41,9 @@
 </article>
 {{> "cta-signup"}}
 {{#contentFor "scripts"}}<script type="text/javascript">
-    $(document).ready(function () {
-        
-        // FitVids - Makes video embeds responsive
-        $(".gh-content").fitVids();
-
-        console.log("Hello from post.hbs!");
-    });
+    // FitVids - Makes video embeds responsive
+    $(document).ready(() => $(".gh-content").fitVids());
+    console.log("Hello from post.hbs!");
 </script>{{/contentFor}}
 {{/post}}
 {{/is}}

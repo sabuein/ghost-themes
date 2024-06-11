@@ -10,11 +10,12 @@
         <meta name="MobileOptimized" content="320" />
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="shortcut icon" href="{{asset 'favicon.ico'}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset 'public/ghost.css' hasMinFile='true'}}"/>
-        <title>{{statusCode}} — {{message}}</title>
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
+        <link rel="icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset 'public/ghost.css' hasMinFile='true'}}" media="all" />
+        <title>{{statusCode}} &dash; {{message}}</title>
     </head>
-    <body>
+    <body class="flexy">
         <main id="site-main" class="site-main" role="main">
             <div class="gh-app">
                 <div class="gh-viewport">
@@ -24,7 +25,7 @@
                                 <section class="error-message">
                                     <h1 class="error-code">{{statusCode}}</h1>
                                     <h2 class="error-description">{{message}}</h2>
-                                    <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
+                                    <a type="text/html" href="{{@site.url}}" target="_top" class="error-link">Go to the front page →</a>
                                 </section>
                             </section>
                         </section>
