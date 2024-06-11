@@ -1,6 +1,0 @@
-<!-- partials/featured.hbs -->
-<section class="flexy loop">
-    {{#get "posts" limit="all" filter="featured:true"}}{{#if posts}}
-    <h2>Featured&hellip;</h2>
-    {{#foreach posts}}<a href="{{slug}}">{{title}}</a>{{/foreach}}{{else}}<p>There are no featured posts&period;</p>{{/if}}{{/get}}
-</section>
