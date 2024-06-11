@@ -5,14 +5,16 @@ const closeCookiesButton = (event) => $(event.currentTarget).parent().fadeOut(15
 //check to determine if an overflow is happening
 const isOverflowing = (element) => (element.get(0).scrollWidth - element.get(0).offsetWidth) > element.scrollLeft();
 
-const horizontalScrolling = (container, distance = 100, milliseconds = 1000) => {
-    const intervalID = setInterval(() => {
-        if (isOverflowing(container)) container.scrollLeft(container.scrollLeft() + distance);
-        else container.scrollLeft(0);
-    }, milliseconds);
+const horizontalScrolling = (container = null, distance = 100, milliseconds = 1000) => {
+    if (!!container) {
+        const intervalID = setInterval(() => {
+            if (isOverflowing(container)) container.scrollLeft(container.scrollLeft() + distance);
+            else container.scrollLeft(0);
+        }, milliseconds);
 
-    container.on("mouseenter", () => clearInterval(intervalID));
-    container.on("mouseleave", () => horizontalScrolling(container, distance, milliseconds));
+        container.on("mouseenter", () => clearInterval(intervalID));
+        container.on("mouseleave", () => horizontalScrolling(container, distance, milliseconds));
+    } else false;
 };
 
 // When the user scrolls down 150px from the top of the document, show the button
@@ -36,39 +38,6 @@ const scrollBackToTop = (event) => {
         window.document.body.scrollTop = 0; // For Safari
         window.document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         return false;
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-const setInputPattern = (input, type) => {
-    try {
-        
-        let result = "";
-        switch(type.trim().toLowerCase()) {
-            case "password":
-                result = `^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$`;
-                break;
-        }
-
-        input.setAttribute("pattern", result);
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-const getErrorMessage = (type) => {
-    try {
-        switch (type.trim().toLowerCase()) {
-            case "fname":
-                return `Please enter your first name`;
-            case "surname":
-                return `Please enter your surname`;
-            case "email":
-                return `Please enter a valid email address`;
-            case `password`:
-                return `Please enter a valid password`;
-        }
     } catch (error) {
         console.log(error);
     }
@@ -121,8 +90,6 @@ const pauseVideo = (video, button) => {
     }
 };
 
-// element.scrollIntoView();
-
 const includeHTML = () => {
     // Add <div w3-include-html="content.html"></div>
     try {
@@ -155,9 +122,67 @@ const includeHTML = () => {
     }
 };
 
+const setupDialogs = () => {
+    try { // body inert
+        const dialogs = document.querySelectorAll("dialog"),
+            showButtons = document.querySelectorAll("dialog + button"),
+            closeButtons = document.querySelectorAll("dialog > button"),
+            submitButtons = document.querySelectorAll("dialog > button"),
+            outputs = document.querySelectorAll("*.modal > output");
+
+        dialogs.forEach((dialog, index, arr) => {
+            dialog.addEventListener("close", (event) => {
+                event.preventDefault();
+
+                if (dialog.returnValue === "cancel") {
+                    console.log(dialog?.returnValue);
+                } else if (dialog.returnValue === "confirm") {
+                    console.log(dialog?.returnValue);
+                }
+
+                dialogs[index].close();
+                outputs[index].textContent = dialog.returnValue;
+            });
+
+            dialog.addEventListener("cancel", (event) => {
+                event.preventDefault();
+                dialogs[index].close();
+                outputs[index].textContent = dialog.returnValue;
+            });
+        });
+
+        showButtons.forEach((button, index, arr) => button.addEventListener("click", () => {
+            dialogs[index].querySelector("form")?.scrollIntoView();
+            dialogs[index].showModal();
+        }));
+
+        closeButtons.forEach((button, index, arr) => button.addEventListener("click", () => {
+            dialogs[index].close();
+            dialogs[index].querySelector("form")?.reset();
+            showButtons[index].scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            });
+            showButtons[index].focus();
+        }));
+        
+        submitButtons.forEach((button, index, arr) => {
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+                dialogs[index].close();
+            });
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export {
     closeCookiesButton,
     horizontalScrolling,
     toggleBackToTopButton,
     scrollBackToTop,
+    setupDialogs,
 };
