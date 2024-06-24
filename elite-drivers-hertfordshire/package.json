@@ -23,7 +23,7 @@
         "stop": "ghost stop -d ~/my/instances/ghost-servex",
         "debug": "ghost start -D -d ~/my/instances/ghost-servex",
         "log": "ghost log -d ~/my/instances/ghost-servex",
-        "zip": "zip -r /home/sabuein/Desktop/elite-drivers-hertfordshire.zip * -x *.zip /assets/labs/* .gitignore",
+        "zip": "zip -r /home/sabuein/Desktop/elite-drivers-hertfordshire.zip * -x *.zip /assets/labs/* /assets/images/photo-gallery/* .gitignore",
         "scan": "npx gscan .",
         "scan-zip": "npx gscan -z /home/sabuein/Desktop/elite-drivers-hertfordshire.zip",
         "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/elite-drivers-hertfordshire ~/my/instances/ghost-servex/content/themes"
