@@ -2,30 +2,35 @@
 <!-- page.hbs -->
 {{#is "page"}}
 {{#post}}
-<article class="flexy page {{post_class}}">
+<article class="flexy {{post_class}}">
     {{#match @page.show_title_and_feature_image}}<header class="flexy">
-        <h1 class="flexy row page-title">{{title}}</h1>
+        <h1 id="{{slug}}" class="flexy row" title="{{title}}">{{title}}</h1>
         {{#if feature_image}}<figure class="flexy apply-full-cover" style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
             <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" />
             {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
         </figure>{{/if}}
     </header>{{/match}}
-    <section class="flexy row page-meta">
+    <section class="flexy meta">
         <div class="flexy row">
             <strong title="Published on">Published on&colon;</strong>
-            <time class="page-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+            <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+            {{tags prefix="<div class='flexy row'><strong>Keywords&colon;</strong>" separator="<span>&bull;</span>" autolink="true" limit="5" visibility="public" suffix="</div>"}}{{!-- all / internal / public --}}
+            {{#if featured}}<span class="post-card-featured">{{> "icons/fire"}}</span>{{/if}}
         </div>
-        <div class="flexy row">
-            {{tags prefix="<strong>Tagged in&colon;</strong>" separator="<span>&bull;</span>" autolink="true" limit="5" visibility="all"}}{{!-- all / internal / public --}}
-        </div>
+        <ul class="flexy row author-list">
+            {{#foreach authors}}<li>
+                {{#if profile_image}}<a type="text/html" href="{{url}}" target="_top" class="author-avatar" aria-label="Read more by {{name}}"><img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" /></a>{{else}}<a type="text/html" href="{{url}}" target="_top" title="Read more by {{name}}" class="author-avatar author-profile-image" aria-label="Read more of {{name}}">{{> "icons/avatar"}}</a>{{/if}}
+            </li>{{/foreach}}
+        </ul>
+        <p class="excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}&hellip;{{/if}}</p>
+        {{#if reading_time}}<p class="flexy row byline-reading-time">{{reading_time}}</p>{{/if}}
     </section>
     {{#has slug="contact-us"}}<div class="flexy row container">
         {{> "general-enquiries"}}
         {{> "modal-contact"}}
     </div>
 </article>
-{{> "loop-ours"}}
-{{> "footer"}}{{else}}<section class="flexy page-content">{{content}}</section>
+{{> "loop-ours"}}{{else}}<section class="flexy primary-content">{{content}}</section>
 </article>
 {{> "footer"}}{{/has}}
 {{#contentFor "scripts"}}<script type="text/javascript">
@@ -34,4 +39,6 @@
     console.log("Hello from page.hbs!");
 </script>{{/contentFor}}
 {{/post}}
+<a href="#site-header" title="Scroll back to top">&#x21eb;</a>
+{{> "cookies"}}
 {{/is}}

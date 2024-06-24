@@ -10,7 +10,12 @@
     {{#if description}}<h2>{{description}}</h2>{{else}}<p>A collection of {{plural ../pagination.total empty='zero posts' singular='% post' plural='% posts'}}</p>{{/if}}
 </section>
 {{/tag}}
-{{> "loop"}}
+<section class="flexy loop">
+    <h2>Tag posts&colon;</h2>
+    <hr />
+    {{> "loop"}}
+</section>
+<a href="#site-header" title="Scroll back to top">&#x21eb;</a>
 {{/is}}
 {{!--
 
