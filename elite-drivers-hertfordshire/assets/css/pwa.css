@@ -1,0 +1,9 @@
+*.app-button {
+    display: none;
+}
+
+@media (display-mode: standalone) {
+*.app-button {
+        display: block;
+    }
+}
