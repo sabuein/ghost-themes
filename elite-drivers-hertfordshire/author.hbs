@@ -42,8 +42,10 @@
     </footer>
 </section>
 {{/author}}
-<section class="author-loop">
-    {{#foreach posts}}{{> "loop"}}{{/foreach}}
+<section class="flexy loop">
+    <h2>Author posts&colon;</h2>
+    <hr />
+    {{> "loop"}}
 </section>
-{{pagination}}
+<a href="#site-header" title="Scroll back to top">&#x21eb;</a>
 {{/is}}
