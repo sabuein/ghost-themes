@@ -2,9 +2,9 @@
 <section class="flexy row portal-links">
     <hgroup class="flexy">
         <h4>Links</h4>
-        <p>To show pages of Portal</p>
+        <p>Portal pages</p>
     </hgroup>
-    <div class="flexy links-columns">
+    <div class="flexy row links-columns">
         <h5>Generic</h5>
         <ul class="flexy">
             <li><a type="text/html" href="{{@site.url}}/#/portal" title="Default" target="_top" rel="opener" data-portal="">Default</a></li>
@@ -14,7 +14,7 @@
         <h5>Tiers</h5>
         <label for="portal-links-tier" title="Tier" class="flexy row"><span aria-label="required">*</span>Tier&colon;<select name="tier" id="portal-links-tier" class="flexy row" required="required" aria-required="true">
             <option value="" disabled="disabled" hidden="hidden" title="Please choose an option">Please choose an option</option>
-            <option value="xxx" title="{{@site.title}}" selected="selected">{{@site.title}}</option>
+            {{#get "tiers" filter="visibility:public"}}{{#foreach tiers}}<option value="{{slug}}" title="{{name}}">{{name}}</option>{{/foreach}}{{/get}}
         </select></label>
         <ul class="flexy">
             <li><a type="text/html" href="{{@site.url}}/#/portal/signup/665672c40fe7556b677ed89e/monthly" title="Signup &sol; Monthly" target="_top" rel="opener" data-portal="signup/665672c40fe7556b677ed89e/monthly">Signup &sol; Monthly</a></li>

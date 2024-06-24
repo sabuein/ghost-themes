@@ -14,11 +14,11 @@
                 <legend class="flexy"><h4>Subscribe to our newsletters</h4></legend>
             </fieldset>
             <fieldset class="flexy row">
-                <label for="cta-signup-name" title="Name" class="flexy"><span aria-label="required">*</span><strong>Name</strong><input type="text" name="name" id="cta-signup-name" placeholder="Your full name" autocomplete="name" pattern="[A-Za-z ]*" maxlength="70" required="required" aria-required="true" data-members-name="" /></label>
+                <label for="cta-signup-name" title="Name" class="flexy"><span aria-label="required">*</span><strong>Name</strong><input type="text" name="name" id="cta-signup-name" placeholder="Your full name (e.g. Jane Doe)" autocomplete="name" pattern="^[A-Z][A-Za-z]+(?: [A-Z][A-Za-z]+)+$" maxlength="70" required="required" aria-required="true" data-members-name="" /></label>
                 <label for="cta-signup-email" title="Email" class="flexy"><span aria-label="required">*</span><strong>Email</strong><input type="email" name="email" id="cta-signup-email" placeholder="Your email address" autocomplete="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" minlength="8" required="required" aria-required="true" data-members-email="" /></label>
             </fieldset>
             <fieldset class="flexy">
-                {{#get "newsletters"}}{{#foreach newsletters}}<label for="{{slug}}" title="{{name}}" class="flexy row"><input type="checkbox" id="{{slug}}" value="{{name}}" checked="checked" data-members-newsletter="" />{{name}}</label>{{/foreach}}{{/get}}
+                {{#get "newsletters"}}{{#foreach newsletters}}<label for="{{slug}}" title="{{name}}" class="flexy row"><input type="checkbox" id="{{slug}}" value="{{name}}" checked="checked" required="required" aria-required="true" data-members-newsletter="" />{{name}}</label>{{/foreach}}{{/get}}
                 <input type="hidden" value="Early visitors" data-members-label="" />
             </fieldset>
             <fieldset class="flexy row controls">
