@@ -4,6 +4,11 @@ import {
     id,
     qs,
     offlineDetection,
+    setCountries,
+    registerServiceWorker,
+    sharingLinks,
+    sharingFiles,
+    clearSiteData
 } from "helpers";
 
 import {
@@ -22,24 +27,31 @@ switch (document.readyState) {
         // The document has finished loading and we can access DOM elements.
         // Sub-resources such as scripts, images, stylesheets and frames are still loading.
 
+        registerServiceWorker();
+
         offlineDetection();
         setupDialogs();
 
-        const consent = window.localStorage.getItem("cookie-consent");
-        if (!!consent && JSON.parse(consent).accepted === true) id("cookies").remove();
-        else {
-            const closeCookies = id("close-cookies"),
-                acceptCookies = id("accept-cookies"),
-                declineCookies = id("decline-cookies");
+        const consent = window.localStorage.getItem("isCookiesVisible");
+        if (!!id("cookies")) {
+            if (!!consent && consent === "false") id("cookies").remove();
+            else {
+                const closeCookies = id("close-cookies"),
+                    acceptCookies = id("accept-cookies"),
+                    declineCookies = id("decline-cookies");
 
-            closeCookies?.addEventListener("click", closeCookiesButton);
-            declineCookies?.addEventListener("click", () => closeCookies.click());
+                closeCookies?.addEventListener("click", closeCookiesButton);
+                declineCookies?.addEventListener("click", () => closeCookies.click());
 
-            acceptCookies?.addEventListener("click", () => {
-                window.localStorage.setItem("cookie-consent", JSON.stringify({ accepted: true }));
-                closeCookies?.click();
-            });
+                acceptCookies?.addEventListener("click", () => {
+                    window.localStorage.setItem("isCookiesVisible", false);
+                    closeCookies?.click();
+                });
+                $(closeCookies).parent().fadeIn(150).css("display", "flex");
+            }
         }
+
+        if (!!id("clearSiteDataButton")) id("clearSiteDataButton").addEventListener("click", clearSiteData);
 
         const backToTop = qs(`a[href="#site-header"]`);
         backToTop.addEventListener("click", scrollBackToTop);
@@ -48,7 +60,6 @@ switch (document.readyState) {
         // Enable client left auto-scrolling
         const clients = $("*.inner-clients");
         if (!!clients.length) horizontalScrolling(clients.first(), 850, 3000);
-
         break;
     }
 

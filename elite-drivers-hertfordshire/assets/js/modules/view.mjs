@@ -132,6 +132,7 @@ const setupDialogs = () => {
 
         dialogs.forEach((dialog, index, arr) => {
             dialog.addEventListener("close", (event) => {
+                window.document.body.style.overflow = "auto";
                 event.preventDefault();
 
                 if (dialog.returnValue === "cancel") {
@@ -140,32 +141,30 @@ const setupDialogs = () => {
                     console.log(dialog?.returnValue);
                 }
 
-                dialogs[index].close();
                 outputs[index].textContent = dialog.returnValue;
+                dialogs[index].querySelector("form")?.reset();
+
+                showButtons[index].scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                });
+                showButtons[index].focus();
             });
 
             dialog.addEventListener("cancel", (event) => {
                 event.preventDefault();
                 dialogs[index].close();
-                outputs[index].textContent = dialog.returnValue;
             });
         });
 
         showButtons.forEach((button, index, arr) => button.addEventListener("click", () => {
-            dialogs[index].querySelector("form")?.scrollIntoView();
+            window.document.body.style.overflow = "hidden";
             dialogs[index].showModal();
+            dialogs[index].querySelector("form")?.scrollIntoView();
         }));
 
-        closeButtons.forEach((button, index, arr) => button.addEventListener("click", () => {
-            dialogs[index].close();
-            dialogs[index].querySelector("form")?.reset();
-            showButtons[index].scrollTo({
-                top: 0,
-                left: 0,
-                behavior: "smooth",
-            });
-            showButtons[index].focus();
-        }));
+        closeButtons.forEach((button, index, arr) => button.addEventListener("click", () => dialogs[index].close()));
         
         submitButtons.forEach((button, index, arr) => {
             button.addEventListener("click", (event) => {
