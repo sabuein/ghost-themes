@@ -5,8 +5,8 @@
     <img srcset="{{img_url @site.cover_image size='s'}} 300w, {{img_url @site.cover_image size='m'}} 600w, {{img_url @site.cover_image size='l'}} 1000w, {{img_url @site.cover_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url @site.cover_image size='xl'}}" alt="{{@site.title}}" loading="lazy" />
 </figure>{{/if}}
 <hgroup class="flexy main-header">
-    <h1 class="site-title">{{@site.title}}</h1>
-    {{#if @site.description}}<h2 class="site-description">{{@site.description}}</h2>{{/if}}
+    <h1 id="title" class="site-title">{{@site.title}}</h1>
+    {{#if @site.description}}<h2 id="description" class="site-description">{{@site.description}}</h2>{{/if}}
     <p>We are a team of friendly, professional chauffeurs. We provide executive ground transportation and chauffeur services across Hertfordshire and London. Our expert chauffeur team pride themselves on offering a first class and professional service. Our drivers always go the extra mile to ensure you have a safe and relaxing journey, reaching your destination on time.</p>
 </hgroup>
 {{> "clients"}}
@@ -31,15 +31,24 @@
     {{> "modal-booking"}}
 </section>
 {{> "loop-fleet"}}
+{{> "chauffeurs"}}
 {{#if posts}}<section class="flexy loop">
     <h2>Simple looping&hellip;</h2>
     <hr />
     {{> "loop"}}
 </section>{{/if}}
+<section class="flexy loop">
+    {{!-- Get all tags and order them by post count --}}
+    <h2>Keywords</h2>
+    <hr />
+    {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}{{#foreach tags}}<a href="{{url}}" title="{{name}}" target="_top">{{name}} ({{count.posts}})</a>{{/foreach}}{{/get}}
+</section>
 {{> "footer"}}
 {{#contentFor "scripts"}}<script type="text/javascript">
     // FitVids - Makes video embeds responsive
     $(document).ready(() => $(".gh-content").fitVids());
     console.log("Hello from home.hbs!");
 </script>{{/contentFor}}
+<a href="#site-header" title="Scroll back to top">&#x21eb;</a>
+{{> "cookies"}}
 {{/is}}
