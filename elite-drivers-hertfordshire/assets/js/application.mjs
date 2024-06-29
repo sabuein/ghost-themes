@@ -51,7 +51,17 @@ switch (document.readyState) {
             }
         }
 
-        if (!!id("clearSiteDataButton")) id("clearSiteDataButton").addEventListener("click", clearSiteData);
+        const menuButton = qs(`button[data-html-symbol="trigram-for-heaven"]`);
+        if(!!menuButton) {
+            // Toggle the menu
+            const menu = qs(`ul.primary-nav`);
+            if (!!menu) menuButton.addEventListener("click", () => menu.classList.toggle("menu-visible"));
+            // Activate close button
+            menu.querySelector(`li:first-child button`).addEventListener("click", () => menuButton.click());
+        }
+
+        const clearButton = id("clearSiteDataButton");
+        if (!!clearButton) clearButton.addEventListener("click", clearSiteData);
 
         const backToTop = qs(`a[href="#site-header"]`);
         backToTop.addEventListener("click", scrollBackToTop);
