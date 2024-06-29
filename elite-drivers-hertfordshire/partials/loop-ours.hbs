@@ -1,0 +1,6 @@
+<!-- partials/loop-ours.hbs -->
+{{#get "posts" filter="tags:[hash-ours]+id:-{{id}}" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h2>Learn more about {{@site.title}}&hellip;</h2>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
