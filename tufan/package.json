@@ -1,0 +1,66 @@
+{
+    "name": "tufan",
+    "description": "A brief explanation of your theme",
+    "demo": "demo",
+    "version": "1.0.0",
+    "license": "MIT",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "web@support.tufan.uk",
+        "url": "https://sabuein.github.io/"
+    },
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg",
+        "mobile": "assets/screenshot-mobile.jpg"
+    },
+    "docs": "https://tufan.uk/docs/",
+    "config": {
+        "posts_per_page": 9,
+        "image_sizes": {},
+        "card_assets": true,
+        "custom": {
+            "linkedin_url": {
+                "type": "text",
+                "default": "https://www.linkedin.com/in/sabuein/"
+            },
+            "github_url": {
+                "type": "text",
+                "default": "https://github.com/sabuein/tufan"
+            }
+        }
+    },
+    "scripts": {
+        "link": "ln -s /home/sabuein/my/projects/tufan /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
+        "test": "npx gscan .",
+        "start": "ghost start -d ~/my/instances/ghost/",
+        "restart": "ghost restart -d ~/my/instances/ghost/",
+        "stop": "ghost stop -d ~/my/instances/ghost/",
+        "update": "ghost update -d ~/my/instances/ghost/",
+        "debug": "ghost run -D -d ~/my/instances/ghost/",
+        "log": "ghost log -d ~/my/instances/ghost/",
+        "ls": "ghost ls",
+        "help": "ghost help",
+        "zip": "zip -r /home/sabuein/Desktop/tufan.zip * -x *.zip /assets/labs/* .gitignore",
+        "check": "gscan -z /home/sabuein/Desktop/tufan.zip"
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sabuein/tufan.git"
+    },
+    "bugs": "https://github.com/sabuein/tufan/issues",
+    "contributors": [
+        "https://github.com/sabuein/tufan/graphs/contributors"
+    ],
+    "browserslist": [
+        "defaults"
+    ],
+    "type": "module"
+}

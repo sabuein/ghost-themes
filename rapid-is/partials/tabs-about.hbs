@@ -1,0 +1,17 @@
+<!-- tabs-about.hbs -->
+<section id="tabs-about" class="palette flexy">
+    <header class="flexy">
+        <h2>Why we&apos;re trusted</h2>
+        <div class="buttons flexy row">
+            <a href="#tabs-about" title="Our people">Our people</a>
+            <a href="#tabs-about" title="Our promise">Our promise</a>
+            <a href="#tabs-about" title="Our purpose" class="active">Our purpose</a>
+        </div>
+    </header>
+    <article class="flexy">
+        {{#get "posts" filter="tag:hash-about-tabs+visibility:public" order="title asc" limit=3}}{{#if posts}}{{#foreach posts}}{{#has number="nth:3"}}<hgroup class="active flexy row" data-play-state="running">{{else}}<hgroup class="flexy row" data-play-state="running">{{/has}}
+            <h3 id="{{slug}}-tab" title="{{title}}">{{title}}</h3>
+            {{content}}
+        </hgroup>{{/foreach}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}{{else}}<pre class="get-posts-error">{{error}}</pre>{{/get}}
+    </article>
+</section>

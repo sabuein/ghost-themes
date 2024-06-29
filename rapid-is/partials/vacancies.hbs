@@ -1,0 +1,28 @@
+<!-- vacancies.hbs -->
+<section id="check-our-vacancies" class="get-job-vacancies palette bouncing flexy row">
+    <figure class="flexy">
+        {{> "drawings/hiring"}}
+    </figure>
+    <div class="container disable-scrollbar flexy shadowed">
+        <hgroup class="flexy">
+            <h2 id="join-our-team" title="Join our team">Join our team</h2>
+            <p>Explore jobs at Rapid&period; Whether you&apos;re just starting your career or already have work experience&comma; see for yourself the variety of jobs Rapid has to offer&colon;</p>
+        </hgroup>
+        {{#get "posts" filter="tag:hash-vacancies+visibility:public" order="featured desc, published_at asc" limit=@config.posts_per_page as |vacancies pages|}}{{#foreach vacancies}}<article class="{{post_class}} flexy" data-index="{{@index}}">
+            <header class="flexy">
+                <h3 id="{{slug}}">{{title}}</h3>
+                {{#if feature_image}}<figure class="bg-image" style="background-image: url({{img_url feature_image absolute='true'}});">
+                    <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" />
+                    {{#if custom_excerpt}}<figcaption>{{custom_excerpt}}</figcaption>{{/if}}
+                </figure>{{/if}}
+            </header>
+            <div class="flexy">
+                {{content}}
+            </div>
+            <footer>
+                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+            </footer>
+        </article>{{else}}{{!-- <pre>Thank you for your interest&period; Unfortunately&comma; we are not hiring at this time&period;</pre> --}}<p>If you are interested in joining our team&comma; then drop us a speculative application via our <a href="/contact/" title="Contact">contact</a> page&period;</p>{{/foreach}}
+        <pre class="total-results">{{plural pages.total empty="Found no job vacancies" singular="Found % job vacancies" plural="Found % job vacancies"}}&excl;</pre>{{else}}<p class="get-posts-error">{{error}}</p>{{/get}}
+    </div>
+</section>

@@ -1,0 +1,14 @@
+<!-- partials/social-media.hbs -->
+<ul class="social-icons flexy" role="menu">
+    <li><a href="{{@site.url}}/ghost/#/dashboard/" title='{{t "Ghost"}}' class="flexy" target="_blank" rel="noopener">
+    {{> "icons/ghost"}}
+    </a></li>
+    {{#if @custom.github_url}}<li><a href="{{@custom.github_url}}?ref={{readable_url @site.url}}" title='{{t "GitHub"}}' class="flexy" target="_blank" rel="noopener">
+    {{> "icons/github"}}
+    </a></li>{{/if}}
+    {{#if @custom.linkedin_url}}<li><a href="{{@custom.linkedin_url}}?ref={{readable_url @site.url}}" title='{{t "LinkedIn"}}' class="flexy" target="_blank" rel="noopener">
+    {{> "icons/linkedin"}}
+    </a></li>{{/if}}
+    {{#if @site.facebook}}<li><a href="{{facebook_url @site.facebook}}?ref={{readable_url @site.url}}" title='{{t "Facebook"}}' class="flexy" target="_blank" rel="noopener">{{t "Facebook"}}</a></li>{{/if}}
+    {{#if @site.twitter}}<li><a href="{{twitter_url @site.twitter}}?ref={{readable_url @site.url}}" title='{{t "X &lpar;formerly Twitter&rpar;"}}' class="flexy" target="_blank" rel="noopener">{{t "X"}}</a></li>{{/if}}
+</ul>

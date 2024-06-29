@@ -1,0 +1,34 @@
+{{!< default}}
+<!-- page.hbs -->
+{{#is "page"}}
+{{#post}}
+{{#primary_tag}}{{#if accent_color}}<style>
+    :root {
+        --accent-color: {{accent_color}};
+        --brandcolor: {{accent_color}};
+    }
+
+    *.kg-button-card a.kg-btn-accent {
+        background-color: {{accent_color}};
+    }
+</style>{{else}}<span style="display: none;">No accent color</span>{{/if}}{{/primary_tag}}
+{{#has slug="tags"}}<main id="content" class="{{post_class}} flexy start gapy-1 content-width" role="main">
+    {{> "loop-tag"}}
+</main>{{else}}<section class="flexy row palette">
+    {{#match @page.show_title_and_feature_image}}{{#if feature_image}}<figure class="flexy loopy has-bg" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})" title="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{t title}}{{/if}}">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{t title}}" loading="lazy" onerror="this.style.display='none';" />
+        {{#match feature_image_caption}}<figcaption title="{{t 'Image caption'}}" class="width-full">{{feature_image_caption}}</figcaption>{{/match}}
+    </figure>{{/if}}
+    <hgroup class="flexy start gapy-half">
+        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}" title="{{t title}}"><a href="{{url absolute='true'}}" title="{{t 'Copy page URL'}}" type="text/html">&#128279;</a><span title="{{t title}}">{{t title}}</span></h2>
+        {{#match custom_excerpt}}<p title="{{t 'Custom excerpt'}}">{{custom_excerpt}}</p>{{/match}}
+    </hgroup>{{/match}}
+</section>
+<main id="content" class="{{post_class}} flexy content-width" role="main">
+    <div class="flexy start start-content gapy-1 content-width">
+        {{content}}
+    </div>
+</main>{{/has}}
+{{^has slug="tags"}}{{^has slug="contact"}}{{> "cta-newsletters" heading=(t "Stay informed and enriched with our dynamic content updates")}}{{/has}}{{/has}}
+{{/post}}
+{{/is}}

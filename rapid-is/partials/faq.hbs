@@ -1,0 +1,104 @@
+<!-- faq.hbs -->
+<form id="search-support" class="palette flexy">
+    <legend class="flexy">
+        <h2 id="do-you-have-questions" title="Do you have questions&quest;">Do you have questions&quest;</h2>
+    </legend>
+    <label for="search-box" class="flexy row">Ask us anything&excl;<input type="search" name="faq" id="search-box" placeholder="Search our support page for answers&hellip;" required="required" /><input type="submit" title="Search" value="Search" /></label>
+</form>
+<section id="faq" class="palette flexy">
+    <hgroup class="flexy">
+        <h2 id="frequently-asked-questions-faq" title="Frequently asked questions FAQ">Frequently asked questions FAQ</h2>
+        <p>We have answers (well, most of the times&excl;)</p>
+        <p>Below you&apos;ll find answers to the most common questions you may have on Rapid&period; If you still can&apos;t find the answer you&apos;re looking for&comma; just <a href="/contact/" title="Contact us">contact us</a>&excl;</p>
+    </hgroup>
+    <article class="flexy">
+        <details class="flexy">
+			<script>const showDialog = (string) => document.getElementById(string).showModal();</script>
+            <summary class="flexy row"><h5>How do I generate a QR code or obtain a download link for Rapid Mobile&quest;</h5></summary>
+            <p>Make things easy for your users with a QR code or Google Play install url. Enter values for your Rapid platform into the dialog below, and hyperlinks will be generated underneath. You can scan the QR code in the Rapid Mobile app settings menu, or you can launch Google Play and Rapid Mobile will configure itself when it installs.</p>
+			<button type="button" onclick="showDialog('myBuilder')">Show dialog</button>
+            <dialog id="myBuilder" class="wpb_wrapper">
+<form class="urlbuilder">
+<tbody>
+<tr><td>Server url*</td><td><input id="url_s" type="text"></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">The public url of your Rapid platform server. You must be able to access it from a browser on your  mobile device</td></tr>
+<tr><td>Timeout</td><td><select id="url_o"><option value="" selected="selected"></option><option value="5000">5 seconds</option><option value="10000">10 seconds</option><option value="20000">20 seconds</option><option value="30000">30 seconds</option><option value="60000">1 minute</option><option value="120000">2 minutes</option><option value="0">No timeout</option></select></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">The time the Rapid Mobile client will wait for response before assuming the device is offline</td></tr>
+<tr><td>User name</td><td><input id="url_u" type="text"></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">The user's login name. It must have been added in Rapid Admin. If your server performs ntlm enter the domain followed by a backslash first</td></tr>
+<tr><td>Password</td><td><input id="url_p" type="text"></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">Providing the user password in urls is not recommended! A better approach is to use ntlm and check the device id</td></tr>
+<tr><td>Show settings</td><td><input id="url_t" type="checkbox"></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">Whether the "Show server settings" checkbox is ticked</td></tr>
+<tr><td>Application</td><td><input id="url_d" type="text"></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">The id of an application to immediately download and open</td></tr>
+<!--
+<tr><td>Http url</td><td><span id="url_full">https://www.rapid-is.co.uk/install.htm</span></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">Send the url in emails or sms messages for users to click on from their mobile device</td></tr>
+<tr><td>Http link</td><td><a id="url_link" href="https://www.rapid-is.co.uk/install.htm">Install Rapid Mobile from http url</span></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">Click on the link to visit the install page which will take you to Google Play</td></tr>
+-->
+<tr><td>Market link</td><td><a id="url_play" href="market://details?id=com.rapid.mobile">Install Rapid Mobile from Google Play</a></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">Click on the link from your mobile device to go straight to Google Play</td></tr>
+<tr><td>QR code link</td><td><a id="url_qr" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=500x500&amp;data=s%3Dhttps%3A%2F%2Fwww.rapid-is.co.uk%2Fdemo%26t%3Dtrue%26u%3Duser%26p%3Duser%26a%3Dmobdemo">Show QR code to scan in settings</a></td></tr>
+<tr><td>&nbsp;</td><td class="urllable">Click on the link to show a QR code you can scan to add the settings</td></tr>
+</tbody>
+</form>
+
+<script type="text/javascript">
+
+const paramChanged = (ev) => {
+
+	var s = jQuery("#url_s").val();
+	var o = jQuery("#url_o").val();
+	var u = jQuery("#url_u").val();
+	var p = jQuery("#url_p").val();
+	var t = jQuery("#url_t").is(":checked");
+	var d = jQuery("#url_d").val();
+	
+	var url = "https://www.rapid-is.co.uk/install.htm";
+	var url_play = "";
+	
+	if (s) { 
+		url += "?s=" + encodeURIComponent(s); 
+		url_play += "s=" + s;
+	}
+	if (s && (o || o == 0)) { 
+		url += (url ? "&" : "?") + "o=" + encodeURIComponent(o); 
+		url_play += (url_play ? "&" : "?") + "o=" + o;
+	}
+	if (s && u) { 
+		url += (url ? "&" : "?") + "u=" + encodeURIComponent(u); 
+		url_play += (url_play ? "&" : "?") + "u=" + u;
+	}
+	if (s && p) { 
+		url += (url ? "&" : "?") + "p=" + encodeURIComponent(p);
+		url_play += (url_play ? "&" : "?") + "p=" + p;
+	}
+	if (s && t) { 
+		url += (url ? "&" : "?") + "t=" + encodeURIComponent(t);
+		url_play += (url_play ? "&" : "?") + "t=" + t;
+	}
+	if (s && d) { 
+		url += (url ? "&" : "?") + "d=" + encodeURIComponent(d);
+		url_play += (url_play ? "&" : "?") + "d=" + d;
+	}
+		
+	jQuery("#url_full").html(url);
+	jQuery("#url_link").attr("href",url);
+	jQuery("#url_play").attr("href", "market://details?id=com.rapid.mobile&referrer=" +  encodeURIComponent(url_play));
+	jQuery("#url_qr").attr("href", "https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=" +  encodeURIComponent(url_play));
+};
+
+jQuery(document).ready( function() {
+	
+	jQuery("table.urlbuilder").find("input").keyup( paramChanged );
+	jQuery("table.urlbuilder").find("input,select").change( paramChanged );
+				
+});	
+
+</script>
+		</dialog>
+        </details>
+    </article>
+</section>

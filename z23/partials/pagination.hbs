@@ -1,0 +1,12 @@
+<!-- pagination.hbs -->
+<nav class="pagination flex row gap-x2">
+    {{#post}}
+    {{#prev_post}}
+    <a href="{{url aboslute='true'}}" title="{{title}}">&LeftArrow;</a>
+    {{/prev_post}}
+    <span>Page {{page}} of {{pages}}</span>
+    {{#next_post}}
+    <a href="{{url aboslute='true'}}" title="{{title}}">&RightArrow;</a>
+    {{/next_post}}
+    {{/post}}
+</nav>

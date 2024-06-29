@@ -1,0 +1,7 @@
+<!-- integration.hbs -->
+<section id="rapid-integration" class="palette flexy">
+    {{#get "posts" filter="tag:hash-core+visibility:public" order="title asc" limit=@config.posts_per_page}}{{#if posts}}{{#foreach posts}}{{#has slug="integration"}}<hgroup class="flexy">
+        <h2 id="{{slug}}-post" title="{{title}}">{{title}}</h2>
+        {{content}}
+    </hgroup>{{/has}}{{/foreach}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}{{else}}<pre class="get-posts-error">{{error}}</pre>{{/get}}
+</section>

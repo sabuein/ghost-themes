@@ -1,0 +1,19 @@
+<!-- signup.hbs -->
+{{^if @member}}
+<p>Join the Newsletter!</p>
+<p>It's completely free. No spam ever. You can unsubscribe anytime.</p>
+<form data-members-form="subscribe">
+    <p data-members-error><!-- error message will appear here --></p>
+    <label for="member-name" title="Please enter your full name">Name&colon;<input type="text" name="fname" id="member-name" autocomplete="name" required="required" data-members-name /></label>
+    <label for="member-email" title="Please enter a valid email address">Email address&colon;<input type="email" name="email" id="member-email" autocomplete="email" required="required" data-members-email /></label>
+    {{#get "newsletters"}}{{#foreach newsletters}}<label><input type="checkbox" value="{{name}}" checked="checked" data-members-newsletter />{{name}}</label>{{/foreach}}{{/get}}
+    <input data-members-label type="hidden" value="Early visitors" />
+    <input type="submit" value="Subscribe now" title="Subscribe now" />
+    <input type="reset" value="Reset" title="Reset" />
+</form>
+{{else}}
+<a href="#/portal/signup">Sign up</a>
+<a data-portal="signup">Subscribe now</a>
+<a href="#/portal/signin">Sign in</a>
+<a href="javascript:" data-members-signout>Sign out</a>
+{{/if}}

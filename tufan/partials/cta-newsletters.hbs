@@ -1,0 +1,20 @@
+<!-- partials/cta-newsletters.hbs -->
+<aside class="call-to-action flexy gapy-half width-full">
+    {{#if heading}}<h3 id="cta-newsletter" title="{{t heading}}">{{t heading}}</h3>{{else}}<h3 id="cta-newsletter" title='{{t "Subscribe for diverse content and updates"}}'>{{t "Subscribe for diverse content and updates"}}</h3>{{/if}}
+    {{^if @member}}<form data-members-form="subscribe" data-members-autoredirect="true" data-form="subscribe" class="flexy">
+        <input type="hidden" value="Testing" data-members-label="" />
+        <label for="memberName" class="flexy" title="{{t 'Name'}}"><strong>{{t "Name"}}&colon;</strong><input type="txt" name="name" id="memberName" autocomplete="name" pattern=".{2,30}" title="{{t 'Please enter your full name'}}" placeholder="{{t 'Your full name'}}" required="true" data-members-name="" /></label>
+        <label for="memberEmail" class="flexy" title="{{t 'Email'}}"><strong>{{t "Email"}}&colon;</strong><input type="email" name="email" id="memberEmail" autocomplete="email" title="{{t 'Please enter a valid email address'}}" placeholder="{{t 'Your email'}}" required="true" data-members-email="" /></label>
+        {{#get "newsletters"}}{{#foreach newsletters}}<label for="newsletter-{{@number}}" class="flexy" title="{{t 'Subscribe to'}}"><input type="checkbox" value="{{name}}" id="newsletter-{{@number}}" title="{{name}}" data-members-newsletter />{{name}}</label>{{else}}<p class="flexy" title="{{t 'There were no newsletters'}}">{{t "There were no newsletters"}}&hellip;</p>{{/foreach}}{{/get}}
+        <div class="flexy controls">
+            <input type="submit" value="{{t 'Subscribe'}}" title='{{t "Subscribe"}}' />
+            <input type="reset" value="{{t 'Reset'}}" title='{{t "Reset"}}' />
+        </div>
+        {{> "ghost-form"}}
+    </form>
+    <form data-members-form="signin" data-members-autoredirect="true" data-form="signin" class="flexy content-width">
+        <label for="memberEmailX" class="flexy" title="{{t 'Email'}}"><strong>{{t "Email"}}&colon;</strong><input type="email" name="emailX" id="memberEmailX" autocomplete="email" title="{{t 'Please enter a valid email address'}}" placeholder="{{t 'Your email'}}" required="true" data-members-email="" /></label>
+        <input type="submit" value="{{t 'Sign in'}}" title="{{t 'Sign in'}}" />
+        {{> "ghost-form"}}
+    </form>{{else}}<a href="javascript:void(0);" data-members-signout="" title="{{t 'Sign out'}}">{{t "Sign out"}}</a>{{/if}}
+</aside>

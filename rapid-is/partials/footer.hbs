@@ -1,0 +1,75 @@
+<!-- footer.hbs -->
+<section>
+    <div data-divider="top">
+        {{> "icons/divider-tilt"}}
+    </div>
+</section>
+<footer id="default-footer" class="flexy" role="contentinfo">
+    <div class="columns flexy row">
+        {{!--{{#if @site.logo}}<figure class="rapid-logo flexy"><a href="{{@site.url}}" title="{{@site.title}}"><img src="{{@site.logo}}" alt="{{@site.title}}" loading="lazy" /></a></figure>{{else}}<figure class="rapid-logo"><a href="{{@site.url}}" title="{{@site.title}}"><img src="{{asset 'images/new-logo.png'}}" alt="{{@site.title}}" loading="lazy" /></a></figure>{{/if}}--}}
+        <figure class="column rapid-logo flexy"><a href="{{@site.url}}" title="{{@site.title}}">
+            {{> "icons/rapid-is"}}
+        </a></figure>
+        {{#if @site.navigation}}<div class="column flexy">
+            <h6 title="Explore">Explore</h6>
+            <ul class="nav flexy">
+                <li role="menuitem"><a href="{{@site.url}}" title="Homepage">Homepage</a></li>
+                {{#foreach navigation}}<li role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+            </ul>
+        </div>{{/if}}
+        <div class="column flexy">
+            <h6 title="Accreditation">Accreditation</h6>
+            <div class="deeds flexy row">
+                <figure title="ISO/IEC 27001:2022">
+                    <a href="{{asset 'files/british-assessment-bureau-certificate-23022024.pdf'}}" title="ISO/IEC 27001:2022" target="_blank" rel="noopener">{{!--{{> "icons/iso-iec-27001-2022"}}--}}<img src="{{asset 'images/iso-iec-27001-2022.png'}}" alt="ISO 27001 UKAS Accredited Badge" /></a>
+                </figure>
+                <figure title="Cyber Essentials">
+                    <img src="{{asset 'images/cyber-essentials-new.png'}}" alt="Cyber Essentials" />
+                </figure>
+                <figure title="Crown Commercial Service Supplier">
+                    <img src="{{asset 'images/crown-commercial-service-supplier-white.png'}}" alt="Crown Commercial Service Supplier" />
+                </figure>
+                <figure title="Amazon Web Services">
+                    {{> "icons/aws-solid"}}
+                </figure>
+                <figure title="Microsoft Partner">
+                    <img src="{{asset 'images/ms-partner.jpeg'}}" alt="Microsoft Partner" />
+                </figure>
+                <figure title="Oracle">
+                    {{> "icons/oracle-solid"}}
+                </figure>
+                <figure title="Java">
+                    {{> "icons/java-solid"}}
+                </figure>
+            </div>
+        </div>
+        <div class="last-column flexy">
+            <address class="column contact flexy">
+                <h6 title="Contact">Contact</h6>
+                <ul itemscope itemtype="https://schema.org/LocalBusiness" class="nav flexy">
+                    {{!-- <li role="menuitem"><a href="tel:+441707520711" title="Telephone number" target="_blank" itemprop="telephone">+44 1707 520 711</a></li> --}}
+                    <li role="menuitem"><a href="mailto:info@rapid-is.co.uk&subject={{encode @site.title}}" title="Email address" target="_blank" itemprop="email">info@rapid-is.co.uk</a></li>
+                </ul>
+            </address>
+            <div class="column flexy">
+                {{> "social-icons"}}
+            </div>
+        </div>
+    </div>
+    <pre>Made with <span class="hearts" title="unconditional love">&hearts;</span> by our team&excl;</pre>
+    <div class="flexy company">
+        <pre>Registered in England and Wales. Company registration number 05494744&period;</pre>
+        <pre>VAT registration number 881993663. ICO registration number ZA471303. D-U-N-S number 346902047&period;</pre>
+        <pre>ISO/IEC 27001:2022 UKAS accredited by <a href="https://cvs.babcert.com/babcert.asp?c=253038&v=gxy835f67t" title="The British Assessment Bureau" target="_blank" rel="noopener">The British Assessment Bureau</a>&period;</pre>
+    </div>
+    <div class="finally flexy">
+        {{navigation type="secondary"}}
+        <pre>&copy; 2005 &dash; {{date format="YYYY"}} <a href="{{@site.url}}" title="{{@site.title}} Ltd">{{@site.title}} Ltd</a>&period; All Rights Reserved&period;</pre>
+    </div>
+    {{> "cookies"}}
+    <div class="flexy">
+        <a href="#main-content" title="Back to top" class="shadowed">
+            {{> "icons/angle-down"}}
+        </a>
+    </div>
+</footer>

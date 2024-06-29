@@ -1,0 +1,36 @@
+<!-- cta-coffee.hbs -->
+<section id="grab-coffee" class="palette flexy">
+    <hgroup class="flexy">
+        <h2>Contact us</h2>
+        <p>Let&apos;s talk about how Rapid can help you over a coffee someday&period; Book an appointment below&hellip;</p>
+    </hgroup>
+    <div class="flexy row shadowed">
+        <figure>
+            {{> "drawings/hang-out"}}
+        </figure>
+        <form class="flexy">
+            <fieldset class="flexy row">
+                <div class="flexy row">
+                    <label for="client-name" class="flexy">Full name&colon;<input type="text" name="name" id="client-name" autocomplete="name" required="required" placeholder="John Doe" /></label>
+                    <label for="client-email" class="flexy">Email address&colon;<input type="email" name="email" id="client-email" autocomplete="email" required="required" placeholder="john&period;doe&commat;example&period;com" /></label>
+                </div>
+                <div class="flexy row">
+                    <label for="client-tel" class="flexy">Phone number&colon;<input type="tel" name="phone" id="client-tel" autocomplete="tel" required="required" placeholder="555&dash;555&dash;5555" /></label>
+                    <label for="client-url" class="flexy">Website URL&colon;<input type="url" name="url" id="client-url" autocomplete="url" placeholder="https&colon;&sol;&sol;www&period;example&period;com" /></label>
+                </div>
+                <div class="flexy row">
+                    <label for="date-time" class="flexy">Date and time&colon;<input type="datetime-local" name="time" id="date-time" autocomplete="off" required="required" /></label>
+                </div>
+                <div class="controls flexy row">
+                    <input type="submit" value="Schedule" title="Schedule" />
+                    <input type="reset" value="Reset" title="Reset" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <footer class="flexy">
+        <a href="#default-footer" title="Continue" class="shadowed">
+            {{> "icons/angle-down"}}
+        </a>
+    </footer>
+</section>

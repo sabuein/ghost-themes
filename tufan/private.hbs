@@ -1,0 +1,8 @@
+{{!< default}}
+<!-- private.hbs -->
+<form data-members-form="subscribe">
+    <input type="email" required="true" data-members-email="" />
+    {{#get "newsletters"}}{{#foreach newsletters}}<label><input type="checkbox" value="{{name}}" data-members-newsletter="" />{{name}}</label>{{else}}<p>There were no newsletters&hellip;</p>{{/foreach}}{{/get}}
+    <input type="submit" value="Subscribe" />
+    <input type="reset" value="Reset" />
+</form>

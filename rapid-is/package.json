@@ -1,0 +1,76 @@
+{
+    "name": "rapid-information-systems",
+    "description": "A custom Ghost theme for Rapid Information Systems",
+    "demo": "https://www.rapid-is.co.uk/",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=5.58.0"
+    },
+    "license": "NA",
+    "screenshots": {
+        "mobile": "assets/screenshot-mobile.jpg",
+        "desktop": "assets/screenshot-desktop.jpg"
+    },
+    "scripts": {
+        "link": "ln -s /home/sabuein/my/projects/rapid-is /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
+        "check": "npx gscan .",
+        "start": "ghost start -d ~/my/instances/ghost/",
+        "restart": "ghost restart -d ~/my/instances/ghost/",
+        "stop": "ghost stop -d ~/my/instances/ghost/",
+        "update": "ghost update -d ~/my/instances/ghost/",
+        "debug": "ghost run -D -d ~/my/instances/ghost/",
+        "zipl": "zip -r /home/sabuein/Desktop/rapid-is.zip * -x *.zip /assets/labs/* .gitignore",
+        "zipw": "zip -r /mnt/c/Users/Sala/Desktop/rapid-is.zip * -x *.zip /assets/labs/* .gitignore"
+    },
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "salaheddin.abuein@rapid-is.co.uk",
+        "url": "https://sabuein.github.io/"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine"
+        ]
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sabuein/rapid-is.git"
+    },
+    "bugs": "https://github.com/sabuein/rapid-is/issues",
+    "contributors": ["https://github.com/sabuein/rapid-is/graphs/contributors"],
+    "browserslist": [
+        "defaults"
+    ],
+    "config": {
+        "card_assets": true,
+        "posts_per_page": 9,
+        "image_sizes": {
+            "xxs": {
+                "width": 30
+            },
+            "xs": {
+                "width": 100
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 600
+            },
+            "l": {
+                "width": 1200
+            },
+            "xl": {
+                "width": 2000
+            }
+        }
+    },
+    "type": "module"
+}

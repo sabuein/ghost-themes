@@ -1,0 +1,52 @@
+<!-- navigation.hbs -->
+{{#if isSecondary}}
+<ul class="nav flexy row" role="menu">
+    {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+</ul>
+{{else}}
+<nav class="flexy">
+    <ul class="nav flexy row" role="menu">
+        {{#foreach navigation}}
+        {{#has slug="about-us"}}<li class="nav-{{slug}}" role="menuitem">
+            <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row" onclick="return false;"><span>{{label}}</span>
+            {{> "icons/angle-down"}}</a>
+        </li>{{else has slug="our-solutions"}}<li class="nav-{{slug}}" role="menuitem">
+            <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row" onclick="return false;"><span>{{label}}</span>
+            {{> "icons/angle-down"}}</a>
+        </li>{{else}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem">
+            <a href="{{url absolute='true'}}" title="{{label}}"><span>{{label}}</span>
+            {{> "icons/angle-down"}}</a>
+        </li>{{/has}}
+        {{/foreach}}
+    </ul>
+    <ul class="about-nav flexy" role="menu">
+        <li{{#post}}{{#has slug="about"}} class="nav-current"{{/has}}{{/post}} role="menuitem">
+            <a href="/about/" title="About us" class="flexy row">
+            {{> "icons/angle-down"}}
+            <span>About us</span></a>
+        </li>
+        <li{{#post}}{{#has slug="team"}} class="nav-current"{{/has}}{{/post}} role="menuitem">
+            <a href="/team/" title="Careers" class="flexy row">
+            {{> "icons/angle-down"}}
+            <span>Team</span></a>
+        </li>
+        {{!--<li{{#post}}{{#has slug="careers"}} class="nav-current"{{/has}}{{/post}} role="menuitem"><a href="/careers/" title="Team" class="flexy row">
+        {{> "icons/angle-down"}}
+        <span>Careers</span></a></li>--}}
+        <li{{#post}}{{#has slug="how-to-buy"}} class="nav-current"{{/has}}{{/post}} role="menuitem">
+            <a href="/how-to-buy/" title="How to buy" class="flexy row">
+            {{> "icons/angle-down"}}
+            <span>How to buy</span></a>
+        </li>
+    </ul>
+    <ul class="solutions-nav flexy" role="menu">
+        <li{{#tag}}{{#has slug="solutions"}} class="nav-current"{{/has}}{{/tag}} role="menuitem"><a href="/solutions/" title="Our solutions" class="flexy row">
+        {{> "icons/angle-down"}}
+        <span>Our solutions</span></a></li>
+        <li{{#post}}{{#has slug="onboarding"}} class="nav-current"{{/has}}{{/post}} role="menuitem"><a href="/onboarding/" title="Onboarding" class="flexy row">
+        {{> "icons/angle-down"}}
+        <span>Onboarding</span></a></li>
+    </ul>
+</nav>
+<button type="button" data-html-symbol="trigram-for-heaven" title="Menu">&#9776;</button>
+{{/if}}

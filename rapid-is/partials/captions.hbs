@@ -1,0 +1,19 @@
+<!-- captions.hbs -->
+{{!--<section id="rapid-captions" class="{{post_class}} palette bouncing flexy">
+    <figure class="rapid-captions flexy">
+        {{> "icons/rapid-is"}}
+        {{#get "posts" filter="tag:hash-rapid-captions+visibility:public" order="published_at asc" limit=6}}{{#if posts}}{{#foreach posts}}<figcaption class="flexy">
+            <h2 id="{{slug}}-tab" title="{{title}}">{{title}}</h2>
+            {{content}}
+        </figcaption>{{/foreach}}{{else}}<figcaption>There is no content to return&period;</figcaption>{{/if}}{{else}}<figcaption class="get-posts-error">{{error}}</figcaption>{{/get}}
+    </figure>
+</section>--}}
+<section id="rapid-captions-auto" class="{{post_class}} palette bouncing flexy">
+    <figure class="rapid-captions flexy">
+        {{> "icons/rapid-is"}}
+        {{#get "posts" filter="tag:hash-rapid-captions+visibility:public" order="published_at asc" limit=6}}{{#if posts}}{{#foreach posts}}<figcaption class="flexy">
+            <h2 id="{{slug}}-tab" title="{{title}}">{{title}}</h2>
+            {{content}}
+        </figcaption>{{/foreach}}{{else}}<figcaption>There is no content to return&period;</figcaption>{{/if}}{{else}}<figcaption class="get-posts-error">{{error}}</figcaption>{{/get}}
+    </figure>
+</section>

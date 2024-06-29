@@ -1,0 +1,36 @@
+{{!< default}}
+<!-- index.hbs -->
+{{#is "index"}}
+<header class="paintings-{{post_class}}" tabindex="0">
+    <h2 role="heading" aria-level="2">Homepage</h2>
+    <h3 role="heading" aria-level="3">Four types of painting&colon;</h3>
+    <p>Paintings&nbsp;can&nbsp;be&nbsp;classified&nbsp;into&nbsp;four&nbsp;categories&comma;&nbsp;which&nbsp;are&nbsp;portrait&comma;&nbsp;history&comma;&nbsp;genre&comma;&nbsp;and&nbsp;landscape&nbsp;painting&period;</p>
+</header>
+<section class="categories-{{post_class}} flex row nowrap start gap-x3 with-x-overflow">
+    <span class="catGoLeft">&lsaquo;</span>
+    {{> "list-post" heading="Art fairs" section="art-fair"}}
+    <span class="catGoRight">&rsaquo;</span>
+</section>
+<section class="categories-{{post_class}} flex row nowrap start gap-x3 with-x-overflow">
+    <span class="catGoLeft">&lsaquo;</span>
+    {{> "list-post" heading="Artists" section="artists"}}
+    <span class="catGoRight">&rsaquo;</span>
+</section>
+<section class="categories-{{post_class}} flex row nowrap start gap-x3 with-x-overflow">
+    <span class="catGoLeft">&lsaquo;</span>
+    {{> "list-post" heading="Exhibitions" section="exhibition"}}
+    <span class="catGoRight">&rsaquo;</span>
+</section>
+<section class="categories-{{post_class}} flex row nowrap start gap-x3">
+    {{> "list-post" heading="Palestinian art" section="palestinian-art"}}
+</section>
+<section class="categories-{{post_class}} flex row nowrap start gap-x3">
+    {{> "list-post" heading="Palestinian artists" section="palestinian-artist"}}
+</section>
+<footer class="footer-{{post_class}}">
+    <aside class="flex">{{> "sharing"}}</aside>
+    <div>{{> "subscribe"}}</div>
+</footer>
+{{#contentFor "head_scripts"}}{{/contentFor}}
+{{#contentFor "foot_scripts"}}{{/contentFor}}
+{{/is}}

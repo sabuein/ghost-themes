@@ -1,0 +1,26 @@
+{{!< default}}
+<!-- tag.hbs -->
+{{#is "tag"}}
+{{#tag}}
+<article>
+    <header>
+        {{#if feature_image}}
+        <figure style="background-color&colon; {{accent_color}};">
+            <img src="{{img_url feature_image absolute='true'}}" alt="{{name}}" title="{{name}}" />
+        </figure>
+        {{/if}}
+        <h2>Name&colon; {{name}}</h2>
+        <h3>ID&colon; {{id}}</h3>
+        <h4>Slug&colon; {{slug}}</h4>
+        <h5>Meta title&colon; {{meta_title}}</h5>
+        <p>url&colon; <a href="{{url absolute='true'}}">{{url}}</a></p>
+    </header>
+    <div>
+        {{#if description}}<p>Description&colon; {{description}}</p>{{/if}}
+        {{#if meta_description}}<p>Meta description&colon; {{meta_description}}</p>{{/if}}
+        {{#if accent_color}}<p>Color&colon; <span>{{accent_color}}</span></p>{{/if}}
+        <p>Total&colon; {{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}&period;</p>
+    </div>
+</article>
+{{/tag}}
+{{/is}}

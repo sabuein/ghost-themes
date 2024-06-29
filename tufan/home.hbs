@@ -1,0 +1,14 @@
+{{!< default}}
+<!-- home.hbs -->
+{{#is "home"}}<main id="content" class="{{post_class}} flexy gapy-1 content-width" role="main">
+    {{> "loop-feature" slug="[opt,hash-ar]"}}
+    {{> "loop-normal"}}
+    {{#match @site.recommendations_enabled}}<section class="flexy gapy-half width-full">
+        <hgroup class="flexy">
+            {{#if @site.icon}}<img class="site-icon" src="{{@site.icon}}" alt="{{@site.title}}" />{{/if}}
+            <h3 id="recommendations" title='{{t "Recommendations"}}'>{{t "Recommendations"}}&colon;</h3>
+            <p title="{{t 'Here are a few other sites you may enjoy'}}">{{t "Here are a few other sites you may enjoy"}}&period;</p>
+        </hgroup>
+        {{recommendations limit="10" order="title asc"}}
+    </section>{{/match}}
+</main>{{/is}}

@@ -1,0 +1,22 @@
+<!-- our-social-media.hbs -->
+<div class="flex row-x gap-x2">
+    <figure class="social-icon">
+        <a href= "https://www.artsy.net/partner/zawyeh-gallery/" title="Artsy" target="_blank">{{> "icons/artsy"}}</a>
+    </figure>
+    {{#if @site.facebook}}
+    <figure class="social-icon">
+        <a href= "{{facebook_url @site.facebook}}" title="Facebook" target="_blank">{{> "icons/facebook"}}</a>
+    </figure>
+    {{/if}}
+    {{#if @site.twitter}}
+    <figure class="social-icon">
+        <a href= "{{twitter_url @site.twitter}}" title="Twitter" target="_blank" class="twitter-follow-button" data-show-count="false">{{> "icons/twitter"}}</a><!--script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script-->
+    </figure>
+    {{/if}}
+    <figure class="social-icon">
+        <a href= "https://www.instagram.com/zawyeh/" title="Instagram" target="_blank">{{> "icons/instagram"}}</a>
+    </figure>
+    <figure class="social-icon">
+        <a href= "https://github.com/sabuein/z23" title="GitHub" target="_blank">{{> "icons/github"}}</a>
+    </figure>
+</div>

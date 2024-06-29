@@ -1,0 +1,64 @@
+.flex {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.no-wrap {
+    flex-wrap: nowrap;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.align-content-center {
+    align-content: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-items-stretch {
+    align-items: stretch;
+}
+
+.transition-this {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .15s;
+}
+
+.sep-left {
+    margin-right: 1rem;
+}
+
+.sep-right {
+    margin-left: 1rem;
+}
+
+.fixed-img {
+    background-color: var(--colors-five);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+    background-clip: unset;
+}
