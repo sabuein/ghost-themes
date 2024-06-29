@@ -1,18 +1,55 @@
 {{!< default}}
 <!-- home.hbs -->
 {{#is "home"}}
-<header>
-    <h1 class="page-title">{{@site.title}}</h1>
-    {{#if @site.description}}<h2 class="page-description">{{@site.description}}</h2>{{/if}}
-</header>
-<section>
-    {{#get "posts" limit="all" filter="featured:true"}}
-    {{#foreach posts}}
-        <a href="{{slug}}">{{title}}</a>
-    {{/foreach}}
-{{/get}}
+{{#if @site.cover_image}}<figure class="flexy apply-full-cover" title="{{@site.title}}" style="{{#if @site.accent_color}}--cover-color: {{@site.accent_color}}; {{/if}}--cover-url: url({{img_url @site.cover_image}})">
+    <img srcset="{{img_url @site.cover_image size='s'}} 300w, {{img_url @site.cover_image size='m'}} 600w, {{img_url @site.cover_image size='l'}} 1000w, {{img_url @site.cover_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url @site.cover_image size='xl'}}" alt="{{@site.title}}" loading="lazy" />
+</figure>{{/if}}
+<hgroup class="flexy main-header">
+    <h1 id="title" class="site-title">{{@site.title}}</h1>
+    {{#if @site.description}}<h2 id="description" class="site-description">{{@site.description}}</h2>{{/if}}
+    <p>We are a team of friendly, professional chauffeurs. We provide executive ground transportation and chauffeur services across Hertfordshire and London. Our expert chauffeur team pride themselves on offering a first class and professional service. Our drivers always go the extra mile to ensure you have a safe and relaxing journey, reaching your destination on time.</p>
+</hgroup>
+{{> "clients"}}
+{{> "loop-featured"}}
+{{> "loop-services"}}
+<section class="flexy row booking-online">
+    <hgroup class="flexy">
+        <h2>Experience Luxury in Motion</h2>
+        <hr />
+        <h3>Have an enquery or simply want to send a message?</h3>
+        <p>Elevate your transportation experience with {{@site.title}}&period; Book your journey today and indulge in the luxury&comma; comfort&comma; and professionalism that define us&period; Your destination awaits&comma; and we&apos;re here to take you there in style&period;</p>
+        <p>Step into a world of luxury as you embark on a journey with our professional chauffeurs who are not just drivers but curators of your travel experience&period; Impeccably trained&comma; discreet&comma; and knowledgeable&comma; our chauffeurs ensure that every moment of your journey is seamless and enjoyable&period;</p>
+        <p>For those who prefer a more personalized touch and wish to reach out directly&comma; we understand the importance of human connection&period; Feel free to contact us directly&comma; and let us elevate your transportation experience&period;</p>
+        <h4>Reach out to us through the following channels&colon;</h4>
+        <ul class="flexy">
+            <li><strong>Phone&colon;</strong> Our dedicated customer service team is just a call away&period; We&apos;re here to ensure your journey with us is seamless from the start&period; Contact us at 01707 527 111&period;</li>
+            <li><strong>E-mail&colon;</strong> Prefer to communicate through email&quest; Reach us at office@elitedrivershertfordshire.co.uk for prompt responses to your questions or requests&period; Our inbox is always open to your inquiries&period;</li>
+            <li><strong>Online inquiry&colon;</strong> Have a specific question or request&quest; Our online inquiry form makes it easy to get in touch&period; Simply submit your inquiry and we&apos;ll get back to you promptly&period;</li>
+        </ul>
+        <p>We are committed to our clients&period; Instagram&comma; FB and WhatApp &lpar;00447437 06 06 06&rpar; &dash; you&apos;re welcome to contact us on any of them&period; Our team is ready to greet and assist you with any travel plans you have in mind&period;</p>
+    </hgroup>
+    {{> "modal-booking"}}
 </section>
-<section class="home-loop">
-    {{#foreach posts}}{{> "loop"}}{{/foreach}}
+{{> "loop-fleet"}}
+{{> "chauffeurs"}}
+{{> "offline-faq"}}
+{{#if posts}}<section class="flexy loop">
+    <h2>Simple looping&hellip;</h2>
+    <hr />
+    {{> "loop"}}
+</section>{{/if}}
+<section class="flexy loop">
+    {{!-- Get all tags and order them by post count --}}
+    <h2>Keywords</h2>
+    <hr />
+    {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}{{#foreach tags}}<a href="{{url}}" title="{{name}}" target="_top">{{name}} ({{count.posts}})</a>{{/foreach}}{{/get}}
 </section>
+{{> "footer"}}
+{{#contentFor "scripts"}}<script type="text/javascript">
+    // FitVids - Makes video embeds responsive
+    $(document).ready(() => $(".gh-content").fitVids());
+    console.log("Hello from home.hbs!");
+</script>{{/contentFor}}
+<a href="#site-header" title="Scroll back to top">&#x21eb;</a>
+{{> "cookies"}}
 {{/is}}

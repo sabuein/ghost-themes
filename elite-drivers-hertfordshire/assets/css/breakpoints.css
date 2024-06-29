@@ -1,0 +1,47 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    *.flexy.faq {
+        
+        details {
+
+            summary {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1.5rem
+            }
+        }
+    }
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
+
+@keyframes flashing {
+
+    0%,
+    100% {
+        background: var(--color-disabled-text);
+        box-shadow: 0 .25rem 1rem .25rem var(--color-disabled-text);
+    }
+
+    50% {
+        background: var(--color-high-emphasis-text);
+        box-shadow: 0 .5rem 2rem .5rem var(--color-high-emphasis-text);
+    }
+}
