@@ -6,11 +6,7 @@
             <h1 class="error-code">{{statusCode}}</h1>
             <p class="error-description">{{message}}</p>
             <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
+            <p>The page you are looking for doesn&apos;t exist&period; It may have been moved or removed altogether&period; Please try searching for some other page&comma; or return to the website&apos;s homepage to find what you&apos;re looking for&period;</p>
         </section>
     </div>
 </section>
-<aside class="read-more-wrap outer">
-    <div class="read-more inner">
-        {{#get "posts" include="authors" limit="3" as |more_posts|}}{{#if more_posts}}{{#foreach more_posts}}{{> "loop"}}{{/foreach}}{{/if}}{{/get}}
-    </div>
-</aside>

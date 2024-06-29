@@ -1,0 +1,102 @@
+<!-- partials/dialog-booking.hbs -->
+<dialog class="flexy book-now" aria-modal="true" role="dialog">
+    <h3 title="Please fill out the form below">Please fill out the form below&hellip;</h3>
+    <button type="button" title="Close" autofocus="autofocus" formnovalidate="formnovalidate" aria-label="Close" value="Cancel">&cross; Close</button>
+    <form class="flexy" onsubmit="return validateForm();" action="." method="dialog" enctype="multipart/form-data" autocomplete="on" spellcheck="false" accept-charset="utf-8" target="_top" rel="nofollow">
+        {{> "form-validity"}}
+        <fieldset class="flexy">
+            <label for="category" title="Category" class="flexy"><span aria-label="required">*</span><strong>Category</strong><select name="category" id="category" class="flexy row" disabled="disabled" required="required" aria-required="true">
+                <option value="" disabled="disabled" hidden="hidden" title="Please choose an option">Please choose an option</option>
+                <option value="booking" title="Making a booking" selected="selected">Making a booking</option>
+            </select></label>
+        </fieldset>
+        <fieldset class="flexy">
+            <legend class="flexy"><h4>Your details</h4></legend>
+            <div class="flexy row">
+                <label for="fname" title="First name" class="flexy"><span aria-label="required">*</span><strong>First name</strong><input type="text" name="fname" id="fname" placeholder="David" autocomplete="given-name" pattern="[A-Za-z]*" maxlength="35" required="required" aria-required="true" /></label>
+                <label for="surname" title="Surname" class="flexy"><span aria-label="required">*</span><strong>Surname</strong><input type="text" name="surname" id="surname" placeholder="Johnson" autocomplete="family-name" pattern="[A-Za-z]*" maxlength="35" required="required" aria-required="true" /></label>
+            </div>
+            <div class="flexy row">
+                <label for="email" title="Email" class="flexy"><span aria-label="required">*</span><strong>Email</strong><input type="email" name="email" id="email" placeholder="david.johnson@mail.co.uk" autocomplete="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" minlength="8" required="required" aria-required="true" /></label>
+                <label for="phone" title="Phone" class="flexy"><strong>Phone</strong><input type="tel" name="phone" id="phone" placeholder="01707357000" autocomplete="tel" pattern="\d+" /></label>
+            </div>
+        </fieldset>
+        <fieldset class="flexy">
+            <legend class="flexy"><h4>Service</h4></legend>
+            <span aria-label="required">*</span>
+            <div class="flexy row">
+                <label for="executive" class="flexy row" title="Executive"><input type="radio" id="executive" name="service" value="executive" checked="checked" required="required" aria-required="true" /><strong>Executive</strong></label>
+                <label for="luxury" class="flexy row" title="Luxury"><input type="radio" id="luxury" name="service" value="luxury" required="required" aria-required="true" /><strong>Luxury</strong></label>
+            </div>
+            <div class="flexy row">
+                <label for="total-passengers" title="Number of passengers" class="flexy"><span aria-label="required">*</span><strong>Number of passengers</strong><input type="number" name="nr-pass" id="total-passengers" step="1" min="1" max="99" inputmode="numeric" placeholder="1" pattern="\d{0,2}" required="required" aria-required="true"></label>
+                <label for="checked-luggage" title="Number of checked luggage" class="flexy"><span aria-label="required">*</span><strong>Number of checked luggage</strong><input type="number" name="checked-luggage" id="checked-luggage" step="1" min="0" max="99" inputmode="numeric" placeholder="0" pattern="\d{0,2}" required="required" aria-required="true"></label>
+                <label for="onboard-luggage" title="Number of on-board luggage" class="flexy"><span aria-label="required">*</span><strong>Number of on-board luggage</strong><input type="number" name="onboard-luggage" id="onboard-luggage" step="1" min="0" max="99" inputmode="numeric" placeholder="0" pattern="\d{0,2}" required="required" aria-required="true"></label>
+            </div>
+        </fieldset>
+        <fieldset class="flexy">
+            <legend class="flexy"><h4>Departing</h4></legend>
+            <label for="departure-datetime" title="Pick a departure date and time" class="flexy row"><span aria-label="required">*</span><strong>Pick a departure date and time&colon;</strong><input type="datetime-local" id="departure-datetime" name="departure-datetime" required="required" aria-required="true" /></label>
+            <div class="flexy row">
+                <label for="departure-address1" title="Address line 1" class="flexy"><span aria-label="required">*</span><strong>Address line 1</strong><input type="text" name="departure-address1" id="departure-address1" placeholder="200 Tower Bridge Road" autocomplete="street-address" required="required" aria-required="true" /></label>
+                <label for="departure-address2" title="Address line 2" class="flexy"><strong>Address line 2</strong><input type="text" name="departure-address2" id="departure-address2" placeholder="1st Floor" autocomplete="address-level2" /></label>
+            </div>
+            <div class="flexy row">
+                <label for="departure-town" title="Town or city" class="flexy"><span aria-label="required">*</span><strong>Town or city</strong><input type="text" name="departure-town" id="departure-town" placeholder="London" autocomplete="home city" required="required" aria-required="true" /></label>
+                <label for="departure-county" title="County" class="flexy"><strong>County</strong><input type="text" name="departure-county" id="departure-county" placeholder="Greater London" autocomplete="address-level4" /></label>
+            </div>
+            <div class="flexy row">
+                <label for="departure-postcode" title="Postcode" class="flexy"><span aria-label="required">*</span><strong>Postcode</strong><input type="text" name="departure-postcode" id="departure-postcode" placeholder="SE1 2UN" autocomplete="postal-code" required="required" aria-required="true" /></label>
+                <label for="departure-w3w" title="What 3 Words" class="flexy"><strong>What 3 Words</strong><input type="text" name="departure-w3w" id="departure-w3w" placeholder="///mixture.picturing.museum" autocomplete="off" /></label>
+            </div>
+        </fieldset>
+        <fieldset class="flexy">
+            <legend class="flexy"><h4>Destination</h4></legend>
+            <div class="flexy row">
+                <label for="destination-address1" title="Address line 1" class="flexy"><span aria-label="required">*</span><strong>Address line 1</strong><input type="text" name="destination-address1" id="destination-address1" placeholder="87-135 Brompton Road" autocomplete="off" required="required" aria-required="true" /></label>
+                <label for="destination-address2" title="Address line 2" class="flexy"><strong>Address line 2</strong><input type="text" name="destination-address2" id="destination-address2" placeholder="" autocomplete="off" /></label>
+            </div>
+            <div class="flexy row">
+                <label for="destination-town" title="Town or city" class="flexy"><span aria-label="required">*</span><strong>Town or city</strong><input type="text" name="destination-town" id="destination-town" placeholder="London" autocomplete="off" required="required" aria-required="true" /></label>
+                <label for="destination-county" title="County" class="flexy"><strong>County</strong><input type="text" name="destination-county" id="destination-county" placeholder="Greater London" autocomplete="off" /></label>
+            </div>
+            <div class="flexy row">
+                <label for="destination-postcode" title="Postcode" class="flexy"><span aria-label="required">*</span><strong>Postcode</strong><input type="text" name="destination-postcode" id="destination-postcode" placeholder="SW1X 7XL" autocomplete="off" required="required" aria-required="true" /></label>
+                <label for="destination-w3w" title="What 3 Words" class="flexy"><strong>What 3 Words</strong><input type="text" name="destination-w3w" id="destination-w3w" placeholder="///unit.blend.offer" autocomplete="off" /></label>
+            </div>
+        </fieldset>
+        <label for="return-add" class="switch" title="Add return"><strong class="switch-message">Add return&quest;</strong><input type="checkbox" id="return-add" name="return-add" value="true" /><span class="slider"></span></label>
+        <fieldset class="flexy">
+            <legend class="flexy"><h4>Returning</h4></legend>
+            <label for="return-datetime" title="Pick a return date and time" class="flexy row"><span aria-label="required">*</span><strong>Pick a return date and time&colon;</strong><input type="datetime-local" id="return-datetime" name="return-datetime" required="required" aria-required="true" /></label>
+            <div class="flexy row">
+                <label for="return-address1" title="Address line 1" class="flexy"><span aria-label="required">*</span><strong>Address line 1</strong><input type="text" name="return-address1" id="return-address1" placeholder="Stanborough Road" autocomplete="off" required="required" aria-required="true" /></label>
+                <label for="return-address-2" title="Address line 2" class="flexy"><strong>Address line 2</strong><input type="text" name="return-address2" id="return-address2" placeholder="" autocomplete="off" /></label>
+            </div>
+            <div class="flexy row">
+                <label for="return-town" title="Town or city" class="flexy"><span aria-label="required">*</span><strong>Town or city</strong><input type="text" name="return-town" id="return-town" placeholder="Welwyn Garden City" autocomplete="off" required="required" aria-required="true" /></label>
+                <label for="return-county" title="County" class="flexy"><strong>County</strong><input type="text" name="return-county" id="return-county" placeholder="Hertfordshire" autocomplete="off" /></label>
+            </div>
+            <div class="flexy row">
+                <label for="return-postcode" title="Postcode" class="flexy"><span aria-label="required">*</span><strong>Postcode</strong><input type="text" name="return-postcode" id="return-postcode" placeholder="AL8 6DQ" autocomplete="off" required="required" aria-required="true" /></label>           
+                <label for="return-w3w" title="What 3 Words" class="flexy"><strong>What 3 Words</strong><input type="text" name="return-w3w" id="return-w3w" placeholder="///faster.bared.ocean" autocomplete="off" /></label>
+            </div>
+            <label for="flight-number" title="Flight number" class="flexy"><strong>Flight number</strong><input type="text" name="flight-number" id="flight-number" placeholder="K29BVJV" autocomplete="off" /></label>
+        </fieldset>
+        <label for="comments-add" class="switch" title="Add suggestions and comments"><strong class="switch-message">Add suggestions &amp; comments&quest;</strong><input type="checkbox" id="comments-add" name="comments-add" value="true" /><span class="slider"></span></label>
+        <fieldset class="flexy">
+            <legend class="flexy"><h4>Suggestions &amp; comments</h4></legend>
+            <label for="suggestions-comments" title="Suggestions and comments" class="flexy"><textarea name="suggestions-comments" id="suggestions-comments" placeholder="Write something&hellip;" cols="60" rows="5" wrap="hard"></textarea></label>
+        </fieldset>
+        <fieldset class="flexy row controls">
+            <p class="flexy row required-fields" title="Required fields">Required fields</p>
+            <div class="flexy">
+                <label for="terms-conditions" class="flexy row" title="I have read and agreed with the terms &amp; conditions&period;"><span aria-label="required">*</span><input type="checkbox" id="terms-conditions" name="tandc" value="agree" required="required" aria-required="true" /><span>I have read and agreed with the <a href="/terms-and-conditions/" title="terms and conditions">terms &amp; conditions</a>&period;</span></label>
+                <div class="flexy row">
+                    <input type="submit" value="Book now" title="Book now" />
+                    <input type="reset" value="Reset" title="Reset" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</dialog>
