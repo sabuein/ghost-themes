@@ -1,0 +1,29 @@
+<!-- partials/feedback -->
+<dialog id="giveFeedback" class="flexy width-full">
+    <button type="button" title="{{t 'Close'}}" autofocus="autofocus">{{t "Close"}}</button>
+    <form method="dialog" class="flexy">
+        <h3 id="feedback-is-important" title="{{t 'Your feedback is important'}}">{{t "Your feedback is important"}}</h3>
+        <p>ومن هنا وجب على المصمم أن يضع نصوصاً مؤقتة على التصميم ليظهر للعميل الشكل كاملاً، دور مولد النص العربي أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق. هذا النص يمكن أن يتم تركيبه على أي تصميم دون مشكلة فلن يبدو وكأنه نص منسوخ، غير منظم، غير منسق، أو حتى غير مفهوم. لأنه مازال نصاً بديلاً ومؤقتاً. ومن هنا وجب على المصمم أن يضع نصوصاً مؤقتة على التصميم ليظهر للعميل الشكل كاملاً، دور مولد النص العربي أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه التصميم فيظهر بشكل لا يليق.</p>
+        <label for="memberName" class="flexy row" title="{{t 'Name'}}">{{t "Name"}}&colon;<input type="txt" name="name" id="memberName" autocomplete="name" pattern=".{2,30}" title="{{t 'Please enter your full name'}}" placeholder="{{t 'Your full name'}}" required="true" data-members-name="" /></label>
+        <label for="memberEmail" class="flexy row" title="{{t 'Email'}}">{{t "Email"}}&colon;<input type="email" name="email" id="memberEmail" autocomplete="email" title="{{t 'Please enter a valid email address'}}" placeholder="{{t 'Your email'}}" required="true" data-members-email="" /></label>
+        <select id="subject" pattern=".{1,20}" required="true">
+            <option value="" disabled="disabled" selected="selected">Pick one subject...</option>
+            <option value="comment">I want to leave a comment</option>
+            <option value="contribution">I want to contribute</option>
+        </select>
+        <input type="submit" value="{{t 'Submit'}}" title="{{t 'Submit'}}" />
+    </form>
+</dialog>
+<section class="feedback flexy width-full">
+    <hgroup class="flexy">
+        <h3 id="feedback-is-important" title="{{t 'Your feedback is important'}}">{{t "Your feedback is important"}}</h3>
+        <p title="{{t 'Let us know if this content was helpful to you'}}">{{t "Let us know if this content was helpful to you"}}&period;</p>
+    </hgroup>
+    <div class="flexy gapy-1 content-width">
+        <button type="button" title="{{t 'Provide feedback'}}">{{ t "Provide feedback"}}</button>
+    </div>
+</section>
+<script type="module">
+    import { dialogControl } from "render";
+    dialogControl("giveFeedback");
+</script>

@@ -1,0 +1,21 @@
+{{!< default}}
+<!-- page-team.hbs -->
+{{#is "page"}}
+{{#post}}
+<section class="heading palette flexy row reverse">
+    {{#match @page.show_title_and_feature_image}}<hgroup class="flexy">
+        <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
+        <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="51"}}&hellip;{{/if}}</p>
+    </hgroup>
+    {{#if feature_image}}<figure class="flexy bg-image" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{/if}}{{/match}}
+</section>
+<article id="content" class="palette flexy">
+    {{content}}
+</article>
+{{> "team"}}
+{{> "vacancies"}}
+{{/post}}
+{{/is}}

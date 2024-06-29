@@ -1,0 +1,9 @@
+<!-- partials/loop-feature.hbs -->
+<section class="looping flexy gapy-half width-full">{{#get "posts" visibility="all" include="tags,authors" filter="featured:true+tag:{{slug}}" limit=@config.posts_per_page as |result|}}
+    {{#if result}}<hgroup class="flexy">
+        <h3 id="featured-posts" title='{{t "Featured posts"}}'>{{t "Featured posts"}}&colon;</h3>
+    </hgroup>
+    <ol class="flexy gapy-half content-width">
+        {{#foreach result}}<li data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}" title="{{title}}">{{title}}</a></li>{{/foreach}}
+    </ol>{{else}}<p title='{{t "There were no featured posts"}}'>{{t "There were no featured posts"}}&hellip;</p>{{/if}}{{else}}<p><small>This is not the correct context</small></p>
+{{/get}}</section>

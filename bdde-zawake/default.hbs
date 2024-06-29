@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html {{#match @site.locale "=" "ar"}}lang="{{@site.locale}}" dir="rtl"{{else}}lang="{{@site.locale}}"{{/match}}>
+    <head>
+        <title>{{meta_title}}</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="{{asset 'css/elements.css'}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset 'css/main.css'}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset 'css/presentations.css'}}" />
+        <script type="module" src="{{asset 'js/behavior.js'}}"></script>
+        {{{block "head_scripts"}}}
+        {{ghost_head}}
+    </head>
+    <!-- default.hbs -->
+    <body class="flex column nowrap align-content-center justify-content-center align-items-center">
+        <progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+        <header class="flex column nowrap align-content-center justify-content-center align-items-center">
+            {{#if @site.logo}}
+            <figure><a href="{{@site.url}}" title="{{@site.title}}"><img src="{{@site.logo}}" alt="{{@site.title}}" /></a></figure>
+            {{else}}
+            <h1><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a></h1>
+            <h2>{{@site.description}}</h2>
+            {{/if}}
+            <nav>{{navigation}}</nav>
+        </header>
+        <main id="content" class="{{body_class}} flex column nowrap align-content-center justify-content-center align-items-center">{{{body}}}</main>
+        <section>{{> "social-accounts"}}</section>
+        <footer class="zawake-footer fixed-img flex column nowrap align-content-center justify-content-center align-items-center">{{> "zawake-footer" heading=(t "We love you")}}</footer>
+        <aside class="snipcart-checkout snipcart-trigger-aside flex row nowrap align-content-center justify-content-center align-items-center" title="{{t "Show/hide shopping cart"}}">
+            <div class="snipcart-trigger-aside-div transition-this" title="{{t "Total price"}}"><span class="sep-right">{{t "Total price"}}&colon;</span><span class="snipcart-total-price"></span></div>
+        </aside>
+        {{#contentFor "foot_scripts"}}<script type="module">
+            import { updateProgress } from "/assets/js/helpers/helpers.js";
+            requestAnimationFrame(updateProgress);
+        </script>{{/contentFor}}
+        {{{block "foot_scripts"}}}
+        {{ghost_foot}}
+    </body>
+</html>

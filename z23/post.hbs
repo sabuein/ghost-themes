@@ -1,0 +1,92 @@
+{{!< default}}
+<!-- post.hbs -->
+<header><progress class="reading-bar" value="0" max="100" aria-label="Reading progress"></progress></header>
+{{#post}}
+<article class="{{post_class}}" tabindex="0">
+    {{#if feature_image}}
+    <figure  {{#if primary_tag}}{{#primary_tag}}{{#if accent_color}}style="background-color: {{accent_color}};"{{/if}}{{/primary_tag}}{{/if}}>
+        <img src="{{img_url feature_image absolute='true'}}" title="{{title}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{#if feature_image_caption}}{{feature_image_caption}}{{else}}{{title}}{{/if}}{{/if}}" onerror="this.style.opacity='0';" />
+        {{#if feature_image_caption}}<figcaption>{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{feature_image_caption}}{{/if}}</figcaption>{{/if}}
+    </figure>
+    {{/if}}    
+    <header>
+        <h2 role="heading" aria-level="2" title="{{title}}" tabindex="0"><span>{{#link href=(url) activeClass="current"}}&#35;{{/link}}</span>{{title}}</h2>
+    </header>
+    <section class="content">
+        <header><h5>Published <time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at timeago="true"}}</time>{{#if reading_time}}&comma;&nbsp;{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}{{/if}}&period;</h5></header>
+        <!-- Start content -->
+        {{content}}
+        <!-- End content -->
+        <footer>
+            <h5>Published on <time datetime="{{date format="YYYY-MM-DD"}}">{{date published_at format="MMMM DD, YYYY"}}</time>&period;</h5>
+        </footer>
+    </section>
+</article>
+<aside class="flex">
+    {{> "sharing" footer=(tags separator=" &bull; " prefix="Tagged in: " visibility="public" autolink="false") excerpt=(excerpt) description=(meta_description)}}
+    <!-- pagination.hbs -->
+    <nav class="pagination flex row gap-x2">
+        {{#prev_post}}
+        <a href="{{url aboslute='true'}}" title="{{title}}">&LeftArrow;</a>
+        {{/prev_post}}
+        {{#next_post}}
+        <a href="{{url aboslute='true'}}" title="{{title}}" class="next">&RightArrow;</a>
+        {{/next_post}}
+    </nav>
+</aside>
+{{#if comments}}
+<footer>
+    {{#if comment_count}}<h5>Number of comments&colon; {{comment_count}}&period;</h5>{{/if}}
+    <ul class="flex">{{comments title="Join the club" empty="There are no comments" count=false mode="light" saturation=80 singular="comment" plural="comments" autowrap="li" class="postComments"}}</ul>
+</footer>
+{{/if}}
+
+{{#foreach authors}}
+<section class="author {{post_class}} flex start-items wrap">
+    <header>
+        <a href="{{url}}" title="{{name}}" class="author author-{{id}} {{slug}}">{{name}}</a>
+        {{#if location}}<address>{{location}}</address>{{/if}}
+    </header>
+    {{#if profile_image}}
+    <figure>
+        <img src="{{img_url profile_image absolute='true'}}" title="{{name}}" alt="{{bio}}" />
+    </figure>
+    {{/if}}
+    <footer class="flex row start start-items">
+        {{#if facebook}}<a href="{{facebook_url}}" title="Follow on Facebook" target="_blank">{{> "icons/facebook"}}</a>{{/if}}
+        {{#if twitter}}<a href="{{twitter_url}}" title="Follow on Twitter" target="_blank">{{> "icons/twitter"}}</a>{{/if}}
+        {{#if website}}<a href="{{website}}" title="Visit website" target="_blank">{{> "icons/instagram"}}</a>{{/if}}
+    </footer>
+</section>
+{{/foreach}}
+
+<div>{{authors separator=" &hellip; " prefix="Read more from&colon; " visibility="all"}}</div>
+
+{{#if featured}}
+<p>Featured post</p>
+{{/if}}
+
+<div>{{tags separator=" &bull; " prefix="Tagged in&colon; " autolink="true" from="1" limit="4" visibility="public"}}{{!-- visibility = [all, public, internal] --}}</div>
+
+{{#if tags}}
+<ul>
+    {{#foreach tags}}
+    <li><a href="{{url}}" title="{{name}}" class="tag tag-{{id}} {{slug}}">{{name}}</a></li>
+    <figure style="background-color&colon; {{accent_color}};">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{description}}" class="img tag-{{id}} {{slug}}" />
+        <figcaption>Accent color&colon; {{accent_color}}</figcaption>
+    </figure>
+    {{/foreach}}
+</ul>
+{{/if}}
+
+{{#primary_tag}}
+{{#tags.[1]}}
+<div class="primary-tag">
+    <a href="{{url}}">{{name}}</a>
+    <span class="description">{{description}}</span>
+</div>
+{{/tags.[1]}}
+{{/primary_tag}}
+
+{{/post}}

@@ -1,0 +1,19 @@
+{{!< default}}
+<!-- index.hbs -->
+<main id="content" class="{{post_class}} flexy width-full" role="main">
+    {{#is "index"}}{{> "loop"}}{{else}}{{#is "tag"}}{{#if accent_color}}<style>
+        :root {
+            --accent-color: {{accent_color}};
+            --brandcolor: {{accent_color}};
+        }
+
+        *.kg-button-card a.kg-btn-accent {
+            background-color: {{accent_color}};
+        }
+    </style>{{else}}<span style="display: none;">No accent color</span>{{/if}}
+    <span>Hi</span>
+    <div>{{tags}}</div>
+    {{> "loop"}}{{/is}}{{/is}}
+</main>
+{{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
+{{log "index template:" this}}

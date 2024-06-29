@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- default.hbs -->
+<html {{#match @site.locale "=" "ar"}}lang="{{@site.locale}}" dir="rtl"{{else}}lang="{{@site.locale}}"{{/match}}>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0" />
+        {{#if @site.icon}}<link rel="icon" type="image/x-icon" href="{{img_url @site.icon absolute='true'}}" />{{/if}}
+        <link rel="preload" type="text/css" as="style" href="{{asset 'css/screen.css'}}" />
+        <link rel="preload" type="text/css" as="style" href="{{asset 'css/media.css'}}" />
+        <link rel="preconnect" crossorigin="anonymous" href="https://cdn.jsdelivr.net/" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
+        <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/portal@~2.36/umd/portal.min.js" />
+        <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{asset 'css/screen.css'}}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{asset 'css/media.css'}}"  />
+        <script type="importmap">
+            {
+                "imports": {
+                    "render": "{{asset 'js/modules/render.mjs' absolute='true'}}",
+                    "app": "{{asset 'js/application.mjs' absolute='true'}}"
+                }
+            }
+        </script>
+        <script type="module" src="{{asset 'js/application.mjs'}}"></script>
+        <script nomodule defer type="text/javascript" src="{{asset 'js/fallback.js'}}"></script>
+        <style type="text/css">
+            :root {
+                --accent-color: {{@site.accent_color}};
+            }
+        </style>
+        <title>{{#is "home"}}{{@site.title}} &#8211; {{@site.description}}{{else is "post,page"}}{{meta_title page=(t "Page %")}} &#8211; {{@site.title}}{{else}}{{meta_title page=(t "Page %")}}{{/is}}</title>
+        {{ghost_head}}
+    </head>
+    <body class="{{body_class}} flexy">
+        {{#is "home"}}{{#if @site.cover_image}}<figure id="site-cover" class="site-cover flexy width-full">
+            <img src="{{@site.cover_image}}" alt="{{@site.title}}" loading="lazy" onerror="this.style.display='none';" />
+            <figcaption class="flexy start"><a href="#top" title="{{@site.title}}">{{@site.title}}</a>{{#if @site.description}}<span title="{{@site.description}}">{{@site.description}}</span>{{/if}}</figcaption>
+        </figure>{{/if}}{{/is}}
+        <header id="top" class="site-logo flexy gapy-1 width-full">
+            <div class="flexy gapy-1 row justify-content content-width">
+                {{#if @site.logo}}<figure id="site-logo">
+                    <a href="{{@site.url}}" title="{{@site.title}}" class="flexy"><img src="{{@site.logo}}" alt="{{@site.title}}" loading="lazy" onerror="this.style.display='none';" /></a>
+                </figure>{{/if}}
+                <div class="text flexy">
+                    <h1><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a></h1>
+                    {{#if @site.description}}<h2 id="site-description" title="{{@site.description}}">{{@site.description}}</h2>{{/if}}
+                </div>
+            </div>
+            {{#if @site.navigation}}{{navigation}}{{else}}<nav class="flexy row content-width">
+                <div class="search-box flexy" title="{{t 'Search'}}">{{search}}</div>
+            </nav>{{/if}}
+        </header>
+        {{{body}}}
+        <footer class="flexy width-full">
+            {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{else}}
+            <nav class="flexy row content-width">
+                <ul class="flexy" role="menu">
+                    <li class="search-box flexy" role="menuitem" title="{{t 'Search'}}">{{search}}</li>
+                </ul>
+                {{> "social-media"}}
+            </nav>{{/if}}
+            <div class="extra flexy row gapy-2 width-full">
+                <p class="flexy"><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a><span title="{{t 'Copyright'}}">&copy;</span><span title="{{date format='YYYY'}}">{{date format="YYYY"}}</span></p>
+                {{^if @member}}<strong><a href="#/portal/signup" class="flexy" data-portal="signup" title="{{t 'Sign up'}}">{{t "Sign up"}}</a></strong>
+                <strong><a href="#/portal/signin" class="flexy" data-portal="signin" title="{{t 'Sign in'}}">{{t "Sign in"}}</a></strong>{{else}}<strong><a href="javascript:void(0);" class="flexy" data-members-signout title="{{t 'Sign out'}}">{{t "Sign out"}}</a></strong>{{/if}}
+                <p class="flexy" title="{{t 'Total members'}}"><span title="{{t 'Members'}}">{{t "Members"}}&colon;</span><span title="{{total_members}}">{{total_members}}</span></p>
+                <p class="flexy" title="{{t 'Total paid members'}}"><span title="{{t 'Paid members'}}">{{t "Paid members"}}&colon;</span><span title="{{total_paid_members}}">{{total_paid_members}}</span></p>
+            </div>
+        </footer>
+        <a href="#top" title="{{t 'Back to top'}}" class="flexy" type="text/html">&uparrow;</a>
+        {{ghost_foot}}
+    </body>
+</html>
+{{!--
+
+filter="tags:{{post.primary_tag.slug}}"
+filter="tags:[{{post.tags}}]+id:-{{post.id}}"
+
+# Generic
+
+data-portal
+https://tufan.uk/#/portal
+data-portal="signin"
+https://tufan.uk/#/portal/signin
+data-portal="signup"
+https://tufan.uk/#/portal/signup
+
+<a href="#/portal/signup" data-portal="signup"></a>
+data-portal="recommendations"
+
+# Tiers
+data-portal="signup/free"
+https://tufan.uk/#/portal/signup/free
+data-portal="signup/TIER_ID/monthly"
+https://tufan.uk/#/portal/signup/656d45a5e26db2ae1074ef06/monthly
+data-portal="signup/TIER_ID/yearly"
+https://tufan.uk/#/portal/signup/656d45a5e26db2ae1074ef06/yearly
+
+<a href="javascript:void(0);" data-portal="signup/TIER_ID/monthly">Monthly plan</a>
+<a href="javascript:void(0);" data-portal="signup/TIER_ID/yearly">Yearly plan</a>
+/ghost/#/settings/members?showPortalSettings=true
+
+# Account
+data-portal="account"
+data-portal="account/plans"
+data-portal="account/profile"
+data-portal="account/newsletters"
+
+data-members-form="signin" – sends a signin email to existing members when a valid email is entered.
+data-members-form="signup" – Uses “sign up” in email text. If a valid email is present, a signin email is sent instead.
+data-members-form="subscribe" – Uses “subscription” in email text. If a valid email is present, a signin email is sent instead.
+data-members-autoredirect="false" - when set to false, the user will be redirected to the publication’s homepage when logging in. When set to true (the default), the user will be redirected to the page where they signed up.
+
+<a href="javascript:" data-members-edit-billing>Edit billing info</a>
+<a href="javascript:"
+  data-members-edit-billing
+  data-members-success="/billing-update-success/"
+  data-members-cancel="/billing-update-cancel/"
+>Edit billing info</a>
+
+{{price}}
+{{price plan}}
+
+data-members-signout
+<a href="javascript:void(0);" data-members-signout>Sign out</a>
+
+<form data-members-form class="loading">...</form>
+<form data-members-form class="success">...</form>
+<form data-members-form class="error">...</form>
+
+*.loading
+*.error
+*.success
+
+data-members-name
+data-members-email
+
+data-members-error
+<!-- error message will appear here -->
+
+data-members-label
+
+data-members-newsletter
+<input data-members-newsletter type="hidden" value="Weekly Threads" />
+<input data-members-newsletter type="checkbox" value="Newsletter Two" />
+
+The @member object has a series of attributes that expose the information required to create a member profile page:
+
+@member – The member object, evaluates to true or false if the viewer is a member or not
+@member.paid – The member’s payment status, returns true or false if the member has an active paid subscription
+@member.email – The member’s email address
+@member.name – The member’s full name
+@member.firstname – The member’s first name (everything before the first whitespace character in the member’s full name)
+@member.uuid – A unique identifier for a member for use with analytics tracking such as Google Tag Manager
+
+The {{cancel_link}} helper accepts a number of optional attributes:
+
+class - defaults to gh-subscription-cancel
+errorClass - defaults to gh-error gh-error-subscription-cancel
+cancelLabel - defaults to Cancel subscription
+continueLabel - defaults to Continue subscription
+
+--}}

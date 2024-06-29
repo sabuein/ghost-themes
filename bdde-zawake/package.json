@@ -1,0 +1,51 @@
+{
+  "name": "bdde-zawake",
+  "description": "A Ghost theme for Zawake project, an e-commerce venture between a brother (myself) and his sister (Hanan)",
+  "homepage": "https://zawake.com/",
+  "demo": "https://zawake.com/",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "author": {
+    "name": "Salaheddin AbuEin",
+    "email": "sabuein@zawake.com",
+    "url": "https://abuein.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sabuein/bdde-zawake.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sabuein/bdde-zawake/issues"
+  },
+  "readme": "https://github.com/sabuein/bdde-zawake#readme",
+  "screenshots": {
+    "desktop": "assets/screenshot-desktop.jpg",
+    "mobile": "assets/screenshot-mobile.jpg"
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme",
+    "arabic",
+    "rtl",
+    "sweets",
+    "ecommerce"
+  ],
+  "config": {
+    "posts_per_page": 21,
+    "card_assets": true,
+    "image_sizes": {}
+  },
+  "scripts": {
+    "ghost": "./assets/labs/scripts/ghost.sh",
+    "start": "./assets/labs/scripts/start.sh",
+    "restart": "./assets/labs/scripts/restart.sh",
+    "hash": "./assets/labs/scripts/hash.sh",
+    "theme": "./assets/labs/scripts/theme.sh",
+    "version": "./assets/labs/scripts/version.sh",
+    "zip": "./assets/labs/scripts/zip.sh"
+  }
+}

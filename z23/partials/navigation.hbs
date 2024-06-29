@@ -1,0 +1,23 @@
+<!-- navigation.hbs -->
+{{#if isSecondary}}
+<ul class="flex row gap-x1" role="menu">
+    {{#foreach navigation}}
+    <li class="nav-{{slug}}" role="menuitem">
+        <a href="{{url}}">
+            <svg class="icon" role="img" aria-label="{{slug}} icon">
+                <title>{{slug}}</title>
+                <use xlink:href="#{{slug}}"></use>
+            </svg>
+        </a>
+    </li>
+    {{/foreach}}
+</ul>
+{{else}}
+<ul class="flex row gap-x1" role="menu" tabindex="0">
+    {{#foreach navigation}}
+    <li class="{{link_class for=(url) class=(concat "nav-" slug)}}" role="menuitem" autofocus>
+        {{#link href=(url absolute="true") activeClass="current"}}{{label}}{{/link}}
+    </li>
+    {{/foreach}}
+</ul>
+{{/if}}

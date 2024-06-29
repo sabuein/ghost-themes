@@ -1,0 +1,68 @@
+{{!< default}}
+<!-- post.hbs -->
+{{#is "post"}}
+{{#post}}
+{{#primary_tag}}{{#if accent_color}}<style>
+    :root {
+        --accent-color: {{accent_color}};
+        --brandcolor: {{accent_color}};
+    }
+
+    *.kg-button-card a.kg-btn-accent {
+        background-color: {{accent_color}};
+    }
+</style>{{else}}<span style="display: none;">No accent color</span>{{/if}}{{/primary_tag}}
+<progress class="flexy width-full" value="0" max="100" title="{{t 'Reading progress'}}" aria-label="{{t 'Reading progress'}}"></progress>
+<section class="flexy row palette">
+    {{#match @page.show_title_and_feature_image}}{{#if feature_image}}<figure class="flexy has-bg" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})" title="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display='none';" />
+        {{#match feature_image_caption}}<figcaption class="width-full" title="{{t 'Image caption'}}">{{feature_image_caption}}</figcaption>{{/match}}
+    </figure>{{/if}}
+    <hgroup class="flexy start gapy-half">
+        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}" title="{{title}}"><a href="{{url absolute='true'}}" title="{{t 'Copy post URL'}}" type="text/html">&#128279;</a><span title="{{title}}">{{title}}</span></h2>
+        <ul class="meta tagy flexy start-content width-full">
+            <li class="flexy"><strong title="{{t 'Published'}}">{{t "Published"}}&colon;</strong><time datetime='{{date published_at format="YYYY-MM-DD"}}' title='{{date published_at format="DD MMMM YYYY"}}'>{{date published_at format="DD MMMM YYYY"}}</time><span title="{{t 'at'}}">{{t "at"}}</span><time datetime='{{date published_at format="h:mm A"}}' title='{{date published_at format="h:mm A"}}'>{{date published_at format="h:mm A"}}</time></li>
+            <li class="flexy"><strong title="{{t 'Updated'}}">{{t "Updated"}}&colon;</strong><time datetime='{{date updated_at format="YYYY-MM-DD"}}' title='{{date updated_at format="DD MMMM YYYY"}}'>{{date updated_at format="DD MMMM YYYY"}}</time><span title="{{t 'at'}}">{{t "at"}}</span><time datetime='{{date updated_at format="h:mm A"}}' title='{{date updated_at format="h:mm A"}}'>{{date updated_at format="h:mm A"}}</time></li>
+        </ul>
+        <ul class="meta flexy start-content width-full">
+            <li class="author flexy"><strong title="{{plural authors.length empty='' singular=(t 'Author') plural=(t 'Authors')}}">{{plural authors.length empty="" singular=(t "Author") plural=(t "Authors")}}&colon;</strong>{{#if authors}}<span class="authors flexy">{{authors}}</span>{{/if}}</li>
+            {{#if reading_time}}<li class="flexy"><strong title="{{t 'Reading time'}}">{{t "Reading time"}}&colon;</strong><span title="{{reading_time minute=(t '1 min read') minutes=(t '% min read')}}">{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span></li>{{/if}}
+            {{#if tags}}{{#has visibility="public"}}<li class="tags flexy"><strong title="{{plural tags.length empty='' singular=(t 'Tag') plural=(t 'Tags')}}">{{plural tags.length empty="" singular=(t "Tag") plural=(t "Tags")}}&colon;</strong>{{tags separator="<span class='noselect' title='&amp;'>&amp;</span>"}}<span class="noselect" title="{{t 'The end'}}">&#9989;</span></li>{{/has}}{{/if}}{{!--prefix='' suffix=''--}}
+        </ul>
+        {{#match custom_excerpt}}<p title="{{t 'Custom excerpt'}}">{{custom_excerpt}}</p>{{/match}}
+    </hgroup>{{/match}}
+</section>
+{{#match feature_image}}<picture class="flexy">
+    <source srcset="{{img_url feature_image size="xxs" format="avif"}} 30w, {{img_url feature_image size="xs" format="avif"}} 100w, {{img_url feature_image size="s" format="avif"}} 300w, {{img_url feature_image size="m" format="avif"}} 600w, {{img_url feature_image size="l" format="avif"}} 1200w, {{img_url feature_image size="xl" format="avif"}} 2000w" sizes="(max-width: 350px) 300px, (max-width: 700px) 600px, (max-width: 800px) 1200px, (max-width: 1200px) 300px, 600px" type="image/avif" />
+    <source srcset="{{img_url feature_image size="xxs" format="webp"}} 30w, {{img_url feature_image size="xs" format="webp"}} 100w, {{img_url feature_image size="s" format="webp"}} 300w, {{img_url feature_image size="m" format="webp"}} 600w, {{img_url feature_image size="l" format="webp"}} 1200w, {{img_url feature_image size="xl" format="webp"}} 2000w" sizes="(max-width: 350px) 300px, (max-width: 700px) 600px, (max-width: 800px) 1200px, (max-width: 1200px) 300px, 600px" type="image/webp" />
+    <img srcset="{{img_url feature_image size="xxs"}} 30w, {{img_url feature_image size="xs"}} 100w, {{img_url feature_image size="s"}} 300w, {{img_url feature_image size="m"}} 600w, {{img_url feature_image size="l"}} 1200w, {{img_url feature_image size="xl"}} 2000w" sizes="(max-width: 350px) 300px, (max-width: 700px) 600px, (max-width: 800px) 1200px, (max-width: 1200px) 300px, 600px" src="{{img_url feature_image size="xxs"}}" alt="{{#match feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/match}}" />
+</picture>{{/match}}
+<main id="content" class="{{post_class}} flexy content-width" role="main">
+    <div class="flexy start start-content gapy-1 content-width">
+        {{#if @member.paid}}<p title="{{t 'Thanks for being a paying member'}}">{{t "Thanks for being a paying member"}}</p>{{else if @member}}<p title="{{t 'Thanks for being a member'}}">{{t "Thanks for being a member"}}</p>{{else}}<p title="{{t 'You should totally sign up'}}">{{t "You should totally sign up"}}</p>{{/if}}
+        {{#if access}}<span title="{{t 'Post access'}}">{{access}}</span>{{/if}}
+        {{#if access}}<p title="{{t 'Post access'}}">{{t "Welcome back"}}</p>{{else}}<p title="{{t 'Post access'}}">{{t "This post is for members only"}}</p>{{/if}}
+        {{content}}
+    </div>
+    {{> "loop-author"}}
+</main>
+{{> "participate"}}
+{{> "cta-newsletters" heading=(t "Receive our latest content straight to your inbox")}}
+{{> "feedback"}}
+{{/post}}
+<script type="text/javascript">
+    const progressBar = document.querySelector("progress[value]");
+        function updateProgress() {
+            const totalHeight = document.body.clientHeight;
+            const windowHeight = document.documentElement.clientHeight;
+            const position = window.scrollY;
+            const progress = position / (totalHeight - windowHeight) * 100;
+            const progressValue = parseInt(progress);
+            progressBar.setAttribute("value", progressValue);
+            if (progressValue < 2) progressBar.style.display = "none";
+            else progressBar.style.display = "flex";
+            requestAnimationFrame(updateProgress);
+        }
+    requestAnimationFrame(updateProgress);
+</script>
+{{/is}}

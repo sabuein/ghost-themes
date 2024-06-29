@@ -1,0 +1,6 @@
+<!-- partials/post-card.hbs -->
+<article class="flexy">
+    <h3><a href="{{url}}">{{title}}</a></h3>
+    <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="35"}}{{/if}}</p>
+    <p title="{{#if custom_excerpt}}{{t 'Custom excerpt'}}{{else}}{{t 'Excerpt'}}{{/if}}">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="42"}}{{/if}}</p>
+</article>

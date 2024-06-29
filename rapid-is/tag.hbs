@@ -1,0 +1,36 @@
+{{!< default}}
+<!-- tag.hbs -->
+{{#is "tag"}}
+{{#tag}}
+<section class="heading palette flexy row reverse">
+    <hgroup class="flexy">
+        <h1 id="{{slug}}" title="{{name}}">{{name}}</h1>
+        {{#if description}}<p>{{description}}</p>{{else}}A collection of {{plural ../pagination.total empty="zero posts" singular="% post" plural="% posts"}}&period;{{/if}}
+    </hgroup>
+    {{#if feature_image}}<figure class="flexy bg-image" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
+    </figure>{{/if}}
+</section>
+{{> "featured"}}
+<section id="browse-tag" class="palette filters flexy row">
+    {{#has slug="projects"}}{{> "filters-projects"}}{{/has}}{{/tag}}
+    <div class="container disable-scrollbar flexy row">
+        {{#foreach posts visibility="all"}}<article class="{{post_class}} flexy row shadowed" data-index="{{@index}}" data-play-state="running" title="{{title}}">
+            {{#if feature_image}}<figure class="flexy bg-image" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}};{{/if}}{{/primary_tag}} background-image: url({{img_url feature_image absolute='true'}})">
+                <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
+                {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+            </figure>{{/if}}
+            <hgroup class="flexy">
+                <h3 id="{{slug}}"><a href="{{url absolute='true'}}" title="{{title}}">{{title}}</a></h3>
+                <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="35"}}{{/if}}</p>
+                <a href="{{url absolute='true'}}" title="Learn more" type="text/html" class="flexy shadowed">Learn more</a>
+            </hgroup>
+        </article>{{else}}<p class="get-posts-error">Error&colon; {{error}}</p>{{/foreach}}
+        {{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
+    </div>
+    {{!--{{#tag}}{{> "loop"}}{{/tag}}--}}
+    {{#tag}}<div class="tag-hash flexy">
+        <a href="{{url}}" title="{{name}}" class="flexy"><span>&num;</span><span>{{name}}</span></a>
+    </div>{{/tag}}
+</section>
+{{/is}}

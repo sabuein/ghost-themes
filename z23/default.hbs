@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html {{#match @site.locale "=" "ar"}}lang="{{@site.locale}}" dir="rtl"{{else}}lang="{{@site.locale}}"{{/match}}>
+<!-- default.hbs -->
+<head>
+    <title>{{^is "paged"}}{{#is "author, index, tag"}}{{meta_title}}{{else}}{{meta_title}} &dash; {{@site.title}}{{/is}}{{else}}{{meta_title page=(t " - Page %")}}{{/is}}</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+    <script type="importmap">
+        {
+            "imports": {
+                "nav": "{{asset "js/modules/navigation.mjs"}}",
+                "help": "{{asset "js/modules/helpers.mjs"}}"
+
+            }
+        }
+    </script>
+    <script type="module" src="{{asset "js/index.mjs"}}"></script>
+    {{ghost_head}}
+</head>
+<body class="{{body_class}} flex wrap">
+    <div class="skipnav"><a href="#maincontent">Skip to main content&hellip;</a>&nbsp;<a href="#sitemap">Skip to footer site map</a></div>
+    <header class="site-header flex row space-between gap-x2" role="banner">
+        {{#if @site.logo}}
+        <figure>
+            {{#link href=@site.url title=@site.title tabindex="-1"}}<img src="{{@site.logo}}" alt="{{@site.title}}" />{{/link}}
+        </figure>
+        {{else}}
+        <h1 role="heading" aria-level="1">{{#link href=@site.url title="{{@site.title}}"}}{{@site.title}}{{/link}}</h1>
+        <h2>{{@site.description}}</h2>
+        {{/if}}
+        <nav class="flex row">{{navigation}}</nav>
+        <div class="flex row">
+            <button type="button" id="menuToggle" tabindex="0">&#x2630;</button>
+            <input type="image" id="searching" alt="Search" title="Click to search&hellip;" src="{{asset 'svg/searchIcon.svg'}}" data-ghost-search />
+        </div>
+    </header>
+    <noscript>
+        <p class="flex" style="padding: 2rem; width: 100%;">This web application requires JavaScript</p>
+    </noscript>
+    <main class="flex" id="maincontent">{{{body}}}</main>
+    {{> "footer"}}
+    <div class="flex gap-x2">{{> "subscribe"}}</div>
+    <div class="back-to-top"><a href="#maincontent" class="goTopBtn" title="Back to top"><img src="{{asset 'images/arrow-up.png' absolute='true'}}" alt="Scroll back to top arrow" /></a></div>
+    <script type="module">        
+        //<!-- <![CDATA[
+        const progressBar = document.querySelector(".reading-bar");
+        if (progressBar) requestAnimationFrame(updateProgress);
+        function updateProgress () {
+            try {
+                const totalHeight = document.body.clientHeight;
+                const windowHeight = document.documentElement.clientHeight;
+                const position = window.scrollY;
+                const progress = position / (totalHeight - windowHeight) * 100;
+                progressBar.setAttribute("value", progress);
+                requestAnimationFrame(updateProgress);
+            } catch (error) {
+                console.log(error);
+            }
+        } //]]> -->
+
+        const myMenu = document.querySelector('ul[role="menu"]'),
+            myButton = document.querySelector("button#menuToggle");
+        myMenu.addEventListener("click", (event) => {
+            if (!event) {
+                window.event.cancelBubble = true;
+            } else {
+                event.stopPropagation();
+                // event.stopImmediatePropagation();
+            }
+
+            if (myMenu.classList.contains("toggled")) {
+                myMenu.classList.remove("toggled");
+                myButton.style.rotate = "none";
+            }
+        });
+    </script>
+    {{ghost_foot}}
+</body>
+</html>

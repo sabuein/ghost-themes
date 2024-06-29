@@ -1,0 +1,11 @@
+<!-- partials/participate.hbs -->
+{{#if comments}}<section class="flexy content-width start">
+    <h3>{{t "Discussion"}}</h3>
+    <a href="{{@site.url}}/community-guidelines" title='{{t "Community guidelines"}}'>{{t "Community guidelines"}}</a>
+    {{comment_count empty=(t "There were no comments") singular=(t "comment") plural=(t "comments") autowrap="p" class="comments-count"}}
+    {{comments title=(t "Join the discussion") count=false mode="auto" saturation=60}}
+</section>{{/if}}
+{{!--
+placeholder="Log in to contribute to the discussion"
+placeholder="Contribute to the discussion"
+--}}

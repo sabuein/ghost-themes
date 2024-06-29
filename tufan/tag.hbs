@@ -1,0 +1,31 @@
+{{!< default}}
+<!-- tag.hbs -->
+{{#is "tag"}}
+{{#tag}}
+{{#if accent_color}}<style>
+    :root {
+        --accent-color: {{accent_color}};
+        --brandcolor: {{accent_color}};
+    }
+
+    *.kg-button-card a.kg-btn-accent {
+        background-color: {{accent_color}};
+    }
+</style>{{else}}<span style="display: none;">No accent color</span>{{/if}}
+<section class="flexy row palette">
+    {{#if feature_image}}<figure class="flexy has-bg" style="{{#if accent_color}}background-color: {{accent_color}}; {{/if}}background-image: url({{img_url feature_image absolute='true'}})" title="{{t name}}">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{title}}" loading="lazy" onerror="this.style.display='none';" />
+    </figure>{{/if}}
+    <hgroup class="flexy start gapy-half">
+        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}"><a href="{{url absolute='true'}}" title="{{t 'Copy topic URL'}}" type="text/html">&#128279;</a><span title="{{t name}}">{{t name}}</span></h2>
+        <span title="{{t 'Total posts'}}">{{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</span>
+        {{#if description}}<p class="width-full" title="{{t 'Description'}}">{{description}}</p>{{else}}{{{t "A collection of {{plural ../pagination.total empty='posts' singular='1 post' plural='% posts'}}"}}}&period;{{/if}}
+    </hgroup>
+</section>
+{{> "loop-feature"}}
+<main id="content" class="{{post_class}} flexy width-full" role="main">
+    {{#has slug="opt"}}{{> "governorates-filters"}}{{/has}}{{/tag}}
+    {{> "loop"}}
+</main>
+{{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
+{{/is}}

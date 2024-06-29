@@ -1,0 +1,20 @@
+{
+    "name": "dar-abuein-rtl",
+    "description": "A theme used on abuein.com with RTL support",
+    "version": "1.0.0",
+    "license": "MIT",
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "sabuein@gmail.com"
+    },
+    "keywords": ["ghost-theme", "ghost-theme-rtl", "ghost-rtl", "ghost"],
+    "screenshots": {
+        "desktop": "assets/images/screenshot-desktop.jpg",
+        "mobile": "assets/images/screenshot-mobile.jpg"
+    },
+    "config": {
+        "posts_per_page": 10,
+        "card_assets": true,
+        "image_sizes": {}
+    }
+}

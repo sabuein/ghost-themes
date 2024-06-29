@@ -1,0 +1,6 @@
+<!-- partials/pagination.hbs -->
+<nav class="pagination" role="navigation">
+    {{#if prev}}<a class="newer-posts" href="{{page_url prev}}" title='{{t "Newer post"}}'><span aria-hidden="true">&larr;</span><span>{{t "Newer post"}}</span></a>{{/if}}
+    <span class="page-number">{{{t "Page {{page}} of {{pages}}"}}}</span>
+    {{#if next}}<a class="older-posts" href="{{page_url next}}" title='{{t "Older post"}}'><span>{{t "Older post"}}</span><span aria-hidden="true">&rarr;</a>{{/if}}
+</nav>
