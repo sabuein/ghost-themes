@@ -1,0 +1,956 @@
+/* Debugging */
+
+*.debug {
+    outline: thick solid red;
+}
+
+/* Globals */
+
+::backdrop {
+    background-image: linear-gradient(45deg, magenta, rebeccapurple, dodgerblue, green);
+    opacity: 0.75;
+}
+
+* {
+    background-color: inherit;
+}
+
+*::after,
+*::before {
+    background-color: transparent;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    opacity: 1;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: inherit;
+}
+
+:root {
+    --brand-color: #1d70b8;
+    --success-color: #00703c;
+    --error-color: #d4351c;
+    --focus-text-color: #0b0c0c;
+    --focus-color: #ffdd00;
+    --input-border-color: #0b0c0c;
+    --border-color: #b1b4b6;
+    --text-color: #0b0c0c;
+    --secondary-text-color: #505a5f;
+    --link-color: #1d70b8;
+    --link-hover-color: #003078;
+    --link-visited-color: #4c2c92;
+    --link-active-color: #0b0c0c;
+    --light-color: white;
+    --accent-color: var(--ghost-accent-color);
+    --warning-color: red;
+    font-size: 18px;
+}
+
+html:has(#sodo-search-root:not(:empty)),
+html:has(#ghost-portal-root > div),
+html:has(dialog[open]) {
+    overflow-y: clip;
+}
+
+html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+html[lang="ar"] {
+    direction: rtl;
+}
+
+html[lang="en"] {
+    direction: ltr;
+}
+
+style,
+script {
+    display: none;
+}
+
+dialog[open] {
+    position: fixed;
+    margin: 0 auto;
+    inset: 0;
+    user-select: text;
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+    visibility: visible;
+}
+
+dialog {
+    user-select: none;
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+    visibility: hidden;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out, overlay 0.7s ease-out allow-discrete, display 0.7s ease-out allow-discrete;
+    /* Equivalent to transition: all 0.7s allow-discrete; */
+}
+
+@starting-style {
+    dialog[open] {
+        user-select: none;
+        opacity: 0;
+        transform: scaleY(0);
+        display: none;
+        visibility: hidden;
+    }
+}
+
+dialog::backdrop {
+    background-color: rgb(0 0 0 / 0);
+    transition: display 0.7s allow-discrete, overlay 0.7s allow-discrete, background-color 0.7s;
+    /* Equivalent to transition: all 0.7s allow-discrete; */
+}
+
+dialog[open]::backdrop {
+    background-color: rgb(0 0 0 / 0.25);
+}
+
+@starting-style {
+    dialog[open]::backdrop {
+        background-color: rgb(0 0 0 / 0);
+    }
+}
+
+/*
+
+dialog {
+  animation: fade-out 0.7s ease-out;
+}
+
+dialog[open] {
+  animation: fade-in 0.7s ease-out;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-fade-in 0.7s ease-out forwards;
+}
+
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: scaleY(0);
+      display: none;
+    }
+  
+    100% {
+      opacity: 1;
+      transform: scaleY(1);
+      display: block;
+    }
+  }
+  
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      transform: scaleY(1);
+      display: block;
+    }
+  
+    100% {
+      opacity: 0;
+      transform: scaleY(0);
+      display: none;
+    }
+  }
+  
+  @keyframes backdrop-fade-in {
+    0% {
+      background-color: rgb(0 0 0 / 0);
+    }
+  
+    100% {
+      background-color: rgb(0 0 0 / 0.25);
+    }
+  }
+
+*/
+
+/* Classes */
+
+*.flexy {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    place-content: center;
+    align-items: safe center;
+    gap: 0;
+}
+
+*.row {
+    flex-direction: row;
+}
+
+*.fadeout-content {
+    -webkit-mask-image: linear-gradient(to bottom, var(--color-black) 1%, transparent 100%);
+    mask-image: linear-gradient(to bottom, var(--color-black) 1%, transparent 100%);
+}
+
+*.extra {
+    padding: 2rem;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    font-size: .9rem;
+    user-select: none;
+}
+
+*.extra a:is(:focus, :hover) {
+    color: inherit;
+    text-decoration: none;
+}
+
+*.extra p {
+    flex-direction: row;
+    gap: .25rem;
+    cursor: default;
+}
+
+*.has-bg {
+    color: var(--light-color);
+    /* Accent color should be dark */
+    background-color: var(--accent-color);
+    background-image: none;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-clip: content-box;
+    height: 25rem;
+    width: 100dvw;
+    max-width: 100%;
+    user-select: none;
+    overflow: hidden;
+}
+
+*.author-template>*.has-bg {
+    background-attachment: fixed;
+}
+
+*.has-bg figcaption {
+    font-size: .85rem;
+    bottom: -3rem;
+    transition: bottom 500ms linear 0s;
+}
+
+*.has-bg:is(:focus-within, :hover) figcaption {
+    bottom: 0;
+    transition: bottom 500ms linear 0s;
+}
+
+*.has-bg figcaption a:any-link,
+*.has-bg figcaption a:-webkit-any-link {
+    color: var(--light-color);
+}
+
+*.has-bg figcaption a:is(:focus, :hover) {
+    text-decoration: underline;
+}
+
+*.has-bg img {
+    display: none;
+}
+
+*.get-posts-error {
+    color: var(--warning-color);
+}
+
+/* Navigation */
+
+nav,
+main ol {
+    align-self: center;
+}
+
+nav:has(ul[role="menu"]) {
+    gap: 2rem;
+}
+
+ul[role="menu"] {
+    flex-direction: row;
+    gap: 1rem;
+    list-style-type: none;
+    user-select: none;
+}
+
+ul[role="menu"] a,
+*.search-box button {
+    font-weight: bold;
+    scale: 1;
+    transition: scale 250ms linear 0s;
+}
+
+ul[role="menu"] a:is(:focus, :hover) {
+    text-decoration: none;
+}
+
+header ul[role="menu"] a {
+    font-size: 1.15rem;
+}
+
+footer ul[role="menu"] a {
+    font-size: .85rem;
+}
+
+header ul[role="menu"] a:is(:focus, :hover),
+footer ul[role="menu"] a:is(:focus, :hover),
+*.search-box button:is(:focus, :hover) {
+    scale: 1.05;
+    transition: scale 250ms linear 0s;
+}
+
+p {
+    letter-spacing: .01rem;
+    word-break: break-word;
+}
+
+main,
+aside,
+section {
+    padding: 2rem 0;
+}
+
+*.palette hgroup ul {
+    list-style-type: none;
+}
+
+*.meta {
+    flex-direction: row;
+    gap: 1rem;
+}
+
+*.meta li,
+*.tagy li {
+    flex-direction: row;
+    gap: .25rem;
+}
+
+*.meta *.tags a,
+*.meta *.author a {
+    padding: .15rem .85rem;
+    border-radius: 5px;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    line-height: 1.5;
+}
+
+*.meta a:is(:focus, :hover) {
+    text-decoration: none;
+}
+
+*.palette h2,
+*.meta span,
+*.meta strong,
+*.meta address,
+*.meta time,
+footer p {
+    cursor: default;
+}
+
+*.palette h2 {
+    position: relative;
+}
+
+*.meta *.noselect {
+    user-select: none;
+}
+
+*.palette p {
+    padding-top: 2rem;
+    width: 100%;
+    cursor: default;
+}
+
+/* Post */
+
+*.palette {
+    gap: 3rem;
+}
+
+*.loopy,
+*.palette figure {
+    width: 25rem;
+    flex-basis: 25rem;
+    user-select: none;
+}
+
+*.palette hgroup {
+    width: 100dvw;
+    max-width: 65%;
+    flex: 1 0 65%;
+    align-content: flex-start;
+}
+
+*.palette hgroup:only-child {
+    max-width: 85%;
+    flex-basis: 85%;
+}
+
+*.gapy-half {
+    gap: .5rem;
+}
+
+*.gapy-1 {
+    gap: 1rem;
+}
+
+*.gapy-2 {
+    gap: 2rem;
+}
+
+*.gapy-3 {
+    gap: 3rem;
+}
+
+*.start {
+    align-items: flex-start;
+}
+
+*.start-content {
+    align-content: flex-start;
+    justify-content: flex-start;
+}
+
+*.justify-content {
+    justify-content: flex-start;
+}
+
+*.between {
+    justify-content: space-between;
+}
+
+*.site-icon {
+    width: fit-content;
+    user-select: none;
+}
+
+*.site-logo figure {
+    width: 10rem;
+    flex-basis: 10rem;
+    user-select: none;
+}
+
+*.site-logo figure a:is(:focus, :hover) {
+    opacity: 1;
+    color: var(--light-color);
+}
+
+*.site-logo *.text {
+    line-height: 1.5;
+    align-items: flex-start;
+    gap: .25rem;
+}
+
+*.site-logo *.text h2 {
+    cursor: default;
+}
+
+*.site-logo *.text a:is(:focus, :hover) {
+    text-decoration: none;
+}
+
+*.site-cover {
+    height: 100dvh;
+    max-height: 100%;
+    user-select: none;
+}
+
+*.site-cover img {
+    height: inherit;
+}
+
+*.site-cover figcaption {
+    padding: 2rem 4rem;
+    inset: 0;
+    left: unset;
+    right: 10rem;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    gap: 1rem;
+}
+
+*.site-cover span {
+    cursor: default;
+}
+
+*.site-cover a:is(:focus, :hover) {
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+body {
+    position: relative;
+    width: 100dvw;
+    max-width: 100%;
+    gap: 0;
+    line-height: 2;
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: normal;
+    font-family: system-ui;
+}
+
+footer {
+    position: relative;
+}
+
+footer.flexy {
+    gap: 2rem;
+}
+
+picture {
+    user-select: none;
+}
+
+img {
+    width: 100dvw;
+    max-width: 100%;
+}
+
+figure {
+    position: relative;
+}
+
+figcaption {
+    padding: .25rem .5rem;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+
+a:any-link,
+a:-webkit-any-link {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 250ms linear 0s;
+}
+
+a:is(:focus, :hover) {
+    color: var(--accent-color);
+    text-decoration: underline;
+    opacity: .85;
+    transition: opacity 250ms linear 0s;
+}
+
+header nav li {
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    transition: all 250ms linear 0s;
+}
+
+header nav li:is(:focus-within, :hover) {
+    background-color: var(--text-color);
+    transition: all 250ms linear 0s;
+}
+
+header nav a:is(:focus, :hover) {
+    color: inherit;
+    opacity: 1;
+}
+
+a[href="#top"] {
+    /*position: absolute;
+    left: 2rem;
+    bottom: 2rem;*/
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+body>a[href="#top"][type="text/html"]:any-link,
+body>a[href="#top"][type="text/html"]:-webkit-any-link {
+    position: fixed;
+    bottom: 6rem;
+    right: 3rem;
+    height: 3rem;
+    width: 3rem;
+    user-select: none;
+    font-weight: 900;
+    font-size: 2rem;
+    background-color: transparent;
+    transition: background-color 250ms linear 0s, opacity 250ms linear 250ms;
+}
+
+body>a[href="#top"][type="text/html"]:is(:focus, :hover) {
+    background-color: var(--accent-color);
+    text-decoration: none;
+    transition: background-color 250ms linear 0s, opacity 250ms linear 250ms;
+}
+
+*.gh-search-icon path,
+*.social-icons a path,
+*.social-icons a #Logo g g:nth-child(2) path {
+    transition: fill 250ms linear 0s;
+}
+
+*.gh-search-icon:is(:focus, :hover) path,
+*.social-icons a:is(:focus, :hover) path,
+*.social-icons a:is(:focus, :hover) #Logo g g:nth-child(2) path {
+    fill: var(--accent-color);
+    transition: fill 250ms linear 0s;
+}
+
+header {
+    padding: 2rem 0;
+    border-bottom: thick solid var(--accent-color);
+}
+
+label {
+    cursor: pointer;
+    gap: .5rem;
+    user-select: none;
+    font-size: .9rem;
+}
+
+label:has([type="checkbox"]) {
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+input {
+    padding: .5rem .25rem;
+    color: var(--text-color);
+    background-color: var(--light-color);
+    cursor: auto;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+input::placeholder {
+    user-select: none;
+}
+
+button {
+    font-family: system-ui;
+    user-select: none;
+}
+
+input[type="submit"],
+input[type="reset"],
+a[type="text/html"]:any-link,
+a[type="text/html"]:-webkit-any-link,
+button[type="button"] {
+    padding: 1rem 1.5rem;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    opacity: 1;
+    transition: opacity 250ms linear 0s;
+}
+
+*:is(input[type="submit"], input[type="reset"], a[type="text/html"], button[type="button"]):is(:focus, :hover) {
+    text-decoration: none;
+    opacity: .75;
+    transition: opacity 250ms linear 0s;
+}
+
+*.social-icons {
+    flex-direction: row;
+    position: relative;
+    user-select: none;
+    gap: 1rem;
+}
+
+*.social-icons svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    flex-basis: 1.5rem;
+}
+
+*.social-icons a[title="Ghost"] svg {
+    width: 3rem;
+}
+
+*.controls {
+    flex-direction: row;
+    align-self: center;
+    gap: 1.5rem;
+}
+
+h2 a[type="text/html"]:any-link,
+h2 a[type="text/html"]:-webkit-any-link {
+    padding: 0;
+    color: currentColor;
+    background-color: transparent;
+    position: absolute;
+    right: -2rem;
+    opacity: 0;
+    transition: opacity 500ms linear 0s;
+    user-select: none;
+}
+
+h2:is(:focus-within, :hover) a[type="text/html"]:any-link,
+h2:is(:focus-within, :hover) a[type="text/html"]:-webkit-any-link {
+    opacity: 1;
+    transition: opacity 500ms linear 0s;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    flex-grow: 0;
+}
+
+*:where(*.loading, *.success, *.error),
+*:where(*.loading, *.success, *.error) p {
+    display: none;
+}
+
+*.loading *.loading,
+*.success *.success,
+*.error *.error,
+*.loading p:has(*[data-members-error]:not(:empty)),
+*.success p:has(*[data-members-error]:not(:empty)),
+*.error p:has(*[data-members-error]:not(:empty)) {
+    display: block;
+    flex-basis: 100%;
+    text-align: center;
+    line-height: 1.25;
+    font-size: .85rem;
+}
+
+form {
+    max-width: 100%;
+}
+
+form[data-members-form="signin"] {
+    padding: 2rem 0;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+form[data-members-form="signin"] label {
+    flex-direction: row;
+    gap: .5rem;
+    font-weight: 600;
+}
+
+form[data-members-form="signin"] input {
+    padding: 1rem 1.5rem;
+    flex-grow: 0;
+}
+
+form[data-members-form="subscribe"] {
+    gap: 1rem;
+}
+
+form[data-members-form="subscribe"] label {
+    flex-direction: row;
+    width: 100%;
+    gap: .5rem;
+}
+
+form[method="dialog"] {
+    gap: .5rem;
+}
+
+form label:has([type="checkbox"]) {
+    width: fit-content;
+    align-self: flex-start;
+}
+
+form label:has([type="checkbox"]:not(:checked)) {
+    font-weight: 400;
+    transition: font-weight 100ms linear 0s;
+}
+
+form label:has([type="checkbox"]:is(:focus, :hover, :checked)) {
+    font-weight: 600;
+    transition: font-weight 100ms linear 0s;
+}
+
+/* Progress bar*/
+
+progress:not([value]) {
+    display: none;
+}
+
+progress[value] {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 3rem;
+    flex-basis: 3rem;
+    color: black;
+    border: .25rem solid var(--text-color);
+    border: 0;
+    vertical-align: middle;
+}
+
+progress[value]::before {
+    content: attr(title) " " attr(value) "%";
+    position: absolute;
+    padding: 0 2rem;
+    width: 100%;
+    text-align: start;
+    font-size: 1.25rem;
+    color: var(--text-color);
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: 0 2px 5px rgba(91, 81, 81, 0.25) inset;
+    box-shadow: none;
+}
+
+progress::-webkit-progress-value {
+    background-color: var(--accent-color);
+}
+
+strong {
+    font-weight: bold;
+}
+
+*.call-to-action {
+    margin: 2rem 0;
+    background-color: lightgrey;
+    border-radius: 0;
+}
+
+*.call-to-action h3 {
+    padding: 2rem 0 1rem;
+    user-select: none;
+    cursor: default;
+}
+
+*.looping *.visibility,
+*.looping *.color,
+*.looping *.count {
+    user-select: none;
+}
+
+
+*.looping h3 {
+    cursor: default;
+}
+
+*.looping *.color {
+    padding: 0;
+}
+
+*.feedback {
+    user-select: none;
+    gap: 1rem;
+}
+
+*.feedback *:is(h3, p) {
+    cursor: default;
+}
+
+/* Required by Ghost (and more!) */
+
+*.content-width {
+    width: 100dvw;
+    max-width: 85%;
+    flex: 5 1 85%;
+}
+
+#announcement-bar-root,
+*.width-full,
+*.kg-width-full,
+*.palette {
+    width: 100dvw;
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+
+#ghost-portal-root,
+#announcement-bar-root {
+    user-select: none;
+}
+
+#announcement-bar-root:empty,
+#sodo-search-root:empty {
+    display: none;
+}
+
+*.kg-width-wide {
+    color: currentColor;
+}
+
+#recommendations,
+#recommendations+p {
+    cursor: default;
+}
+
+*.recommendations {
+    justify-content: flex-start;
+    gap: .5rem
+}
+
+*.recommendation {
+    padding: .5rem;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+*.recommendation-url {
+    overflow-wrap: anywhere;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: .25rem;
+}
+
+*.recommendation-url:is(:focus, :hover) {
+    text-decoration: none;
+}
+
+*.recommendation hgroup {
+    align-items: flex-start;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    gap: .1rem;
+}
+
+*.recommendation p {
+    color: darkgray;
+    font-size: .75rem;
+    transition: color 250ms linear 0s;
+}
+
+*.recommendation *.recommendation-url:is(:focus, :hover) p {
+    color: var(--accent-color);
+    transition: color 250ms linear 0s;
+}
+
+*.recommendation-favicon {
+    width: 3rem;
+    user-select: none;
+}
+
+*.recommendation-title,
+*.recommendation-favicon img {
+    width: fit-content;
+    flex-basis: fit-content;
+}
+
+*.recommendation-title,
+a:is(:focus, :hover) *.recommendation-title {
+    transition: color 250ms linear 0s;
+}

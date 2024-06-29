@@ -1,0 +1,43 @@
+{{!< default}}
+<!-- home.hbs -->
+{{#is "home"}}
+{{#get "posts" filter="featured:true+tag:hash-palettes+visibility:public" order="published_at asc" limit="all" as |palettes|}}
+{{#foreach palettes}}
+{{#has slug="do-more-with-less"}}<section id="main-message" class="{{post_class}} palette flexy row reverse">
+    <hgroup class="flexy" title="{{title}}">
+        <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
+        {{content}}
+    </hgroup>
+    {{#if feature_image}}<figure class="flexy bg-image" style="background-image: url({{img_url feature_image absolute='true'}});">
+        {{> "drawings/version-control"}}
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{else}}<figure class="flexy">
+        {{> "drawings/version-control"}}
+    </figure>{{/if}}
+</section>
+<section>
+    <div data-divider="top">
+        {{> "icons/divider-tilt"}}
+    </div>
+</section>
+{{else has slug="trusted-by-30-plus-local-authorities-and-housing-associations"}}<section id="more-clients" class="{{post_class}} palette flexy">
+    <h2 id="{{slug}}">{{title}}</h2>
+    {{> "clients"}}
+    {{content}}
+</section>
+{{else has slug="streamline-and-enhance-property-compliance"}}<section id="compliance-app" class="{{post_class}} palette flexy row">
+    <hgroup class="flexy row" title="{{title}}">
+        <h2 id="{{slug}}" title="{{title}}">{{title}}</h2>
+        {{content}}
+    </hgroup>
+    {{#if feature_image}}<figure class="flexy bg-image" style="background-image: url({{img_url feature_image absolute='true'}});">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{else}}<figure class="flexy">
+        {{> "drawings/mind-map"}}
+    </figure>{{/if}}
+</section>{{/has}}{{else}}<p>No content&period;</p>{{/foreach}}{{else}}<p class="get-posts-error">{{error}}</p>{{/get}}
+{{> "testimonial"}}
+{{> "subscribe"}}
+{{/is}}

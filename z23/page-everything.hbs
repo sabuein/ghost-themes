@@ -1,0 +1,23 @@
+{{!< default}}
+<!-- page-everything.hbs -->
+<progress class="reading-bar" value="0" max="100" aria-label="Reading progress"></progress>
+<section class="everything {{post_class}} flex gap-x2" tabindex="0">
+    {{#get "posts" include="tags" limit="all" as |post|}}
+    <div class="flex row wrap start-items gap-x2">
+        {{#foreach post}}
+        <article class="flex row start start-items gap-x1" tabindex="0" data-article-index={{@index}} data-article-number={{@number}}>
+            <header>
+                {{#if feature_image}}
+                <figure>
+                    <a href="{{url absolute='true'}}" title="{{name}}"><img src="{{img_url feature_image absolute='true'}}" title="{{title}} &dash; {{@site.title}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{#if feature_image_caption}}{{feature_image_caption}}{{else}}{{title}}{{/if}}{{/if}}" {{#if primary_tag}}{{#primary_tag}}{{#if accent_color}}style="background-color: {{accent_color}};"{{/if}}{{/primary_tag}}{{/if}} onerror="this.style.outline = 'thick dashed red';" /></a>
+                </figure>
+                {{/if}}
+                <h2 role="heading" aria-level="2">{{title}}<span><a href="{{url absolute='true'}}" title="{{title}}">&RightArrow;</a></span></h2>
+            </header>
+        </article>
+        {{/foreach}}
+    </div>
+    {{/get}}
+</section>
+{{#contentFor "head_scripts"}}{{/contentFor}}
+{{#contentFor "foot_scripts"}}{{/contentFor}}

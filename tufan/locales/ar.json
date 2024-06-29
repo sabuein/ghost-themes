@@ -1,0 +1,190 @@
+{
+    "Salaheddin AbuEin": "صلاح الدين أبو عين",
+    "Back to top": "الرجوع إلى القمة",
+    "Search": "البحث",
+    "Ghost": "جوست",
+    "Facebook": "فيسبوك",
+    "TikTok": "تيك توك",
+    "LinkedIn": "لينكد إن",
+    "Twitter": "تويتر",
+    "X": "إكس",
+    "X &lpar;formerly Twitter&rpar;": "إكس (تويتر سابقاً)",
+    "Pinterest": "بنترست",
+    "Snapchat": "سناب شات",
+    "GitHub": "جيت هب",
+    "Instagram": "إنستاجرام",
+    "WhatsApp": "واتساب",
+    "Telegram": "تيليجرام",
+    "YouTube": "يوتيوب",
+    "Portal links": "روابط البوابة",
+    "Community guidelines": "إرشادات المجتمع",
+    "Join the discussion": "اشتركوا في النقاش",
+    "comment": "تعليق",
+    "comments": "تعليقات",
+    "There were no comments": "لا يوجد تعليقات",
+    "There were no tags": "لا يوجد وسوم",
+    "No comments": "&lpar;لا تعليقات&rpar;",
+    "Discussion": "النقاش",
+    "Recommendations": "التوصيات",
+    "Name": "الاسم",
+    "Please enter your full name": "يرجى إدخال الاسم الكامل",
+    "Email": "البريد الإلكتروني",
+    "Your email": "بريدكم الإلكتروني",
+    "Your full name": "اسمكم الكامل",
+    "Please enter a valid email address": "يرجى إدخال بريد إلكتروني فعّال",
+    "Subscribe to": "اشترك في",
+    "Subscribe to {newsletter}": "اشترك في {newsletter}",
+    "There were no newsletters": "لا يوجد أي مجموعات بريدية",
+    "Reset": "إعادة",
+    "Subscribe": "اشتراك",
+    "Subscribe now": "اشترك الآن",
+    "A collection of posts": "مجموعة من المشاركات",
+    "A collection of 1 post": "مجموعة تحتوي على مشاركة واحدة",
+    "A collection of % posts": "مجموعة تحتوي على عدد % من المشاركات",
+    "Excerpt": "موجز عام",
+    "Custom excerpt": "موجز خاص",
+    "Posts count": "عدد المشاركات",
+    "Newer post": "مشاركة لاحقة",
+    "Older post": "مشاركة سابقة",
+    "Page {page} of {pages}": "صفحة {page} من {pages}",
+    "More posts by this author": "مشاركات أخرى من نفس الكاتب",
+    "There were no more posts by this author": "لا يوجد مشاركات أخرى من نفس الكاتب",
+    "There were no featured posts": "لا يوجد مشاركات مميّزة",
+    "There were no posts": "لا يوجد مشاركات",
+    "No posts": "لا مشاركات",
+    "Total posts": "عدد المشاركات",
+    "1 post": "يحتوي هذا الوسم على مشاركة واحدة فقط",
+    "% posts": "يحتوي هذا الوسم على عدد % من المشاركات",
+    "Featured": "مميّزة",
+    "Featured posts": "مشاركات مميّزة",
+    "You might also like": "مشاركات أخرى قد تنال رضاكم",
+    "Receive our latest content straight to your inbox": "احصلوا على أحدث محتوى لدينا مباشرة إلى صندوق البريد الوارد الخاص بكم",
+    "Subscribe for diverse content and updates": "اشتركوا للحصول على محتوى وتحديثات متنوعة",
+    "Sign up for a rich mix of content": "قوموا بالتسجيل للحصول على مزيج غني من المحتوى",
+    "Sign up for": "اشترك الآن في",
+    "No spam. Unsubscribe anytime.": "بريد بدون إزعاج. كما يمكنكم إلغاء الاشتراك في أي وقت.",
+    "Stay informed and enriched with our dynamic content updates": "ابقوا على اطلاع بتحديثات المحتوى لدينا",
+    "Continue reading": "اقرأ المزيد",
+    "Home": "الرئيسية",
+    "About": "من نحن؟",
+    "Contact": "إتصل بنا",
+    "Tag": "الوسم",
+    "Tags": "الوسوم",
+    "Developer guides": "مستندات المطوّر",
+    "Technology": "تكنولوجيا",
+    "Image caption": "وصف الصورة",
+    "Author": "الكاتب",
+    "Authors": "الكتّاب",
+    "Published": "تاريخ النشر",
+    "Updated": "آخر تحديث",
+    "Tagged in": "الوسوم",
+    "Time": "التاريخ",
+    "Hour": "الوقت",
+    "at": "في",
+    "and": "و",
+    "The end": "النهاية",
+    "Reading progress": "مؤشر القراءة",
+    "Reading time": "وقت القراءة",
+    "1 min read": "تستغرق دقيقة واحدة",
+    "% min read": "قد تستغرق % دقيقة",
+    "Page %": "صفحة %",
+    "Sign in": "تسجيل الدخول",
+    "Sign up": "تسجيل عضو جديد",
+    "Profile": "الملف الشخصي",
+    "Portal": "البوابة",
+    "Change password": "تغيير كلمة السرّ",
+    "Under construction": "قيد الإنشاء",
+    "XML Sitemap": "🌐 خارطة الموقع",
+    "Total paid members": "عدد الأعضاء الممولين",
+    "Paid members": "الأعضاء الممولين",
+    "Total members": "عدد الأعضاء",
+    "Members": "الأعضاء",
+    "Copyright": "الحقوق محفوظة",
+    "Account": "الحساب الشخصي",
+    "Login": "تسجيل الدخول",
+    "Price": "السعر",
+    "public": "عام",
+    "paid": "مدفوع",
+    "private": "خاص",
+    "United Kingdom": "المملكة المتحدة",
+    "Occupied Palestine": "فلسطين المحتلة",
+    "Palestine": "فلسطين",
+    "Jenin": "جنين",
+    "Tubas": "طوباس",
+    "Tulkarm": "طولكرم",
+    "Nablus": "نابلس",
+    "Qalqilya": "قلقيلية",
+    "Salfit": "سلفيت",
+    "Ramallah and al-Bireh": "رام الله والبيرة",
+    "Jericho": "أريحا",
+    "Jerusalem": "القدس",
+    "Bethlehem": "بيت لحم",
+    "Hebron": "الخليل",
+    "North Gaza": "شمال غزة",
+    "Gaza": "غزة",
+    "Deir al-Balah": "دير البلح",
+    "Khan Yunis": "خان يونس",
+    "Rafah": "رفح",
+    "West Bank": "الضفة الغربية",
+    "Gaza Strip": "قطاع غزة",
+    "Occupied Palestinian Territories": "الأراضي الفلسطينية المحتلة",
+    "Tufan al-Aqsa": "طوفان الأقصى",
+    "Copy post URL": "نسخ رابط المشاركة",
+    "Copy page URL": "نسخ رابط الصفحة",
+    "Copy contributor URL": "نسخ رابط الكاتب",
+    "Copy topic URL": "نسخ رابط الوسم",
+    "Description": "الوصف",
+    "Accent color": "لون الخلفية",
+    "Here are a few other sites you may enjoy": "إليكم بعض المواقع الهادفة التي ننصحكم بتصفحها ومتابعتها",
+    "Personal website": "الموقع الشخصي",
+    "Location": "الموقع الجغرافي",
+    "Biography": "نبذة شخصية",
+    "Sign up now": "قوموا بالتسجيل معنا الآن",
+    "Total author posts": "Total author posts",
+    "No author posts": "No author posts",
+    "% author post": "% author post",
+    "% author posts": "% author posts",
+    "Cover image": "Cover image",
+    "Profile image": "Profile image",
+    "London, UK": "لندن، المملكة المتحدة",
+    "Error": "خطأ",
+    "Type alt text for image": "Type alt text for image",
+    "Type caption for image": "Type caption for image",
+    "Type caption for gallery": "Type caption for gallery",
+    "Enter a description": "Enter a description",
+    "Add button text": "Add button text",
+    "Type caption for bookmark": "Type caption for bookmark",
+    "Callout text": "Callout text",
+    "Type caption for video": "Type caption for video",
+    "Type caption for embed": "Type caption for embed",
+    "Enter heading text": "Enter heading text",
+    "Enter subheading text": "Enter subheading text",
+    "Prodcut title": "Prodcut title",
+    "Sign out": "تسجيل الخروج",
+    "Your feedback is important": "ملاحظاتكم وتعليقاتكم مهمة",
+    "Let us know if this content was helpful to you": "أخبرونا إذا وجدتم هذا المحتوى مفيداً أو لديكم لنا أي مقترحات",
+    "Provide feedback": "تقديم ملاحظات",
+    "Close": "إغلاق",
+    "Submit": "إرسال",
+    "Thanks for being a member": "🎉 شكراً لكونكم عضواً معنا",
+    "Thanks for being a paying member": "🎉 شكراً لكونكم عضواً مموّلاً معنا",
+    "You need to become a member": "🖋 يجب أن تقوم بتسجيل عضو جديد لتتمكن من قراءة هذه المشاركة",
+    "You should totally sign up": "🖋 يجب عليكم الاشتراك معنا",
+    "This post is for subscribers only": "This post is for subscribers only",
+    "This post is for members only": "This post is for members only",
+    "Already have an account": "Already have an account?",
+    "Please hold while we check our collection": "⏲️ Please hold while we check our collection",
+    "There was an error sending the email, please try again": "There was an error sending the email, please try again",
+    "Something's gone wrong. Please try again": "❗ Something's gone wrong. Please try again",
+    "Too many sign-in attempts try again in 1 minute": "Too many sign-in attempts. Please try again in 1 minute.",
+    "Too many sign-in attempts try again in % minutes": "Too many sign-in attempts. Please try again in % minutes.",
+    "true": "صواب",
+    "false": "خطأ",
+    "Post access": "وصول المشاركة",
+    "Welcome back": "بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+    "Search posts, tags and authors": "Search posts, tags and authors",
+    "This site is invite-only, contact the owner for access": "This site is invite-only, contact the owner for access",
+    "Failed to send magic link email": "Failed to send magic link email",
+    "Failed to log in, please try again": "Failed to log in, please try again",
+    "Archive": "الأرشيف"
+}

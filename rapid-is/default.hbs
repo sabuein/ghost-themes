@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- default.hbs -->
+<html lang="{{@site.locale}}">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0" />
+        <link rel="preload" href="{{asset "css/screen.css"}}" type="text/css" as="style" />
+        <link rel="preload" href="{{asset "css/media.css"}}" type="text/css" as="style" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
+        <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/portal@~2.36/umd/portal.min.js" />
+        <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" />
+        <link rel="stylesheet" href="{{asset "css/screen.css"}}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{asset "css/media.css"}}" type="text/css" media="all" />
+        <script src="{{asset "js/application.mjs"}}" type="module"></script>
+        <title>{{#is "home"}}{{@site.title}} &#8211; {{@site.description}}{{else is "page, post"}}{{meta_title}} &#8211; {{@site.title}}{{else}}{{meta_title}}{{/is}}</title>
+        {{ghost_head}}
+    </head>
+    <body class="{{body_class}} flexy">
+        {{> "header"}}
+        {{> "dialog"}}
+        <!-- body -->
+        <main id="main-content" class="{{post_class}} flexy" role="main">
+            {{{body}}}
+        </main>
+        {{> "footer"}}
+        {{ghost_foot}}
+    </body>
+</html>

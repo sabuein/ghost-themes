@@ -1,0 +1,65 @@
+<!-- team.hbs -->
+<section id="meet-our-team" class="palette get-team-members flexy">
+    {{!-- This partial requires a parent with class "get-team-members" --}}
+    <hgroup class="flexy" title="Meet our team">
+        <h2 id="team" title="Team">Team</h2>
+        <p>From the original open-source software developed in 2005&comma; Rapid is now a team of motivated, creative and hard-working experts&period;</p>
+    </hgroup>
+    <div class="container disable-scrollbar flexy row">
+        {{#get "posts" filter="tag:hash-team-member+visibility:public" order="featured desc, published_at asc" limit=6 as |members pages|}}
+        {{#foreach members}}<article class="{{post_class}} flexy row shadowed" data-index="{{@index}}" data-play-state="running" title="{{title}}">
+            <header class="flexy">
+                <h3 id="{{slug}}" title="{{title}}">{{title}}</h3>
+                {{#if feature_image}}<figure class="bg-image" style="background-image: url({{img_url feature_image absolute='true'}});">
+                    {{#has slug="kumar-modi"}}
+                    {{> "drawings/male-profile-pic"}}
+                    {{else has slug="gareth-edwards"}}
+                    {{> "drawings/male-avatar"}}
+                    {{else has slug="steve-runyeard"}}
+                    {{> "drawings/male-profile-img"}}
+                    {{else has slug="jane-barker"}}
+                    {{> "drawings/female-avatar"}}
+                    {{else has slug="salaheddin-abuein"}}
+                    {{> "drawings/male-avatar-coffee"}}
+                    {{else has slug="robert-leete"}}
+                    {{> "drawings/male-avatar"}}
+                    {{else}}<img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" />{{/has}}
+                    {{#if custom_excerpt}}<figcaption>{{custom_excerpt}}</figcaption>{{/if}}
+                </figure>{{/if}}
+                {{#has slug="kumar-modi"}}
+                <ul class="social-icons flexy row">
+                    <li class="flexy"><a href="https://www.linkedin.com/in/kmodi9/" title="LinkedIn" target="_blank" rel="noopener"><img src="{{asset 'images/social/linkedin.png'}}" alt="LinkedIn" loading="lazy" /></a></li>
+                </ul>
+                {{else has slug="gareth-edwards"}}
+                <ul class="social-icons flexy row">
+                    <li class="flexy"><a href="https://www.linkedin.com/in/gareth-edwards-997223a1/" title="LinkedIn" target="_blank" rel="noopener"><img src="{{asset 'images/social/linkedin.png'}}" alt="LinkedIn" loading="lazy" /></a></li>
+                </ul>
+                {{else has slug="steve-runyeard"}}
+                <ul class="social-icons flexy row">
+                    <li class="flexy"><a href="https://www.linkedin.com/in/steven-runyeard-b8081427/" title="LinkedIn" target="_blank" rel="noopener"><img src="{{asset 'images/social/linkedin.png'}}" alt="LinkedIn" loading="lazy" /></a></li>
+                </ul>
+                {{else has slug="jane-barker"}}{{!--else has slug="dagney-ellison"--}}
+                <ul class="social-icons flexy row">
+                    <li class="flexy">{{!--<a href="https://www.linkedin.com/in/dagney-ellison-70b72042/" title="LinkedIn" target="_blank" rel="noopener"><img src="{{asset 'images/social/linkedin.png'}}" alt="LinkedIn" loading="lazy" /></a>--}}</li>
+                </ul>
+                {{else has slug="salaheddin-abuein"}}
+                <ul class="social-icons flexy row">
+                    <li class="flexy"><a href="https://www.linkedin.com/in/sabuein/" title="LinkedIn" target="_blank" rel="noopener"><img src="{{asset 'images/social/linkedin.png'}}" alt="LinkedIn" loading="lazy" /></a></li>
+                    <li class="flexy"><a href="https://github.com/sabuein" title="GitHub" target="_blank" rel="noopener" class="flexy">
+                        {{> "icons/github-mark"}}
+                    </a></li>
+                </ul>
+                {{else has slug="robert-leete"}}
+                <ul class="social-icons flexy row">
+                    <li class="flexy"><a href="https://www.linkedin.com/in/robert-leete/" title="LinkedIn" target="_blank" rel="noopener"><img src="{{asset 'images/social/linkedin.png'}}" alt="LinkedIn" loading="lazy" /></a></li>
+                </ul>
+                {{/has}}
+            </header>
+            <div class="flexy">
+                {{content words="44"}}
+                <a href="{{url}}" title="View profile" type="text/html" class="flexy">View profile</a>
+            </div>
+        </article>{{/foreach}}
+        <pre class="pagination">Found ({{pages.total}}) team members&period;</pre>{{else}}<p class="get-posts-error">{{error}}</p>{{/get}}
+    </div>
+</section>

@@ -1,0 +1,13 @@
+<!-- partials/navigation.hbs -->
+{{#if isSecondary}}<nav class="flexy row between content-width">
+    <ul class="flexy" role="menu">
+        {{#foreach navigation}}<li class="flexy nav-{{slug}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{t label}}">{{t label}}</a></li>{{/foreach}}
+        <li class="search-box flexy" role="menuitem" title="{{t 'Search'}}">{{search}}</li>
+    </ul>
+    {{> "social-media"}}
+</nav>{{else}}<nav class="flexy row between gapy-3 content-width">
+    <ul class="flexy" role="menu">
+        {{#foreach navigation}}<li class="flexy {{link_class for=(url) class=(concat "nav-" slug)}}{{#if current}} nav-current{{/if}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{t label}}">{{t label}}</a></li>{{/foreach}}
+    </ul>
+    <div class="search-box flexy" title="{{t 'Search'}}">{{search}}</div>
+</nav>{{/if}}

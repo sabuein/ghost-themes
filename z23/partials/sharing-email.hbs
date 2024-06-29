@@ -1,0 +1,62 @@
+<!-- sharing-email.hbs -->
+{{!-- A modal dialog containing a form --}}
+<style>
+    #this-popup {
+        position: fixed;
+        inset: 0;
+        top: 20%;
+        left: 30%;
+        cursor: move;
+        height: 500px;
+        width: 500px;
+    }
+
+    #this-popup textarea {
+        /*width: 600px;
+        height: 200px;*/
+        width: 95%;
+        min-height: 400px;
+        resize: vertical;
+        padding: .25rem;
+    }
+</style>
+<dialog id="this-popup"><!-- draggable="true" -->
+    <h1 autofocus>Hello World&excl;</h1>
+    <p>Greetings, one and all!</p>
+    <form oninput="result.value=parseInt(a.value)" method="post">
+        <fieldset class="flex">
+            <legend>Send email&colon;</legend>
+            <label for="mailto">TO&colon;</label>
+            <input type="email" id="mailto" />
+            <label for="mailcc">CC&colon;</label>
+            <input type="email" id="mailcc" />
+            <label for="mailbcc">BCC&colon;</label>
+            <input type="email" id="mailcc" />
+            <label for="mailsubject">Subject&colon;</label>
+            <input type="text" id="subject" value="{{#if title}}{{title}} on {{@site.title}}{{else}}{{@site.title}}{{/if}}"/>
+            <label for="mailbody">Subject&colon;</label>
+            <textarea id="mailbody" cols="60" rows="8">Dear&nbsp;&comma;&#10;&#13;&#10;&#13;Check&nbsp;out&nbsp;{{#if title}}{{title}}&nbsp;on&nbsp;{{/if}}{{@site.title}}&nbsp;via&nbsp;{{url absolute="true"}}&#10;&#13;{{#if excerpt}}&#10;&#13;Excerpt&colon;&nbsp;{{excerpt}}&period;{{/if}}{{#if description}}&#10;&#13;&#10;&#13;Description&colon;&nbsp;{{description}}&period;{{/if}}{{#if footer}}&#10;&#13;&#10;&#13;{{footer}}&period;{{/if}}&#10;&#13;&#10;&#13;Sincerely&comma;&#10;&#13;</textarea>
+            <label>Favorite animal:
+                <select>
+                    <option value="default">Choose…</option>
+                    <option>Brine shrimp</option>
+                    <option>Red panda</option>
+                    <option>Spider monkey</option>
+                </select>
+            </label>
+            <input type="range" id="a" name="a" value="50" />
+            <output name="result" for="a">60</output>
+            <button type="reset" id="this-popup-reset">Reset</button>
+            <button type="button" id="this-popup-close" value="close">Close</button>
+            <button type="submit" id="this-popup-confirm" value="default" formmethod="dialog">Submit</button>
+        </fieldset>
+    </form>
+</dialog>
+<a href="#" type="button" id="this-popup-open" value="open" formmethod="dialog">Email</a>
+<output for="this-popup" id="this-popup-output"></output>
+<script type="module">
+    "use strict";
+    import { showPopup } from "nav";
+    showPopup("this-popup");
+</script>
+<noscript><a href="mailto:name1@rapidtables.com?cc=name2@rapidtables.com&bcc=name3@rapidtables.com&subject={{#if title}}{{title}}%20on%20{{@site.title}}{{else}}{{@site.title}}{{/if}}&body=Dear%20%2C%0A%0DCheck%20out%20{{#if title}}{{title}}%20on%20{{/if}}{{@site.title}}%20via%20{{url absolute='true'}}{{#if excerpt}}%0A%0DExcerpt%3A%20{{excerpt}}%2E%20{{/if}}{{#if description}}%0A%0DDescription%3A%20{{description}}{{/if}}{{#if footer}}%0A%0D{{footer}}%2E{{/if}}%0A%0DSincerely%2C%0A%0D%0A%0D" target="_blank">Email</a></noscript>

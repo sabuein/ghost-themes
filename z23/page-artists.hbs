@@ -1,0 +1,19 @@
+{{!< default}}
+<!-- page-artists.hbs -->
+{{#post}}
+<progress class="reading-bar" value="0" max="100" aria-label="Reading progress"></progress>
+<header class="paintings-{{post_class}}" tabindex="0">
+    <h2 role="heading" aria-level="2">{{title}}</h2>
+</header>
+<section class="categories-{{post_class}} flex">
+    {{> "list-artists" heading="Gallery artists" section="artists"}}
+</section>
+<section class="categories-{{post_class}} flex">
+    {{> "list-artists" heading="Artists exhibited" section="artists" secondary=true}}
+</section>
+<footer class="footer-{{post_class}} flex">
+    <aside class="flex">{{> "sharing"}}</aside>
+</footer>
+{{#contentFor "head_scripts"}}{{/contentFor}}
+{{#contentFor "foot_scripts"}}{{/contentFor}}
+{{/post}}

@@ -1,0 +1,29 @@
+{{!< default}}
+<!-- author.hbs -->
+{{#is "author"}}
+{{#author}}
+{{#if cover_image}}<figure class="flexy has-bg" style="background-image: url({{img_url cover_image absolute='true'}})" title="{{name}}">
+    <img src="{{img_url cover_image absolute='true'}}" alt="{{t 'Cover image'}}" loading="lazy" onerror="this.style.display='none';" />
+</figure>{{/if}}
+<section class="flexy row palette">
+    {{#if profile_image}}<figure class="flexy" title="{{name}}">
+        <img src="{{img_url profile_image absolute='true'}}" alt="{{t 'Profile image'}}" loading="lazy" onerror="this.style.display='none';" />
+    </figure>{{/if}}
+    <hgroup class="meta flexy start gapy-half">
+        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}" title="{{name}}"><a href="{{url absolute='true'}}" title="{{t 'Copy contributor URL'}}" type="text/html">&#128279;</a><span title="{{name}}">{{name}}</span></h2>
+        <ul class="flexy row start-content gapy-1 width-full">
+            <li><span title="{{t 'Total author posts'}}">{{plural ../pagination.total empty=(t "No author posts") singular=(t "% author post") plural=(t "% author posts")}}</span></li>
+            {{#if location}}<li><address title="{{t 'Location'}}">{{t location}}</address></li>{{/if}}
+            {{#if facebook}}<li><a href="{{facebook_url facebook}}" title="{{t 'Facebook'}}" target="_blank" rel="noopener">{{readable_url facebook}}</a></li>{{/if}}
+            {{#if twitter}}<li><a href="{{twitter_url twitter}}" title="{{t 'X &lpar;formerly Twitter&rpar;'}}" target="_blank" rel="noopener">{{readable_url twitter}}</a></li>{{/if}}
+            {{#if website}}<li><a href="{{website}}" title="{{t 'Personal website'}}" target="_blank" rel="noopener">{{readable_url website}}</a></li>{{/if}}
+        </ul>
+        {{#if bio}}<p title="{{t 'Biography'}}">{{bio}}</p>{{/if}}
+    </hgroup>
+</section>
+{{/author}}
+<main id="content" class="{{post_class}} flexy width-full" role="main">
+    {{> "loop"}}
+</main>
+{{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
+{{/is}}

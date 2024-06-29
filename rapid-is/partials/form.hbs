@@ -1,0 +1,22 @@
+<!-- form.hbs -->
+<aside class="flexy bouncing shadowed">
+    <figure class="flexy">
+        {{> "drawings/letter"}}
+    </figure>
+    <form class="flexy row" action="https://formspree.io/f/xrgwvadz" method="post" enctype="multipart/form-data">
+        <fieldset class="flexy">
+            <legend class="flexy">
+                <h2>Let&apos;s make it happen</h2>
+            </legend>
+            <label for="leadName" title="Please enter your full name">Full name&colon;<input type="text" name="name" id="leadName" autocomplete="name" required="required" {{!--placeholder="John Doe"--}}/></label>
+            <label for="leadPhone" title="Please enter your phone number">Phone number&colon;<input type="tel" name="phone" id="leadPhone" autocomplete="tel" required="required" {{!--placeholder="555&dash;555&dash;5555"--}}/></label>
+            <label for="leadEmail" title="Please enter a valid email address">Email address&colon;<input type="email" name="email" id="leadEmail" autocomplete="email" required="required" {{!--placeholder="john&period;doe&commat;example&period;com"--}}/></label>
+            <label for="leadMessage" title="Please enter your message">Message&colon;<textarea name="message" id="leadMessage" rows="8" cols="40" wrap="hard" required="required" {{!--placeholder="Enter your message here&hellip;"--}}></textarea></label>
+            {{!--<label for="leadAttachment" title="Please select a file to upload (PDF, Word, Excel, Powerpoint, TXT, PDF, Images)">Add an attachment&quest;<input type="file" name="attachment" id="leadAttachment" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*" disabled="disabled" /></label>--}}
+            <div class="controls flexy row">
+                <input type="submit" value="Submit" title="Submit" />
+                <input type="reset" value="Reset" title="Reset" />
+            </div>
+        </fieldset>
+    </form>
+</aside>

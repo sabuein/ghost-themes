@@ -1,0 +1,17 @@
+{{!< default}}
+<!-- author.hbs -->
+{{#author}}
+<article class="author {{post_class}}">
+    <header>
+        <a href="{{url}}" title="{{name}}" class="author-{{id}} {{slug}}">{{name}}</a>
+        {{#if profile_image}}<figure><img src="{{img_url profile_image absolute='true'}}" title="{{name}}" alt="{{bio}}" /></figure>{{/if}}
+    </header>
+    {{#if facebook}}<a href="{{facebook_url}}">Follow on Facebook</a>{{/if}}
+    {{#if twitter}}<a href="{{twitter_url}}">Follow on Twitter</a>{{/if}}
+    {{#if website}}<a href="{{website_url}}">Visit website</a>{{/if}}
+    {{#if location}}<p>{{location}}</p>{{/if}}
+    {{#if bio}}<p>{{bio}}</p>{{/if}}
+    <p>Total&colon; {{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}&period;</p>
+    {{#foreach posts as |my_post|}}{{#my_post}}{{@number}} &dash; {{@index}}{{/my_post}}{{/foreach}}
+</article>
+{{/author}}

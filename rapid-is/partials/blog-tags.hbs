@@ -1,0 +1,9 @@
+<!-- blog-tags.hbs -->
+{{! Get all blog tags and order them by post count }}
+<section class="blog-tags">
+    {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}
+    {{#foreach tags}}
+    <p><a href="{{url}}" title="{{name}}">{{name}}</a> ({{count.posts}})</p>
+    {{/foreach}}
+    {{/get}}
+</section>

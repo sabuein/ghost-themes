@@ -1,0 +1,9 @@
+<!-- partials/loop-tag.hbs -->
+<section class="looping flexy gapy-half width-full">{{#get "tags" visibility="all" include="count.posts" order="count.posts desc" limit=@config.posts_per_page as |result|}}
+    {{#if result}}<hgroup class="flexy">
+        <h3 id="available-tags" title="{{t 'Tags'}}">{{t "Tags"}}&colon;</h3>
+    </hgroup>
+    <ol class="flexy gapy-half content-width">
+        {{#foreach result}}<li class="flexy row gapy-half" data-index="{{@index}}" data-number="{{@number}}"><span class="visibility" title="{{t this.visibility}}">{{t this.visibility}}</span><input type="color" value="{{accent_color}}" title="{{t 'Accent color'}}" class="color" /><a href="{{url}}" title="{{t name}}" class="tag-name">{{t name}}</a><span class="count" title="{{t 'Posts count'}}">&lpar;{{count.posts}}&rpar;</span></li>{{else}}<p title="{{t 'There were no tags'}}">{{t "There were no tags"}}&hellip;</p>{{/foreach}}
+    </ol>{{else}}<p title='{{t "There were no available tags"}}'>{{t "There were no available tags"}}&hellip;</p>{{/if}}{{else}}<p><small>This is not the correct context</small></p>
+{{/get}}</section>

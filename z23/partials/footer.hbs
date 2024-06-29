@@ -1,0 +1,19 @@
+<!-- footer.hbs -->
+<footer class="flex row space-between wrap gap-x3" tabindex="0">
+    <section class="flex row start start-items gap-x3">{{> "our-locations"}}</section>
+    <section class="flex row end">{{> "our-social-media"}}</section>
+    <section>
+        <pre>We have {{total_members}} member(s)&period; Join us today&excl;</pre>
+        <pre>&copy; 2013 &dash; {{date format="YYYY"}} <a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a>&period; All rights reserved&period;</pre>
+    </section>
+    {{#is "post, page, index, tag, author, paged, private"}}
+    <button type="button" id="goFooterBtn" tabindex="0">&#x1f53b;</button>
+    <pre class="admin-dashboard flex start gap-x1" draggable="true" tabindex="0">
+        <span title="Ghost admin">Ghost admin</span>
+        <a href="{{@site.url}}/ghost/#/dashboard/" title="Dashboard" target="_blank">Dashboard</a>
+        <a href="{{@site.url}}/ghost/#/editor{{#is "post"}}/post/{{post.id}}{{else}}{{#is "page"}}/page/{{page.id}}{{/is}}{{/is}}/" title="Edit" target="_blank">Edit</a>
+        <a href="{{@site.url}}/ghost/#/settings/design/change-theme/" title="Upload a theme" target="_blank">Upload a theme</a>
+        <a href="https://ghost.org/docs/admin-api/" alt="Ghost admin API documentation" title="Read the admin API documentation" target="_blank">Docs</a>
+    </pre>
+    {{/is}}
+</footer>

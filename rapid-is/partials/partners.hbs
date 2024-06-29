@@ -1,0 +1,30 @@
+<!-- partners.hbs -->
+<section id="partner-with-leaders" class="palette flexy">
+    {{#get "posts" filter="featured:true+tag:hash-palettes+visibility:public" order="published_at asc" limit="all" as |palettes|}}{{#foreach palettes}}{{#has slug="accreditation-frameworks-and-partners"}}<hgroup class="flexy" title="{{title}}">
+        <h2 id="{{slug}}">{{title}}</h2>
+        {{content}}
+    </hgroup>{{/has}}{{else}}<p>No search results found&period;</p>{{/foreach}}{{else}}<p class="get-posts-error">{{error}}</p>{{/get}}
+    <div class="container bouncing flexy row">
+        <figure title="ISO/IEC 27001:2022" tabindex="0">
+            <img src="{{asset 'images/iso-iec-27001-2022.png'}}" alt="ISO 27001 UKAS Accredited Badge" class="shadowed" loading="lazy" />
+        </figure>
+        <figure title="Cyber Essentials" tabindex="0">
+            <img src="{{asset 'images/cyber-essentials-150x150.png'}}" alt="Cyber Essentials" class="shadowed" loading="lazy" />
+        </figure>
+        <figure title="Crown Commercial Service Supplier" tabindex="0">
+            <img src="{{asset 'images/crown-commercial-service-supplier.png'}}" alt="Crown Commercial Service Supplier" class="shadowed" loading="lazy" />
+        </figure>
+        <figure title="Amazon Web Services" tabindex="0">
+            {{> "icons/aws"}}
+        </figure>
+        <figure title="Microsoft Partner" tabindex="0">
+            <img src="{{asset 'images/ms-partner.jpeg'}}" alt="Microsoft Partner" class="shadowed" loading="lazy" />
+        </figure>
+        <figure title="Oracle" tabindex="0">
+            {{> "icons/oracle"}}
+        </figure>
+        <figure title="Java" tabindex="0">
+            {{> "icons/java-vertical"}}
+        </figure>
+    </div>
+</section>

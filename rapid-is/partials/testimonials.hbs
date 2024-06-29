@@ -1,0 +1,47 @@
+<!-- testimonials.hbs -->
+<section id="client-testimonials" class="palette flexy">
+    {{!-- This partial requires a parent with class "get-testimonials" --}}
+    <hgroup class="flexy" title="Client&apos;s testimonials and reviews">
+        <h2>Clients&apos; testimonials &amp; reviews</h2>
+        <p>Read our client&apos;s testimonials and reviews below&period; We are extremely proud of the feedback we have received from our clients over the years&colon;</p>
+    </hgroup>
+    <div class="container disable-scrollbar flexy row">
+        {{#get "posts" filter="tag:testimonials+visibility:public" order="title asc" limit=5}}
+        {{#foreach posts}}
+        <blockquote class="{{post_class}} flexy row shadowed{{#if @even}} reverse{{/if}}" data-play-state="running" cite="https://www.stevenage.gov.uk/">
+            <header class="flexy" title="{{title}}">
+                {{#if feature_image}}<figure class="flexy bg-image" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})">
+                    <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" />
+                    {{#if feature_image_caption}}<figcaption><cite>{{feature_image_caption}}</cite></figcaption>{{/if}}
+                </figure>{{/if}}
+            </header>
+            <div class="flexy">
+                <h6 id="quote-{{@number}}" title="{{title}}">{{title}}</h6>
+                {{content words="70"}}
+            </div>
+        </blockquote>
+        {{/foreach}}
+        {{else}}
+        <pre class="get-posts-error">{{error}}</pre>
+        {{/get}}
+        <ol class="flexy row">
+            <li title="1" class="currently-active" aria-labelledby="quote-1">&nbsp;</li>
+            <li title="2" aria-labelledby="quote-2">&nbsp;</li>
+            <li title="3" aria-labelledby="quote-3">&nbsp;</li>
+            <li title="4" aria-labelledby="quote-4">&nbsp;</li>
+            <li title="5" aria-labelledby="quote-5">&nbsp;</li>
+        </ol>
+    </div>
+    <div>
+        <a href="#" class="next-testimonial" title="Next testimonial">
+            {{> "icons/angle-down"}}
+        </a><a href="#" class="prev-testimonial" title="Previous testimonial">
+            {{> "icons/angle-down"}}
+        </a>
+    </div>
+    <footer class="flexy">
+        <a href="#default-footer" title="Continue" class="shadowed">
+            {{> "icons/angle-down"}}
+        </a>
+    </footer>
+</section>

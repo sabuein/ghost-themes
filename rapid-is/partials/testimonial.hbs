@@ -1,0 +1,18 @@
+<!-- testimonial.hbs -->
+<section id="client-testimonial" class="palette flexy">
+    <hgroup class="flexy" title="Clients&apos; testimonials and reviews">
+        <h2>Clients&apos; testimonials and reviews</h2>
+        <p>Read our client&apos;s testimonials and reviews below&period; We are extremely proud of the feedback we have received from our clients over the years&colon;</p>
+    </hgroup>
+    <div class="testimonial-container flexy row">
+        {{#get "posts" filter="featured:true+tag:testimonials+visibility:public" order="title asc" limit="1"}}{{#if posts}}{{#foreach posts}}{{#if feature_image}}<figure class="flexy">
+            {{!--{{> "drawings/reviews"}}--}}
+            {{> "clients/camden"}}
+            {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>{{/if}}
+        <blockquote class="{{post_class}} flexy row">
+            {{!-- <h3 id="quote-{{@number}}" title="{{title}}">{{title}}</h3> --}}
+            {{content words="70"}}
+        </blockquote>{{/foreach}}{{else}}<p>There is nothing&excl;</p>{{/if}}{{else}}<pre class="get-posts-error">{{error}}</pre>{{/get}}
+    </div>
+</section>

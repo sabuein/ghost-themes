@@ -1,0 +1,24 @@
+<!-- partials/recommendations.hbs -->
+{{#if recommendations}}<ol class="recommendations flexy content-width">
+    {{#foreach recommendations as |rec|}}<li class="recommendation flexy width-full"><a href="{{rec.url}}?ref={{readable_url @site.url}}" data-recommendation="{{rec.id}}" title="{{rec.title}}" target="_blank" rel="noopener" class="recommendation-url flexy">
+        {{#if rec.favicon}}<figure class="recommendation-favicon flexy" title="{{rec.title}}">
+            <img src="{{rec.favicon}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';" />
+        </figure>{{/if}}
+        <hgroup class="flexy">
+            <h4 class="recommendation-title" title="{{rec.title}}">{{rec.title}}</h4>
+            {{#if rec.description}}<p class="recommendation-description" title='{{t "Description"}}'>{{rec.description}}</p>{{/if}}
+        </hgroup>
+    </a></li>{{/foreach}}
+</ol>{{/if}}
+{{!--
+When building a custom template, the recommendation object contains the following data:
+
+id: Recommendation ID used to track the number of clicks.
+url: The recommended site’s URL. Use the readable_url helper to make a more human-readable URL.
+favicon: The recommended site’s favicon, output as an image URL
+featured_image: The recommended site’s feature image, output as an image URL
+title: The recommended site’s title
+description: The recommended site’s description
+created_at: The date the recommendation was created
+updated_at: The date the recommendation was updated
+--}}

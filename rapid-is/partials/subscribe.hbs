@@ -1,0 +1,35 @@
+<!-- partials/subscribe.hbs -->
+<aside class="subscription palette flexy">
+    {{^if @member}}{{#if heading}}<h3 id="cta-newsletter" title="{{t heading}}">{{t heading}}</h3>{{else}}<h3 id="cta-newsletter" title='{{t "Subscribe for diverse content and updates"}}'>{{t "Subscribe for diverse content and updates"}}</h3>{{/if}}
+    <form data-members-form="subscribe" data-members-autoredirect="true" class="flexy">
+        <input type="hidden" value="Website" data-members-label="" />
+        <div class="inputs flexy">
+            <label for="subName" class="flexy" title="{{t 'Name'}}"><strong>{{t "Name"}}&colon;</strong><input type="text" name="name" id="subName" autocomplete="name" pattern=".{2,30}" title="{{t 'Please enter your full name'}}" placeholder="{{t 'Your full name'}}" required="true" data-members-name="" /></label>
+            <label for="subEmail" class="flexy" title="{{t 'Email'}}"><strong>{{t "Email"}}&colon;</strong><input type="email" name="email" id="subEmail" autocomplete="email" title="{{t 'Please enter a valid email address'}}" placeholder="{{t 'Your email'}}" required="true" data-members-email="" /></label>
+        </div>
+        <div class="inputs flexy">
+            {{#get "newsletters"}}{{#foreach newsletters}}<label for="newsletter-{{@number}}" class="flexy" title="{{t 'Subscribe to'}}"><input type="checkbox" value="{{name}}" id="newsletter-{{@number}}" title="{{name}}" checked="checked" data-members-newsletter="" />{{name}}</label>{{else}}<p class="flexy" title="{{t 'There were no newsletters'}}">{{t "There were no newsletters"}}&hellip;</p>{{/foreach}}{{/get}}
+        </div>
+        <div class="controls flexy">
+            <input type="submit" value="{{t 'Subscribe'}}" title='{{t "Subscribe"}}' />
+            <input type="reset" value="{{t 'Reset'}}" title='{{t "Reset"}}' />
+        </div>
+        <p>Already have an account? <a data-portal="signin">Sign in</a></p>
+        <p class="loading"><small>⏲️ Please hold while we check our collection.</small></p>
+        <p class="error"><small>❗Something's gone wrong. Please try again.</small></p>
+        <p class="success"><small>🎸 Success! Check your inbox for our email.</small></p>
+    </form>{{else}}<p><small class="portal-links flexy">
+        <span>Welcome back&comma; {{@member.firstname}}&period;</span>
+        <a href="#/portal/account" data-portal="account" title="{{t 'Account'}}">{{t "Account"}}</a>
+        <a href="#/portal/account/profile" data-portal="account/profile" title="{{t 'Profile'}}">{{t "Profile"}}</a>
+        <a href="#/portal/account/newsletters" data-portal="account/newsletters" title="{{t 'Newsletters'}}">{{t "Newsletters"}}</a>
+        <a href="javascript:void(0);" data-members-signout="" title="{{t 'Sign out'}}">{{t "Sign out"}}</a>
+    </small></p>{{/if}}
+</aside>
+{{!--<form data-members-form="signin" data-members-autoredirect="true" class="flexy">
+    <label for="memberEmail" class="flexy" title="{{t 'Email'}}"><strong>{{t "Email"}}&colon;</strong><input type="email" name="emailX" id="memberEmail" autocomplete="email" title="{{t 'Please enter a valid email address'}}" placeholder="{{t 'Your email'}}" required="true" data-members-email="" /></label>
+    <input type="submit" value="{{t 'Sign in'}}" title="{{t 'Sign in'}}" />
+    <p class="loading"><small>⏲️ Please hold while we check our collection.</small></p>
+    <p class="error"><small>❗Something's gone wrong. Please try again.</small></p>
+    <p class="success"><small>🎸 Success! Check your inbox for our email.</small></p>
+</form>--}}
