@@ -1,6 +1,6 @@
 <!-- partials/sharing.hbs -->
-<div id="sharing-is-caring" class="flexy row">
-    <h6 title="Share this"><span>&#x27A6;</span>Share this</h6>
+<div class="flexy row sharing-is-caring">
+    <h5 title="Share this"><span>&#x27A6;</span>Share this</h5>
     <ul class="social-icons flexy row">
         {{#if @site.twitter}}<li class="flexy"><a href="https://x.com/share?text=Check out {{encode title}}&url={{url absolute='true'}}&via={{site.twitter}}&related=sabuein" onclick="window.open(this.href, 'X-Share', 'width=550,height=235'); return false;" target="_blank" rel="noopener" title="Post on X">
             {{> "icons/x"}}
@@ -18,4 +18,6 @@
 https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A2368
 https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A2368
 https://www.linkedin.com/feed/?shareActive=true&text=http%3A%2F%2Flocalhost%3A2368
+
+?referrer=starter-kit.co.uk
 --}}

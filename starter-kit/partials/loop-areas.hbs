@@ -1,0 +1,22 @@
+<!-- partials/loop-areas.hbs -->
+{{#get "posts" filter="tags:[areas]" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Serving all major London boroughs with prompt and top&dash;quality service</h3>
+    <p class="quote">We are proud to offer our full range of services across all areas of London. Whether you are in the heart of the city or in one of the surrounding boroughs, our dedicated team is ready to provide you with expert plumbing, heating, drainage, and gas services whenever you need them.</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<ul class="flexy boroughs">
+        <li>Camden&comma;</li>
+        <li>Kensington and Chelsea&comma;</li>
+        <li>Westminster&comma;</li>
+        <li>Hackney&comma;</li>
+        <li>Hammersmith and Fulham&comma;</li>
+        <li>Islington&comma;</li>
+        <li>Lambeth&comma;</li>
+        <li>Southwark&comma;</li>
+        <li>Tower Hamlets&comma;</li>
+        <li>Wandsworth&comma;</li>
+        <li>Greenwich&comma;</li>
+        <li>and Richmond upon Thames&period;</li>
+    </ul>
+    <a href=""></a>
+    <a href="#" title="View all locations" target="_blank"><button type="button" class="btn btn-fill" title="View all locations">View all locations</button></a>{{!--<pre>There is no content to return&period;</pre>--}}{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

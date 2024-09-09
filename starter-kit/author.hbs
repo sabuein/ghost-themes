@@ -2,8 +2,7 @@
 <!-- author.hbs -->
 {{#is "author"}}
 {{#author}}
-{{#if cover_image}}
-<div class="post-card-image-link">
+{{#if cover_image}}<div class="post-card-image-link">
     {{!-- This is a responsive image, it loads different sizes depending on device
     https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
     <img class="post-card-image"
@@ -15,11 +14,10 @@
         src="{{img_url cover_image size="m"}}"
         alt="{{title}}"
     />
-</div>
-{{/if}}
-<header>
-    {{#if profile_image}}<img src="{{img_url profile_image}}" alt="{{name}}'s Picture" />{{/if}}
-</header>
+</div>{{/if}}
+{{#if profile_image}}<header>
+    <img src="{{img_url profile_image}}" alt="{{name}}'s Picture" />
+</header>{{/if}}
 <section class="author-profile">
     <h1 class="author-title">{{name}}</h1>
     {{#if bio}}<h2 class="author-bio">{{bio}}</h2>{{/if}}
@@ -33,7 +31,7 @@
                 <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
             {{/if}}
             {{#if twitter}}
-                <a class="author-profile-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                <a class="author-profile-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/x"}}</a>
             {{/if}}
             {{#if facebook}}
                 <a class="author-profile-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
@@ -42,8 +40,11 @@
     </footer>
 </section>
 {{/author}}
-<section class="author-loop">
-    {{#foreach posts}}{{> "loop"}}{{/foreach}}
+<section class="flexy loop">
+    <h2>Author posts&colon;</h2>
+    <hr />
+    {{> "loop"}}
 </section>
-{{pagination}}
+{{> "fly-buttons"}}
+{{> "cookies"}}
 {{/is}}
