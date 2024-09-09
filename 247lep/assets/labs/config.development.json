@@ -1,0 +1,37 @@
+{
+  "url": "http://localhost:2368/",
+  "server": {
+    "port": 2368,
+    "host": "127.0.0.1"
+  },
+  "database": {
+    "client": "sqlite3",
+    "connection": {
+      "filename": "/home/sabuein/my/instances/ghost-servex/content/data/ghost-local.db"
+    }
+  },
+  "mail": {
+    "from": "'Support' <support@example.com>",
+    "transport": "SMTP",
+    "options": {
+      "service": "Mailgun",
+      "host": "smtp.mailgun.org",
+      "port": 465,
+      "secure": true,
+      "auth": {
+        "user": "postmaster@example.mailgun.org",
+        "pass": "1234567890"
+      }
+    }
+  },
+  "logging": {
+    "transports": [
+      "file",
+      "stdout"
+    ]
+  },
+  "process": "local",
+  "paths": {
+    "contentPath": "/home/sabuein/my/instances/ghost-servex/content"
+  }
+}

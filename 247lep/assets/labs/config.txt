@@ -1,0 +1,281 @@
+VAT registration details
+Registered business name
+247LONDONEMERGENCYPLUMBING LTD
+https://find-and-update.company-information.service.gov.uk/company/15197383
+
+Registered business address
+31 SPRING STREET
+LONDON
+W2 1JA
+GB
+
+====================================================================================
+====================================================================================
+
+Ramiz Al-Mahmoud
+
+ramiz.al-mahmoud@247lep.co.uk
+xM#u*%K*T6_77pS
+
+You can find more information about setting up your email at:
+https://www.ionos.co.uk/help/index.php?id=2491
+
+Simply read, write and manage emails directly in your browser:
+https://mail.ionos.co.uk
+
+                                            IMAP (recommended)      POP3
+Incoming Server                             imap.ionos.co.uk        pop.ionos.co.uk
+Incoming port (SSL must be activated)       993                     995
+Outgoing server (SMTP)                      smtp.ionos.co.uk        smtp.ionos.co.uk
+Outgoing port (TLS must be activated)       587                     587
+Outgoing server requires authentication     Yes                     Yes
+
+admin@247lep.co.uk
+hello@247lep.co.uk
+
+====================================================================================
+====================================================================================
+
+https://247lep.co.uk/
+
+Linodes
+https://cloud.linode.com/linodes
+
+247lep-ubuntu-gb-lon
+
+Plan: Linode 2 GB
+Region: London 2, UK
+Linode ID: 62787145
+Created: 2024-08-19 00:39
+
+# Summary
+
+1 CPU Core
+2 GB RAM
+50 GB Storage
+0 Volumes
+
+====================================================================================
+====================================================================================
+
+# Public IP Addresses
+172.236.1.100
+2600:3c13::f03c:95ff:fec7:76e0
+
+root
+3CmMSz5AYRhG3Yn
+
+# SSH Access
+ssh root@172.236.1.100
+
+# LISH Console via SSH
+ssh -t sabuein@lish-gb-lon.linode.com 247lep-ubuntu-gb-lon
+
+24/7 Services, Expert Solutions | London Emergency Plumbing
+https://londonemergencyplumbing.co.uk/
+
+====================================================================================
+====================================================================================
+
+# NS Record
+
+Name Server	    Subdomain	    TTL	
+ns1.linode.com	247lep.co.uk	Default
+ns2.linode.com	247lep.co.uk	Default
+ns3.linode.com	247lep.co.uk	Default
+ns4.linode.com	247lep.co.uk	Default
+ns5.linode.com	247lep.co.uk	Default
+
+====================================================================================
+====================================================================================
+
+Type	Host name	Value	Service
+A	@	217.160.0.8	Default Site
+AAAA	@	2001:8d8:100f:f000:0:0:0:200	Default Site
+A	www	217.160.0.8	Default Site
+AAAA	www	2001:8d8:100f:f000:0:0:0:200	Default Site
+TXT	_dep_ws_mutex	9747952228e666cc291f21acb63baa9d127444b2e84531e96a08bbd05f63e268_1724019939304	1 Hour      Default Site
+CNAME	_domainconnect	_domainconnect.ionos.com	Domain Connect
+MX	@	mx00.ionos.co.uk	Mail
+MX	@	mx01.ionos.co.uk	Mail
+TXT	@	v=spf1 include:_spf-eu.ionos.com ~all	1 Hour      Mail
+CNAME	s1-ionos._domainkey	s1.dkim.ionos.com	1 Hour      Mail
+CNAME	s2-ionos._domainkey	s2.dkim.ionos.com	1 Hour      Mail
+CNAME	s42582890._domainkey	s42582890.dkim.ionos.com	1 Hour      Mail
+CNAME	autodiscover	adsredir.ionos.info	Mail
+
+====================================================================================
+====================================================================================
+
+How to install & setup Ghost on Ubuntu 20.04 or 22.04
+https://ghost.org/docs/install/ubuntu/
+
+# Login via SSH
+
+# SSH Access
+ssh root@172.236.1.100
+
+root
+3CmMSz5AYRhG3Yn
+
+# Create a new user and follow prompts
+adduser <user>
+
+# Add user to superuser group to unlock admin privileges
+usermod -aG sudo <user>
+
+# Then log in as the new user
+su - <user>
+
+ghosty
+1keseR^K2Xq4<9,
+
+# Update package lists
+sudo apt-get update
+
+# Update installed packages
+sudo apt-get upgrade
+
+# Install NGINX
+sudo apt-get install nginx
+
+# If ufw was activated, the firewall allows HTTP and HTTPS connections. Open Firewall:
+sudo ufw allow 'Nginx Full'
+
+# Install MySQL
+sudo apt-get install mysql-server
+
+# Enter mysql
+sudo mysql
+
+# Update permissions
+ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY '<your-new-root-password>';
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'Z[3?B}}!")abFA_';
+
+'root'@'localhost'
+Z[3?B}}!")abFA_
+
+# Reread permissions
+FLUSH PRIVILEGES;
+
+# exit mysql
+exit
+
+# Confirm this change
+sudo mysql_secure_installation
+sudo mysql -u root -p
+
+# If any errors and want to remove mysql
+sudo systemctl stop mysql
+sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+sudo rm -rf /etc/mysql /var/lib/mysql
+sudo apt-get autoremove
+
+# Download and import the Nodesource GPG key
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+# Create deb repository
+NODE_MAJOR=18 # Use a supported version
+echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+
+# Run update and install
+sudo apt-get update
+sudo apt-get install nodejs -y
+
+# Install Ghost-CLI
+sudo npm install ghost-cli@latest -g
+
+# Create directory: Change `sitename` to whatever you like
+sudo mkdir -p /var/www/sitename
+
+# Set directory owner: Replace <user> with the name of your user
+sudo chown <user>:<user> /var/www/sitename
+
+# Set the correct permissions
+sudo chmod 775 /var/www/sitename
+
+# Then navigate into it
+cd /var/www/sitename
+
+sudo mkdir -p /var/www/247lep
+sudo chown ghosty:ghosty /var/www/247lep
+sudo chmod 775 /var/www/247lep
+cd /var/www/247lep
+
+# Run the install process
+ghost install
+
+https://247lep.co.uk
+
+# Ghost-CLI can automatically set up SSL for you using Let’s Encrypt. Alternatively you do this later by running:
+ghost setup ssl
+
+# SSL certification setup requires an email address so that you can be kept informed if there is any issue with your certificate, including during renewal.
+
+# systemd is the recommended process manager tool to keep Ghost running smoothly. We recommend choosing yes but it’s possible to set up your own process management.
+
+# What to do if the install fails
+ghost help
+ghost uninstall
+ghost setup
+
+====================================================================================
+====================================================================================
+
+# Ghost was installed successfully! To complete setup of your publication, visit:
+https://247lep.co.uk/ghost/
+
+# Ghost uses direct mail by default. To set up an alternative email method read our docs at https://ghost.org/docs/config/#mail
+
+====================================================================================
+====================================================================================
+
+24/7 London Emergency Plumbing
+Ramiz Al-Mahmoud
+ramiz.al-mahmoud@247lep.co.uk
+H8dEn9i7SLXk7Ti
+
+<a href="tel:+447773222722">0777&dash;3222&dash;722</a>
+
+====================================================================================
+====================================================================================
+
+https://ghost.org/docs/install/ubuntu/
+https://ghost.org/tutorials/
+https://ghost.org/docs/content-api/
+
+====================================================================================
+====================================================================================
+
+Google Search Console
+https://search.google.com/search-console?resource_id=sc-domain%3A247lep.co.uk
+
+Verify domain ownership via DNS record
+247lep.co.uk
+
+Copy the TXT record below into the DNS configuration for 247lep.co.uk
+google-site-verification=HmWa-qih6AiyVJhJWElgkVRBcjg-DpOHH2QYYYnXVKg
+
+====================================================================================
+====================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================================
+====================================================================================

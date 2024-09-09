@@ -1,0 +1,18 @@
+{{!< default}}
+<!-- index.hbs -->
+{{#is "index"}}
+<header>
+    <h1 class="page-title">{{@site.title}}</h1>
+    {{#if @site.description}}<h2 class="page-description">{{@site.description}}</h2>{{/if}}
+</header>
+{{!-- This is a responsive image, it loads different sizes depending on device
+https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+{{#if @site.cover_image}}<img class="site-header-cover" srcset="{{img_url @site.cover_image size="s"}} 300w, {{img_url @site.cover_image size="m"}} 600w, {{img_url @site.cover_image size="l"}} 1000w, {{img_url @site.cover_image size="xl"}} 2000w" sizes="100vw" src="{{img_url @site.cover_image size="xl"}}" alt="{{@site.title}}" />{{/if}}
+<section class="flexy loop">
+    <h2>Index posts&colon;</h2>
+    <hr />
+    {{> "loop"}}
+</section>
+{{> "fly-buttons"}}
+{{> "cookies"}}
+{{/is}}
