@@ -1,0 +1,7 @@
+<!-- partials/loop-featured.hbs -->
+{{#get "posts" filter="featured:true" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h2>Our most popular services</h2>
+    <p class="quote">Discover our top&dash;rated services across plumbing&comma; drainage&comma; gas&comma; heating&comma; and emergency support. These popular services are chosen for their reliability and effectiveness&comma; addressing a wide range of needs with expert solutions&period; Explore how our trusted services can provide the exceptional care and support you are looking for&period;</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

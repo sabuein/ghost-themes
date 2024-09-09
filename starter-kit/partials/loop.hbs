@@ -1,6 +1,20 @@
 <!-- partials/loop.hbs -->
-<article class="{{post_class}}">
-    <h2 class="post-title"><a href="{{url}}">{{title}}</a></h2>
-    <p>{{excerpt words="26"}} <a class="read-more" href="{{url}}">&raquo;</a></p>
-    <p class="post-footer">Posted by {{#primary_author}}<a href="{{url}}">{{name}}</a>{{/primary_author}} {{tags prefix=" on "}} at <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>&period;</p>
-</article>
+<div class="flexy row container">
+    {{#foreach posts}}<article class="flexy row {{post_class}} card">
+        {{#if feature_image}}<figure class="flexy apply-full-cover" title="{{title}}" style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
+            <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{title}}" loading="lazy" />
+            {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>{{/if}}
+        <hgroup class="flexy">
+            <h4><a href="{{url}}" title="{{title}}" target="_top">{{title}}</a></h4>
+            <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="26"}}&hellip;{{/if}}</p>
+            <a type="text/html" href="{{url}}" title="Learn more" target="_top" class="btn btn-alternative">Learn more</a>
+        </hgroup>
+        <footer class="flexy">
+            <p class="flexy row"><strong>Posted by&colon;</strong>{{#primary_author}}<a href="{{url}}" title="{{name}}" target="_top">{{name}}</a>{{/primary_author}}</p>
+            {{#if tags}}<p class="flexy row"><strong>Keywords&colon;</strong>{{#foreach tags}}<a href="{{url}}" title="{{name}}"{{#if accent_color}} style="--tag-accent-color: {{accent_color}};"{{/if}}>{{name}}</a>{{/foreach}}</p>{{/if}}
+            <p class="flexy row"><strong>Published on&colon;</strong><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time></p>
+        </footer>
+    </article>{{/foreach}}
+</div>
+{{pagination}}

@@ -1,15 +1,15 @@
 {
-    "name": "elite-drivers-hertfordshire",
-    "description": "A ghost theme for airport transfer and ground transportation services",
-    "demo": "https://servex.business/",
-    "version": "0.5.0",
+    "name": "247lep",
+    "description": "A ghost theme for providers of plumbing and heating services",
+    "demo": "https://247lep.co.uk/",
+    "version": "1.0.0",
     "engines": {
         "ghost": ">=5.0.0"
     },
     "license": "MIT",
     "author": {
         "name": "Salaheddin AbuEin",
-        "email": "sabuein@ashaam.co.uk",
+        "email": "sabuein@gmail.com",
         "url": "https://sabuein.github.io/"
     },
     "screenshots": {
@@ -17,16 +17,16 @@
         "mobile": "assets/screenshot-mobile.jpg"
     },
     "scripts": {
-        "start": "ghost start -d ~/my/instances/ghost-servex",
-        "restart": "ghost restart -d ~/my/instances/ghost-servex",
-        "update": "ghost update -d ~/my/instances/ghost-servex",
-        "stop": "ghost stop -d ~/my/instances/ghost-servex",
-        "debug": "ghost run -D -d ~/my/instances/ghost-servex",
-        "log": "ghost log -d ~/my/instances/ghost-servex",
-        "zip": "zip -r /home/sabuein/Desktop/elite-drivers-hertfordshire.zip * -x *.zip /assets/labs/* .gitignore",
+        "start": "ghost start -d ~/my/instances/ghost-en",
+        "restart": "ghost restart -d ~/my/instances/ghost-en",
+        "update": "ghost update -d ~/my/instances/ghost-en",
+        "stop": "ghost stop -d ~/my/instances/ghost-en",
+        "debug": "ghost run -D -d ~/my/instances/ghost-en",
+        "log": "ghost log -d ~/my/instances/ghost-en",
+        "zip": "zip -r /home/sabuein/Desktop/247lep.zip * -x *.zip /assets/labs/* .gitignore",
         "scan": "npx gscan .",
-        "scan-zip": "npx gscan -z /home/sabuein/Desktop/elite-drivers-hertfordshire.zip",
-        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/elite-drivers-hertfordshire ~/my/instances/ghost-servex/content/themes"
+        "scan-zip": "npx gscan -z /home/sabuein/Desktop/247lep.zip",
+        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/247lep ~/my/instances/ghost-en/content/themes"
     },
     "config": {
         "posts_per_page": 10,
@@ -59,9 +59,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/TryGhost/Casper.git"
+        "url": "https://github.com/sabuein/ghost-themes.git"
     },
-    "bugs": "https://github.com/sabuein/rapid-is/issues",
+    "bugs": "https://github.com/sabuein/ghost-themes/issues",
     "gpm": {
         "type": "theme",
         "categories": [

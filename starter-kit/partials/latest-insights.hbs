@@ -1,0 +1,4 @@
+<!-- partials/latest-insights.hbs -->
+{{#get "posts" filter="tags:[tips]" include="authors, tags" order="title asc, published_at desc" limit="6" as |posts|}}{{#if posts}}<ul class="flexy" role="menu">
+    {{#foreach posts}}<li><a href="{{url}}" title="{{title}}" target="_top">{{title}}</a></li>{{/foreach}}
+</ul>{{else}}<pre>There is no content to return&period;</pre>{{/if}}{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

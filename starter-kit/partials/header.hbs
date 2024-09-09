@@ -1,13 +1,10 @@
 <!-- partials/header.hbs --> 
-<header class="site-header flexy row">
-    {{#if @site.logo}}<figure class="flexy">
-        <a class="site-logo" href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="xs"}}" alt="{{@site.title}}" loading="lazy" /></a>
-    </figure>{{else}}<a class="site-logo" href="{{@site.url}}">{{@site.title}}</a>{{/if}}   
-    {{navigation}}
+<header id="site-header" class="flexy row site-header">
+    <div class="flexy row container">
+        {{#if @site.logo}}<figure class="flexy site-logo">
+            <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" /></a>
+        </figure>{{else}}<a href="{{@site.url}}">{{@site.title}}</a>{{/if}}   
+        {{navigation}}
+    </div>
+    {{> "app-nav"}}
 </header>
-<div class="header-actions flexy row">
-    {{#unless @site.members_enabled}}<button class="search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>{{else}}<button class="search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
-    {{#unless @member}}<div class="header-members">
-        {{#unless @site.members_invite_only}}<a class="header-link" href="#/portal/signin" data-portal="signin">Sign in</a><a class="header-button" href="#/portal/signup" data-portal="signup">Subscribe</a>{{else}}<a class="header-button" href="#/portal/signin" data-portal="signin">Sign in</a>{{/unless}}{{else}}<a class="header-button" href="#/portal/account" data-portal="account">Account</a>{{/unless}}
-    </div>{{/unless}}
-</div>
