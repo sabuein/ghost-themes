@@ -1,6 +1,0 @@
-<!-- partials/navigation.hbs -->
-{{#if isSecondary}}<nav class="nav-secondary" role="menu">
-    {{#foreach navigation}}<a href="{{url absolute='true'}}" title="{{label}}" class="{{link_class for=(url) class=(concat 'nav-' slug)}}" target="_top" role="menuitem">{{label}}</a>{{/foreach}}
-</nav>{{else}}<nav class="nav-primary" role="menu">
-    {{#foreach navigation}}<a href="{{url absolute='true'}}" title="{{label}}" class="{{link_class for=(url) class=(concat 'nav-' slug)}}" target="_top" role="menuitem">{{label}}</a>{{/foreach}}
-</nav>{{/if}}
