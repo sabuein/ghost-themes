@@ -1,0 +1,12 @@
+{{!< default}}
+<!-- error-404.hbs -->
+<section class="outer error-content">
+    <div class="inner">
+        <section class="error-message">
+            <h1 class="error-code">{{statusCode}}</h1>
+            <p class="error-description">{{message}}</p>
+            <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
+            <p>The page you are looking for doesn&apos;t exist&period; It may have been moved or removed altogether&period; Please try searching for some other page&comma; or return to the website&apos;s <a href="{{@site.url}}" title="Homepage">homepage</a> to find what you&apos;re looking for&period;</p>
+        </section>
+    </div>
+</section>

@@ -1,0 +1,7 @@
+<!-- partials/loop-tips.hbs -->
+{{#get "posts" filter="tags:[tips]+id:-{{id}}" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Discover and read expert tips on our blog</h3>
+    <p class="quote">Explore our collection of useful DIY articles designed to help you maintain your home or business. Our updates include practical plumbing, heating, and maintenance tips, along with the latest news on our services across London. Stay informed and empowered with expert advice from our team.</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
