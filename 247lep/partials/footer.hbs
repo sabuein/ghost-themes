@@ -1,0 +1,38 @@
+<!-- partials/footer.hbs -->
+<footer class="flexy site-footer">
+    <div class="flexy container">
+        <div class="flexy widget">
+            <figure class="flexy site-logo">
+                <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" /></a>
+            </figure>
+            <p class="flexy"><strong class="flexy row">{{@site.title}}</strong>{{#if @site.description}}<span class="flexy row">{{@site.description}}</span>{{/if}}</p>
+            {{> "social-media"}}
+        </div>
+        <div class="flexy widget">
+            <h5>Latest insights</h5>
+            {{> "latest-insights"}}
+        </div>
+        <div class="flexy widget">
+            <h5>Popular services</h5>
+            {{> "popular-services"}}
+        </div>
+        <div class="flexy widget">
+            <h5>Emergency service</h5>
+            <h6>Make a call</h6>
+            <a href="tel:+447773222722" title="Call us&excl;" target="_blank"><button type="button" class="btn btn-fill">{{> "icons/phone"}}<span>0777&dash;3222&dash;722</span></button></a>
+            <h6>Drop us a line</h6>
+            <a href="mailto:hello@247lep.co.uk">hello@247lep.co.uk</a>
+            <h6>Get direction</h6>
+            <address>31 Spring Street, London, England, W2 1JA</address>
+        </div>
+    </div>
+    {{navigation type="secondary"}}
+    <div class="flexy fin">
+        {{> "company-meta"}}
+        <p>Timezone&colon; <strong>{{@site.timezone}}</strong></p>
+        <p class="flexy row web-app-by"><a href="/sitemap.xml" title="XML Sitemap" target="_top">XML Sitemap</a><a href="https://sabuein.github.io/" title="Web app by Salaheddin AbuEin" target="_blank" rel="noopener">Web app by Salaheddin AbuEin</a></p>
+        {{!--
+        <p class="flexy row"><a href="/ghost/#/dashboard" title="Ghost Admin" target="_blank">Ghost Admin</a></p>
+        --}}
+    </div>
+</footer>

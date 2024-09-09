@@ -1,0 +1,50 @@
+{{!< default}}
+<!-- post.hbs -->
+{{#is "post"}}
+{{#post}}
+<article class="flexy {{post_class}}">
+    {{#match @page.show_title_and_feature_image}}<header class="flexy row">
+        <hgroup class="flexy">
+            <h1 id="{{slug}}" class="flexy row" title="{{title}}">{{title}}</h1>
+            <p class="quote">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}&hellip;{{/if}}</p>
+            <p class="flexy row">{{#if featured}}<span>{{> "icons/popular"}}</span>{{/if}}{{#if reading_time}}<span>{{reading_time}}</span>{{/if}}</p>
+        </hgroup>
+        {{#if feature_image}}<figure class="flexy apply-full-cover" style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
+            <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" />
+            {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>{{/if}}
+    </header>{{/match}}
+    <section class="flexy primary-content">
+        {{content}}
+        {{!--
+        <div class="flexy details">
+            <ul class="flexy row author-list">
+                {{#foreach authors}}<li>
+                    {{#if profile_image}}<a type="text/html" href="{{url}}" target="_top" title="Read more by {{name}}" aria-label="Read more by {{name}}"><img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" /></a>{{else}}<a type="text/html" href="{{url}}" target="_top" title="Read more by {{name}}" class="author-avatar author-profile-image" aria-label="Read more of {{name}}">{{> "icons/avatar"}}</a>{{/if}}
+                </li>{{/foreach}}
+            </ul>
+            <div class="flexy row">
+                <strong title="Published on">Published on&colon;</strong>
+                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+            </div>
+            {{tags prefix="<div class='flexy row'><strong>Keywords&colon;</strong>" separator="<span>&bull;</span>" autolink="true" limit="5" visibility="public" suffix="</div>"}}<!-- all / internal / public -->
+        </div>
+        --}}
+    </section>
+    {{> "discussion"}}
+    {{#has tag="#plumbing" slug="plumbing"}}{{> "services-plumbing"}}{{else has tag="#drainage" slug="drainage"}}{{> "services-drainage"}}{{else has tag="#gas" slug="gas"}}{{> "services-gas"}}{{else has tag="#heating" slug="heating"}}{{> "services-heating"}}{{else has tag="#emergency" slug="emergency"}}{{> "services-emergency"}}{{else has tag="tips"}}{{> "loop-tips"}}{{else}}NOTHING{{/has}}
+    <aside class="flexy call-to-action">
+        {{#has tag="#plumbing" slug="plumbing"}}<h3>Need help&quest; Book a plumber now&excl;</h3>{{else has tag="#drainage" slug="drainage"}}<h3>Get your drains flowing again &dash; Contact us&excl;</h3>{{else has tag="#gas" slug="gas"}}<h3>Ensure your home&apos;s safety &dash; Schedule a gas service&excl;</h3>{{else has tag="#heating" slug="heating"}}<h3>Stay warm &dash; Book your heating service today&excl;</h3>{{else has tag="#emergency" slug="emergency"}}<h3>Need immediate assistance&quest; Call us now&excl;</h3>{{else}}<h3>Need help&quest; We&apos;re available 24/7&period;</h3>{{/has}}
+        <p>Call us now on <a href="tel:+447773222722" title="Call us&excl;" target="_blank"><button type="button" class="btn btn-alternative">0777&dash;3222&dash;722</button></a> or fill out our online <button type="button" title="Contact form" class="btn btn-alternative">Contact form</button> to schedule a service or request a quote&period;</p>
+    </aside>
+</article>
+{{> "footer"}}
+{{#contentFor "scripts"}}<script type="text/javascript">
+    // FitVids - Makes video embeds responsive
+    $(document).ready(() => $("*.html5-main-video").fitVids());
+    console.log("Hello from post.hbs!");
+</script>{{/contentFor}}
+{{/post}}
+{{> "fly-buttons"}}
+{{> "cookies"}}
+{{/is}}

@@ -1,0 +1,23 @@
+<!-- partials/sharing.hbs -->
+<div class="flexy row sharing-is-caring">
+    <h5 title="Share this"><span>&#x27A6;</span>Share this</h5>
+    <ul class="social-icons flexy row">
+        {{#if @site.twitter}}<li class="flexy"><a href="https://x.com/share?text=Check out {{encode title}}&url={{url absolute='true'}}&via={{site.twitter}}&related=sabuein" onclick="window.open(this.href, 'X-Share', 'width=550,height=235'); return false;" target="_blank" rel="noopener" title="Post on X">
+            {{> "icons/x"}}
+        </a></li>{{/if}}
+        <li class="flexy"><a href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute='true'}}&title={{encode title}}" onclick="window.open(this.href, 'LinkedIn-Share', 'width=550,height=235'); return false;" target="_blank" rel="noopener" title="Post on LinkedIn"><img src="{{asset 'images/social/linkedin.png'}}" alt="LinkedIn" loading="lazy" /></a></li>
+        <li class="flexy"><a href="https://api.whatsapp.com/send/?text=Check {{encode title}} at {{url absolute='true'}}&type=custom_url&app_absent=0" onclick="window.open(this.href, 'WhatsApp-Share', 'width=550,height=235'); return false;" target="_blank" title="Share on WhatsApp">
+            {{> "icons/whatsapp"}}
+        </a></li>
+        <li class="flexy"><a href="http://pinterest.com/pin/create/button/?url={{url absolute='true'}}{{#if feature_image}}&media={{img_url feature_image absolute='true'}}{{/if}}&description={{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="50"}}{{/if}}" onclick="window.open(this.href, 'Pinterest-Share', 'width=550,height=235'); return false;" target="_blank" title="Pin on Pinterest">
+            {{> "icons/pinterest"}}
+        </a></li>
+    </ul>
+</div>
+{{!--
+https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A2368
+https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A2368
+https://www.linkedin.com/feed/?shareActive=true&text=http%3A%2F%2Flocalhost%3A2368
+
+?referrer=starter-kit.co.uk
+--}}

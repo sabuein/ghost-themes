@@ -1,0 +1,17 @@
+A theme for Ghost CMS
+
+Thanks to:
+
+- https://bcrypt-generator.com/
+- Favicon Generator https://favicon.io/favicon-converter/
+- SVG Repo - Free SVG Vectors and Icons https://www.svgrepo.com/
+- Flowbite - Free and open-source SVG Icons https://flowbite.com/
+- SVG Minifier https://www.svgminify.com/
+- https://www.shapedivider.app/
+- PX to REM converter https://nekocalc.com/px-to-rem-converter
+- Fonts https://gwfh.mranftl.com/fonts
+- Colors https://colorbase.app/
+- PWABuilder https://www.pwabuilder.com/imageGenerator
+- https://logo.com/dashboard
+- https://imageresizer.com/
+
