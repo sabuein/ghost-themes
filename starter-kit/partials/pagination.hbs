@@ -1,7 +1,7 @@
 <!-- partials/pagination.hbs -->
-<nav class="pagination flexy" role="navigation">
-    <p class="pagination previous-next">{{#if prev}}<a class="previous-page" href="{{page_url prev}}" title="Previous"><span aria-hidden="true">&larr;</span> Previous</a>{{/if}}{{#if next}}{{#if prev}} &VerticalBar;{{/if}} <a class="next-page" href="{{page_url next}}" title="Next">Next <span aria-hidden="true">&rarr;</span></a>{{/if}}</p>
-    <p class="pagination page-number">Page {{page}} of {{pages}}</p>
-    <p class="first-last">First, Last</p>
+<nav class="flexy pagination" role="navigation">
+    <p class="previous-next">{{#if prev}}<a class="previous-page" href="{{page_url prev}}" title="Previous"><span aria-hidden="true">&larr;</span> Previous</a>{{/if}}{{#if next}}{{#if prev}} &VerticalBar;{{/if}} <a class="next-page" href="{{page_url next}}" title="Next">Next <span aria-hidden="true">&rarr;</span></a>{{/if}}</p>
+    {{!--<p class="page-number">Page {{page}} of {{pages}}</p>
+    <p class="first-last">First, Last</p>--}}
     <p class="total-results">{{plural pagination.total empty="Found no results" singular="Found % result" plural="Found % results"}}&excl;</p>
 </nav>

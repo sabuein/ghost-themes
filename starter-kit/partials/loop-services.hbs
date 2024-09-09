@@ -1,0 +1,10 @@
+<!-- partials/loop-services.hbs -->
+{{#get "posts" filter="primary_tag:[services]" include="authors, tags" order="published_at asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Comprehensive service offerings</h3>
+    <p class="quote">Explore our full range of services. Each service is tailored to meet your specific needs with professionalism and expertise. Learn more about how our dedicated team can provide effective solutions and exceptional care across all aspects of home and business maintenance&period;</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
+{{!-- If within a post, add another filter
++id:-{{id}}
+--}}

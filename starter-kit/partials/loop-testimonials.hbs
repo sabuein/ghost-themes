@@ -1,0 +1,7 @@
+<!-- partials/loop-testimonials.hbs -->
+{{#get "posts" filter="tags:[reviews]" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop testimonials">
+    <h3>Feedback from our delighted clients</h3>
+    <p class="quote">We take pride in serving our clients throughout London with top-tier plumbing and heating solutions, ensuring their properties are maintained to the highest standards&period;</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
