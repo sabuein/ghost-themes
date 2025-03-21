@@ -1,0 +1,40 @@
+{
+    "url": "https://247lep.co.uk",
+    "server": {
+        "port": 2368,
+        "host": "127.0.0.1"
+    },
+    "database": {
+        "client": "mysql",
+        "connection": {
+            "host": "127.0.0.1",
+            "user": "ghost-140",
+            "password": "[Si}UZ72:oj6Od,,fFv3",
+            "database": "247lep_prod"
+        }
+    },
+    "mail": {
+        "from": "'Support team' <hello@247lep.co.uk>",
+        "transport": "SMTP",
+        "options": {
+            "service": "Mailgun",
+            "host": "smtp.eu.mailgun.org",
+            "port": 465,
+            "secure": true,
+            "auth": {
+                "user": "postmaster@e.247lep.co.uk",
+                "pass": "tYp4GffcgLBN5zj"
+            }
+        }
+    },
+    "logging": {
+        "transports": [
+            "file",
+            "stdout"
+        ]
+    },
+    "process": "systemd",
+    "paths": {
+        "contentPath": "/var/www/247lep/content"
+    }
+}

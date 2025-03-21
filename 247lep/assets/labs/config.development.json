@@ -11,16 +11,16 @@
     }
   },
   "mail": {
-    "from": "'Support' <support@example.com>",
+    "from": "'Support team' <hello@247lep.co.uk>",
     "transport": "SMTP",
     "options": {
       "service": "Mailgun",
-      "host": "smtp.mailgun.org",
+      "host": "smtp.eu.mailgun.org",
       "port": 465,
       "secure": true,
       "auth": {
-        "user": "postmaster@example.mailgun.org",
-        "pass": "1234567890"
+        "user": "postmaster@e.247lep.co.uk",
+        "pass": "tYp4GffcgLBN5zj"
       }
     }
   },

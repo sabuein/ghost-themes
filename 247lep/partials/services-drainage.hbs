@@ -1,3 +1,7 @@
 <!-- partials/services-drainage.hbs -->
-<h2>Drainage services</h2>
-<p>Proper drainage is crucial to the health and safety of your property. We provide comprehensive drainage services, including clearing blocked drains, performing CCTV drain surveys, and carrying out repairs. Our team uses the latest technology to quickly identify and resolve any drainage issues, keeping your system in top condition.</p>
+{{#get "posts" filter="tags:[hash-drainage]+id:-{{id}}" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Drainage services</h3>
+    <p class="quote">Proper drainage is crucial to the health and safety of your property. We provide comprehensive drainage services, including clearing blocked drains, performing CCTV drain surveys, and carrying out repairs. Our team uses the latest technology to quickly identify and resolve any drainage issues, keeping your system in top condition.</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

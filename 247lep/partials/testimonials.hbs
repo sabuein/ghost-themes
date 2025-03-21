@@ -1,1 +1,19 @@
 <!-- partials/testimonials.hbs -->
+{{#get "posts" filter="tags:[reviews]" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy testimonials">
+    <h3>Feedback from our delighted clients</h3>
+    <p class="quote">We take pride in serving our clients throughout London with top-tier plumbing and heating solutions, ensuring their properties are maintained to the highest standards&period;</p>
+    <hr />
+    {{#if posts}}<div class="flexy row container">
+        {{#foreach posts}}<blockquote class="flexy {{post_class}} card">
+            {{content}}
+            {{#if custom_excerpt}}<p>{{custom_excerpt}}</p>{{/if}}
+            <p>{{title}}</p>
+            <footer class="flexy">
+                <p class="flexy row"><strong>Posted by&colon;</strong>{{#primary_author}}<a href="{{url}}" title="{{name}}" target="_top">{{name}}</a>{{/primary_author}}</p>
+                {{#if tags}}<p class="flexy row"><strong>Keywords&colon;</strong>{{#foreach tags}}<a href="{{url}}" title="{{name}}"{{#if accent_color}} style="--tag-accent-color: {{accent_color}};"{{/if}}>{{name}}</a>{{/foreach}}</p>{{/if}}
+                <p class="flexy row"><strong>Published on&colon;</strong><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time></p>
+            </footer>
+        </blockquote>{{/foreach}}
+        <a href="https://www.google.com/search?q=24/7+London+Emergency+Plumbing/Heating&stick=H4sIAAAAAAAA_-NgU1I1qDCxMDczMLVITTIxtEhMNjW0MqgwtzA2s0w1SUo1sjQ1TjZPW8SqZmSib67gk5-Xkp-n4JqbWpSempdcqRCQU5qblJmXru-RmlgCpAGffPbNUgAAAA&hl=en-GB&mat=CfbiG4AlAFkCElcBEKoLaUGX_9b_eC7wOrisuI9OK7FP-LuCEIUpv_V213tm4_jW9soXc203dUeGNu_6AInraDeJ1hrQF9NKxpoxtrg-ewa0WFtKmUZKFFKSx7NzLjq1BDk&authuser=0&ved=2ahUKEwj2pqXB_seIAxUWRkEAHbczO2AQ-MgIegQILxAe#" title="Write a review on Google" target="_blank"><button type="button" class="btn btn-fill">Write a review on Google</button></a>
+    </div>{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

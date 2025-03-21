@@ -1,3 +1,7 @@
 <!-- partials/services-heating.hbs -->
-<h2>Heating services</h2>
-<p>Keep your home warm and comfortable with our expert heating services. We offer everything from central heating installation to boiler repair and maintenance. Whether you need a new heating system installed or your current one needs servicing, our team is here to help you stay warm all year round.</p>
+{{#get "posts" filter="tags:[hash-heating]+id:-{{id}}" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Heating services</h3>
+    <p class="quote">Keep your home warm and comfortable with our expert heating services. We offer everything from central heating installation to boiler repair and maintenance. Whether you need a new heating system installed or your current one needs servicing, our team is here to help you stay warm all year round.</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

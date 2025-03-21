@@ -18,14 +18,12 @@ const horizontalScrolling = (container = null, distance = 100, milliseconds = 10
 };
 
 // When the user scrolls down 150px from the top of the document, show the button
-const toggleBackToTopButton = (button) => {
+const toggleBackToTop = (container) => {
     try {
         if (window.document.body.scrollTop > 150 || window.document.documentElement.scrollTop > 150) {
-            button.style.visibility = "visible";
-            // button.focus();
+            container.style.visibility = "visible";
         } else {
-            button.style.visibility = "hidden";
-            button.blur();
+            container.style.visibility = "hidden";
         }
     } catch (error) {
         console.log(error);
@@ -179,7 +177,7 @@ const setupDialogs = () => {
 };
 
 const showSubMenu = (triggerSelector, menuSelector) => {
-    const trigger = document.querySelector(`${triggerSelector} > a`),
+    const trigger = document.querySelector(triggerSelector),
         menu = document.querySelector(menuSelector);
     
     /*
@@ -204,11 +202,29 @@ const showSubMenu = (triggerSelector, menuSelector) => {
     });
 };
 
+const hideMobileMenu = () => {
+    const menu = document.querySelector(`*.app-header *.app-navigation *.primary-nav`);
+    menu.style.display = "none";
+    menu.removeEventListener("click", hideMobileMenu, false);
+    document.querySelector(`#appHideMenu`).style.display = "none";
+    document.querySelector(`#appShowMenu`).focus();
+};
+
+const showMobileMenu = () => {
+    const menu = document.querySelector(`*.app-header *.app-navigation *.primary-nav`);
+    menu.style.display = "flex";
+    // menu.addEventListener("click", hideMobileMenu, false);
+    document.querySelector(`#appHideMenu`).style.display = "inline-block";
+    document.querySelector(`#appHideMenu`).focus();
+};
+
 export {
     closeCookiesButton,
     horizontalScrolling,
-    toggleBackToTopButton,
+    toggleBackToTop,
     scrollBackToTop,
     setupDialogs,
-    showSubMenu
+    showSubMenu,
+    showMobileMenu,
+    hideMobileMenu
 };
