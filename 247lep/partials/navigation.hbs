@@ -1,18 +1,17 @@
 <!-- partials/navigation.hbs -->
 {{#if isSecondary}}<ul class="flexy row secondary-nav" role="menu">
     {{#foreach navigation}}<li class="flexy row {{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}" class="btn btn-alternative" target="_top">{{label}}</a></li>{{/foreach}}
-</ul>{{else}}<nav class="flexy row site-navigation">
-    <ul class="flexy primary-nav" role="menu">
-        {{!--
-        <li class="flexy row" aria-label="Close"><button type="button" title="Close" autofocus="autofocus">&cross; Close</button></li>
-        --}}
-        {{#foreach navigation}}<li class="flexy row {{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem">
-            <a href="{{url absolute='true'}}" title="{{label}}" target="_top" class="btn btn-fill"><span>{{label}}</span></a>
-            {{#has slug="services"}}
-            {{#get "posts" filter="primary_tag:[services]" include="authors, tags" order="published_at asc" as |posts|}}{{#if posts}}<ul class="flexy services-nav" role="menu">
-                {{#foreach posts}}<li class="flexy row"><a href="{{url}}" title="{{title}}" target="_top" class="btn btn-fill btn-alternative">{{slug}}</a></li>{{/foreach}}
-            </ul>{{/if}}<pre class="loop-error">{{error}}</pre>{{/get}}
-            {{/has}}
-        </li>{{/foreach}}
-    </ul>
-</nav>{{/if}}
+</ul>{{else}}<ul class="flexy primary-nav" role="menu">
+    {{!--
+    <li class="flexy row" aria-label="Close"><button type="button" title="Close" autofocus="autofocus">&cross; Close</button></li>
+    --}}
+    {{#foreach navigation}}<li class="flexy row {{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem">
+        {{#has slug="services"}}
+        <button id="{{slug}}MenuButton" type="button" title="{{label}}" class="btn btn-alternative" href="{{url absolute='true'}}">{{label}}</button>
+        {{#get "posts" filter="primary_tag:[services]" include="authors, tags" order="published_at asc" as |posts|}}{{#if posts}}<ul class="flexy services-nav" role="menu">
+            {{#foreach posts}}<li class="flexy row"><a href="{{url}}" title="{{title}}" class="btn" target="_top">{{slug}}</a></li>{{/foreach}}
+        </ul>{{/if}}<pre class="loop-error">{{error}}</pre>{{/get}}
+        {{else}}<a href="{{url absolute='true'}}" title="{{label}}" class="btn" target="_top"><span>{{label}}</span></a>{{/has}}
+    </li>{{/foreach}}
+    {{search}}
+</ul>{{/if}}

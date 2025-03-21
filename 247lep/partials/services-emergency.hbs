@@ -1,3 +1,7 @@
 <!-- partials/services-emergency.hbs -->
-<h2>Emergency services</h2>
-<p>Emergencies do not wait for convenient times, and neither do we. Our emergency services are available 24/7 to handle any urgent plumbing, heating, drainage, or gas issues. Whether it is a burst pipe, a broken boiler, or a gas leak, you can count on us to provide fast, effective solutions when you need them most&period;</p>
+{{#get "posts" filter="tags:[hash-emergency]+id:-{{id}}" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Emergency services</h3>
+    <p class="quote">Emergencies do not wait for convenient times, and neither do we. Our emergency services are available 24/7 to handle any urgent plumbing, heating, drainage, or gas issues. Whether it is a burst pipe, a broken boiler, or a gas leak, you can count on us to provide fast, effective solutions when you need them most&period;</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

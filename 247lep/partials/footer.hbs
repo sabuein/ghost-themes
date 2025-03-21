@@ -1,8 +1,8 @@
 <!-- partials/footer.hbs -->
-<footer class="flexy site-footer">
+<footer class="flexy app-footer">
     <div class="flexy container">
         <div class="flexy widget">
-            <figure class="flexy site-logo">
+            <figure class="flexy app-logo">
                 <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" /></a>
             </figure>
             <p class="flexy"><strong class="flexy row">{{@site.title}}</strong>{{#if @site.description}}<span class="flexy row">{{@site.description}}</span>{{/if}}</p>
@@ -19,7 +19,9 @@
         <div class="flexy widget">
             <h5>Emergency service</h5>
             <h6>Make a call</h6>
-            <a href="tel:+447773222722" title="Call us&excl;" target="_blank"><button type="button" class="btn btn-fill">{{> "icons/phone"}}<span>0777&dash;3222&dash;722</span></button></a>
+            {{!--
+            <a href="tel:+447773222722" title="Call us&excl;" target="_blank"><button type="button" class="btn btn-fill">{{> "icons/phone"}}<span>0777&dash;3222&dash;722</span></button></a>--}}
+            <a href="tel:+447773222722" title="Call us&excl;" target="_blank">0777&dash;3222&dash;722</a>
             <h6>Drop us a line</h6>
             <a href="mailto:hello@247lep.co.uk">hello@247lep.co.uk</a>
             <h6>Get direction</h6>

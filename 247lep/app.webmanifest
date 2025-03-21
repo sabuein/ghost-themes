@@ -1,7 +1,7 @@
 {
     "dir": "ltr",
     "lang": "en",
-    "name": "247 London Emergency Plumbing",
+    "name": "24/7 London Emergency Plumbing / Heating",
     "short_name": "247LEP",
     "description": "Expert plumbing and heating services whenever you need them",
     "id": "/?launcher=homescreen",
@@ -476,17 +476,17 @@
     ],
     "screenshots": [
         {
-            "src": "assets/images/247lep-720x720.png",
-            "sizes": "720x720",
+            "src": "assets/images/247lep-1024x1024.png",
+            "sizes": "1024x1024",
             "type": "image/png",
             "form_factor": "wide",
             "label": "Our logo"
         },
         {
-            "src": "assets/images/247lep-1080x720.webp",
-            "sizes": "1080x720",
-            "type": "image/webp",
-            "label": "Our car"
+            "src": "assets/images/247lep-1024x1024.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "label": "Our logo"
         }
     ],
     "related_applications": [

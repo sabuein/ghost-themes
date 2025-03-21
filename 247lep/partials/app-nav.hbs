@@ -1,6 +1,7 @@
 <!-- partials/app-nav.hbs -->
-<div class="flexy row container">
-    <button id="appInstallButton" type="button" class="btn btn-fill btn-alternative" title="Install the app">{{> "icons/download"}}</button>
-    <button type="button" class="btn btn-fill btn-alternative" title="Search the app" data-ghost-search="data-ghost-search">{{> "icons/search"}}</button>
+<div class="flexy row app-buttons">
+    <button id="appInstallButton" type="button" title="Install this app">{{> "icons/download"}}</button>
+    <button id="appShowMenu" type="button" title="Show app menu">{{> "icons/menu"}}</button>
+    <button id="appHideMenu" type="button" title="Hide app menu">{{> "icons/cross"}}</button>
     {{!--{{search}}--}}
 </div>

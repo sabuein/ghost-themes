@@ -1,10 +1,13 @@
 <!-- partials/header.hbs --> 
-<header id="site-header" class="flexy row site-header">
-    <div class="flexy row container">
-        {{#if @site.logo}}<figure class="flexy site-logo">
+<header id="site-header" class="flexy row app-header">
+    <nav class="flexy row app-navigation">
+        <div class="flexy row app-buttons">
+            <button type="button" title="Search the app" data-ghost-search="data-ghost-search">{{> "icons/search"}}</button>
+        </div>
+        {{#if @site.logo}}<figure class="flexy app-logo">
             <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" /></a>
         </figure>{{else}}<a href="{{@site.url}}">{{@site.title}}</a>{{/if}}   
         {{navigation}}
-    </div>
-    {{> "app-nav"}}
+        {{> "app-nav"}}
+    </nav>
 </header>

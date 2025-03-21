@@ -1,3 +1,7 @@
 <!-- partials/services-plumbing.hbs -->
-<h2>Plumbing services</h2>
-<p>Our expert plumbers are equipped to tackle any plumbing issue, whether it’s a simple repair or a complete installation. We handle everything from fixing leaks and unclogging drains to installing new bathrooms and kitchens. Our services are designed to ensure your plumbing system runs smoothly and efficiently, providing you with peace of mind.</p>
+{{#get "posts" filter="tags:[hash-plumbing]+id:-{{id}}" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Plumbing services</h3>
+    <p class="quote">Our expert plumbers are equipped to tackle any plumbing issue, whether it’s a simple repair or a complete installation. We handle everything from fixing leaks and unclogging drains to installing new bathrooms and kitchens. Our services are designed to ensure your plumbing system runs smoothly and efficiently, providing you with peace of mind.</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
