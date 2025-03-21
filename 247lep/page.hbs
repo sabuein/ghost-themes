@@ -39,13 +39,13 @@
 {{#has slug="contact"}}{{> "loop-featured"}}{{else has slug="services"}}{{> "loop-services"}}{{else has tag="tips"}}{{> "loop-tips"}}{{!--{{else has slug="about"}}{{> "who-we-are"}}--}}{{/has}}
 <aside class="flexy call-to-action">
     <h3>Need help&quest; We&apos;re available 24/7&period;</h3>
-    <p>Call us now on <a href="tel:+447773222722" title="Call us&excl;" target="_blank"><button type="button" class="btn btn-alternative">0777&dash;3222&dash;722</button></a> or fill out our online <button type="button" title="Contact form" class="btn btn-alternative">Contact form</button> to schedule a service or request a quote&period;</p>
+    <p class="flexy row">Call us now on <a href="tel:+447773222722" title="Call us&excl;" class="btn btn-alternative" target="_blank">0777&dash;3222&dash;722</a> or fill out our online <a href="/contact" title="Contact us" class="btn btn-alternative" target="_top">Contact form</a> to schedule a service or request a quote&period;</p>
 </aside>
 {{> "footer"}}
 {{#contentFor "scripts"}}<script type="text/javascript">
     // FitVids - Makes video embeds responsive
     $(document).ready(() => $("*.html5-main-video").fitVids());
-    console.log("Hello from page.hbs!");
+    // console.log("Hello from page.hbs!");
 </script>{{/contentFor}}
 {{/post}}
 {{> "fly-buttons"}}

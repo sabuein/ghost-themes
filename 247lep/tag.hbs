@@ -14,7 +14,16 @@
     <h2>Tag posts&colon;</h2>
     <hr />
     {{> "loop"}}
+    {{pagination}}
 </section>
+<section class="flexy loop"></section>
+    {{!-- Get all tags and order them by post count --}}
+    <h3>Keywords</h3>
+    <p class="quote">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat voluptas optio qui maiores amet, consequuntur rem aliquam corrupti suscipit eligendi, modi facilis ad officiis dolores vel dolorem quam quibusdam repudiandae!</p>
+    <hr />
+    {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}{{#foreach tags}}<a href="{{url}}" title="{{name}}" target="_top">{{name}} ({{count.posts}})</a>{{/foreach}}{{/get}}
+</section>
+{{> "footer"}}
 {{> "fly-buttons"}}
 {{> "cookies"}}
 {{/is}}

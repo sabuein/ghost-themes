@@ -37,6 +37,29 @@
     }
 }
 
+/*
+:root {
+    color-scheme: light dark;
+  
+    --light-bg: ghostwhite;
+    --light-color: darkslategray;
+    --light-code: tomato;
+  
+    --dark-bg: darkslategray;
+    --dark-color: ghostwhite;
+    --dark-code: gold;
+}
+
+* {
+    background-color: light-dark(var(--light-bg), var(--dark-bg));
+    color: light-dark(var(--light-color), var(--dark-color));
+}
+
+code {
+    color: light-dark(var(--light-code), var(--dark-code));
+}
+*/
+
 :root {
     color-scheme: light dark;
     --color-blue: #1d70b8;
@@ -75,11 +98,20 @@
     background-color: transparent;
 }
 
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+    scroll-margin-block: 5ex;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 18px;
     -webkit-tap-highlight-color: rgba(0, 0, 255, 0);
     -webkit-tap-highlight-color: transparent;
+    /* Prevent font size inflation */
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
 }
 
 html:has(dialog[open]:not([aria-modal="false"])) {
@@ -176,13 +208,14 @@ video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    background-color: transparent;
 }
 
 dialog {
     display: none !important;
 }
 
-*.site-logo {
+*.app-logo {
     max-width: 100%;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -197,7 +230,7 @@ dialog {
     }
 
     a:is(:focus, :hover, :active, :focus-within) {
-        scale: 1.01;
+        scale: 1;
         -webkit-transition: all .25s ease-in 0s;
         transition: all .25s ease-in 0s;
     }
@@ -209,60 +242,37 @@ figcaption {
 }
 
 body {
+    color: #465a75;
     background-color: #f6f7f8;
+    background-color: rgb(203,203,203);
+    background-image: linear-gradient(90deg, rgba(203,203,203,1) 0%, rgba(237,237,237,1) 100%, rgba(142,142,142,1) 100%);
     -webkit-overflow-scrolling: touch;
-    -webkit-text-size-adjust: 100%;
     line-height: 1.5;
+    min-height: 100dvh;
     font-family: var(--font-primary);
     font-size: 1.25rem;
-    color: #465a75;
+}
 
-    main {
-        width: 100dvw;
-        max-width: 100%;
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+    margin-block-end: 0;
+}
 
-        *.site-header {
-            margin-bottom: 2rem;
-            width: inherit;
-            max-width: inherit;
-            place-content: space-between;
-            gap: 1rem;
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4, button, input, label {
+    line-height: 1.1;
+}
 
-            *.site-logo {
-                width: 10rem;
-                flex: 0 0 10rem;
-            }
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
 
-            *.container {
-                padding: 1rem;
-                gap: 1rem;
-
-                svg {
-                    width: 1.5rem;
-                }
-            }
-
-            *.container:first-of-type {
-                flex: 2 0 75dvw;
-            }
-
-            *.container:last-of-type {
-                flex: 1 0 20dvw;
-            }
-
-            *.btn {
-                scale: .9;
-                -webkit-transition: scale .25s ease-out 0s;
-                transition: scale .25s ease-out 0s;
-            }
-        
-            *.btn:is(:focus, :hover, :active, :focus-within) {
-                scale: 1;
-                -webkit-transition: scale .25s ease-out 0s;
-                transition: scale .25s ease-out 0s;
-            }
-        }
-    }
+textarea:not([rows]) {
+    min-height: 10rem
 }
 
 img {
@@ -304,9 +314,12 @@ strong {
 
 *:is(h1, h2, h3, h4, h5, h6) {
     color: #001b41;
+    background-color: transparent;
     font-weight: 700;
     line-height: normal;
     text-rendering: optimizeLegibility;
+    text-wrap: balance;
+    max-width: 100%;
 }
 
 h1 {
@@ -336,22 +349,28 @@ h6 {
 a:-webkit-any-link {
     text-decoration: none;
     cursor: pointer;
-    word-wrap: break-word;
+    word-wrap: normal;
     color: #0b9dcc;
 }
 
 a:-moz-any-link {
     text-decoration: none;
     cursor: pointer;
-    word-wrap: break-word;
+    word-wrap: normal;
     color: #0b9dcc;
 }
 
 a:any-link {
     text-decoration: none;
     cursor: pointer;
-    word-wrap: break-word;
+    word-wrap: normal;
     color: #0b9dcc;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
 }
 
 a:is(:focus, :hover, :active) {
@@ -366,75 +385,71 @@ button[type="button"] {
     cursor: pointer;
 }
 
-*.site-main {
-    gap: 1rem;
+*.app-main {
 
     *.main-header {
-        padding: 2rem;
-        min-height: 75dvh;
-        width: 100dvw;
-        max-width: 100%;
-        gap: 2rem;
 
-        hgroup {
-            width: 60dvw;
+        color: snow;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            padding: 1rem;
+            width: 100dvw;
             max-width: 100%;
-            flex: 2 0 60dvw;
-            place-items: flex-start;
-            gap: 1rem;
+            backdrop-filter: brightness(.6);
+            color: inherit;
+        }
 
-            h1,
-            h2 {
-                padding: .5rem 0;
-            }
+        h1, p {
+            padding: 2rem;
+        }
 
-            p {
-                padding: .5rem 0;
-                font-size: 1.75rem;
-            }
-
+        p {
             a {
-                text-decoration: none;
                 scale: .95;
-                -webkit-transition: scale .5s ease-out 0s;
-                transition: scale .5s ease-out 0s;
+                -webkit-transition: all .15s ease-out 0s;
+                transition: all .15s ease-out 0s;
             }
-
-            *.btn {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-items: center;
-                justify-content: center;
-                gap: 0;
-            }
-
-            *.btn span {
-                width: fit-content;
-                max-width: 100%;
-                flex: 0 0 fit-content;
-                font-size: 2.25rem;
-            }
-
-            *.btn svg {
-                width: 4rem;
-                max-width: 100%;
-                flex: 0 0 4rem;
-            }
-
+        
             a:is(:focus, :hover, :active, :focus-within) {
+                text-decoration: none;
                 scale: 1;
-                -webkit-transition: scale .5s ease-out 0s;
-                transition: scale .5s ease-out 0s;
+                -webkit-transition: all .15s ease-in 0s;
+                transition: all .15s ease-in 0s;
             }
         }
+    }
 
-        figure {
-            height: 30rem;
-            width: 30rem;
-            max-width: 100%;
-            flex: 1 0 30rem;
-        }
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    *.btn {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+    }
+
+    *.btn span {
+        width: fit-content;
+        max-width: 100%;
+        flex: 0 0 fit-content;
+    }
+
+    *.btn svg {
+        width: 4rem;
+        max-width: 100%;
+        flex: 0 0 4rem;
     }
 
     *.primary-content {
@@ -482,23 +497,20 @@ button[type="button"] {
     }
 
     *.who-we-are {
-        padding: 2rem 1rem;
-        min-height: 100dvh;
+        padding: 4rem 1rem;
         width: 100dvw;
         max-width: 100%;
         flex: 0 0 100%;
         gap: 1rem;
 
-        h3, hr {
+        hr {
             max-width: 85%;
             flex: 0 0 85%;
         }
 
         > p {
-            padding: 1rem 0;
+            padding: 1rem .5rem;
             font-size: 1.65rem;
-            max-width: 70%;
-            flex: 0 0 70%;
         }
 
         *.quote {
@@ -508,20 +520,18 @@ button[type="button"] {
         }
 
         *.container {
-            padding: 1rem;
             width: 100dvw;
-            gap: 1rem;
+            max-width: 100%;
+            gap: 2rem;
 
             *.feature {
-                padding: 1rem;
-                width: 35rem;
-                flex: 0 0 35rem;
                 gap: 1rem;
 
                 svg {
                     height: auto;
+                    max-height: 14rem;
                     width: 7rem;
-                    flex: 0 0 7rem;
+                    flex: 1 0 7rem;
                     -webkit-touch-callout: none;
                     -webkit-user-select: none;
                     -moz-user-select: none;
@@ -538,14 +548,21 @@ button[type="button"] {
                 }
             }
         }
+
+        *.loop {
+            padding: 2rem 1rem;
+        }
     }
 
     *.fly {
         padding: 1rem;
+        flex-direction: row;
         position: fixed;
-        bottom: 1rem;
-        right: 1rem;
-        background-color: transparent;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: black;
+        visibility: hidden;
         gap: 1rem;
         z-index: 99;
 
@@ -575,6 +592,7 @@ button[type="button"] {
 
         svg {
             width: 2.25rem;
+            color: white;
         }
     }
 
@@ -585,8 +603,67 @@ button[type="button"] {
     }
 }
 
+*.testimonials {
+    padding: 4rem 1rem;
+    min-height: 75dvh;
+    width: 100dvw;
+    max-width: 100%;
+    gap: 1rem;
+
+    *.container {
+        width: 100dvw;
+        max-width: 100%;
+        gap: 3rem;
+
+        *.post {
+            padding: 2rem;
+            height: 100%;
+            width: 30rem;
+            max-width: 100%;
+            flex: 0 0 30rem;
+            place-content: space-between;
+            gap: 1rem;
+
+            p {
+                font-size: 2rem;
+            }
+
+            p:first-child {
+                quotes: '"' '"' "'" "'";
+                font-size: 1.75rem;
+                font-style: oblique;
+            }
+            
+            p:first-child::before {
+                padding: .5rem;
+                content: open-quote;
+            }
+
+            p:first-child::after {
+                content: close-quote;
+            }
+            
+            p:first-child::before,
+            p:first-child::after {
+                font-size: 4rem;
+                line-height: 0;
+                vertical-align: middle;
+            }
+            
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        footer {
+            display: none;
+        }
+    }
+}
+
 *.loop {
-    padding: 1rem;
+    padding: 4rem 1rem;
     min-height: 75dvh;
     width: 100dvw;
     max-width: 85%;
@@ -610,9 +687,9 @@ button[type="button"] {
     *.post {
         padding: 1rem;
         height: 100%;
-        width: 45rem;
+        width: 25rem;
         max-width: 100%;
-        flex: 0 0 45rem;
+        flex: 1 0 25rem;
         place-content: space-between;
         gap: 1rem;
 
@@ -684,52 +761,134 @@ button[type="button"] {
     }
 }
 
-*.site-navigation {
-    padding: .5rem;
-    width: fit-content;
-    flex-basis: fit-content;
-    position: relative;
+*.app-main {
+    width: 100dvw;
+    max-width: 100%;
 
-    *.primary-nav {
-        flex-direction: row;
-        flex-wrap: wrap;
+    *.app-header {
+        color: var(--color-text-background);
+        background-color: snow;
+        background-attachment: fixed;
+        -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        flex: 0 0 100%;
+        width: inherit;
+        max-width: inherit;
         gap: 1rem;
 
-        *.services-nav {
-            display: none;
-            position: absolute;
-            left: 0;
-            top: 5rem;
-            right: 0;
-            width: 100dvw;
-            max-width: 100%;
-            background-color: transparent;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 1rem;
-            z-index: 99;
-
-            a {
-                text-transform: capitalize;
-            }
-        }
-
-        *.nav-services:is(:hover, :focus-within) {
-            *.services-nav {
-                display: flex;
-            }
-        }
-
-        *.services-nav.visible {
+        *.app-navigation {
             display: flex;
+            padding: 1rem;
+            width: inherit;
+            max-width: inherit;
+            background-color: inherit;
+            place-content: space-between;
+            position: relative;
+
+            *.app-buttons {
+                display: none;
+                flex-wrap: nowrap;
+                gap: 1rem;
+
+                #appInstallButton {
+                    display: none;
+                }
+            }
+
+            *.app-logo {
+                width: 10rem;
+                flex: 0 0 10rem;
+            }
+        
+            *.primary-nav {
+                padding: .5rem;
+                display: flex;
+                flex-direction: row;
+                background-color: inherit;
+                flex-wrap: wrap;
+                gap: 1rem;
+        
+                *.services-nav {
+                    display: none;
+                    position: absolute;
+                    width: 100dvw;
+                    max-width: 100%;
+                    top: 3rem;
+                    z-index: 99;
+                    background-color: inherit;
+                    background-attachment: fixed;
+                    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
+                    -webkit-border-radius: 3px;
+                    border-radius: 3px;
+
+                    li {
+                        width: 100%;
+                        flex: 0 0 100%;
+                    }
+        
+                    a {
+                        text-transform: capitalize;
+                        flex: 0 0 100%;
+                        width: 100%;
+                    }
+                }
+
+                *.nav-services {
+                    position: relative;
+                    background-color: inherit;
+                }
+        
+                *.nav-services:is(:hover, :focus-within) *.services-nav,
+                *.nav-services *.services-nav.visible {
+                    display: flex;
+                }
+            }
+
+            button, a {
+                text-decoration: none;
+                line-height: normal;
+
+                svg {
+                    height: 1.5rem;
+                    width: 1.5rem;
+                }
+
+                svg, path {
+                    fill: var(--accent-color);
+                }
+            }
+
+            #appHideMenu {
+                display: none;
+                z-index: 99999;
+            }
+        }
+
+        *.btn {
+            border: none;
+            scale: .95;
+            -webkit-transition: scale .25s ease-out 0s;
+            transition: scale .25s ease-out 0s;
+        }
+    
+        *.btn:is(:focus, :hover, :active, :focus-within) {
+            scale: 1;
+            -webkit-transition: scale .25s ease-out 0s;
+            transition: scale .25s ease-out 0s;
         }
     }
 }
 
 *.cookies {
-    background-color: var(--accent-color);
-    color: #ffffff;
+    display: none;
     padding: 1rem;
+    color: #ffffff;
+    background-color: var(--accent-color);    
+    width: 100dvw;
+    max-width: 100%;
     position: fixed;
     bottom: 0;
     z-index: 999;
@@ -741,8 +900,8 @@ button[type="button"] {
         gap: 1rem;
 
         h4 {
+            padding: 1rem;
             color: inherit;
-            flex: 0 0 10%;
             font-size: 2.25rem;
         }
 
@@ -870,16 +1029,15 @@ button[type="button"] {
     border-bottom-left-radius: 0;
 }
 
-*.site-footer {
-    padding: 1rem;
+*.app-footer {
+    padding: 4rem .5rem;
     min-height: 100dvh;
     width: 100dvw;
     max-width: 100%;
-    background-color: #ffffff;
+    background-color: #ffffff75;
     gap: 1rem;
 
     *.container {
-        padding: 1rem;
         width: 100dvw;
         max-width: 100%;
         flex-direction: row;
@@ -891,9 +1049,9 @@ button[type="button"] {
         *.widget {
             padding: .5rem;
             place-items: flex-start;
-            width: 25rem;
+            width: 26rem;
             max-width: 100%;
-            flex: 0 0 25rem;
+            flex: 1 0 26rem;
             gap: .5rem;
 
             a:has(*.btn) {
@@ -924,6 +1082,7 @@ button[type="button"] {
             }
 
             ul {
+                padding-left: .75rem;
                 list-style-type: none;
                 place-items: flex-start;
                 gap: .5rem;   
@@ -940,6 +1099,10 @@ button[type="button"] {
             h6 {
                 text-decoration-line: underline;
             }
+
+            address {
+                font-size: smaller;
+            }
         }
 
         p {
@@ -947,7 +1110,7 @@ button[type="button"] {
         }
     }
 
-    *.site-logo {
+    *.app-logo {
         width: 10rem;
     }
 
@@ -973,7 +1136,6 @@ button[type="button"] {
     }
 
     *.social-media {
-        padding: 1rem;
         width: fit-content;
         max-width: 100%;
         gap: 1rem;
@@ -1019,10 +1181,12 @@ button[type="button"] {
     }
 
     *.fin {
-        padding: 1rem;
+        padding: .5rem;
         gap: 1rem;
 
         p  {
+            font-size: 1.25rem;
+            place-content: flex-start;
             gap: .25rem;
         }
 
@@ -1062,12 +1226,22 @@ label {
 */
 
 *.card {
-    background: #fff;
+    background-color: rgb(217 195 195);
+    background-image: linear-gradient(90deg, rgb(238 203 159) 0%, rgb(194 158 158) 100%, rgb(255 255 255) 100%);
     -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
     -webkit-border-radius: 3px;
     border-radius: 3px;
     width: 100%;
+    scale: 1;
+    -webkit-transition: all .25s ease-in-out 0s;
+    transition: all .25s ease-in-out 0s;
+}
+
+*.card:is(:focus, :hover, :active, :focus-within) {
+    scale: 1.05;
+    -webkit-transition: all .25s ease-in 0s;
+    transition: all .25s ease-in 0s;
 }
 
 *.clearfix:after {
@@ -1094,6 +1268,7 @@ label {
             gap: 2rem;
 
             hgroup {
+                padding-top: 2rem;
                 width: 50rem;
                 max-width: 100%;
                 flex: 1 0 50rem;
@@ -1131,6 +1306,14 @@ label {
 }
 
 *.call-to-action {
-    padding: 4rem 2rem;
+    padding: 4rem 1rem;
+    width: 100dvw;
+    max-width: 100%;
     gap: 1rem;
+
+    *.flexy.row {
+        width: inherit;
+        max-width: inherit;
+        gap: .5rem;
+    }
 }

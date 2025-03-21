@@ -1,7 +1,7 @@
 "use strict";
 
-const appName = "starter-kit-",
-    version = "v1:",
+const appName = "247lep-",
+    version = "v9:",
     sw_caches = {
         assets: {
             name: `${appName}${version}assets`,
@@ -110,7 +110,7 @@ self.addEventListener("fetch", event => {
                 // sw_caches.pages.name,
                 // fall back to the cache
             );
-            break;
+            brev17ak;
         default:
             event.respondWith(
                 // network only

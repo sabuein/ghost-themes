@@ -43,7 +43,7 @@
         {{ghost_head}}
     </head>
     <body class="flexy {{body_class}}">
-        <main id="site-main" class="flexy site-main" role="main">
+        <main id="site-main" class="flexy app-main" role="main">
             {{> "header"}}
             {{{body}}}
         </main>
@@ -56,7 +56,7 @@
                     $("body").toggleClass("gh-head-open");
                 });
 
-                console.log("Hello from default.hbs!");
+                // console.log("Hello from default.hbs!");
             });
         </script>
         {{{block "scripts"}}}

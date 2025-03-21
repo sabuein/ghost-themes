@@ -1,3 +1,7 @@
 <!-- partials/services-gas.hbs -->
-<h2>Gas services</h2>
-<p>Safety is our top priority when it comes to gas services. Our qualified engineers offer a full range of gas services, from appliance installation to safety inspections. We ensure all work is carried out to the highest standards, so you can feel confident that your gas systems are safe and efficient.</p>
+{{#get "posts" filter="tags:[hash-gas]+id:-{{id}}" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Gas services</h3>
+    <p class="quote">Safety is our top priority when it comes to gas services. Our qualified engineers offer a full range of gas services, from appliance installation to safety inspections. We ensure all work is carried out to the highest standards, so you can feel confident that your gas systems are safe and efficient.</p>
+    <hr />
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

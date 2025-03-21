@@ -2,7 +2,9 @@
 
 const id = (id) => document.getElementById(id),
     qs = (selector) => document.querySelector(selector),
-    qsa = (selector) => document.querySelectorAll(selector);
+    qsa = (selector) => document.querySelectorAll(selector),
+    vh = () => Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0),
+    vw = () => Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 
 
 const offlineDetection = () => {
@@ -295,11 +297,10 @@ const registerServiceWorker = (env = "LIVE") => {
                 // registration = await navigator.serviceWorker.register("/service-worker.js");
                 registration = await navigator.serviceWorker.register("/service-worker.mjs", {
                     type: "module",
-                    scope: "/247lep"
+                    scope: "/"
                 });
                 console.log("Service worker registered in production! 😎", registration);
             }
-            addAppInstallButton();
 
         } catch (error) {
             console.log("😥 Service worker registration failed: ", error);
@@ -491,6 +492,8 @@ const addAppInstallButton = () => {
             // and just use the browser prompt directly. In this case
             // likewise run `onInstall()`.
             window.addEventListener("appinstalled", () => onInstall());
+
+            installButton.style.display = "inline-block";
         }
     }
 };
@@ -618,9 +621,12 @@ export {
     id,
     qs,
     qsa,
+    vh,
+    vw,
     getFileSize,
     offlineDetection,
     setCountries,
+    addAppInstallButton,
     registerServiceWorker,
     sharingLinks,
     sharingFiles,
