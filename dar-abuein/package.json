@@ -1,20 +1,52 @@
 {
-    "name": "dar-abuein-rtl",
-    "description": "A theme used on abuein.com with RTL support",
+    "name": "dar-abuein",
+    "description": "A theme with RTL support",
+    "demo": "https://abuein.com/",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
     "version": "1.0.0",
     "license": "MIT",
     "author": {
         "name": "Salaheddin AbuEin",
-        "email": "sabuein@gmail.com"
+        "email": "sabuein@gmail.com",
+        "url": "https://sabuein.github.io/"
     },
     "keywords": ["ghost-theme", "ghost-theme-rtl", "ghost-rtl", "ghost"],
     "screenshots": {
         "desktop": "assets/images/screenshot-desktop.jpg",
         "mobile": "assets/images/screenshot-mobile.jpg"
     },
+    "scripts": {
+        "node": "nvm use 22.11.0",
+        "ghost": "npm install ghost-cli@latest -g",
+        "start": "ghost start -d ~/my/instances/ghost-25",
+        "restart": "ghost restart -d ~/my/instances/ghost-25",
+        "update": "ghost update -d ~/my/instances/ghost-25",
+        "stop": "ghost stop -d ~/my/instances/ghost-25",
+        "debug": "ghost start -D -d ~/my/instances/ghost-25",
+        "log": "ghost log -d ~/my/instances/ghost-25",
+        "zip": "zip -r /home/sabuein/Desktop/dar-abuein.zip * -x *.zip /assets/labs/* .gitignore",
+        "scan": "npx gscan .",
+        "scan-zip": "npx gscan -z /home/sabuein/Desktop/dar-abuein.zip",
+        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/dar-abuein ~/my/instances/ghost-25/content/themes"
+    },
     "config": {
         "posts_per_page": 10,
         "card_assets": true,
         "image_sizes": {}
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sabuein/ghost-themes.git"
+    },
+    "bugs": "https://github.com/sabuein/ghost-themes/issues",
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine"
+        ]
+    },
+    "type": "module"
 }
