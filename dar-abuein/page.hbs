@@ -5,7 +5,7 @@
 {{#post}}
 <main role="main">
     <article {{post_class}}>
-        <header class="page-header">
+        {{#match @page.show_title_and_feature_image}}<header class="page-header">
             <h2>{{title}}</h2>
             <section class="page-meta">
                 <span>
@@ -15,7 +15,11 @@
                 </span>
                 <span class="head-tags">&nbsp;{{tags prefix=" on "}}</span>
             </section>
-        </header>
+            {{#if feature_image}}<figure class="flexy apply-full-cover" style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
+                <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" />
+                {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+            </figure>{{/if}}
+        </header>{{/match}}
         <section class="page-content">
             {{content}}
         </section>
