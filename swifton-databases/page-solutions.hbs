@@ -1,115 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solutions - Swifton Databases Limited</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <h1>Swifton<span>DB</span></h1>
-      </div>
-      <nav>
-        <button class="mobile-menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="solutions.html" class="active">Solutions</a></li>
-          <li><a href="contact.html" class="contact-btn">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <section class="page-header">
-    <div class="container">
-      <h1>Our Solutions</h1>
-      <p>Tailored database solutions for your business needs</p>
-    </div>
-  </section>
-
-  <section class="solutions">
-    <div class="container">
-      <div class="solution-card">
-        <div class="solution-icon windows-icon"></div>
-        <div class="solution-content">
-          <h2>Windows Applications</h2>
-          <p>We program in a range of languages including C# and Visual Basic. We use these languages to develop functional, secure and robust Windows applications, providing a friendly and feature-rich experience for the end user.</p>
-          <h3>Key Features</h3>
-          <ul>
-            <li>Intuitive user interfaces designed for productivity</li>
-            <li>Robust database integration with SQL Server, MySQL, or Oracle</li>
-            <li>Secure authentication and authorization systems</li>
-            <li>Comprehensive reporting and analytics capabilities</li>
-            <li>Seamless integration with existing business systems</li>
-          </ul>
-          <a href="contact.html" class="btn secondary">Discuss Your Requirements</a>
+{{!< default}}
+<!-- page-about.hbs -->
+{{#is "page"}}
+{{#post}}
+<section class="flexy hero">
+    {{#match @page.show_title_and_feature_image}}<hgroup class="flexy hero-content">
+        <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
+        <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="51"}}{{/if}}</p>
+    </hgroup>
+    {{#if feature_image}}<figure class="flexy bg-image" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{/if}}{{/match}}
+</section>
+    <section class="flexy capabilities">
+        <div class="container">
+            <h2 class="section-title">Key capabilities</h2>
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <h3>Custom Business Applications</h3>
+                    <p>Including order processing systems, delivery tracking, inspection tools, quotation management, and dashboard reporting. We work closely with departments like Sales, Operations, and Manufacturing to align the tools with their needs.</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h3>Systems Integration</h3>
+                    <p>Seamless API integrations with platforms such as Sage 200, order management systems, identity verification tools (e.g., YoTi), and remote desktop environments.</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h3>Manufacturing & Engineering Tools</h3>
+                    <p>Critical systems including web applications for manufacturing operations, PCB printing workflows, inspection automation, and drawing/data management.</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h3>Recruitment & Workforce Solutions</h3>
+                    <p>Platforms for managing temporary and agency staff, identity checking, job posting via CSV uploads, and communication via SMS integration.</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h3>Legacy System Support & Modernisation</h3>
+                    <p>Support for long-standing desktop applications (e.g., 15+ years old), including updates, maintenance, remote access setups, and performance enhancements.</p>
+                </div>
+                
+                <div class="capability-card">
+                    <h3>Ongoing Support & Maintenance</h3>
+                    <p>Dedicated support arrangements for clients with monthly service models, ensuring continuous system performance and adaptability.</p>
+                </div>
+            </div>
+            
+            <!-- Mobile accordion version -->
+            <div class="accordion" id="capabilities-accordion">
+                <!-- JavaScript will populate this -->
+            </div>
         </div>
-      </div>
-
-      <div class="solution-card">
-        <div class="solution-icon web-icon"></div>
-        <div class="solution-content">
-          <h2>Web-Based Applications</h2>
-          <p>We use the latest Microsoft ASP.NET technologies to create fully-interactive, data driven websites and intranet sites. Our web applications are responsive, secure, and built to handle your organization's specific needs.</p>
-          <h3>Key Features</h3>
-          <ul>
-            <li>Responsive design that works on all devices</li>
-            <li>Modern, intuitive user interfaces</li>
-            <li>Secure data handling and transmission</li>
-            <li>Integration with existing databases and systems</li>
-            <li>Scalable architecture to grow with your business</li>
-          </ul>
-          <a href="contact.html" class="btn secondary">Discuss Your Requirements</a>
-        </div>
-      </div>
-
-      <div class="solution-card">
-        <div class="solution-icon legacy-icon"></div>
-        <div class="solution-content">
-          <h2>Legacy System Migration</h2>
-          <p>We have significant expertise in helping organisations move from legacy systems to the latest technologies. As well as developing the new solution for you, we can transfer data from the existing system and prepare your organisation for the switchover from the old to the new system.</p>
-          <h3>Our Migration Process</h3>
-          <ul>
-            <li>Comprehensive analysis of existing systems and data</li>
-            <li>Detailed migration planning and risk assessment</li>
-            <li>Secure and validated data transfer</li>
-            <li>Parallel running and testing before switchover</li>
-            <li>Staff training and post-migration support</li>
-          </ul>
-          <a href="contact.html" class="btn secondary">Discuss Your Requirements</a>
-        </div>
-      </div>
-
-      <div class="solution-card">
-        <div class="solution-icon"></div>
-        <div class="solution-content">
-          <h2>Custom Database Design</h2>
-          <p>We design and implement custom database solutions tailored to your specific business requirements. Our database experts ensure your data is structured efficiently, securely, and optimized for performance.</p>
-          <h3>Our Database Services</h3>
-          <ul>
-            <li>Database architecture and design</li>
-            <li>Data modeling and normalization</li>
-            <li>Performance optimization and tuning</li>
-            <li>Data migration and integration</li>
-            <li>Database security and access control</li>
-          </ul>
-          <a href="contact.html" class="btn secondary">Discuss Your Requirements</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="process">
+    </section>
+<section class="flexy process">
     <div class="container">
       <h2 class="section-title">Our Development Process</h2>
       <div class="process-steps">
@@ -146,42 +90,6 @@
       </div>
     </div>
   </section>
-
-  <section class="cta">
-    <div class="container">
-      <h2>Ready to transform your data management?</h2>
-      <p>Contact us today to discuss your requirements and discover how our database solutions can help your organization.</p>
-      <a href="contact.html" class="btn primary">Contact Us</a>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h2>Swifton<span>DB</span></h2>
-          <p>Database solutions experts since 2000</p>
-        </div>
-        <div class="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h3>Contact Us</h3>
-          <p>Tel: 0121 707 9008 / 07939 134 959</p>
-          <p>Email: <a href="mailto:ian@swifton.co.uk">ian@swifton.co.uk</a></p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2023 Swifton Databases Limited. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+  {{> "cta-contact"}}
+{{/post}}
+{{/is}}

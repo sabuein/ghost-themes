@@ -1,0 +1,40 @@
+<!-- contact-form.hbs -->
+<form id="contactForm" class="flexy contact-form" action="https://formspree.io/f/xrgwvadz" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend class="flexy row">
+            <figure class="flexy">
+                {{> "drawings/letter"}}
+            </figure>
+            <h2>Send us a message</h2>
+        </legend>
+        <div class="form-group">
+            <label for="name" title="Your name">Your name&colon;</label>
+            <input type="text" name="name" id="name" autocomplete="name" required="required" {{!--placeholder="John Doe"--}}/>
+        </div>
+        <div class="form-group">
+            <label for="phone" title="Phone number">Phone number&colon;</label>
+            <input type="tel" name="phone" id="phone" autocomplete="tel" {{!--placeholder="555&dash;555&dash;5555"--}}/>
+        </div>
+        <div class="form-group">
+            <label for="company" title="Company name">Company name&colon;</label>
+            <input type="text" name="company" id="company" autocomplete="organization" {{!--placeholder="John Doe"--}}/>
+        </div>
+        <div class="form-group">
+            <label for="email" title="Email address">Email address&colon;</label>
+            <input type="email" name="email" id="email" autocomplete="email" required="required" {{!--placeholder="john&period;doe&commat;example&period;com"--}}/>
+        </div>
+        <div class="form-group">
+            <label for="subject" title="Subject">Subject&colon;</label>
+            <input type="text" name="subject" id="subject" autocomplete="off" required="required" {{!--placeholder="John Doe"--}}/>
+        </div>
+        <div class="form-group">
+            <label for="message" title="Your message">Your message&colon;</label>
+            <textarea name="message" id="message" rows="5" cols="40" wrap="hard" required="required" {{!--placeholder="Enter your message here&hellip;"--}}></textarea>
+        </div>
+        {{!--<label for="leadAttachment" title="Please select a file to upload (PDF, Word, Excel, Powerpoint, TXT, PDF, Images)">Add an attachment&quest;<input type="file" name="attachment" id="leadAttachment" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*" disabled="disabled" /></label>--}}
+        <div class="flexy row form-controls">
+            <input type="submit" value="Send Message" title="Send Message" class="btn primary" />
+            <input type="reset" value="Reset" title="Reset" class="btn secondary" />
+        </div>
+    </fieldset>
+</form>

@@ -1,53 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Swifton Databases Limited</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <h1>Swifton<span>DB</span></h1>
-      </div>
-      <nav>
-        <button class="mobile-menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="solutions.html">Solutions</a></li>
-          <li><a href="contact.html" class="contact-btn">Contact</a></li>
-        </ul>
-      </nav>
+{{!< default}}
+<!-- page-about.hbs -->
+{{#is "page"}}
+{{#post}}
+<section class="flexy hero">
+    {{#match @page.show_title_and_feature_image}}<hgroup class="flexy hero-content">
+        <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
+        <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="51"}}&hellip;{{/if}}</p>
+    </hgroup>
+    {{#if feature_image}}<figure class="flexy bg-image" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{/if}}{{/match}}
+</section>
+<section class="flexy about-content">
+    <div class="flexy content">
+      {{content}}
     </div>
-  </header>
-
-  <section class="page-header">
-    <div class="container">
-      <h1>About Us</h1>
-      <p>Learn more about our company and our expertise</p>
-    </div>
-  </section>
-
-  <section class="about-content">
     <div class="container">
       <div class="about-grid">
         <div class="about-text">
-          <h2>Who We Are</h2>
+          <h2 class="section-title">Who We Are</h2>
           <p>We provide software solutions for business, charities and local authorities. We specialise in database driven applications to help organisations manage their data, business processes and workflow. We use a range of programming tools to deliver high-quality, user-friendly applications for both the Windows platform and for websites.</p>
           
-          <h2>Our Experience</h2>
+          <h2 class="section-title">Our Experience</h2>
           <p>The company has over 20 years experience in the development of bespoke software applications and has clients ranging from small businesses to multi-national organisations.</p>
           
-          <h2>Our Approach</h2>
+          <h2 class="section-title">Our Approach</h2>
           <p>We believe in creating software that not only meets your technical requirements but is also intuitive and user-friendly. Our development process involves close collaboration with clients to ensure we deliver solutions that truly address your business needs.</p>
         </div>
         <div class="about-image">
@@ -58,7 +36,7 @@
       </div>
       
       <div class="timeline">
-        <h2>Our Journey</h2>
+        <h2 class="section-title">Our Journey</h2>
         <div class="timeline-items">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -95,64 +73,18 @@
               <p>Celebrating 20 years of delivering database solutions</p>
             </div>
           </div>
-        </div>
-      </div>
-      
-      <div class="team-section">
-        <h2>Our Team</h2>
-        <div class="team-grid">
-          <div class="team-member">
-            <div class="member-image"></div>
-            <h3>Ian Smith</h3>
-            <p>Founder & Lead Developer</p>
-          </div>
-          <div class="team-member">
-            <div class="member-image"></div>
-            <h3>Sarah Johnson</h3>
-            <p>Database Architect</p>
-          </div>
-          <div class="team-member">
-            <div class="member-image"></div>
-            <h3>Michael Brown</h3>
-            <p>Web Development Lead</p>
-          </div>
-          <div class="team-member">
-            <div class="member-image"></div>
-            <h3>Emma Wilson</h3>
-            <p>Project Manager</p>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>2025</h3>
+              <p>Swifton Databases Limited joins the Rapid Information Systems family, marking a new chapter after 25 years of delivering trusted database solutions</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h2>Swifton<span>DB</span></h2>
-          <p>Database solutions experts since 2000</p>
-        </div>
-        <div class="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h3>Contact Us</h3>
-          <p>Tel: 0121 707 9008 / 07939 134 959</p>
-          <p>Email: <a href="mailto:ian@swifton.co.uk">ian@swifton.co.uk</a></p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2023 Swifton Databases Limited. All rights reserved.</p>
-      </div>
+      {{> "team"}}
     </div>
-  </footer>
-</body>
-</html>
+</section>
+{{/post}}
+{{/is}}

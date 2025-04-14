@@ -1,0 +1,22 @@
+<!-- dialog.hbs -->
+<dialog id="get-in-touch" class="flexy">
+    <form id="contact" class="flexy" method="dialog">
+        <button type="submit" id="close" aria-label="close" formnovalidate="formnovalidate" value="Cancel" title="Cancel">X</button>
+        <fieldset class="flexy">
+            <legend class="flexy" title="Start your Rapid journey today">
+                <h2>Start your Rapid journey today</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid dolorum maiores eaque, officiis dolorem repellendus impedit recusandae est ad! Maiores dolorem ducimus voluptatibus minus?</p>
+            </legend>
+            <div class="flexy row">
+                <label for="contactName" class="flexy" title="Please enter your full name">Full name&colon;<input type="text" name="contactName" id="contactName" autocomplete="name" required="required" placeholder="John Doe" /></label>
+                <label for="contactEmail" class="flexy" title="Email address">Email address&colon;<input type="email" name="contactEmail" id="contactEmail" autocomplete="email" required="required" placeholder="example&commat;example&period;com" /></label>
+                <label for="contactOrganisation" class="flexy" title="Please enter your organisation name">Your organisation&colon;<input type="text" name="organisation" id="contactOrganisation" autocomplete="organization" required="required" placeholder="XYZ Council" /></label>
+                <label for="contactRole" class="flexy" title="Please enter your role">Your role&colon;<input type="text" name="role" id="contactRole" autocomplete="organization-title" placeholder="Project manager" /></label>
+            </div>
+            <div class="controls flexy row">
+                <input type="submit" value="Request" title="Request" />
+                <input type="reset" value="Reset" title="Reset" />
+            </div>
+        </fieldset>
+    </form>
+</dialog>

@@ -1,0 +1,11 @@
+<!-- prev-next.hbs -->
+<div class="prev-next flexy row">
+    {{#prev_post in="primary_tag"}}<p class="prev flexy">
+        <span title="Previous">Previous</span>
+        <a class="flexy row" href="{{url absolute='true'}}" title="{{title}}"><span>&LeftArrow;</span>{{title}}</a>
+    </p>{{/prev_post}}
+    {{#next_post in="primary_tag"}}<p class="next flexy">
+        <span title="Next">Next</span>
+        <a class="flexy row" href="{{url absolute='true'}}" title="{{title}}">{{title}}<span>&RightArrow;</span></a>
+    </p>{{/next_post}}
+</div>
