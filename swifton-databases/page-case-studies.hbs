@@ -1,156 +1,328 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Studies - Swifton Databases Limited</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        <h1>Swifton<span>DB</span></h1>
-      </div>
-      <nav>
-        <button class="mobile-menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="case-studies.html" class="active">Case Studies</a></li>
-          <li><a href="solutions.html">Solutions</a></li>
-          <li><a href="contact.html" class="contact-btn">Contact</a></li>
-        </ul>
-      </nav>
+{{!< default}}
+<!-- page-about.hbs -->
+{{#is "page"}}
+{{#post}}
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<section class="flexy hero">
+    {{#match @page.show_title_and_feature_image}}<hgroup class="flexy hero-content">
+        <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
+        <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="51"}}&hellip;{{/if}}</p>
+    </hgroup>
+    {{#if feature_image}}<figure class="flexy bg-image" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{/if}}{{/match}}
+</section>
+<section class="flexy case-studies">
+    <div class="flexy content">
+      {{content}}
     </div>
-  </header>
-
-  <section class="page-header">
-    <div class="container">
-      <h1>Case Studies</h1>
-      <p>Real-world examples of our database solutions in action</p>
-    </div>
-  </section>
-
-  <section class="case-studies">
-    <div class="container">
-      <div class="case-study">
-        <div class="case-study-image">
-          <div class="image-placeholder"></div>
+    <div class="flexy container tabs-container">
+        <div class="tabs-list">
+          <button class="tab-trigger active" data-tab="resource-management">
+            <i class="fas fa-chart-bar"></i>
+            <span class="tab-text-full">Resource Management</span>
+            <span class="tab-text-short">Resources</span>
+          </button>
+          <button class="tab-trigger" data-tab="sales-crm">
+            <i class="fas fa-building"></i>
+            <span class="tab-text-full">Sales &amp; CRM</span>
+            <span class="tab-text-short">Sales</span>
+          </button>
+          <button class="tab-trigger" data-tab="safety">
+            <i class="fas fa-hard-hat"></i>
+            <span class="tab-text-full">Safety</span>
+            <span class="tab-text-short">Safety</span>
+          </button>
+          <button class="tab-trigger" data-tab="automated-processes">
+            <i class="fas fa-cogs"></i>
+            <span class="tab-text-full">Automated Processes</span>
+            <span class="tab-text-short">Automation</span>
+          </button>
         </div>
-        <div class="case-study-content">
-          <div class="industry-tag">Manufacturing</div>
-          <h2>Streamlining Production Tracking for ABC Manufacturing</h2>
-          <p>ABC Manufacturing needed a solution to track production across multiple facilities. We developed a custom database application that provided real-time visibility into production status, inventory levels, and quality metrics.</p>
-          <h3>Challenges</h3>
-          <ul>
-            <li>Multiple legacy systems with incompatible data formats</li>
-            <li>Geographically distributed production facilities</li>
-            <li>Need for real-time reporting and analytics</li>
-          </ul>
-          <h3>Solution</h3>
-          <p>We created a centralized database system with custom interfaces for each department, automated data migration from legacy systems, and implemented real-time dashboards for management.</p>
-          <h3>Results</h3>
-          <ul>
-            <li>35% reduction in production reporting time</li>
-            <li>Improved inventory accuracy from 82% to 99%</li>
-            <li>Enabled data-driven decision making across all departments</li>
-          </ul>
+
+        <div class="tab-content active" id="resource-management">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3 class="section-title">Resource management</h3>
+            <p>Optimizing resource allocation and utilization across organizations&period;</p>
+          </div>
+
+          <div class="flexy case-studies-grid">
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Manufacturing Efficiency Improvement">
+              </div>
+              <div class="card-header">
+                <h4>Manufacturing Efficiency Improvement</h4>
+              </div>
+              <div class="card-content">
+                <p>Helped a manufacturing company reduce resource waste by 35% through advanced analytics and optimization algorithms.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Energy Sector Resource Optimization">
+              </div>
+              <div class="card-header">
+                <h4>Energy Sector Resource Optimization</h4>
+              </div>
+              <div class="card-content">
+                <p>Implemented a resource management system that improved operational efficiency by 28% for a major energy provider.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Supply Chain Transformation">
+              </div>
+              <div class="card-header">
+                <h4>Supply Chain Transformation</h4>
+              </div>
+              <div class="card-content">
+                <p>Redesigned supply chain processes resulting in 22% cost reduction and improved resource allocation.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="view-all-container">
+            <a href="#" class="view-all-btn">View All Resource Management Case Studies</a>
+          </div>
+        </div>
+
+        <div class="tab-content" id="sales-crm">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3 class="section-title">Sales &amp; CRM</h3>
+            <p>Enhancing customer relationships and boosting sales performance&period;</p>
+          </div>
+
+          <div class="case-studies-grid">
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Retail Sales Transformation">
+              </div>
+              <div class="card-header">
+                <h4>Retail Sales Transformation</h4>
+              </div>
+              <div class="card-content">
+                <p>Implemented an integrated CRM solution that increased sales conversion by 42% for a national retail chain.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="B2B Sales Pipeline Optimization">
+              </div>
+              <div class="card-header">
+                <h4>B2B Sales Pipeline Optimization</h4>
+              </div>
+              <div class="card-content">
+                <p>Developed a custom CRM workflow that shortened sales cycles by 35% and improved forecast accuracy.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Customer Retention Strategy">
+              </div>
+              <div class="card-header">
+                <h4>Customer retention strategy</h4>
+              </div>
+              <div class="card-content">
+                <p>Created a data-driven retention program that reduced churn by 28% for a subscription-based service.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="view-all-container">
+            <a href="#" class="view-all-btn">View All Sales and CRM Case Studies</a>
+          </div>
+        </div>
+
+        <div class="tab-content" id="safety">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-hard-hat"></i>
+            </div>
+            <h3 class="section-title">Safety</h3>
+            <p>Implementing robust safety protocols and systems across industries&period;</p>
+          </div>
+
+          <div class="flexy case-studies-grid">
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Construction Site Safety Overhaul">
+              </div>
+              <div class="card-header">
+                <h4>Construction site safety overhaul</h4>
+              </div>
+              <div class="card-content">
+                <p>Reduced workplace incidents by 78% through implementation of IoT-based safety monitoring systems.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Manufacturing Safety Compliance">
+              </div>
+              <div class="card-header">
+                <h4>Manufacturing safety compliance</h4>
+              </div>
+              <div class="card-content">
+                <p>Developed a comprehensive safety management system that ensured 100% regulatory compliance.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Healthcare Safety Protocols">
+              </div>
+              <div class="card-header">
+                <h4>Healthcare safety protocols</h4>
+              </div>
+              <div class="card-content">
+                <p>Implemented advanced safety protocols that reduced patient incidents by 45% in a major hospital network.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="view-all-container">
+            <a href="#" class="view-all-btn">View All Safety Case Studies</a>
+          </div>
+        </div>
+
+        <div class="tab-content" id="automated-processes">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="section-title">Automated processes</h3>
+            <p>Streamlining operations through intelligent automation solutions&period;</p>
+          </div>
+
+          <div class="flexy case-studies-grid">
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Financial Services Automation">
+              </div>
+              <div class="card-header">
+                <h4>Financial Services Automation</h4>
+              </div>
+              <div class="card-content">
+                <p>Automated core banking processes resulting in 65% reduction in processing time and 89% fewer errors.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Manufacturing Production Automation">
+              </div>
+              <div class="card-header">
+                <h4>Manufacturing Production Automation</h4>
+              </div>
+              <div class="card-content">
+                <p>Implemented end-to-end production automation that increased output by 52% while reducing labor costs.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="flexy case-study-card">
+              <div class="case-study-image">
+                <img src="https://placehold.co/600x400" alt="Logistics Process Transformation">
+              </div>
+              <div class="card-header">
+                <h4>Logistics Process Transformation</h4>
+              </div>
+              <div class="card-content">
+                <p>Developed automated logistics systems that improved delivery times by 40% and reduced operational costs by 32%.</p>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="read-more-btn">
+                  Read Case Study
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="view-all-container">
+            <a href="#" class="view-all-btn">View All Automated Processes Case Studies</a>
+          </div>
         </div>
       </div>
-
-      <div class="case-study">
-        <div class="case-study-image">
-          <div class="image-placeholder"></div>
-        </div>
-        <div class="case-study-content">
-          <div class="industry-tag">Local Authority</div>
-          <h2>Modernizing Citizen Services for Midlands Council</h2>
-          <p>Midlands Council needed to replace their outdated citizen service portal with a modern, user-friendly system. We developed a web-based application that integrated with their existing databases while providing an improved experience for both citizens and staff.</p>
-          <h3>Challenges</h3>
-          <ul>
-            <li>Legacy system with 15+ years of historical data</li>
-            <li>Need for accessibility compliance</li>
-            <li>Integration with multiple department systems</li>
-          </ul>
-          <h3>Solution</h3>
-          <p>We built a new ASP.NET web application with a responsive design, implemented secure data migration, and created APIs for seamless integration with other council systems.</p>
-          <h3>Results</h3>
-          <ul>
-            <li>50% increase in online service usage by citizens</li>
-            <li>Reduced processing time for requests by 40%</li>
-            <li>Full WCAG 2.1 AA accessibility compliance</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="case-study">
-        <div class="case-study-image">
-          <div class="image-placeholder"></div>
-        </div>
-        <div class="case-study-content">
-          <div class="industry-tag">Financial Services</div>
-          <h2>Secure Client Portal for XYZ Financial Advisors</h2>
-          <p>XYZ Financial Advisors needed a secure portal for clients to access their financial information and communicate with advisors. We developed a custom solution that met strict security requirements while providing an intuitive user experience.</p>
-          <h3>Challenges</h3>
-          <ul>
-            <li>Stringent data security and compliance requirements</li>
-            <li>Integration with existing financial management software</li>
-            <li>Need for both web and mobile access</li>
-          </ul>
-          <h3>Solution</h3>
-          <p>We created a secure client portal with end-to-end encryption, two-factor authentication, and responsive design for all devices. The system integrated seamlessly with their existing financial software.</p>
-          <h3>Results</h3>
-          <ul>
-            <li>100% compliance with financial industry regulations</li>
-            <li>75% reduction in paper-based communications</li>
-            <li>Improved client satisfaction and retention</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="container">
-      <h2>Ready to transform your data management?</h2>
-      <p>Contact us today to discuss your requirements and discover how our database solutions can help your organization.</p>
-      <a href="contact.html" class="btn primary">Contact Us</a>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h2>Swifton<span>DB</span></h2>
-          <p>Database solutions experts since 2000</p>
-        </div>
-        <div class="footer-links">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="solutions.html">Solutions</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-contact">
-          <h3>Contact Us</h3>
-          <p>Tel: 0121 707 9008 / 07939 134 959</p>
-          <p>Email: <a href="mailto:ian@swifton.co.uk">ian@swifton.co.uk</a></p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2023 Swifton Databases Limited. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-</body>
-</html>
+</section>
+{{> "cta-contact"}}
+{{/post}}
+{{/is}}

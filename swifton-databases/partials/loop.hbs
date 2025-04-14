@@ -1,0 +1,12 @@
+<!-- loop.hbs -->
+<div class="loop flexy">
+    <hgroup class="flexy">
+        <h3>All <span class="loop-name">{{name}}</span>&hellip;</h3>
+        {{#get "posts" include="tags,authors" filter="id:-{{id}}+tag:{{slug}}+visibility:public" order="published_at asc" limit="all" as |post pages|}}{{^if post}}<p>No content&excl;</p>
+        <p class="get-posts-error">{{error}}</p>
+    </hgroup>{{else}}</hgroup>
+    <ul class="container flexy">
+        {{#foreach post}}<li class="flexy {{#if @even}}even{{else}}odd{{/if}}">{{#if featured}}<span class="featured" title="Featured">Featured</span>{{/if}}<a href="{{url absolute='true'}}" title="{{title}}">{{title}}</a></li>{{/foreach}}
+    </ul>
+    <p class="total-results">{{plural pages.total empty="Found no results" singular="Found % result" plural="Found % results"}}&excl;</p>{{/if}}{{/get}}
+</div>
