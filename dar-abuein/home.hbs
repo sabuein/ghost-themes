@@ -1,0 +1,31 @@
+{{!< default}}
+<!-- index.hbs -->
+    <div class="ae-page">
+        <div class="ae-container">
+            <h1>As&dash;salamu alaykum&comma; world&excl;</h1>
+        </div>
+        <div class="ae-container">
+            <div class="gh-postfeed">
+                <ul class="ae-flexy-col">
+                    {{#foreach posts}}
+
+                    {{> "item" page=../pagination.page }} {{!-- partials/card.hbs --}}
+
+                    {{/foreach}}
+                </ul>
+
+                {{!-- If JS isn't enabled, fallback to standard pagination --}}
+                <noscript>
+                    <div class="ae-pagination">
+                        {{pagination}}
+                    </div>
+                </noscript>
+            </div>
+        </div>
+        {{!-- Embeddable signup form --}}
+        <div style="height: 40vmin;min-height: 360px">
+            <script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.2/umd/signup-form.min.js"
+                data-background-color="{{@site.accent_color}}" data-text-color="#FFFFFF" data-button-color="#FF1A75"
+                data-button-text-color="#FFFFFF" data-title="{{@site.title}}" data-description="{{@site.description}}" data-site="{{@site.url}}" data-locale="{{@site.locale}}" async></script>
+        </div>
+    </div>
