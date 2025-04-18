@@ -1,22 +1,35 @@
 {{!< default}}
-<!-- tag.hbs -->
-{{!-- The default template for "tag" indeces --}}
-{{#is "tag"}}
-{{#tag}}
-<header>
-    {{#if feature_image}}
-    <img src="{{feature_image}}" alt="{{name}}" />
-    {{/if}}
-</header>
-<section class="author-profile">
-    <h1>{{name}}</h1>
-    {{#if description}}
-    <h2>{{description}}</h2>
-    {{/if}}
-</section>
-{{/tag}}
-{{/is}}
-<main role="main">
-    {{> "loop"}}
-</main>
-{{pagination}}
+
+<div class="ae-page">
+    <div class="ae-container">
+
+        {{#tag}}
+        <header class="ae-page-head">
+
+            <h1>{{name}}</h1>
+
+            <p>
+                {{#if description}}
+                    {{description}}
+                {{else}}
+                    A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+                {{/if}}
+            </p>
+
+            {{#if feature_image}}
+                <img class="ae-page-image" src="{{feature_image}}" alt="{{name}}" />
+            {{/if}}
+
+        </header>
+        {{/tag}}
+
+        <div class="gh-postfeed">
+        {{#foreach posts}}
+
+            {{> "card"}} {{!-- partials/card.hbs --}}
+
+        {{/foreach}}
+        </div>
+
+    </div>
+</div>
