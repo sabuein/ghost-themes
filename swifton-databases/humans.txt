@@ -7,3 +7,4 @@ Thanks to:
 - https://nekocalc.com/px-to-rem-converter
 - https://gwfh.mranftl.com/fonts
 - https://getavataaars.com/
+- https://www.svgviewer.dev/
