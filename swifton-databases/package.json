@@ -14,7 +14,7 @@
     "scripts": {
         "link": "ln -s /home/sabuein/my/projects/rapid-is /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
         "check": "npx gscan .",
-        "start": "ghost start -d ~/my/instances/ghost/",
+        "start": "ghost start -d C:\\Users\\sala\\my\\ghost-cms",
         "restart": "ghost restart -d ~/my/instances/ghost/",
         "stop": "ghost stop -d ~/my/instances/ghost/",
         "update": "ghost update -d ~/my/instances/ghost/",
