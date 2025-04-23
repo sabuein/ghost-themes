@@ -1,59 +1,159 @@
-{{!< default}}
-<!-- page-about.hbs -->
-{{#is "page"}}
-{{#post}}
-<section class="flexy hero">
+{{!< default}} <!-- page-about.hbs -->
+  {{#is "page"}}
+  {{#post}}
+  <section class="flexy hero">
     {{#match @page.show_title_and_feature_image}}<hgroup class="flexy hero-content">
-        <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
-        <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="51"}}{{/if}}</p>
+      <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
+      <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="51"}}{{/if}}</p>
     </hgroup>
-    {{#if feature_image}}<figure class="flexy bg-image" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})">
-        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" onerror="this.style.display = 'none';" />
-        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    {{#if feature_image}}<figure class="flexy bg-image"
+      style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})">
+      <img src="{{img_url feature_image absolute='true'}}"
+        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy"
+        onerror="this.style.display = 'none';" />
+      {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
     </figure>{{/if}}{{/match}}
-</section>
-    <section class="flexy capabilities">
-        <div class="container">
-            <h2 class="section-title">Key capabilities</h2>
-            <div class="capabilities-grid">
-                <div class="capability-card">
-                    <h3>Custom Business Applications</h3>
-                    <p>Including order processing systems, delivery tracking, inspection tools, quotation management, and dashboard reporting. We work closely with departments like Sales, Operations, and Manufacturing to align the tools with their needs.</p>
-                </div>
-                
-                <div class="capability-card">
-                    <h3>Systems Integration</h3>
-                    <p>Seamless API integrations with platforms such as Sage 200, order management systems, identity verification tools (e.g., YoTi), and remote desktop environments.</p>
-                </div>
-                
-                <div class="capability-card">
-                    <h3>Manufacturing & Engineering Tools</h3>
-                    <p>Critical systems including web applications for manufacturing operations, PCB printing workflows, inspection automation, and drawing/data management.</p>
-                </div>
-                
-                <div class="capability-card">
-                    <h3>Recruitment & Workforce Solutions</h3>
-                    <p>Platforms for managing temporary and agency staff, identity checking, job posting via CSV uploads, and communication via SMS integration.</p>
-                </div>
-                
-                <div class="capability-card">
-                    <h3>Legacy System Support & Modernisation</h3>
-                    <p>Support for long-standing desktop applications (e.g., 15+ years old), including updates, maintenance, remote access setups, and performance enhancements.</p>
-                </div>
-                
-                <div class="capability-card">
-                    <h3>Ongoing Support & Maintenance</h3>
-                    <p>Dedicated support arrangements for clients with monthly service models, ensuring continuous system performance and adaptability.</p>
-                </div>
-            </div>
-            
-            <!-- Mobile accordion version -->
-            <div class="accordion" id="capabilities-accordion">
-                <!-- JavaScript will populate this -->
-            </div>
+  </section>
+  
+  <section class="flexy capabilities">
+  <div class="container">
+    <h2 class="section-title">Key Capabilities</h2>
+    
+    <!-- Desktop version -->
+    <div class="capabilities-grid">
+      <!-- Quotation & Sales Systems -->
+      <div class="capability-card">
+        <div class="capability-header">
+          <span class="capability-icon">🧾</span>
+          <h3>Quotation & Sales Systems</h3>
         </div>
-    </section>
-<section class="flexy process">
+        <p>Custom-built tools to manage complex quotations, multi-tiered pricing, and sales workflows.</p>
+        <div class="features">
+          <h4>Features:</h4>
+          <ul>
+            <li>Multi-template support</li>
+            <li>Integrated site survey tools</li>
+            <li>CRM-like contact management</li>
+            <li>Document generation & history tracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Field Service & Installation Support Tools -->
+      <div class="capability-card">
+        <div class="capability-header">
+          <span class="capability-icon">🛠</span>
+          <h3>Field Service & Installation Support Tools</h3>
+        </div>
+        <p>Software for scheduling, tracking, and supporting installation and service jobs.</p>
+        <div class="features">
+          <h4>Features:</h4>
+          <ul>
+            <li>Engineer service logs (tablet integration)</li>
+            <li>On-site image libraries</li>
+            <li>Installation feasibility checklists</li>
+            <li>Service history tracking</li>
+            <li>Safety & Compliance (e.g.COSHH Assessments)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Workforce & Recruitment Management -->
+      <div class="capability-card">
+        <div class="capability-header">
+          <span class="capability-icon">🧑‍💼</span>
+          <h3>Workforce & Recruitment Management</h3>
+        </div>
+        <p>Streamline agency and temp worker management with tools for job processing, CSV uploads, and verification.</p>
+        <p class="used-by">Used by: <span>QS Recruitment</span></p>
+        <div class="features">
+          <h4>Features:</h4>
+          <ul>
+            <li>CSV job post imports</li>
+            <li>Identity verification integrations (e.g., YoTi)</li>
+            <li>Remote desktop support</li>
+            <li>Messaging and communication modules</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Business Intelligence & Reporting Dashboards -->
+      <div class="capability-card">
+        <div class="capability-header">
+          <span class="capability-icon">📊</span>
+          <h3>Business Intelligence & Reporting Dashboards</h3>
+        </div>
+        <p>Integrated BI tools with real-time dashboards for sales, performance tracking, and reporting.</p>
+        <div class="features">
+          <h4>Features:</h4>
+          <ul>
+            <li>Sales targets & metrics</li>
+            <li>Custom reports linked to ERP systems</li>
+            <li>Support time tracking</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ERP Integration Services -->
+      <div class="capability-card">
+        <div class="capability-header">
+          <span class="capability-icon">📦</span>
+          <h3>ERP Integration Services</h3>
+        </div>
+        <p>Seamless integrations with ERP systems like Sage 200, Opera, and Dynamics.</p>
+        <div class="features">
+          <h4>Features:</h4>
+          <ul>
+            <li>API development</li>
+            <li>Custom reporting layers</li>
+            <li>Data sync across finance, sales, and operations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Legacy System Modernization -->
+      <div class="capability-card">
+        <div class="capability-header">
+          <span class="capability-icon">🌐</span>
+          <h3>Legacy System Modernization</h3>
+        </div>
+        <p>Turn aging desktop applications into accessible web-based solutions.</p>
+        <div class="features">
+          <h4>Features:</h4>
+          <ul>
+            <li>Full system redevelopments in modern frameworks</li>
+            <li>Web and mobile responsive access</li>
+            <li>Secure cloud-based hosting options</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Custom CRM Solutions -->
+      <div class="capability-card">
+        <div class="capability-header">
+          <span class="capability-icon">🧩</span>
+          <h3>Custom CRM Solutions</h3>
+        </div>
+        <p>Tailored CRM-style systems with modular functionality to support sales, marketing, and customer service.</p>
+        <div class="features">
+          <h4>Features:</h4>
+          <ul>
+            <li>Lead and contact tracking</li>
+            <li>Marketing data exports</li>
+            <li>Document and task workflows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile accordion version -->
+    <div class="accordion" id="capabilities-accordion">
+      <!-- JavaScript will populate this -->
+    </div>
+  </div>
+</section>
+
+  <section class="flexy process">
     <div class="container">
       <h2 class="section-title">Our Development Process</h2>
       <div class="process-steps">
@@ -91,5 +191,5 @@
     </div>
   </section>
   {{> "cta-contact"}}
-{{/post}}
-{{/is}}
+  {{/post}}
+  {{/is}}
