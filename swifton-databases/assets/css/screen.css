@@ -451,28 +451,72 @@ footer {
     background-color: var(--light-bg);
   }
 
+  .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+  }
+
+  .section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+  }
+
   .industry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
   }
 
-  .industry-item {
+  .industry-card {
     background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    font-weight: 500;
-    cursor: default;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
-  .industry-item:hover {
+  .industry-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    background-color: var(--primary-color);
-    color: white;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .industry-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .industry-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+  }
+
+  .industry-subtitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .industry-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    flex-grow: 1;
   }
 
   /* CTA section */
@@ -761,6 +805,29 @@ footer {
 
   .cookies {
     display: none;
+    padding: 1rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    color: var(--accent-color);
+    background-color: var(--light-bg);
+    gap: 2rem;
+    opacity: .95;
+    z-index: 999;
+    flex: 1 1 100dvw;
+    width: 100dvw;
+    max-width: 100%;
+    z-index: 9999999;
+    border: thin solid var(--border-color);
+  }
+
+  .cookies hgroup {
+    place-content: flex-start;
+    gap: 1rem;
+  }
+
+  .cookies .actions {
+    gap: 1rem;
   }
 
   .social-icons {
@@ -957,7 +1024,7 @@ h3,
 .form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid var(--border-color);
+  border: thin solid var(--border-color);
   border-radius: 4px;
   font-family: inherit;
   font-size: 1rem;

@@ -167,6 +167,37 @@
     color: #0070f3;
     font-weight: 600;
   }
+
+  .case-study {
+    flex-direction: column;
+  }
+
+  .solution-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .solution-content ul {
+    text-align: left;
+  }
+
+  .industry-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .industry-card {
+    padding: 25px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -180,6 +211,18 @@
 
   .industry-grid {
     grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .industry-title {
+    font-size: 1.3rem;
+  }
+
+  .industry-subtitle {
+    font-size: 1rem;
   }
 
   .capability-card {
@@ -242,22 +285,6 @@
   }
 }
 
-@media (max-width: 768px) {
-  .case-study {
-    flex-direction: column;
-  }
-
-  .solution-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .solution-content ul {
-    text-align: left;
-  }
-}
-
 @media (max-width: 576px) {
   .team-grid {
     grid-template-columns: 1fr;
@@ -268,9 +295,7 @@
   .tabs-list {
     grid-template-columns: repeat(4, 1fr);
   }
-}
 
-@media (min-width: 768px) {
   .tab-text-full {
     display: inline;
   }
@@ -289,16 +314,5 @@
 @media (min-width: 1024px) {
   .case-studies-grid {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 28px;
-  }
-
-  .hero p {
-    font-size: 16px;
   }
 }
