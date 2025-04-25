@@ -1,64 +1,108 @@
-<!doctype html>
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if (gte IE 9)| IEMobile |!(IE)]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
-<!-- error.hbs -->
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  <title>{{statusCode}} — {{message}}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}" />
+    <script src="{{asset "js/app.js"}}" type="module"></script>
 
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>{{meta_title}}</title>
 
-  <link rel="shortcut icon" href="{{asset " favicon.ico"}}">
-  <meta http-equiv="cleartype" content="on">
-
-  <link rel="stylesheet" href="{{asset " public/ghost.css" hasMinFile="true" }}" />
+    {{ghost_head}}
+    {{!-- Outputs important meta data and settings, should always be in <head> --}}
 
 </head>
 
-<body>
-  <main role="main" id="main">
-    <div class="gh-app">
-      <div class="gh-viewport">
-        <div class="gh-view">
-          <section class="error-content error-{{statusCode}} js-error-container">
-            <section class="error-details">
-              <section class="error-message">
-                <h1 class="error-code">{{statusCode}}</h1>
-                <h2 class="error-description">{{message}}</h2>
-                <a class="error-link" href="{{@site.url}}">Go to the front page →</a>
-              </section>
-            </section>
-          </section>
+<body class="{{body_class}}">
+<div class="gh-viewport">
 
-          {{#if errorDetails}}
-          <section class="error-stack">
-            <h3>Theme errors</h3>
+<header id="gh-head" class="gh-head">
+    <nav class="gh-head-inner gh-container">
 
-            <ul class="error-stack-list">
-              {{#foreach errorDetails}}
-              <li>
-                <em class="error-stack-function">{{{rule}}}</em>
-
-                {{#foreach failures}}
-                <p><span class="error-stack-file">Ref: {{ref}}</span></p>
-                <p><span class="error-stack-file">Message: {{message}}</span></p>
-                {{/foreach}}
-              </li>
-              {{/foreach}}
-            </ul>
-          </section>
-          {{/if}}
+        <div class="gh-head-brand">
+            <a class="gh-head-logo" href="{{@site.url}}">
+                {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
+                {{else}}
+                    {{@site.title}}
+                {{/if}}
+            </a>
+            <a class="gh-burger" role="button">
+                <div class="gh-burger-box">
+                    <div class="gh-burger-inner"></div>
+                </div>
+            </a>
         </div>
-      </div>
-    </div>
-  </main>
-</body>
+        <div class="gh-head-menu">
+            {{navigation}}
+        </div>
+        <div class="gh-head-actions">
+            <div class="gh-head-actions-list">
+                {{#if @site.facebook}}
+                <a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                {{/if}}
+                {{#if @site.twitter}}
+                <a href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                {{/if}}
+                <a href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
+            </div>
+        </div>
+    </nav>
+</header>
 
+<main class="gh-main">
+
+    <section class="ae-page gh-error">
+        <div class="ae-container">
+
+            <section class="gh-error-content">
+
+                <h1 class="gh-error-code">{{statusCode}}</h1>
+                <p class="gh-error-description">{{message}}</p>
+                <p class="gh-error-link"><a href="{{@site.url}}">Go to the home page →</a></p>
+
+                {{#if errorDetails}}
+                <section class="gh-error-stack">
+                    <h4>Theme errors:</h4>
+                    <ul class="gh-error-stack-list">
+                        {{#foreach errorDetails}}
+                        <li>
+                            <h5 class="gh-error-stack-function">{{{rule}}}</h5>
+
+                            {{#foreach failures}}
+                            <span class="gh-error-stack-file"><strong>Ref:</strong> {{ref}}</span><br>
+                            <span class="gh-error-stack-file"><strong>Message:</strong> {{message}}</span>
+                            {{/foreach}}
+                        </li>
+                        {{/foreach}}
+                    </ul>
+                </section>
+                {{/if}}
+
+            </section>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="gh-foot">
+    <div class="ae-container">
+        <div class="gh-foot-menu">
+            {{navigation type="secondary"}}
+        </div>
+        <div class="gh-foot-meta">
+            Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+{{!-- <foot> --}}
+{{ghost_foot}}
+{{!-- Outputs important scripts - should always be included before closing body tag --}}
+
+</body>
 </html>
