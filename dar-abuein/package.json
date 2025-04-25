@@ -24,7 +24,7 @@
         "restart": "ghost restart -d ~/my/instances/ghost-25",
         "update": "ghost update -d ~/my/instances/ghost-25",
         "stop": "ghost stop -d ~/my/instances/ghost-25",
-        "debug": "ghost start -D -d ~/my/instances/ghost-25",
+        "debug": "ghost run -D -d ~/my/instances/ghost-25",
         "log": "ghost log -d ~/my/instances/ghost-25",
         "zip": "zip -r /home/sabuein/Desktop/dar-abuein.zip * -x *.zip /assets/labs/* .gitignore",
         "scan": "npx gscan .",
