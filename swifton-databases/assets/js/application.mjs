@@ -1,4 +1,11 @@
+"use strict";
+
+import { initializeCookieContainer } from "./mods/cookies.mjs";
+
 document.addEventListener("DOMContentLoaded", () => {
+
+  initializeCookieContainer();
+  
   // Mobile menu toggle
   const menuToggle = document.querySelector(".mobile-menu-toggle")
   const navLinks = document.querySelector(".nav-links")
