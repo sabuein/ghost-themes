@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Workforce & Recruitment Management",
       description:
         "Streamline agency and temp worker management with tools for job processing, CSV uploads, and verification.",
-      usedBy: "QS Recruitment",
+      usedBy: "",
       features: [
         "CSV job post imports",
         "Identity verification integrations (e.g., YoTi)",
@@ -182,8 +182,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       icon: "🌐",
-      title: "Legacy System Modernization",
-      description: "Turn aging desktop applications into accessible web-based solutions.",
+      title: "Legacy System Modernisation",
+      description: "Turn ageing desktop applications into accessible web-based solutions.",
       usedBy: "",
       features: [
         "Full system redevelopments in modern frameworks",
