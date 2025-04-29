@@ -4,7 +4,7 @@ This website design for Swifton Databases Limited features:
 
 1. **Modern, Professional Aesthetic**
 
-1. Clean blue color scheme that conveys trust and professionalism
+1. Clean blue colour scheme that conveys trust and professionalism
 2. Consistent layout across all pages
 3. Responsive design that works on all devices
 
@@ -30,7 +30,7 @@ This website design for Swifton Databases Limited features:
 4. **Case Studies Page**
 
 1. Detailed case studies with challenges, solutions, and results
-2. Industry tags for easy categorization
+2. Industry tags for easy categorisation
 3. Visual elements to break up text
 
 
@@ -45,6 +45,6 @@ This website design for Swifton Databases Limited features:
 
 6. **Contact Page**
 
-1. Contact form for inquiries
+1. Contact form for enquiries
 2. Contact information clearly displayed
 3. Office hours and social links
