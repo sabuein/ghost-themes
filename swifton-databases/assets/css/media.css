@@ -18,6 +18,11 @@
 }
 
 @media (max-width: 768px) {
+
+  header.flexy.row {
+    justify-content: center;
+  }
+
   .mobile-menu-toggle {
     display: block;
   }
@@ -184,29 +189,25 @@
 
   .industry-grid {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 2rem;
   }
 
   .industry-card {
-    padding: 25px;
+    padding: 2rem;
   }
 
   .hero h1 {
-    font-size: 28px;
+    font-size: 2.5rem;
   }
 
   .hero p {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 576px) {
-  .hero-content h2 {
+  .hero-content h1 {
     font-size: 2rem;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
   }
 
   .industry-grid {
@@ -221,7 +222,8 @@
     font-size: 1.3rem;
   }
 
-  .industry-subtitle {
+  .industry-subtitle,
+  .section-subtitle {
     font-size: 1rem;
   }
 
