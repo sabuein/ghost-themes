@@ -1,0 +1,96 @@
+/* Container */
+*.flexy {
+    .cookies {
+        position: fixed;
+        bottom: 1rem;
+        left: 0;
+        right: 0;
+        max-width: 600px;
+        margin: auto;
+        padding: 1.5rem;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 9999;
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        font-family: system-ui, sans-serif;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    /* Heading and paragraphs */
+    .cookies h4 {
+        margin: 0 0 0.25rem 0;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .cookies p {
+        margin: 0.5rem 0;
+        line-height: 1.4;
+    }
+
+    .cookies a {
+        color: #007bff;
+        text-decoration: underline;
+    }
+
+    .cookies a:hover {
+        text-decoration: none;
+    }
+
+    /* Buttons */
+    .cookies .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+
+    .cookies .btn {
+        padding: 0.5rem 1.25rem;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 1rem;
+    }
+
+    .cookies .btn.primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .cookies .btn.primary:hover {
+        background-color: #0056b3;
+    }
+
+    .cookies .btn.secondary {
+        background-color: #f0f0f0;
+        color: #333;
+    }
+
+    .cookies .btn.secondary:hover {
+        background-color: #e0e0e0;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+        .cookies {
+            font-size: 0.95rem;
+            padding: 1rem;
+        }
+
+        .cookies .actions {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .cookies .btn {
+            width: 100%;
+        }
+    }
+}
