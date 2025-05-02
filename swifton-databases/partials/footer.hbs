@@ -1,62 +1,72 @@
 <!-- footer.hbs -->
 <footer id="default-footer" class="flexy" role="contentinfo">
     <div class="flexy row footer-content">
-        {{!--{{#if @site.logo}}<figure class="rapid-logo flexy"><a href="{{@site.url}}" title="{{@site.title}}"><img src="{{@site.logo}}" alt="{{@site.title}}" loading="lazy" /></a></figure>{{else}}<figure class="rapid-logo"><a href="{{@site.url}}" title="{{@site.title}}"><img src="{{asset 'images/new-logo.png'}}" alt="{{@site.title}}" loading="lazy" /></a></figure>{{/if}}--}}
+        {{!--{{#if @site.logo}}<figure class="rapid-logo flexy"><a href="{{@site.url}}" title="{{@site.title}}"><img
+                    src="{{@site.logo}}" alt="{{@site.title}}" loading="lazy" /></a></figure>{{else}}<figure
+            class="rapid-logo"><a href="{{@site.url}}" title="{{@site.title}}"><img
+                    src="{{asset 'images/new-logo.png'}}" alt="{{@site.title}}" loading="lazy" /></a></figure>
+        {{/if}}--}}
         <figure class="flexy footer-logo"><a href="{{@site.url}}" title="{{@site.title}}">
-            {{> "icons/swifton-icon"}}
-        </a></figure>
+                {{> "icons/swifton-icon"}}
+            </a></figure>
         {{#if @site.navigation}}<div class="flexy footer-links">
             <h3 title="Quick links">Quick links</h6>
-            <ul class="flexy">
-                <li role="menuitem"><a href="{{@site.url}}" title="Home">Home</a></li>
-                {{#foreach navigation}}<li role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
-            </ul>
+                <ul class="flexy">
+                    <li role="menuitem"><a href="{{@site.url}}" title="Home">Home</a></li>
+                    {{#foreach navigation}}<li role="menuitem"><a href="{{url absolute='true'}}"
+                            title="{{label}}">{{label}}</a></li>{{/foreach}}
+                </ul>
         </div>{{/if}}
         <div class="flexy footer-accreditation">
             <h3 title="Accreditation">Accreditation</h6>
-            <div class="flexy row accreditation-icons">
-                {{!--
-                <figure title="ISO/IEC 27001:2022">
-                    <a href="{{asset 'files/british-assessment-bureau-certificate-23022024.pdf'}}" title="ISO/IEC 27001:2022" target="_blank" rel="noopener"><img src="{{asset 'images/iso-iec-27001-2022.png'}}" alt="ISO 27001 UKAS Accredited Badge" /></a>
-                </figure>
-                <figure title="Cyber Essentials">
-                    <img src="{{asset 'images/cyber-essentials-new.png'}}" alt="Cyber Essentials" />
-                </figure>
-                --}}
-                <figure title="Crown Commercial Service Supplier">
-                    <img src="{{asset 'images/crown-commercial-service-supplier-white.png'}}" alt="Crown Commercial Service Supplier" />
-                </figure>
-                <figure title="Amazon Web Services">
-                    {{> "icons/aws"}}
-                </figure>
-                <figure title="Microsoft Partner">
-                    <img src="{{asset 'images/ms-partner.jpeg'}}" alt="Microsoft Partner" />
-                </figure>
-                <figure title="Microsoft Azure">
-                    {{> "icons/microsoft-azure"}}
-                </figure>
-                <figure title="Microsoft &period;NET">
-                    <img src="{{asset 'images/dotnet-logo.png'}}" alt="Microsoft Partner" />
-                </figure>
-                <figure title="Visual Studio">
-                    {{> "icons/visual-studio"}}
-                </figure>
-                <figure title="Oracle">
-                    {{> "icons/oracle-solid"}}
-                </figure>
-                <figure title="Java">
-                    {{> "icons/java-solid"}}
-                </figure>
-            </div>
+                <div class="flexy row accreditation-icons">
+                    {{!--
+                    <figure title="ISO/IEC 27001:2022">
+                        <a href="{{asset 'files/british-assessment-bureau-certificate-23022024.pdf'}}"
+                            title="ISO/IEC 27001:2022" target="_blank" rel="noopener"><img
+                                src="{{asset 'images/iso-iec-27001-2022.png'}}"
+                                alt="ISO 27001 UKAS Accredited Badge" /></a>
+                    </figure>
+                    <figure title="Cyber Essentials">
+                        <img src="{{asset 'images/cyber-essentials-new.png'}}" alt="Cyber Essentials" />
+                    </figure>
+                    --}}
+                    <figure title="Crown Commercial Service Supplier" tabindex="0">
+                        <img src="{{asset 'images/crown-commercial-service-supplier-white.png'}}"
+                            alt="Crown Commercial Service Supplier" />
+                    </figure>
+                    <figure title="Amazon Web Services" tabindex="0">
+                        {{> "icons/aws"}}
+                    </figure>
+                    <figure title="Microsoft Partner" tabindex="0">
+                        <img src="{{asset 'images/ms-partner.jpeg'}}" alt="Microsoft Partner" />
+                    </figure>
+                    <figure title="Microsoft Azure" tabindex="0">
+                        {{> "icons/microsoft-azure"}}
+                    </figure>
+                    <figure title="Microsoft &period;NET" tabindex="0">
+                        <img src="{{asset 'images/dotnet-logo.png'}}" alt="Microsoft Partner" />
+                    </figure>
+                    <figure title="Visual Studio" tabindex="0">
+                        {{> "icons/visual-studio"}}
+                    </figure>
+                    <figure title="Oracle" tabindex="0">
+                        {{> "icons/oracle-solid"}}
+                    </figure>
+                    <figure title="Java" tabindex="0">
+                        {{> "icons/java-solid"}}
+                    </figure>
+                </div>
         </div>
         <address class="flexy footer-contact">
             <h3 title="Contact us">Contact us</h6>
-            {{> "contact-details"}}
+                {{> "contact-details"}}
         </address>
     </div>
     <div class="flexy footer-bottom">
         <p>Registered in England and Wales. Company registration number 03942680&period;</p>
-        <p>&copy; 2000 &dash; {{date format="YYYY"}} <a href="{{@site.url}}" title="{{@site.title}} Ltd">{{@site.title}} Ltd</a>&period; All Rights Reserved&period;</p>
+        <p>&copy; 2000 &dash; {{date format="YYYY"}} <a href="{{@site.url}}" title="{{@site.title}} Ltd">{{@site.title}}
+                Ltd</a>&period; All Rights Reserved&period;</p>
         <p>Made with <span class="hearts" title="unconditional love">&hearts;</span> by our team&excl;</p>
     </div>
     {{> "cookies"}}

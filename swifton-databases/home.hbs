@@ -1,5 +1,7 @@
 {{!< default}} <!-- home.hbs -->
   {{#is "home"}}
+
+  <!--
   {{#get "posts" filter="featured:true+tag:hash-palettes+visibility:public" order="published_at asc" limit="all" as
   |palettes|}}
   {{#foreach palettes}}
@@ -33,10 +35,12 @@
     </figure>{{/if}}
   </section>{{/has}}{{else}}{{!-- <p>No content&period;</p> --}}{{/foreach}}{{else}}<p class="get-posts-error">{{error}}
   </p>{{/get}}
+-->
+
   <section class="flexy hero">
     <div class="container">
       <div class="flexy hero-content">
-        <h2>Digital solutions for your business</h2>
+        <h1>Digital solutions for your business</h1>
         <p>Over 20 years of experience delivering high-quality&comma; user&dash;friendly applications for Windows and
           web platforms&period;</p>
         <div class="hero-buttons">
@@ -56,89 +60,21 @@
     <div class="container">
       <h2 class="section-title">Our Expertise</h2>
       <div class="service-cards">
-        <div class="card">
+        <div class="card" tabindex="0">
           <div class="card-icon windows-icon"></div>
           <h3>Windows Applications</h3>
           <p>Functional&comma; secure and robust Windows applications using C# and Visual Basic&period;</p>
         </div>
-        <div class="card">
+        <div class="card" tabindex="0">
           <div class="card-icon web-icon"></div>
           <h3>Web Applications</h3>
           <p>Interactive&comma; data-driven websites and intranet solutions using the latest ASP&period;NET
             technologies&period;</p>
         </div>
-        <div class="card">
+        <div class="card" tabindex="0">
           <div class="card-icon legacy-icon"></div>
           <h3>Legacy Systems</h3>
           <p>Expertise in migrating from legacy systems to modern technologies with minimal disruption&period;</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="flexy industries">
-    <div class="container">
-      <h2 class="section-title">Industries We Serve</h2>
-
-      <div class="industry-grid">
-        <div class="industry-card">
-          <div class="industry-icon">🛳️</div>
-          <h3 class="industry-title">Maritime &amp; Marine Coatings</h3>
-          <p class="industry-subtitle">Supporting shipowners, coating manufacturers, and research teams with marine
-            protection systems.</p>
-          <p class="industry-description">We develop systems used in maritime protective coatings. These include
-            solutions for vessel coating assessments, antifouling research, and marine paint trials, serving global
-            manufacturers and shipowners.</p>
-        </div>
-
-        <div class="industry-card">
-          <div class="industry-icon">🧪</div>
-          <h3 class="industry-title">Chemical &amp; Health Safety</h3>
-          <p class="industry-subtitle">Systems for chemical inventory, hazard tracking, and lab safety — trusted by
-            global labs and corporations.</p>
-          <p class="industry-description">Supporting global chemical inventory systems, including tools for hazard
-            identification, COSHH assessments, and batch management. Used by laboratories and multinational corporations
-            in compliance-critical environments.</p>
-        </div>
-
-        <div class="industry-card">
-          <div class="industry-icon">🐖</div>
-          <h3 class="industry-title">Agriculture &amp; Animal Nutrition</h3>
-          <p class="industry-subtitle">Digital tools for animal feed producers and livestock data analysis, focused on
-            health and performance.</p>
-          <p class="industry-description">Specialists in systems for medicated animal feed producers. From sales
-            ordering and data visualisation to slaughter analytics, we support businesses focused on livestock
-            performance and nutrition science.</p>
-        </div>
-
-        <div class="industry-card">
-          <div class="industry-icon">🧱</div>
-          <h3 class="industry-title">Industrial &amp; Protective Coatings</h3>
-          <p class="industry-subtitle">Fire protection, steel treatment, and industrial coating systems to meet
-            compliance and performance needs.</p>
-          <p class="industry-description">From fire protection coatings to steel treatments, we've supported technical
-            and sales systems for specialist industrial coatings, helping streamline processes and product compliance.
-          </p>
-        </div>
-
-        <div class="industry-card">
-          <div class="industry-icon">🍖</div>
-          <h3 class="industry-title">Food Supply Chain &amp; Meat Processing</h3>
-          <p class="industry-subtitle">Sales, invoicing, and carcass analysis tools for pork producers and processors.
-          </p>
-          <p class="industry-description">We provide tailored software for sales order processing, invoicing, and
-            carcass data analysis in the pork supply chain. Our systems help optimise farm-to-market operations, with
-            tools for fat scoring, dead weight tracking, and performance visualisation.</p>
-        </div>
-
-        <div class="industry-card">
-          <div class="industry-icon">📊</div>
-          <h3 class="industry-title">Data Integration &amp; Visualisation</h3>
-          <p class="industry-subtitle">We transform complex data into intuitive dashboards and reports, supporting
-            decision-making across industries.</p>
-          <p class="industry-description">Across all industries, we build and support systems for complex data import,
-            visualisation, and reporting — converting raw data into actionable insights via custom dashboards and
-            interfaces.</p>
         </div>
       </div>
     </div>
