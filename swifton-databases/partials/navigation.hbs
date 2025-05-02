@@ -1,39 +1,43 @@
 <!-- navigation.hbs -->
 {{#if isSecondary}}<ul class="flexy row nav-secondary" role="menu">
-    {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+    {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a
+            href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
 </ul>{{else}}<nav class="flexy">
     <ul class="flexy row nav-general" role="menu">
         {{#foreach navigation}}
         {{#has slug="about-us"}}<li class="nav-{{slug}}" role="menuitem">
-            <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row btn" onclick="return false;">{{label}}</a>
+            <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row btn"
+                onclick="return false;">{{label}}</a>
         </li>{{else has slug="our-solutions"}}<li class="nav-{{slug}}" role="menuitem">
-            <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row btn" onclick="return false;">{{label}}</a>
+            <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row btn"
+                onclick="return false;">{{label}}</a>
         </li>{{else has slug="contact"}}<li class="nav-{{slug}}" role="menuitem">
             <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row btn contact-btn">{{label}}</a>
         </li>{{else}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem">
-            <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row btn" >{{label}}</a>
+            <a href="{{url absolute='true'}}" title="{{label}}" class="flexy row btn">{{label}}</a>
         </li>{{/has}}
         {{/foreach}}
     </ul>
     <ul class="flexy subnav-about" role="menu">
-        <li{{#post}}{{#has slug="about"}} class="active"{{/has}}{{/post}} role="menuitem">
+        <li{{#post}}{{#has slug="about" }} class="active" {{/has}}{{/post}} role="menuitem">
             <a href="/about/" title="About us" class="flexy row">About us</a>
-        </li>
-        <li{{#post}}{{#has slug="team"}} class="active"{{/has}}{{/post}} role="menuitem">
-            <a href="/team/" title="Careers" class="flexy row">Team</a>
-        </li>
-        <li{{#post}}{{#has slug="how-to-buy"}} class="active"{{/has}}{{/post}} role="menuitem">
-            <a href="/how-to-buy/" title="How to buy" class="flexy row">How to buy</a>
-        </li>
+            </li>
+            <li{{#post}}{{#has slug="team" }} class="active" {{/has}}{{/post}} role="menuitem">
+                <a href="/about#team" title="Team" class="flexy row">Team</a>
+                </li>
+                <li{{#post}}{{#has slug="how-to-buy" }} class="active" {{/has}}{{/post}} role="menuitem">
+                    <a href="/how-to-buy/" title="How to buy" class="flexy row">How to buy</a>
+                    </li>
     </ul>
     <ul class="subnav-solutions flexy" role="menu">
-        <li{{#tag}}{{#has slug="solutions"}} class="active"{{/has}}{{/tag}} role="menuitem">
+        <li{{#tag}}{{#has slug="solutions" }} class="active" {{/has}}{{/tag}} role="menuitem">
             <a href="/solutions/" title="Our solutions" class="flexy row">Our solutions</a>
-        </li>
-        <li{{#post}}{{#has slug="onboarding"}} class="active"{{/has}}{{/post}} role="menuitem">
-            <a href="/onboarding/" title="Onboarding" class="flexy row">Onboarding</a>
-        </li>
+            </li>
+            <li{{#post}}{{#has slug="onboarding" }} class="active" {{/has}}{{/post}} role="menuitem">
+                <a href="/onboarding/" title="Onboarding" class="flexy row">Onboarding</a>
+                </li>
     </ul>
 </nav>
-<button type="button" class="mobile-menu-toggle" aria-label="Toggle menu" data-html-symbol="trigram-for-heaven" title="Toggle menu">&#9776;</button>
+<button type="button" class="mobile-menu-toggle" aria-label="Toggle menu" data-html-symbol="trigram-for-heaven"
+    title="Toggle menu">&#9776;</button>
 {{/if}}

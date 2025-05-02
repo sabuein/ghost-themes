@@ -42,7 +42,9 @@
         "url": "https://github.com/sabuein/ghost-themes.git"
     },
     "bugs": "https://github.com/sabuein/ghost-themes/issues",
-    "contributors": ["https://github.com/sabuein/ghost-themes/graphs/contributors"],
+    "contributors": [
+        "https://github.com/sabuein/ghost-themes/graphs/contributors"
+    ],
     "browserslist": [
         "defaults"
     ],
