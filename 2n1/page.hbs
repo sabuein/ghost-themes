@@ -1,0 +1,175 @@
+{{!< default}}
+<!-- page.hbs -->
+{{#is "page"}}
+{{#post}}
+<article class="flexy {{post_class}}">
+    <!-- Page Header -->
+    {{#match @page.show_title_and_feature_image}}<header class="page-header">
+        <hgroup class="container">
+            <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
+            <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}&hellip;{{/if}}</p>
+        </hgroup>
+        {{#if feature_image}}<figure class="flexy apply-full-cover"
+            style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
+            <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w"
+                sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" />
+            {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>{{/if}}
+    </header>{{/match}}
+    {{#has slug="contact"}}
+    {{> "contact"}}
+    {{else has slug="about"}}
+    <!-- About Content -->
+    <section class="about-content fade-in-up">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Our Mission</h2>
+                    <p>2N1 is a UK-based holding company focused on the long-term acquisition and growth of B2B
+                        software and development companies, with a particular emphasis on SaaS businesses operating
+                        in the compliance, safety, and automation sectors.</p>
+
+                    <p>Our strategy targets founder-led and well-managed companies with proven technology, recurring
+                        revenue, and scalable potential.</p>
+
+                    <p>We bring permanent capital and a partnership-driven approach, working closely with management
+                        teams to accelerate innovation, particularly in the development and deployment of AI-driven
+                        solutions.</p>
+
+                    <p>Through a disciplined buy-and-hold strategy, we aim to build lasting value across our
+                        portfolio while supporting sustainable growth and operational excellence.</p>
+                </div>
+                <figure class="about-image">
+                    <!-- https://placehold.co/500x400 -->
+                    <img src="https://images.unsplash.com/photo-1554847464-bce967372cb7?h=400&w=500" alt="Team meeting" height="400" width="500" loading="lazy" />
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach -->
+    <section class="approach-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Investment Approach</h2>
+                <p>We believe in building long-term partnerships that create sustainable value</p>
+            </div>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-number">01</div>
+                    <h3>Permanent Capital</h3>
+                    <p>We provide patient, permanent capital that allows management teams to focus on long-term
+                        growth rather than short-term exits.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">02</div>
+                    <h3>Partnership Focus</h3>
+                    <p>We work collaboratively with existing management teams, respecting their expertise while
+                        providing strategic support and resources.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">03</div>
+                    <h3>AI Innovation</h3>
+                    <p>We accelerate the development and deployment of AI-driven solutions to enhance our portfolio
+                        companies' competitive advantages.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">04</div>
+                    <h3>Buy-and-Hold</h3>
+                    <p>Our disciplined buy-and-hold strategy ensures we're committed to the long-term success of
+                        every company in our portfolio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Criteria -->
+    <section class="criteria-section">
+        <div class="container">
+            <div class="criteria-content">
+                <div class="criteria-text">
+                    <h2>Investment Criteria</h2>
+                    <p>We look for specific characteristics in our target companies that align with our long-term
+                        value creation strategy.</p>
+
+                    <div class="criteria-list">
+                        <div class="criteria-item">
+                            <h4>Sector Focus</h4>
+                            <p>B2B software and SaaS companies in compliance, safety, and automation sectors</p>
+                        </div>
+                        <div class="criteria-item">
+                            <h4>Leadership</h4>
+                            <p>Founder-led or well-managed companies with strong leadership teams</p>
+                        </div>
+                        <div class="criteria-item">
+                            <h4>Technology</h4>
+                            <p>Proven technology solutions with demonstrated market fit and customer satisfaction
+                            </p>
+                        </div>
+                        <div class="criteria-item">
+                            <h4>Revenue Model</h4>
+                            <p>Recurring revenue streams with predictable and scalable business models</p>
+                        </div>
+                        <div class="criteria-item">
+                            <h4>Growth Potential</h4>
+                            <p>Clear opportunities for organic growth and market expansion</p>
+                        </div>
+                    </div>
+                </div>
+                <figure class="criteria-image">
+                    <!-- https://placehold.co/400x500 -->
+                    <img src="https://images.unsplash.com/photo-1748609115191-c222eddc7a89?h=500&w=400" alt="Business analytics" height="500" width="400" loading="lazy" />
+                </figure>
+            </div>
+        </div>
+    </section>
+    {{> "values"}}
+    {{else has slug="companies"}}
+    {{> "companies"}}
+    {{> "portfolio"}}
+    <!-- Growth Strategy -->
+    <section class="growth-strategy">
+        <div class="container">
+            <div class="strategy-content">
+                <h2>Supporting Portfolio Growth</h2>
+                <p>We work closely with our portfolio companies to accelerate their growth through strategic
+                    initiatives and operational support.</p>
+
+                <div class="strategy-grid">
+                    <div class="strategy-item">
+                        <h4>Technology Enhancement</h4>
+                        <p>Supporting the development and deployment of AI-driven solutions and advanced
+                            technologies.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <h4>Market Expansion</h4>
+                        <p>Identifying and pursuing new market opportunities and customer segments.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <h4>Operational Excellence</h4>
+                        <p>Implementing best practices and process improvements to enhance efficiency and
+                            scalability.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <h4>Strategic Partnerships</h4>
+                        <p>Facilitating partnerships and collaborations that drive mutual growth and innovation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     {{else}}
+    <section class="content-section">
+        {{content}}
+    </section>
+    {{/has}}
+</article>
+{{#contentFor "scripts"}}
+<script type="text/javascript">
+    // FitVids - Makes video embeds responsive
+    $(document).ready(() => $("*.html5-main-video").fitVids());
+    console.log("Hello from page.hbs!");
+</script>{{/contentFor}}
+{{/post}}
+{{/is}}
