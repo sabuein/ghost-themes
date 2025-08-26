@@ -6,7 +6,7 @@
     <div class="container disable-scrollbar flexy shadowed">
         <hgroup class="flexy">
             <h2 id="join-our-team" title="Join our team">Join our team</h2>
-            <p>Explore jobs at Rapid&period; Whether you&apos;re just starting your career or already have work experience&comma; see for yourself the variety of jobs Rapid has to offer&colon;</p>
+            <p>Explore jobs at Rapid&period; Whether you are just starting your career or already have work experience&comma; see for yourself the variety of jobs Rapid has to offer&colon;</p>
         </hgroup>
         {{#get "posts" filter="tag:hash-vacancies+visibility:public" order="featured desc, published_at asc" limit=@config.posts_per_page as |vacancies pages|}}{{#foreach vacancies}}<article class="{{post_class}} flexy" data-index="{{@index}}">
             <header class="flexy">

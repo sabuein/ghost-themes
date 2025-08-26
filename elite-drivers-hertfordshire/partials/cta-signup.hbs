@@ -2,7 +2,7 @@
 {{!-- A signup call to action is displayed here, unless viewed as a logged-in member --}}
 {{#if @site.members_enabled}}{{#unless @member}}{{#unless @site.comments_enabled}}{{#if access}}<section class="flexy modal cta">
     <h2>Subscribe to our web app&excl;</h2>
-    <p>It&apos;s completely free&period; No spam ever&period; You can unsubscribe anytime&period;</p>
+    <p>It is completely free&period; No spam ever&period; You can unsubscribe anytime&period;</p>
     <hr />
     <p class="flexy row">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum saepe aliquid sit consequatur voluptate qui ad, nihil explicabo, eos maiores quasi neque nesciunt incidunt. Delectus explicabo laboriosam minus veniam repellat? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam suscipit, quisquam itaque quod dolor rem officiis illo sint eaque. Debitis, ullam? Minima culpa maxime temporibus voluptatum, officiis magni numquam debitis.</p>
     <dialog open="open" aria-modal="false">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </fieldset>
-            <pre>By completing this form&comma; you consent to receiving email updates from {{@site.title}}&period; Your details won&apos;t be shared with other organisations and you can opt out of receiving emails at any time using the unsubscribe link at the bottom of each email&period; For more information on our privacy practices and commitment to protecting your privacy&comma; read our <a href="/privacy-policy/" title="Privacy policy">Privacy policy</a>&period;</pre>
+            <pre>By completing this form&comma; you consent to receiving email updates from {{@site.title}}&period; Your details will not be shared with other organisations and you can opt out of receiving emails at any time using the unsubscribe link at the bottom of each email&period; For more information on our privacy practices and commitment to protecting your privacy&comma; read our <a href="/privacy-policy/" title="Privacy policy">Privacy policy</a>&period;</pre>
         </form>
     </dialog>
 </section>
