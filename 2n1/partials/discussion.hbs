@@ -1,0 +1,7 @@
+<!-- partials/discussion.hbs -->
+{{#if comments}}
+   <h2>Discussion</h2>
+   <a href="/guides">Community guidelines</a>
+   {{comment_count}}
+   {{comments title="" count=false mode="light" saturation=80}}
+{{/if}}

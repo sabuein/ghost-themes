@@ -1,0 +1,126 @@
+{{!< default}}
+<!-- home.hbs -->
+{{#is "home"}}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content fade-in-up">
+        <div class="hero-text">
+            <h1>Strategic B2B Software Acquisitions</h1>
+            <p class="hero-subtitle">Building lasting value through permanent capital and partnership-driven growth in compliance, safety, and automation sectors</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>Long-term</h3>
+                    <p>Investment Approach</p>
+                </div>
+                <div class="stat">
+                    <h3>B2B SaaS</h3>
+                    <p>Sector Focus</p>
+                </div>
+                <div class="stat">
+                    <h3>UK-based</h3>
+                    <p>Holding Company</p>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="/about" class="btn btn-primary">Learn More</a>
+                <a href="/contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+        <figure class="hero-image">
+            <!-- https://placehold.co/600x500 -->
+            <img src="https://images.unsplash.com/photo-1524191185348-ade767aeaa14?h=500&w=600" height="500" width="600" alt="Modern business building" loading="lazy" />
+        </figure>
+    </div>
+</section>
+
+<!-- Our Focus Section -->
+<section class="focus-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Investment Focus</h2>
+            <p>We target founder-led and well-managed companies with proven technology, recurring revenue, and scalable potential</p>
+        </div>
+        <div class="focus-grid">
+            <div class="focus-card">
+                <div class="focus-icon">🛡️</div>
+                <h3>Compliance</h3>
+                <p>Software solutions that help businesses meet regulatory requirements and maintain compliance standards across various industries.</p>
+            </div>
+            <div class="focus-card">
+                <div class="focus-icon">⚡</div>
+                <h3>Safety</h3>
+                <p>Technologies that enhance workplace safety, risk management, and operational security for businesses and their stakeholders.</p>
+            </div>
+            <div class="focus-card">
+                <div class="focus-icon">🤖</div>
+                <h3>Automation</h3>
+                <p>AI-driven solutions and automation tools that streamline processes, improve efficiency, and drive digital transformation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Preview -->
+<section class="portfolio-preview">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Portfolio Companies</h2>
+            <p>Innovative B2B software companies driving growth and transformation</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <h3>Rapid Information Systems</h3>
+                <p class="company-tagline">Data Integration &amp; Digital Transformation</p>
+                <p>Simplifying data integration and digital transformation, enhancing services while providing structured data for efficiency, accuracy, and insights.</p>
+                <a href="/companies" class="learn-more">Learn More →</a>
+            </div>
+            <div class="portfolio-card">
+                <h3>Swifton Solutions</h3>
+                <p class="company-tagline">Bespoke Software Development</p>
+                <p>Specialist in designing and delivering tailored software solutions across manufacturing, healthcare, recruitment, and diverse sectors.</p>
+                <a href="/companies" class="learn-more">Learn More →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Value Proposition -->
+<section class="value-proposition">
+    <div class="container">
+        <div class="value-content">
+            <div class="value-text">
+                <h2>Partnership-Driven Growth</h2>
+                <p>We bring more than just capital. Our approach focuses on building lasting partnerships with management teams to accelerate innovation and sustainable growth.</p>
+                <ul class="value-list">
+                    <li>Permanent capital with long-term commitment</li>
+                    <li>Partnership approach with existing management</li>
+                    <li>Focus on AI-driven solution development</li>
+                    <li>Disciplined buy-and-hold strategy</li>
+                    <li>Operational excellence support</li>
+                </ul>
+                <a href="/about" class="btn btn-primary">Our Approach</a>
+            </div>
+            <figure class="value-image">
+                <!-- https://placehold.co/500x400 -->
+                <img src="https://images.unsplash.com/photo-1730382624761-af8112d26209?h=400&w=500" height="400" width="500" alt="Business partnership" loading="lazy" />
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Partner with Us&quest;</h2>
+            <p>If you&apos;re a founder or management team looking for a long&dash;term partner to accelerate your B2B software company&apos;s growth&comma; we&apos;d love to hear from you&period;</p>
+            <a href="/contact" class="btn btn-secondary btn-large">Start a Conversation</a>
+        </div>
+    </div>
+</section>
+{{#contentFor "scripts"}}<script type="text/javascript">
+    // FitVids - Makes video embeds responsive
+    $(document).ready(() => $(".gh-content").fitVids());
+    console.log("Hello from home.hbs!");
+</script>{{/contentFor}}
+{{/is}}
