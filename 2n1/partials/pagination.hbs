@@ -1,3 +1,4 @@
+{{!-- Pagination --}}
 <!-- partials/pagination.hbs -->
 <nav class="flexy pagination" role="navigation">
     <p class="previous-next">{{#if prev}}<a class="previous-page" href="{{page_url prev}}" title="Previous"><span aria-hidden="true">&larr;</span> Previous</a>{{/if}}{{#if next}}{{#if prev}} &VerticalBar;{{/if}} <a class="next-page" href="{{page_url next}}" title="Next">Next <span aria-hidden="true">&rarr;</span></a>{{/if}}</p>
