@@ -1,0 +1,20 @@
+{{!< default}}
+<div class="ae-page">
+    <div class="ae-container">
+
+        <div class="gh-postfeed">
+        {{#foreach posts}}
+
+            {{> "card" page=../pagination.page }} {{!-- partials/card.hbs --}}
+
+        {{/foreach}}
+        </div>
+
+        {{!-- If JS isn't enabled, fallback to standard pagination --}}
+        <noscript>
+            <div class="ae-pagination">
+                {{pagination}}
+            </div>
+        </noscript>
+    </div>
+</div>
