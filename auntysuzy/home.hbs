@@ -1,0 +1,21 @@
+{{!< default}}
+<!-- home.hbs -->
+<hgroup>
+    <h2>Hello, world!</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea vitae atque quidem laboriosam fugiat facere, laudantium commodi laborum nobis, ex deserunt temporibus incidunt voluptatum dolor? Inventore, praesentium consectetur? Ab, reprehenderit.</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis quibusdam error consectetur voluptatem natus nam consequatur ea excepturi deserunt beatae incidunt quasi temporibus officia blanditiis earum quas, atque voluptatum perferendis?</p>
+</hgroup>
+{{> "contact"}}
+
+<div class="gh-postfeed">
+    <ul class="ae-flexy-col">
+        {{#foreach posts}} {{> "item" page=../pagination.page }} {{!-- partials/card.hbs --}} {{/foreach}}
+    </ul>
+
+    {{!-- If JS isn't enabled, fallback to standard pagination --}}
+    <noscript>
+        <div class="ae-pagination">
+            {{pagination}}
+        </div>
+    </noscript>
+</div>
