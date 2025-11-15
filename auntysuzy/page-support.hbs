@@ -1,0 +1,296 @@
+<!-- page.hbs -->
+{{!< default}}
+{{#post}}
+<article class="gh-article {{post_class}}">
+    {{#match @page.show_title_and_feature_image}}
+    <header class="gh-header gh-canvas">
+        <h1 class="gh-title">{{title}}</h1>
+
+        {{#if custom_excerpt}}
+            <p class="gh-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+
+        {{#if feature_image}}
+            <figure class="gh-feature-image">
+                <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+                {{#if feature_image_caption}}
+                    <figcaption>{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
+        {{/if}}
+    </header>
+    {{/match}}
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background-color: #faf9f7;
+        }
+        .hero {
+            background: linear-gradient(135deg, #8b6f47 0%, #c99a6e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .contact-card {
+            background: white;
+            border: 2px solid #e0ddd9;
+            padding: 30px;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            border-color: #8b6f47;
+            box-shadow: 0 4px 12px rgba(139, 111, 71, 0.15);
+        }
+        .contact-card h3 {
+            color: #8b6f47;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        .contact-card p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .contact-card a {
+            color: #8b6f47;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .contact-card a:hover {
+            color: #c99a6e;
+        }
+        .response-time {
+            background-color: #fffbf5;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #999;
+            margin-top: 15px;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #8b6f47;
+            margin: 40px 0 20px 0;
+        }
+        .faq {
+            margin-top: 40px;
+        }
+        .faq-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e0ddd9;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item h3 {
+            color: #8b6f47;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        .faq-item p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        .form-section {
+            background-color: #f4f1ed;
+            padding: 40px;
+            border-radius: 4px;
+            margin: 40px 0;
+        }
+        .form-section h3 {
+            color: #8b6f47;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #8b6f47;
+            font-weight: 600;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Georgia', serif;
+            font-size: 1em;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        button {
+            background-color: #8b6f47;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #6f5937;
+        }
+        @media (max-width: 600px) {
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <div class="hero">
+        <h1>We're Here to Help</h1>
+        <p>Get in touch with us for any questions or support</p>
+    </div>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>Whether you have a question about an order, need product advice, or just want to get in touch, we'd love to hear from you. Reach out using any of the methods below.</p>
+
+        <div class="contact-methods">
+            <div class="contact-card">
+                <h3>📧 Email</h3>
+                <p>For general enquiries and support</p>
+                <a href="mailto:info@auntysuzy.co.uk">info@auntysuzy.co.uk</a>
+                <div class="response-time">Response within 24 hours</div>
+            </div>
+
+            <div class="contact-card">
+                <h3>🔄 Returns & Refunds</h3>
+                <p>Issues with your order or returns</p>
+                <a href="mailto:returns@auntysuzy.co.uk">returns@auntysuzy.co.uk</a>
+                <div class="response-time">Response within 2 working days</div>
+            </div>
+
+            <div class="contact-card">
+                <h3>🛡️ Privacy & Data</h3>
+                <p>Data protection and privacy requests</p>
+                <a href="mailto:info@auntysuzy.co.uk?subject=Data%20Request">Data Requests</a>
+                <div class="response-time">Response within 30 days</div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Send Us a Message</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="order">Order Number (if applicable)</label>
+                    <input type="text" id="order" name="order">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #999;">* Required fields. We'll get back to you as soon as possible.</p>
+        </div>
+
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>How can I track my order?</h3>
+                <p>Once your order has been dispatched, you'll receive an email with a tracking number. You can use this to monitor your delivery in real-time through the carrier's website.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What if my item arrives damaged?</h3>
+                <p>Please contact us immediately with photos of the damage. We'll investigate and either send a replacement or issue a full refund. Return shipping will be covered by us for damaged items.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I change or cancel my order?</h3>
+                <p>If your order hasn't been dispatched yet, we may be able to cancel or modify it. Contact us as soon as possible with your order number. Orders that have already been shipped cannot be cancelled but can be returned within 14 days.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you offer gift wrapping?</h3>
+                <p>We're working on adding gift wrapping options. For now, please contact us if you'd like to discuss a custom gift wrapping arrangement.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I unsubscribe from newsletters?</h3>
+                <p>Each newsletter contains an unsubscribe link at the bottom. Simply click that link to be removed from our mailing list. You can also contact us to manage your preferences.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I return an item if I've changed my mind?</h3>
+                <p>Yes! You have 14 days from delivery to return unused items in original condition. See our Returns Policy for full details and conditions.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do you have a physical store?</h3>
+                <p>Aunty Suzy is currently online-only. We ship throughout the UK. We're exploring pop-up events and markets, so follow us for updates!</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How can I collaborate or partner with Aunty Suzy?</h3>
+                <p>We love working with creators and businesses! If you're interested in collaboration, wholesale, or partnership opportunities, please reach out to us at info@auntysuzy.co.uk with details about your proposal.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding: 30px; background-color: #fffbf5; border-radius: 4px; text-align: center;">
+            <h3 style="color: #8b6f47; margin-bottom: 10px;">Have Another Question?</h3>
+            <p style="margin-bottom: 15px;">Can't find what you're looking for? We're always happy to help. Send us a message using the form above or email us directly.</p>
+            <p style="font-size: 0.95em; color: #999;">Average response time: 24 hours</p>
+        </div>
+    </div>
+
+    <div class="gh-content gh-canvas">
+        {{content}}
+    </div>
+    {{> "signup"}}
+</article>
+{{/post}}

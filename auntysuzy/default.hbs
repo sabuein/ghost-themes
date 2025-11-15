@@ -37,7 +37,7 @@
 			    }
 			</script>
 			-->
-		<title>{{#is "home"}}Homepage{{else}}{{#is "post"}}{{#post}}{{title}}{{/post}}{{else}}{{meta_title}}{{/is}}{{/is}} &mdash; {{@site.title}}</title>
+		<title>{{#is "home"}}{{@site.title}} &mdash; {{@site.description}}{{else}}{{#is "post"}}{{#post}}{{title}}{{/post}}{{else}}{{meta_title}}{{/is}} &mdash; {{@site.title}}{{/is}}</title>
 		{{ghost_head}}
 		{{!-- Outputs important meta data and settings, should always be in
 		<head> --}}

@@ -1,0 +1,174 @@
+<!-- page.hbs -->
+{{!< default}}
+{{#post}}
+<article class="gh-article {{post_class}}">
+    {{#match @page.show_title_and_feature_image}}
+    <header class="gh-header gh-canvas">
+        <h1 class="gh-title">{{title}}</h1>
+
+        {{#if custom_excerpt}}
+            <p class="gh-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+
+        {{#if feature_image}}
+            <figure class="gh-feature-image">
+                <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+                {{#if feature_image_caption}}
+                    <figcaption>{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
+        {{/if}}
+    </header>
+    {{/match}}
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background-color: #faf9f7;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #8b6f47;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .last-updated {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 1.5em;
+            color: #8b6f47;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #8b6f47;
+            color: white;
+        }
+        .info-box {
+            background-color: #f4f1ed;
+            padding: 20px;
+            border-left: 4px solid #8b6f47;
+            margin: 20px 0;
+        }
+    </style>
+
+    <div class="container">
+        <h1>Cookie Policy</h1>
+        <p class="last-updated">Last updated: November 2025</p>
+
+        <h2>1. What Are Cookies?</h2>
+        <p>
+            Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit our website. They allow us to remember information about your visit and recognize you when you return to our site.
+        </p>
+
+        <h2>2. How We Use Cookies</h2>
+        <p>
+            We use cookies for the following purposes:
+        </p>
+
+        <table>
+            <tr>
+                <th>Cookie Type</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td>Essential Cookies</td>
+                <td>Required for the website to function properly (e.g., shopping cart, checkout, security)</td>
+            </tr>
+            <tr>
+                <td>Performance Cookies</td>
+                <td>Help us understand how visitors use our site (page views, bounce rate, time on site)</td>
+            </tr>
+            <tr>
+                <td>Functional Cookies</td>
+                <td>Remember your preferences and login information</td>
+            </tr>
+            <tr>
+                <td>Marketing Cookies</td>
+                <td>Allow us to show you relevant adverts on other websites</td>
+            </tr>
+        </table>
+
+        <h2>3. Third-Party Cookies</h2>
+        <p>
+            Our website uses cookies from third-party services including:
+        </p>
+        <ul>
+            <li><strong>Snipcart:</strong> For managing your shopping cart and processing payments</li>
+            <li><strong>Google Analytics:</strong> For analysing website traffic (if enabled)</li>
+        </ul>
+        <p>
+            These third parties have their own privacy and cookie policies, and we are not responsible for their cookie practices.
+        </p>
+
+        <h2>4. Your Cookie Choices</h2>
+        <p>
+            You can control and/or delete cookies as you wish. You can delete all cookies that are already on your device by going to the browser settings. However, essential cookies are necessary for the website to function, so disabling them may prevent you from using certain features.
+        </p>
+
+        <div class="info-box">
+            <p><strong>Browser Settings:</strong></p>
+            <ul>
+                <li>Chrome: Settings → Privacy → Cookies and other site data</li>
+                <li>Firefox: Preferences → Privacy & Security → Cookies and Site Data</li>
+                <li>Safari: Preferences → Privacy</li>
+                <li>Edge: Settings → Privacy → Clear browsing data</li>
+            </ul>
+        </div>
+
+        <h2>5. Opt-Out Options</h2>
+        <p>
+            You can opt out of certain cookies by:
+        </p>
+        <ul>
+            <li>Using browser settings to refuse all or some cookies</li>
+            <li>Unsubscribing from our marketing emails</li>
+            <li>Contacting us directly to request cookie preferences</li>
+        </ul>
+
+        <h2>6. Updates to This Policy</h2>
+        <p>
+            We may update this Cookie Policy from time to time. The most current version will always be available on our website. Your continued use of the website following the posting of changes means that you accept and agree to the changes.
+        </p>
+
+        <div class="info-box">
+            <p><strong>Questions?</strong> If you have any questions about our Cookie Policy, please contact us at info@auntysuzy.co.uk</p>
+        </div>
+    </div>
+
+    <div class="gh-content gh-canvas">
+        {{content}}
+    </div>
+    {{> "signup"}}
+</article>
+{{/post}}
