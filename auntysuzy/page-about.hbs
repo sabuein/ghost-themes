@@ -1,0 +1,181 @@
+<!-- page.hbs -->
+{{!< default}}
+{{#post}}
+<article class="gh-article {{post_class}}">
+    {{#match @page.show_title_and_feature_image}}
+    <header class="gh-header gh-canvas">
+        <h1 class="gh-title">{{title}}</h1>
+
+        {{#if custom_excerpt}}
+            <p class="gh-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+
+        {{#if feature_image}}
+            <figure class="gh-feature-image">
+                <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+                {{#if feature_image_caption}}
+                    <figcaption>{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
+        {{/if}}
+    </header>
+    {{/match}}
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background-color: #faf9f7;
+        }
+        .hero {
+            background: linear-gradient(135deg, #8b6f47 0%, #c99a6e 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        h2 {
+            font-size: 2em;
+            color: #8b6f47;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        .story-box {
+            background-color: #fffbf5;
+            border-left: 4px solid #8b6f47;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        .values {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .value-item {
+            padding: 20px;
+            background-color: #f4f1ed;
+            border-radius: 4px;
+        }
+        .value-item h3 {
+            color: #8b6f47;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .team-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background-color: #fffbf5;
+            border-radius: 4px;
+        }
+        .team-section h3 {
+            color: #8b6f47;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <div class="hero">
+        <h1>About Aunty Suzy</h1>
+        <p>Handmade with love, created with care</p>
+    </div>
+
+    <div class="container">
+        <h2>Our Story</h2>
+        <div class="story-box">
+            <p>
+                Aunty Suzy started as a passion project. What began in a small kitchen with a few handmade items has blossomed into a collection of carefully crafted products that bring joy to people across the UK. Every item is made with genuine care and attention to detail, reflecting a commitment to quality and sustainability.
+            </p>
+        </div>
+
+        <p>
+            I'm Suzy, and I believe in creating things that matter—products that make you smile, that tell a story, and that are made with intention. Whether it's food, recipes, handicrafts, or art, each product in the Aunty Suzy collection represents a piece of creativity and dedication.
+        </p>
+
+        <p>
+            My passion for handmade goods comes from a belief that there's something special about owning something created by real hands with real care. In a world of mass production, I wanted to create an alternative—a space where quality, creativity, and personal touch are valued.
+        </p>
+
+        <h2>Our Values</h2>
+        <div class="values">
+            <div class="value-item">
+                <h3>Quality First</h3>
+                <p>Every product is inspected carefully to ensure it meets our high standards. We use the best materials available and take pride in our craftsmanship.</p>
+            </div>
+            <div class="value-item">
+                <h3>Sustainable & Ethical</h3>
+                <p>We're committed to sustainability. We use eco-friendly materials where possible and aim to minimize our environmental impact.</p>
+            </div>
+            <div class="value-item">
+                <h3>Personal Touch</h3>
+                <p>This is a small business, which means you'll get genuine, personal customer service. We care about your experience.</p>
+            </div>
+            <div class="value-item">
+                <h3>Creativity & Innovation</h3>
+                <p>We're always exploring new ideas and ways to improve. Your feedback helps us create better products.</p>
+            </div>
+        </div>
+
+        <h2>What We Create</h2>
+        <p>
+            Aunty Suzy offers a diverse range of handmade products across several categories:
+        </p>
+        <ul style="margin-left: 20px; margin-bottom: 20px;">
+            <li><strong>Food:</strong> Artisan food products made fresh in small batches</li>
+            <li><strong>Recipes:</strong> Carefully tested recipes and cooking guides to inspire your kitchen</li>
+            <li><strong>Handicrafts:</strong> Hand-crafted items that add beauty to your home</li>
+            <li><strong>Art:</strong> Original artwork and creative pieces</li>
+            <li><strong>Tickets:</strong> Exclusive access to workshops, classes, and events</li>
+        </ul>
+
+        <h2>Who We're Here For</h2>
+        <p>
+            Aunty Suzy is for anyone who appreciates quality, authenticity, and the warmth of handmade goods. Whether you're looking for a gift, something special for yourself, or inspiration for your own creative journey, we'd love to help.
+        </p>
+
+        <div class="team-section">
+            <h3>Made With ❤️</h3>
+            <p>Designed and developed by <strong>AbuEin Technologies</strong></p>
+            <p style="font-size: 0.9em; margin-top: 10px; color: #999;">
+                Building beautiful digital experiences for small businesses
+            </p>
+        </div>
+
+        <h2>Get In Touch</h2>
+        <p>
+            I'd love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out. You'll find all the ways to contact me on our Support page.
+        </p>
+    </div>
+
+    <div class="gh-content gh-canvas">
+        {{content}}
+    </div>
+    {{> "signup"}}
+</article>
+{{/post}}

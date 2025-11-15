@@ -1,0 +1,48 @@
+<!-- page.hbs -->
+{{!< default}}
+{{#post}}
+<article class="gh-article {{post_class}}">
+    {{#match @page.show_title_and_feature_image}}
+    <header class="gh-header gh-canvas">
+        <h1 class="gh-title">{{title}}</h1>
+
+        {{#if custom_excerpt}}
+            <p class="gh-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+
+        {{#if feature_image}}
+            <figure class="gh-feature-image">
+                <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+                {{#if feature_image_caption}}
+                    <figcaption>{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
+        {{/if}}
+    </header>
+    {{/match}}
+
+    <div class="hero">
+        <h1>Discover Our Products</h1>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="food">Food</button>
+                <button class="filter-btn" data-filter="recipes">Recipes</button>
+                <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
+                <button class="filter-btn" data-filter="art">Art</button>
+                <button class="filter-btn" data-filter="tickets">Tickets</button>
+            </div>
+    </div>
+
+<section class="products-grid" id="productsGrid">
+            <!-- Products will be rendered here by JavaScript -->
+        </section>
+        <div class="no-results" id="noResults" style="display: none;">
+            No products found in this category.
+        </div>
+
+    <div class="gh-content gh-canvas">
+        {{content}}
+    </div>
+    {{> "signup"}}
+</article>
+{{/post}}

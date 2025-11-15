@@ -1,0 +1,356 @@
+<!-- page.hbs -->
+{{!< default}}
+{{#post}}
+<article class="gh-article {{post_class}}">
+    {{#match @page.show_title_and_feature_image}}
+    <header class="gh-header gh-canvas">
+        <h1 class="gh-title">{{title}}</h1>
+
+        {{#if custom_excerpt}}
+            <p class="gh-excerpt">{{custom_excerpt}}</p>
+        {{/if}}
+
+        {{#if feature_image}}
+            <figure class="gh-feature-image">
+                <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+                {{#if feature_image_caption}}
+                    <figcaption>{{feature_image_caption}}</figcaption>
+                {{/if}}
+            </figure>
+        {{/if}}
+    </header>
+    {{/match}}
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #faf8f3;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #8b6f47 0%, #a0845c 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #8b6f47;
+            background: white;
+            color: #8b6f47;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #f0ede8;
+        }
+
+        .filter-btn.active {
+            background: #8b6f47;
+            color: white;
+        }
+
+        /* Blog Posts Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: none;
+        }
+
+        .blog-card.active {
+            display: block;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: #e8dcc8;
+            color: #8b6f47;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #2c2c2c;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e8dcc8;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .blog-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #8b6f47;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #a0845c;
+            text-decoration: underline;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Blog</h1>
+        <p>Stories, recipes, events, and more from Aunty Suzy</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Posts</button>
+                <button class="filter-btn" data-filter="markets">Markets & Events</button>
+                <button class="filter-btn" data-filter="recipes">Recipes</button>
+                <button class="filter-btn" data-filter="stories">Stories</button>
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blogGrid"></div>
+    </div>
+
+    <script>
+        // Blog Posts Data
+        const blogPosts = [
+            {
+                id: 1,
+                title: "Traditional Homemade Fudge Recipe",
+                category: "recipes",
+                image: "/placeholder.svg?height=200&width=400",
+                excerpt: "Learn how to make delicious traditional fudge using simple ingredients and time-honoured techniques passed down through generations.",
+                date: "15 November 2024",
+                link: "blog-post.html?id=1"
+            },
+            {
+                id: 2,
+                title: "Summer Market Season 2024",
+                category: "markets",
+                image: "/placeholder.svg?height=200&width=400",
+                excerpt: "Discover where you can find Aunty Suzy at local markets and events this summer. We'll be at over 20 locations across the UK!",
+                date: "12 November 2024",
+                link: "blog-post.html?id=2"
+            },
+            {
+                id: 3,
+                title: "The Story Behind Our Handicrafts",
+                category: "stories",
+                image: "/placeholder.svg?height=200&width=400",
+                excerpt: "Every piece tells a story. Explore the inspiration and passion behind each handcrafted item in our collection.",
+                date: "8 November 2024",
+                link: "blog-post.html?id=3"
+            },
+            {
+                id: 4,
+                title: "Easy Chocolate Truffles for Beginners",
+                category: "recipes",
+                image: "/placeholder.svg?height=200&width=400",
+                excerpt: "Make impressive homemade chocolate truffles with this simple recipe. Perfect for gifts or treating yourself!",
+                date: "5 November 2024",
+                link: "blog-post.html?id=4"
+            },
+            {
+                id: 5,
+                title: "Meet Aunty Suzy: A Journey of Passion",
+                category: "stories",
+                image: "/placeholder.svg?height=200&width=400",
+                excerpt: "From a small kitchen to serving communities across the UK, learn about the journey that started it all.",
+                date: "1 November 2024",
+                link: "blog-post.html?id=5"
+            },
+            {
+                id: 6,
+                title: "Upcoming Art Exhibition & Fair",
+                category: "markets",
+                image: "/placeholder.svg?height=200&width=400",
+                excerpt: "Join us at the annual craft fair where we'll showcase new designs and collaborate with local artisans.",
+                date: "28 October 2024",
+                link: "blog-post.html?id=6"
+            }
+        ];
+
+        // Initialize
+        function init() {
+            renderPosts('all');
+            setupFilters();
+        }
+
+        // Render Posts
+        function renderPosts(category) {
+            const blogGrid = document.getElementById('blogGrid');
+            blogGrid.innerHTML = '';
+
+            const filtered = category === 'all' 
+                ? blogPosts 
+                : blogPosts.filter(post => post.category === category);
+
+            if (filtered.length === 0) {
+                blogGrid.innerHTML = '<div class="no-results">No posts found in this category.</div>';
+                return;
+            }
+
+            filtered.forEach(post => {
+                const card = document.createElement('div');
+                card.className = 'blog-card active';
+                card.innerHTML = `
+                    <img src="${post.image}" alt="${post.title}" class="blog-image">
+                    <div class="blog-content">
+                        <span class="blog-category">${post.category}</span>
+                        <h2>${post.title}</h2>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <div class="blog-meta">
+                            <span class="blog-date">📅 ${post.date}</span>
+                            <a href="${post.link}" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                `;
+                blogGrid.appendChild(card);
+            });
+        }
+
+        // Setup Filter Buttons
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    renderPosts(this.dataset.filter);
+                });
+            });
+        }
+
+        init();
+    </script>
+
+    <div class="gh-content gh-canvas">
+        {{content}}
+    </div>
+    {{> "signup"}}
+</article>
+{{/post}}
