@@ -67,9 +67,10 @@
             Written by {{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}}
         </div>
 
-        {{#if comments}}
+        {{#if @site.comments_enabled}}
         <section class="gh-post-comments">
             {{comments}}
+            {{comment_count class="gh-card-comments"}}
         </section>
         {{/if}}
 

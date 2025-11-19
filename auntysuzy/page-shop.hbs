@@ -21,28 +21,34 @@
     </header>
     {{/match}}
 
-    <div class="hero">
-        <h1>Discover Our Products</h1>
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="food">Food</button>
-                <button class="filter-btn" data-filter="recipes">Recipes</button>
-                <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
-                <button class="filter-btn" data-filter="art">Art</button>
-                <button class="filter-btn" data-filter="tickets">Tickets</button>
-            </div>
-    </div>
-
-<section class="products-grid" id="productsGrid">
-            <!-- Products will be rendered here by JavaScript -->
-        </section>
-        <div class="no-results" id="noResults" style="display: none;">
-            No products found in this category.
+<!-- Products will be rendered here by Ghost -->
+{{#get "posts" filter="tags:[food]" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section id="prodcuts">
+    <hgroup class="hero">
+        <h2>Discover our products</h2>
+        <p class="extra-loop">Our products&period;</p>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="food">Food</button>
+            <button class="filter-btn" data-filter="recipes">Recipes</button>
+            <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
+            <button class="filter-btn" data-filter="art">Art</button>
+            <button class="filter-btn" data-filter="tickets">Tickets</button>
         </div>
+    </hgroup>
+    {{#if posts}}<div class="products-grid" id="productsGrid">
+        {{> "product-card"}}
+    </div>{{else}}<pre class="no-results" id="noResults" style="display: none;">No products found in this category&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
 
     <div class="gh-content gh-canvas">
         {{content}}
     </div>
+
+    <div class="snipcart-summary">
+        <a href="#" class="snipcart-checkout" title="Cart summary">Cart summary</a>
+    </div>
+    
+
     {{> "signup"}}
 </article>
 {{/post}}
