@@ -1,78 +1,32 @@
-// Sample products data - duplicate and modify this object for each product
-        const products = [
-            {
-                id: 1,
-                title: "Artisan Coffee Blend",
-                category: "food",
-                image: "https://placehold.co/400x200",
-                excerpt: "Premium organic coffee sourced from local farmers. Perfect for your morning routine.",
-                link: "/product/1"
-            },
-            {
-                id: 2,
-                title: "Homemade Pasta Recipe Kit",
-                category: "recipes",
-                image: "https://placehold.co/400x200",
-                excerpt: "Learn to make authentic Italian pasta from scratch with our complete recipe kit.",
-                link: "/product/2"
-            },
-            {
-                id: 3,
-                title: "Hand-Woven Basket",
-                category: "handicrafts",
-                image: "https://placehold.co/400x200",
-                excerpt: "Beautiful handcrafted basket made with sustainable materials by local artisans.",
-                link: "/product/3"
-            },
-            {
-                id: 4,
-                title: "Abstract Canvas Print",
-                category: "art",
-                image: "https://placehold.co/400x200",
-                excerpt: "Contemporary abstract artwork that brings modern elegance to any space.",
-                link: "/product/4"
-            },
-            {
-                id: 5,
-                title: "Summer Festival Pass",
-                category: "tickets",
-                image: "https://placehold.co/400x200",
-                excerpt: "Get your access to the biggest summer festival of the year with exclusive perks.",
-                link: "/product/5"
-            },
-            {
-                id: 6,
-                title: "Gourmet Cheese Selection",
-                category: "food",
-                image: "https://placehold.co/400x200",
-                excerpt: "Curated collection of artisan cheeses from around the world. Premium quality guaranteed.",
-                link: "/product/6"
-            }
-        ];
+"use strict";
 
-        const grid = document.getElementById('productsGrid');
-        const noResults = document.getElementById('noResults');
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        let currentFilter = 'all';
+import { keys } from "./config.mjs";
+import { prices } from "./settings.mjs";
 
-        // Function to render products
-        function renderProducts(filter) {
-            grid.innerHTML = '';
-            noResults.style.display = 'none';
+const grid = document.getElementById('productsGridX');
+const noResults = document.getElementById('noResults');
+const filterBtns = document.querySelectorAll('.filter-btn');
 
-            const filtered = filter === 'all' 
-                ? products 
-                : products.filter(p => p.category === filter);
+let currentFilter = 'all';
 
-            if (filtered.length === 0) {
-                noResults.style.display = 'block';
-                return;
-            }
+// Function to render products
+const renderProducts = (filter) => {
+    grid.innerHTML = '';
+    noResults.style.display = 'none';
 
-            filtered.forEach(product => {
-                const card = document.createElement('article');
-                card.className = 'product-card';
-                card.innerHTML = `
+    const filtered = filter === 'all'
+        ? products
+        : products.filter(p => p.category === filter);
+
+    if (filtered.length === 0) {
+        noResults.style.display = 'block';
+        return;
+    }
+
+    filtered.forEach(product => {
+        const card = document.createElement('article');
+        card.className = 'product-card';
+        card.innerHTML = `
                     <img src="${product.image}" alt="${product.title}" class="product-image">
                     <div class="product-content">
                         <span class="product-category">${product.category}</span>
@@ -81,19 +35,44 @@
                         <a href="${product.link}" class="product-btn">Know More</a>
                     </div>
                 `;
-                grid.appendChild(card);
-            });
-        }
+        grid.appendChild(card);
+    });
+};
 
-        // Event listeners for filter buttons
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentFilter = btn.dataset.filter;
-                renderProducts(currentFilter);
-            });
-        });
+// Event listeners for filter buttons
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderProducts(currentFilter);
+    });
+});
 
-        // Initial render
-        renderProducts('all');
+const startSnipcartSettings = () => {
+
+    window.SnipcartSettings = {
+        publicApiKey: keys.snipcart.publicApiKey,
+        loadStrategy: "on-user-interaction",
+        timeoutDuration: 5000,
+        currency: "gbp",
+        version: "3.7.1",
+        //loadStrategy: "manual",
+        //loadCSS: false,
+        //addProductBehavior: "none",
+        modalStyle: "side",
+
+    };
+
+    // If loadStrategy was manual, then you can call:
+    // window.LoadSnipcart();
+
+    (function () { var c, d; (d = (c = window.SnipcartSettings).version) != null || (c.version = "3.0"); var s, S; (S = (s = window.SnipcartSettings).timeoutDuration) != null || (s.timeoutDuration = 2750); var l, p; (p = (l = window.SnipcartSettings).domain) != null || (l.domain = "cdn.snipcart.com"); var w, u; (u = (w = window.SnipcartSettings).protocol) != null || (w.protocol = "https"); var m, g; (g = (m = window.SnipcartSettings).loadCSS) != null || (m.loadCSS = !0); var y = window.SnipcartSettings.version.includes("v3.0.0-ci") || window.SnipcartSettings.version != "3.0" && window.SnipcartSettings.version.localeCompare("3.4.0", void 0, { numeric: !0, sensitivity: "base" }) === -1, f = ["focus", "mouseover", "touchmove", "scroll", "keydown"]; window.LoadSnipcart = o; document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", r) : r(); function r() { window.SnipcartSettings.loadStrategy ? window.SnipcartSettings.loadStrategy === "on-user-interaction" && (f.forEach(function (t) { return document.addEventListener(t, o) }), setTimeout(o, window.SnipcartSettings.timeoutDuration)) : o() } var a = !1; function o() { if (a) return; a = !0; let t = document.getElementsByTagName("head")[0], n = document.querySelector("#snipcart"), i = document.querySelector('src[src^="'.concat(window.SnipcartSettings.protocol, "://").concat(window.SnipcartSettings.domain, '"][src$="snipcart.js"]')), e = document.querySelector('link[href^="'.concat(window.SnipcartSettings.protocol, "://").concat(window.SnipcartSettings.domain, '"][href$="snipcart.css"]')); n || (n = document.createElement("div"), n.id = "snipcart", n.setAttribute("hidden", "true"), document.body.appendChild(n)), h(n), i || (i = document.createElement("script"), i.src = "".concat(window.SnipcartSettings.protocol, "://").concat(window.SnipcartSettings.domain, "/themes/v").concat(window.SnipcartSettings.version, "/default/snipcart.js"), i.async = !0, t.appendChild(i)), !e && window.SnipcartSettings.loadCSS && (e = document.createElement("link"), e.rel = "stylesheet", e.type = "text/css", e.href = "".concat(window.SnipcartSettings.protocol, "://").concat(window.SnipcartSettings.domain, "/themes/v").concat(window.SnipcartSettings.version, "/default/snipcart.css"), t.prepend(e)), f.forEach(function (v) { return document.removeEventListener(v, o) }) } function h(t) { !y || (t.dataset.apiKey = window.SnipcartSettings.publicApiKey, window.SnipcartSettings.addProductBehavior && (t.dataset.configAddProductBehavior = window.SnipcartSettings.addProductBehavior), window.SnipcartSettings.modalStyle && (t.dataset.configModalStyle = window.SnipcartSettings.modalStyle), window.SnipcartSettings.currency && (t.dataset.currency = window.SnipcartSettings.currency), window.SnipcartSettings.templatesUrl && (t.dataset.templatesUrl = window.SnipcartSettings.templatesUrl)) } })();
+
+};
+
+// Initial render
+// renderProducts("all");
+
+// Start Snipcart
+startSnipcartSettings();
