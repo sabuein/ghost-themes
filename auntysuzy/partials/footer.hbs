@@ -1,12 +1,12 @@
+<!-- footer.hbs -->
 <footer>
         <div class="footer-container">
             <!-- Footer Top Section -->
             <div class="footer-top">
                 <!-- Brand Section -->
                 <div class="footer-section footer-brand">
-                    <h2>Aunty Suzy</h2>
-                    <p class="tagline">Handmade with Love</p>
-                    <p>Beautifully crafted products made with care. Supporting independent artistry and sustainable living.</p>
+                    <h2>{{@site.title}}</h2>
+                    <p class="tagline">{{@site.description}}</p>
                     
                     <!-- Social Links -->
                     <div class="social-links">
@@ -17,7 +17,17 @@
                         <a class="subscribe-button icon-feed" href="{{@site.url}}/rss/">RSS</a>
                     </div>
                 </div>
-
+<!-- Shop Section -->
+                <div class="footer-section">
+                    <h3>Shop</h3>
+                    <ul class="links-list">
+                        <li><a href="#shop">All Products</a></li>
+                        <li><a href="#art">Art</a></li>
+                        <li><a href="#food">Food</a></li>
+                        <li><a href="#handicrafts">Handicrafts</a></li>
+                        <li><a href="#tickets">Tickets</a></li>
+                    </ul>
+                </div>
                 <!-- Blog Section -->
                 <div class="footer-section">
                     <h3>Blog</h3>
@@ -29,36 +39,8 @@
                     </ul>
                 </div>
 
-                <!-- Shop Section -->
-                <div class="footer-section">
-                    <h3>Shop</h3>
-                    <ul class="links-list">
-                        <li><a href="#shop">All Products</a></li>
-                        <li><a href="#art">Art</a></li>
-                        <li><a href="#food">Food</a></li>
-                        <li><a href="#handicrafts">Handicrafts</a></li>
-                        <li><a href="#tickets">Tickets</a></li>
-                    </ul>
-                </div>
-
-
-                <!-- Newsletter Section -->
-                <div class="footer-section">
-                    <h3>Newsletter</h3>
-                    <p>Get updates on new products, special offers, and stories from Aunty Suzy.</p>
-                    <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
-                        <input 
-                            type="email" 
-                            placeholder="Your email address" 
-                            required 
-                            aria-label="Email address for newsletter"
-                        >
-                        <button type="submit">Subscribe</button>
-                    </form>
-                    <p style="font-size: 11px; color: #999; margin-top: 10px;">
-                        We respect your privacy. Unsubscribe at any time.
-                    </p>
-                </div>
+                
+{{> "newsletter"}}
             </div>
 
             <!-- Footer Divider -->
@@ -76,13 +58,3 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        function handleNewsletterSubmit(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
-            console.log('Newsletter signup for:', email);
-            alert('Thank you for subscribing! Check your email for a special welcome offer.');
-            event.target.reset();
-        }
-    </script>

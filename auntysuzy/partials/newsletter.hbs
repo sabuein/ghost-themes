@@ -1,0 +1,27 @@
+<!-- newsletter.hbs -->
+{{!-- Newsletter Section --}}
+<div class="footer-section">
+    <h3>Newsletter</h3>
+    <p>Get updates on new products&comma; special offers&comma; and stories from {{@site.title}}&period;</p>
+    <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+        <input 
+            type="email" 
+            placeholder="Your email address" 
+            required="required"
+            aria-label="Email address for newsletter"
+        >
+        <button type="submit" title="Subscribe">Subscribe</button>
+    </form>
+    <p style="font-size: 11px; color: #999; margin-top: 10px;">
+        We respect your privacy&period; Unsubscribe at any time&period;
+    </p>
+</div>
+<script>
+    function handleNewsletterSubmit(event) {
+        event.preventDefault();
+        const email = event.target.querySelector('input[type="email"]').value;
+        console.log('Newsletter signup for:', email);
+        alert('Thank you for subscribing! Check your email for a special welcome offer.');
+        event.target.reset();
+    }
+</script>
