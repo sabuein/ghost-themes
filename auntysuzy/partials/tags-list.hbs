@@ -1,0 +1,6 @@
+{{! Get all tags and order them by post count }}
+{{#get "tags" limit="100" include="count.posts" order="count.posts desc"}}
+{{#foreach tags}}
+<p>{{name}} ({{count.posts}})</p>
+{{/foreach}}
+{{/get}}

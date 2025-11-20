@@ -6,4 +6,11 @@
     {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat "nav-" slug)}}" role="menuitem">
         <a href="{{url absolute="true"}}">{{label}}</a>
     </li>{{/foreach}}
+    <li class="snipcart-summary" role="menuitem">
+        <a href="#" class="snipcart-checkout" title="Cart">Cart </a>
+        <pre>(Items: <span class="snipcart-items-count"></span>, Total: <span class="snipcart-total-price"></span>)</pre>
+        
+        
+
+    </li>
 </ul>{{/if}}
