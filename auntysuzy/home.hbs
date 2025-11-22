@@ -1,39 +1,36 @@
 {{!< default}}
 <!-- home.hbs -->
 <hgroup class="hero">
-    <h1>{{@site.title}}</h1>
-    <p>{{@site.description}}</p>
+    <h2>Ready to Explore?</h2>
+    <p>Browse our full collection of handmade products and find something special for yourself or a loved one.</p>
+    <a href="#browse-our-collections" class="cta-button">Start Shopping</a>
 </hgroup>
 
 <section id="prodcuts">
     <hgroup class="shop-intro">
-        <h2>Browse our collections</h2>
+        <h2 id="browse-our-collections">Browse our collections</h2>
         <p>Beautifully crafted products made with care. Supporting independent artistry and sustainable living.</p>
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="art">Art</button>
-            <button class="filter-btn" data-filter="food">Food</button>
-            <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
-            <button class="filter-btn" data-filter="tickets">Tickets</button>
-        </div>
     </hgroup>
-    {{#get "posts" filter="tags:[art,food,handicrafts,recipes,tickets]" include="tags" order="title asc"
-limit=@config.posts_per_page}}{{#if posts}}<div class="products-grid" id="productsGrid">
-        {{> "product-card"}}
-    </div>{{else}}<pre class="no-results" id="noResults" style="display: none;">No products found in this category&period;</pre>{{/if}}{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
-</section>
-
-    {{> "features"}}
-    <div class="cta">
-        <h3>Ready to Explore?</h3>
-        <p>Browse our full collection of handmade products and find something special for yourself or a loved one.</p>
-        <a href="#snipcart" class="cta-button">Start Shopping</a>
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="art">Art</button>
+        <button class="filter-btn" data-filter="food">Food</button>
+        <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
+        <button class="filter-btn" data-filter="tickets">Tickets</button>
     </div>
+    <!-- Existing product cards -->
+    {{#get "posts" filter="tags:[art,food-pickles,handicrafts,recipes,tickets]" include="tags" order="title asc"
+limit="all"}}{{#if posts}}<div class="products-grid" id="productsGrid">
+        {{> "product-card"}}
+    </div>{{else}}<pre class="no-results">No results were returned from this request&period;</pre>{{/if}}{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
+    <pre class="no-results" id="noResults" style="display: none;">There are no products available in this category&period;</pre>
+</section>
+        {{> "features"}}
 
-    {{> "faq"}}
-
-    {{> "contact"}}
     
+    {{> "faq"}}
+    {{> "contact"}}
+    {{> "newsletter"}}
 {{!--
     {{> "posts-list"}}
     {{> "tags-list"}}
