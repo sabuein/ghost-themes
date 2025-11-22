@@ -1,8 +1,7 @@
 <!-- newsletter.hbs -->
-{{!-- Newsletter Section --}}
-<div class="footer-section">
-    <h3>Newsletter</h3>
-    <p>Get updates on new products&comma; special offers&comma; and stories from {{@site.title}}&period;</p>
+<div class="newsletter-section">
+    <h3>Join Our Community</h3>
+    <p>Get exclusive updates on new handmade creations, special offers, and artisan stories delivered to your inbox.</p>
     <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
         <input 
             type="email" 
@@ -12,10 +11,11 @@
         >
         <button type="submit" title="Subscribe">Subscribe</button>
     </form>
-    <p style="font-size: 11px; color: #999; margin-top: 10px;">
-        We respect your privacy&period; Unsubscribe at any time&period;
+    <p class="newsletter-privacy" style="font-size: 11px; margin-top: 10px;">
+        We respect your privacy. Unsubscribe at any time.
     </p>
 </div>
+
 <script>
     function handleNewsletterSubmit(event) {
         event.preventDefault();

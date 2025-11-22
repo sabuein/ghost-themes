@@ -1,5 +1,6 @@
 <!-- product-card.hbs -->
-{{#foreach posts}}<article class="product-card" role="group" aria-labelledby="{{slug}}" data-product-id="{{id}}"  data-primary-tag="{{#primary_tag}}{{slug}}{{/primary_tag}}">
+{{#foreach posts}}<article class="product-card" role="group" aria-labelledby="{{slug}}" data-product-id="{{id}}"
+  data-primary-tag="{{#primary_tag}}{{slug}}{{/primary_tag}}">
   <div class="pc-media" aria-hidden="false">
     {{!-- This is a responsive image, it loads different sizes depending on device
     https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
@@ -40,8 +41,13 @@
 
     <div class="pc-actions">
       {{!-- Snipcart Products Documentation: https://docs.snipcart.com/v3/setup/products --}}
-      <button class="btn pc-add snipcart-add-item" type="button" title="Add to cart" data-primary-tag="{{#primary_tag}}{{slug}}{{/primary_tag}}" data-item-id="{{id}}" data-item-name="{{title}}" data-item-image="{{img_url feature_image}}" data-item-description="{{excerpt}}" data-item-url="{{url absolute='true'}}">Add to cart</button>
-      <a href="{{url}}" aria-label="Learn more"><button class="btn pc-learn" type="button" title="Learn more">Learn more</button></a>
+      <button class="btn pc-add snipcart-add-item" type="button" title="Add to cart"
+        data-primary-tag="{{#primary_tag}}{{slug}}{{/primary_tag}}" data-item-id="{{id}}" data-item-name="{{title}}"
+        data-item-image="{{img_url feature_image}}" data-item-description="{{excerpt}}"
+        data-item-url="{{url absolute='true'}}"
+        data-item-price="{{#has id='691ee103d8043438f2426000'}}4.99{{else}}0.00{{/has}}">Add to cart</button>
+      <a href="{{url}}" aria-label="Learn more"><button class="btn pc-learn" type="button" title="Learn more">Learn
+          more</button></a>
     </div>
     {{#if tags}}<div class="pc-tags">
       <h4>Tags / keywords:</h4>
@@ -51,45 +57,12 @@
       <li style="background-color: {{accent_color}};">
         <a href="{{url}}" title="{{name}}" class="tag tag-{{id}} {{slug}}">{{name}}</a>
       </li>
-    {{/foreach}}
-    --}}
+      {{/foreach}}
+      --}}
     </div>{{/if}}
   </div>
 </article>{{/foreach}}
-<script>
-  const priceList = {
-      "691d0d9b01b58127d6c61d12": {
-        price: 4.99,
-        unit: "jar",
-      },
-      "691d231c01b58127d6c61d45": {
-        price: 3.99,
-        unit: "jar",
-      },
-      "691ecd455d762ceb9f911bc6": {
-        price: 0.00,
-        unit: "ticket",
-      }
-  };
-  const priceCurrent = document.querySelectorAll(`span.pc-price-current`);
-  const priceUnit = document.querySelectorAll(`span.pc-price-unit`);
-  const buttons = document.querySelectorAll(`button.snipcart-add-item`);
-  buttons.forEach((btn, index) => {
-    const id = btn.getAttribute("data-item-id");
-    btn.setAttribute("data-item-price", priceList[id]["price"] || "0.00");
-    priceCurrent[index].textContent = `£${priceList[id]["price"] || "0.00"}`;
-    priceUnit[index].textContent = `/ ${priceList[id]["unit"] || "item"}`;
-
-    const primaryTag = btn.getAttribute("data-primary-tag");
-    switch(primaryTag) {
-      case "food":
-      btn.setAttribute("data-item-custom1-name", "Container Type");
-      btn.setAttribute("data-item-custom1-options", "Jar");
-      break;
-      case "tickets":
-      btn.setAttribute("disabled", "disabled");
-      break;
-    }
-
-  });
+<script type="module">
+  import { initPricing } from "prices";
+  initPricing();
 </script>

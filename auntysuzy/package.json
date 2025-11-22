@@ -28,7 +28,7 @@
         "stop": "ghost stop -d ~/my/instances/ghost-25",
         "debug": "ghost run -D -d ~/my/instances/ghost-25",
         "log": "ghost log -d ~/my/instances/ghost-25",
-        "zip": "zip -r /home/sabuein/Desktop/auntysuzy.zip * -x *.zip /assets/labs/* /assets/js/config.* .gitignore",
+        "zip": "zip -r /home/sabuein/Desktop/auntysuzy.zip * -x *.zip /assets/labs/* .gitignore",
         "scan": "npx gscan .",
         "scan-zip": "npx gscan -z /home/sabuein/Desktop/auntysuzy.zip",
         "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/auntysuzy ~/my/instances/ghost-25/content/themes",

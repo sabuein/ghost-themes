@@ -1,7 +1,6 @@
 "use strict";
 
 import { keys } from "./config.mjs";
-import { prices } from "./settings.mjs";
 
 const grid = document.getElementById('productsGridX');
 const noResults = document.getElementById('noResults');

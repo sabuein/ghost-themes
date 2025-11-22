@@ -14,33 +14,22 @@
         <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/portal@~2.50/umd/portal.min.js" />
         <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" />
 		<link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" />
-		
 		<link rel="apple-touch-icon" href="{{asset 'images/icons/icon-192x192.png'}}" />
 		<link rel="manifest" href="/app.webmanifest" crossorigin="use-credentials" />
 		<link rel="shortcut icon" href="{{asset 'images/favicons/favicon.ico'}}" sizes="any" />
 		<link rel="icon" href="{{asset 'images/favicons/favicon.svg'}}" type="image/svg+xml" />
+		<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
 		<link rel="stylesheet" href="{{asset 'css/screen.css'}}" type="text/css" />
-		<!--
+		
 			<script type="importmap">
 			    {
 			        "imports": {
-			            "links": "/assets/js/context/links.mjs",
-			            "interface": "/assets/js/mods/interface.mjs",
-			            "media": "/assets/js/mods/media.mjs",
-			            "service": "/assets/js/mods/service.mjs",
-			            "utils": "/assets/js/mods/utils.mjs",
-			            "web": "/assets/js/mods/web.mjs",
-			            "app": "/assets/js/app.js",
-			            "infiniteScroll": "/assets/js/extra/infiniteScroll.js",
-			            "menuOpen": "/assets/js/extra/menuOpen.js"
+			            "prices": "/assets/js/mods/productPricing.mjs"
 			        }
 			    }
 			</script>
-			-->
 		<title>{{#is "home"}}{{@site.title}} &mdash; {{@site.description}}{{else}}{{#is "post"}}{{#post}}{{title}}{{/post}}{{else}}{{meta_title}}{{/is}} &mdash; {{@site.title}}{{/is}}</title>
 		{{ghost_head}}
-		{{!-- Outputs important meta data and settings, should always be in
-		<head> --}}
 	</head>
 	<body class="{{body_class}}">
 		{{> "header"}}
@@ -52,6 +41,10 @@
 	{{> "cookie"}}
     {{> "notifier"}}
 	<script type="module" src="{{asset 'js/application.mjs'}}"></script>
+	<!--
+	<script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
+<div hidden id="snipcart" data-api-key="MGU0NDZkODUtNGYwYS00ZmUxLThmNTEtYmE3YzdiZGJiN2I3NjM4OTg2NzI5MDk4NTMyMjUw"></div>
+-->
 	{{ghost_foot}}
 	</body>
 </html>
