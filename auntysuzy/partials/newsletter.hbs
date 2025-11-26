@@ -1,27 +1,19 @@
 <!-- newsletter.hbs -->
-<div class="newsletter-section">
-    <h3>Join Our Community</h3>
-    <p>Get exclusive updates on new handmade creations, special offers, and artisan stories delivered to your inbox.</p>
-    <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
-        <input 
-            type="email" 
-            placeholder="Your email address" 
-            required="required"
-            aria-label="Email address for newsletter"
-        >
-        <button type="submit" title="Subscribe">Subscribe</button>
+{{^if @member}}{{#unless @site.members_invite_only}}<section class="newsletter-section flexy column">
+    <hgroup class="flexy column">
+        <h3>Join our community</h3>
+        <p>Sign up to receive early access to new handmade pieces, members-only offers, behind-the-scenes stories, and special announcements.</p>
+    </hgroup>
+    {{!-- Sign-in form send a magic link to the member's email address and include a one-time code option. --}}
+    <form class="newsletter-form flexy column" data-members-form="subscribe" data-members-otc="true" data-members-autoredirect="false">
+        <input type="hidden" value="Early Adopters" data-members-label="" />
+        <input type="text" id="userName" name="name" placeholder="Enter your name&hellip;" required="required"  autocomplete="name" aria-label="Full name for account" data-members-name=""/>
+        <input type="email" id="userEmail" name="name" placeholder="Enter your email&hellip;" required="required" autocomplete="email" aria-label="Email address for account" data-members-email="" />
+        {{#get "newsletters"}}<div class="flexy">
+            {{#foreach newsletters}}<label><input type="checkbox" value="{{name}}" checked="checked" data-members-newsletter="" />{{name}}</label>{{/foreach}}
+        </div>{{/get}}
+        <input type="submit" value="{{t "Subscribe"}}" />
+        <p data-members-error=""><!-- error message will appear here --></p>
     </form>
-    <p class="newsletter-privacy" style="font-size: 11px; margin-top: 10px;">
-        We respect your privacy. Unsubscribe at any time.
-    </p>
-</div>
-
-<script>
-    function handleNewsletterSubmit(event) {
-        event.preventDefault();
-        const email = event.target.querySelector('input[type="email"]').value;
-        console.log('Newsletter signup for:', email);
-        alert('Thank you for subscribing! Check your email for a special welcome offer.');
-        event.target.reset();
-    }
-</script>
+    <p class="newsletter-privacy" style="font-size: 11px; margin-top: 10px;">We respect your privacy. Unsubscribe anytime.</p>
+</section>{{/unless}}{{/if}}

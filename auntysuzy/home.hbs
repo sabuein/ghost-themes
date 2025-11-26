@@ -1,51 +1,128 @@
 {{!< default}}
 <!-- home.hbs -->
-<hgroup class="hero">
-    <h2>Ready to Explore?</h2>
-    <p>Browse our full collection of handmade products and find something special for yourself or a loved one.</p>
-    <a href="#browse-our-collections" class="cta-button">Start Shopping</a>
-</hgroup>
+    <section class="hero flexy">
+        <hgroup class="flexy column">
+            <p><small>Welcome to <strong>{{@site.title}}</strong>&period;</small></p>
+            <p><small>{{#if @member.paid}}Thanks for becoming a paying member&comma; {{@member.firstname}}&excl; 🎉{{else if @member}}Thanks for being a member&comma; {{@member.firstname}}&excl; 🙌{{else}}You are warmly invited to join our family&hellip; 🖋{{/if}}</small></p>
+            <h2>Heritage Delivered to Your Door</h2>
+            <p>Experience the true taste of Palestine &mdash; authentic flavours, handcrafted treasures, and heartfelt stories. Every month, discover a beautifully curated collection celebrating culture, tradition, and the comfort of home.</p>
+            <div class="flexy">
+                {{^if @member}}<a href="#start-your-story-with-us" class="cta-button">Start your story with us</a>{{/if}}
+                <a href="#discover-our-collections" class="cta-button">Discover our collections</a>
+            </div>
+        </hgroup>
+        {{#if @site.cover_image}}<figure class="flexy column">
+            <img src="{{img_url @site.cover_image size="l"}}" alt="Aunty Suzy Discovery Box" />
+        </figure>{{/if}}
+        <footer class="flexy column">
+            {{> "trust-badges"}}
+        </footer>
+    </section>
 
-<section id="prodcuts">
-    <hgroup class="shop-intro">
-        <h2 id="browse-our-collections">Browse our collections</h2>
-        <p>Beautifully crafted products made with care. Supporting independent artistry and sustainable living.</p>
-    </hgroup>
-    <div class="filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="art">Art</button>
-        <button class="filter-btn" data-filter="food">Food</button>
-        <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
-        <button class="filter-btn" data-filter="tickets">Tickets</button>
-    </div>
-    <!-- Existing product cards -->
-    {{#get "posts" filter="tags:[art,food-pickles,handicrafts,recipes,tickets]" include="tags" order="title asc"
-limit="all"}}{{#if posts}}<div class="products-grid" id="productsGrid">
-        {{> "product-card"}}
-    </div>{{else}}<pre class="no-results">No results were returned from this request&period;</pre>{{/if}}{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
-    <pre class="no-results" id="noResults" style="display: none;">There are no products available in this category&period;</pre>
-</section>
-        {{> "features"}}
 
-    
-    {{> "faq"}}
-    {{> "contact"}}
+    {{> "membership-tiers"}}
+
+    <section id="prodcuts">
+        <hgroup class="shop-intro">
+            <h2 id="discover-our-collections">Discover our collections</h2>
+            <p>{{@site.title}} brings you a curated range of artisanal foods, heritage-inspired crafts, and limited-edition art. Each piece is crafted with intention and sourced from independent makers who honour tradition and quality.</p>
+        </hgroup>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="art">Art</button>
+            <button class="filter-btn" data-filter="food-pickles">Food & Pickles</button>
+            <button class="filter-btn" data-filter="handicrafts">Handicrafts</button>
+            <button class="filter-btn" data-filter="tickets">Tickets</button>
+        </div>
+        <!-- Existing product cards -->
+        {{#get "posts" filter="tags:[art,food-pickles,handicrafts,recipes,tickets]" include="tags" order="title asc"
+        limit=@config.posts_per_page}}{{#if posts}}<div class="products-grid" id="productsGrid">
+            {{> "product-card"}}{{pagination}}
+        </div>{{else}}
+        <pre class="no-results">No results were returned from this request&period;</pre>{{/if}}{{else}}
+        <pre class="loop-error">{{error}}</pre>{{/get}}
+        <pre class="no-results" id="noResults"
+            style="display: none;">There are no products available in this category&period;</pre>
+    </section>
+
+    {{> "features"}}
+    {{> "latest-articles"}}
+
+    <section id="instagram-widget" class="instagram-feed-widget">
+        <h2>✨ Follow Us on Instagram!</h2>
+
+        <div class="instagram-grid-container">
+            <a href="[Your Post URL 1]" target="_blank" class="grid-post">
+                <img src="https://placehold.co/300x300" alt="Instagram Post 1" class="post-image">
+                <div class="overlay">@auntysuzyuk</div>
+            </a>
+
+            <a href="[Your Post URL 2]" target="_blank" class="grid-post">
+                <img src="https://placehold.co/300x300" alt="Instagram Post 2" class="post-image">
+                <div class="overlay">@auntysuzyuk</div>
+            </a>
+
+            <a href="[Your Post URL 3]" target="_blank" class="grid-post">
+                <img src="https://placehold.co/300x300" alt="Instagram Post 3" class="post-image">
+                <div class="overlay">@auntysuzyuk</div>
+            </a>
+
+            <a href="[Your Post URL 4]" target="_blank" class="grid-post extra-post">
+                <img src="https://placehold.co/300x300" alt="Instagram Post 4" class="post-image">
+                <div class="overlay">@auntysuzyuk</div>
+            </a>
+
+            <a href="[Your Post URL 5]" target="_blank" class="grid-post extra-post">
+                <img src="https://placehold.co/300x300" alt="Instagram Post 5" class="post-image">
+                <div class="overlay">@auntysuzyuk</div>
+            </a>
+
+            <a href="[Your Post URL 6]" target="_blank" class="grid-post extra-post">
+                <img src="https://placehold.co/300x300" alt="Instagram Post 6" class="post-image">
+                <div class="overlay">@auntysuzyuk</div>
+            </a>
+        </div>
+        <div class="cta-link-wrapper">
+            <a href="https://www.instagram.com/auntysuzyuk/?ref={{@site.url}}" title="Instagram" target="_blank" rel="nofollow noopener" class="view-all-cta">{{> "icons/instagram"}}<span>View All Posts on Instagram</span></a>
+        </div>
+    </section>
+
     {{> "newsletter"}}
-{{!--
+    {{!--
     {{> "posts-list"}}
     {{> "tags-list"}}
-    {{> "tiers-list"}}
-    {{> "sign-up"}}
---}}
+    --}}
 
-        
 
-        
+<script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const productCards = document.querySelectorAll(".product-card");
+    const renderProducts = (filter) => {
+        productCards.forEach(card => {
+            const primaryTag = card.dataset.filter;
+            if (filter === "all" || filter === primaryTag) card.classList.add("active");
+        });
+    };
+            // Setup Filter Buttons
+            const setupFilters = () => {
+                filterButtons.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        filterButtons.forEach(b => b.classList.remove("active"));
+                        productCards.forEach(c => c.classList.remove("active"));
+                        btn.classList.add("active");
+                        renderProducts(btn.dataset.filter);
+                    });
+                });
+            };
 
-        {{!-- If JS isn't enabled, fallback to standard pagination --}}
-        <noscript>
-            <div class="ae-pagination">
-                {{pagination}}
-            </div>
-        </noscript>
+            renderProducts("all");
+            setupFilters();
+        </script>
+
+    {{!-- If JS isn't enabled, fallback to standard pagination --}}
+    <noscript>
+        <div class="ae-pagination">
+            {{pagination}}
+        </div>
+    </noscript>
     </div>

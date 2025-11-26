@@ -1,27 +1,17 @@
 <!-- product-card.hbs -->
-{{#foreach posts}}<article class="product-card" role="group" aria-labelledby="{{slug}}" data-product-id="{{id}}"
-  data-primary-tag="{{#primary_tag}}{{slug}}{{/primary_tag}}">
-  <div class="pc-media" aria-hidden="false">
+{{#foreach posts}}<article class="product-card" role="group" data-id="{{id}}" data-filter="{{#primary_tag}}{{slug}}{{/primary_tag}}" aria-labelledby="{{slug}}">
+  <figure class="pc-media">
     {{!-- This is a responsive image, it loads different sizes depending on device
     https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
     {{#if feature_image}}<picture>
       <!-- WebP preferred for browsers that support it -->
-      <source type="image/webp" srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }}
-        600w, {{img_url feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
-        sizes="(max-width:420px) 100vw, 320px">
+      <source type="image/webp" srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w" sizes="(max-width:420px) 100vw, 320px" />
       <!-- Fallback JPEG/PNG -->
-      <img class="pc-image" loading="lazy" decoding="async" src="{{img_url feature_image size=" m"}}"
-        srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
-        feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
-        sizes="(max-width:420px) 100vw, 320px"
-        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+      <img class="pc-image" loading="lazy" decoding="async" src="{{img_url feature_image size=" m"}}" srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w" sizes="(max-width:420px) 100vw, 320px" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
     </picture>{{/if}}
-
-    <div class="pc-placeholder" aria-hidden="true"></div>
-
     {{#if featured}}<span class="pc-badge">Scrummy</span>{{/if}}
-    <button class="pc-fav" aria-label="Add Makdous Okra to wishlist" title="Add to wishlist">♡</button>
-  </div>
+    <button class="pc-fav" title="Add to wishlist" aria-label="Add {{title}} to wishlist">♡</button>
+  </figure>
 
   <div class="pc-body">
     <h3 id="{{slug}}" class="pc-title">{{title}}</h3>
@@ -41,17 +31,12 @@
 
     <div class="pc-actions">
       {{!-- Snipcart Products Documentation: https://docs.snipcart.com/v3/setup/products --}}
-      <button class="btn pc-add snipcart-add-item" type="button" title="Add to cart"
-        data-primary-tag="{{#primary_tag}}{{slug}}{{/primary_tag}}" data-item-id="{{id}}" data-item-name="{{title}}"
-        data-item-image="{{img_url feature_image}}" data-item-description="{{excerpt}}"
-        data-item-url="{{url absolute='true'}}"
-        data-item-price="{{#has id='691ee103d8043438f2426000'}}4.99{{else}}0.00{{/has}}">Add to cart</button>
-      <a href="{{url}}" aria-label="Learn more"><button class="btn pc-learn" type="button" title="Learn more">Learn
-          more</button></a>
+      <button class="btn pc-add snipcart-add-item" type="button" title="Add to cart" data-primary-tag="{{#primary_tag}}{{slug}}{{/primary_tag}}" data-item-id="{{id}}" data-item-name="{{title}}" data-item-image="{{img_url feature_image}}" data-item-description="{{excerpt}}" data-item-url="{{url absolute='true'}}">Add to cart {{> "icons/shopping-cart-plus"}}</button>
+      <a href="{{url}}" class="btn pc-learn" title="Learn more" aria-label="Learn more">Learn more {{> "icons/arrow-right"}}</a>
     </div>
     {{#if tags}}<div class="pc-tags">
       <h4>Tags / keywords:</h4>
-      {{tags}}
+      {{tags separator=""}}
       {{!--
       {{#foreach tags}}
       <li style="background-color: {{accent_color}};">

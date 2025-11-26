@@ -1,0 +1,171 @@
+/* --- Global Full-Width Container --- */
+.product-feature-section {
+    font-family: 'Arial', sans-serif;
+    max-width: 1200px; /* Max width for a large section, use 100% for true full-width */
+    width: 100%;
+    margin: 30px auto;
+    background-color: #f7f7f7; /* Light background for the whole section */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Main Panel: Image & CTA --- */
+.main-panel {
+    display: flex;
+    flex-wrap: wrap; /* Allows sections to stack on smaller screens */
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.product-visuals {
+    flex: 1; /* Takes up available space */
+    min-width: 300px;
+    padding: 30px;
+}
+
+.box-title {
+    color: #333;
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.box-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+.tagline {
+    font-size: 1.1em;
+    color: #666;
+    font-style: italic;
+    margin: 0;
+}
+
+/* --- CTA Card Panel (Subscription Options) --- */
+.subscription-cta-card {
+    background-color: #fff0ee; /* Contrasting color for the subscription card */
+    padding: 30px;
+    min-width: 300px;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.cta-heading {
+    font-size: 1.5em;
+    color: #ff6f61;
+    text-align: center;
+    margin-top: 0;
+}
+
+.subscription-options {
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.option-label {
+    /* Updated styling for the full-width options */
+    display: grid;
+    grid-template-areas: "name price" "details details";
+    grid-template-columns: 1fr auto;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.frequency-name { grid-area: name; font-weight: bold; font-size: 1.1em; }
+.price { grid-area: price; font-weight: bold; color: #333; font-size: 1.1em; }
+.detail-text { 
+    grid-area: details; 
+    font-size: 0.8em; 
+    color: #666; 
+    margin-top: 5px; 
+}
+
+/* CRITICAL CSS: Checked State */
+input[type="radio"]:checked + .option-label {
+    border-color: #ff6f61;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px #ff6f61;
+}
+input[type="radio"]:checked + .option-label .price { color: #ff6f61; }
+
+.subscribe-button { /* Keep previous button styling */
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    /* ... (rest of button styles) */
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* --- Value Propositions Panel --- */
+.value-propositions-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for sections */
+    gap: 20px;
+    padding: 40px 30px;
+    background-color: #ffffff;
+}
+
+.proposition-block {
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+}
+
+.proposition-block h3 {
+    color: #007bff;
+    margin-top: 0;
+    font-size: 1.3em;
+}
+
+.benefit-list, .step-list {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.6;
+}
+
+.benefit-list li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.benefit-list li::before {
+    content: '✅'; /* Use emoji for minimal styling */
+    position: absolute;
+    left: 0;
+    font-size: 0.9em;
+}
+
+/* What's Inside Grid */
+.grid-icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.grid-item {
+    text-align: center;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+}
+
+.icon {
+    display: block;
+    font-size: 2em;
+    margin-bottom: 5px;
+}
