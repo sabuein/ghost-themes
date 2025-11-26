@@ -1,0 +1,38 @@
+<section class="p-outer">
+    <div class="p-inner">
+        {{#if @site.icon}}
+            <img class="gh-home-latest-icon" src="{{@site.icon}}" alt="{{@site.title}}">
+        {{/if}}
+        <h2>Blog bites</h2>
+        <div class="p-posts-grid">
+            {{! Use the foreach helper to loop through available posts }}
+            {{#get "posts" include="monthly_price,yearly_price,benefits" filter="primary_tag:blog" limit="100" as |article|}}
+            {{#foreach article}}
+            <article class="p-post-card">
+                {{#if feature_image}}
+                <figure class="gh-article-image">
+                    <img
+                        srcset="{{img_url feature_image size="s"}} 300w,
+                                {{img_url feature_image size="m"}} 720w,
+                                {{img_url feature_image size="l"}} 960w,
+                                {{img_url feature_image size="xl"}} 1200w,
+                                {{img_url feature_image size="xxl"}} 2000w"
+                        sizes="(max-width: 1200px) 100vw, 1200px"
+                        src="{{img_url feature_image size="xl"}}"
+                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                    >
+                    {{#if feature_image_caption}}
+                        <figcaption>{{feature_image_caption}}</figcaption>
+                    {{/if}}
+                </figure>
+            {{/if}}
+                <h3><a href="{{url}}">{{title}}</a></h3>
+                <span class="gh-article-meta">
+                    By {{primary_author.name}} —
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMM YYYY"}}</time>
+                </span>
+            </article>
+            {{else}}<p>Something delicious is in the making &mdash; new posts coming soon&excl;</p>{{/foreach}}{{/get}}
+        </div>
+    </div>
+</section>

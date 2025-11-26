@@ -15,15 +15,16 @@
             {{/if}}
 
             <div class="gh-author-meta">
+                <p>{{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</p>
                 <div class="gh-author-links">
                     {{#if website}}
-                        <a href="{{website}}" title="Website" target="_blank" rel="nofollow noopener">Website</a>
+                        <a href="{{website}}?ref={{@site.url}}" title="Website" target="_blank" rel="nofollow noopener">Website</a>
                     {{/if}}
                     {{#if twitter}}
-                        <a href="{{social_url type="twitter"}}" title="Twitter" target="_blank" rel="nofollow noopener">Twitter</a>
+                        <a href="{{social_url type="twitter"}}?ref={{@site.url}}" title="Twitter" target="_blank" rel="nofollow noopener">Twitter</a>
                     {{/if}}
                     {{#if facebook}}
-                        <a href="{{social_url type="facebook"}}" title="Facebook" target="_blank" rel="nofollow noopener">Facebook</a>
+                        <a href="{{social_url type="facebook"}}?ref={{@site.url}}" title="Facebook" target="_blank" rel="nofollow noopener">Facebook</a>
                     {{/if}}
                 </div>
             </div>
@@ -39,7 +40,7 @@
 
             {{> "card"}} {{!-- partials/card.hbs --}}
 
-        {{/foreach}}
+        {{/foreach}}{{pagination}}
         </div>
 
     </div>

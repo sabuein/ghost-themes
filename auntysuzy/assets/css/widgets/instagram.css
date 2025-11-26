@@ -1,0 +1,101 @@
+.instagram-feed-widget {
+    max-width: 100%;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fcfcfc;
+    border-top: 2px solid #e0e0e0;
+}
+
+.instagram-feed-widget h2 {
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.instagram-grid-container {
+    display: grid;
+    /* Default: 3 columns for medium screens */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.grid-post {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding-top: 100%; /* Creates a perfect square container */
+    cursor: pointer;
+}
+
+.post-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.grid-post:hover .post-image {
+    transform: scale(1.05);
+}
+
+/* Hover Overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 1.1em;
+}
+
+.grid-post:hover .overlay {
+    opacity: 1;
+}
+
+/* --- Responsiveness: Adjust grid columns based on screen width --- */
+@media (min-width: 992px) {
+    .instagram-grid-container {
+        /* Large screens: 6 columns */
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .instagram-grid-container {
+        /* Mobile screens: 2 columns */
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .extra-post {
+        display: none; /* Hide posts 4, 5, 6 on mobile */
+    }
+}
+
+.cta-link-wrapper {
+    margin-top: 25px;
+}
+
+.view-all-cta {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.view-all-cta:hover {
+    background-color: #e05c50;
+}

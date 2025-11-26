@@ -2,6 +2,7 @@ Thank you! :)
 
 - Bcrypt Generator https://bcrypt-generator.com/
 - SVG Minifier https://www.svgminify.com/
+- Tabler Icons https://github.com/tabler/tabler-icons/tree/main
 - Worldvectorlogo https://worldvectorlogo.com/
 - SVG Repo https://www.svgrepo.com/
 - unDraw https://undraw.co/

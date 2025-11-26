@@ -8,9 +8,8 @@
 		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 		<meta name="theme-color" content="#1a202c" media="(prefers-color-scheme: dark)" />
 		<meta name="description" content="AbuEin Technologies &mdash; Professional IT services including PWA development, software solutions, technical support, and more." />
-        <!-- <link rel="preload" href="{{asset 'css/screen.css'}}" type="text/css" as="style" /> -->
-        <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
+		<link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous" />
         <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/portal@~2.50/umd/portal.min.js" />
         <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" />
 		<link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js" />
@@ -28,18 +27,18 @@
 			        }
 			    }
 			</script>
-		<title>{{#is "home"}}{{@site.title}} &mdash; {{@site.description}}{{else}}{{#is "post"}}{{#post}}{{title}}{{/post}}{{else}}{{meta_title}}{{/is}} &mdash; {{@site.title}}{{/is}}</title>
+		<title>{{#is "home"}}{{@site.title}} &mdash; {{@site.description}}{{else}}{{#is "post"}}{{#post}}{{title}}{{/post}}{{else}}{{meta_title page=(t "Page %")}}{{/is}} &mdash; {{@site.title}}{{/is}}</title>
 		{{ghost_head}}
 	</head>
 	<body class="{{body_class}}">
-		{{> "header"}}
+		<span id="top" style="position: absolute; top: 0;">&nbsp;</span>
+		{{> "site-header"}}
 		<main>
 			{{{body}}}
 		</main>
-		{{> "footer"}}
+		{{> "site-footer"}}
     {{> "install-pwa"}}
 	{{> "cookie"}}
-    {{> "notifier"}}
 	<script type="module" src="{{asset 'js/application.mjs'}}"></script>
 	<!--
 	<script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>

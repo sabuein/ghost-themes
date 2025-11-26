@@ -22,48 +22,7 @@
     {{/match}}
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #4a4a4a;
-            background-color: #faf9f7;
-        }
-        .hero {
-            background: linear-gradient(135deg, #8b6f47 0%, #c99a6e 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .hero p {
-            font-size: 1.2em;
-            opacity: 0.95;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-        h2 {
-            font-size: 2em;
-            color: #8b6f47;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-        p {
-            margin-bottom: 15px;
-            font-size: 1.05em;
-            line-height: 1.8;
-        }
+        
         .story-box {
             background-color: #fffbf5;
             border-left: 4px solid #8b6f47;
@@ -101,26 +60,26 @@
         }
     </style>
 
-    <div class="hero">
-        <h1>About Aunty Suzy</h1>
-        <p>Handmade with love, created with care</p>
-    </div>
+    <section class="hero flexy">
+        <hgroup class="flexy column">
+            <h2>The Heart Behind Aunty Suzy</h2>
+            <p>A journey of love, tradition, and community spanning from Palestine to the heart of London.</p>
+        </hgroup>
+    </section>
 
-    <div class="container">
-        <h2>Our Story</h2>
+    <section class="container">
+        <hgroup>
+            <h2>Our Story</h2>
         <div class="story-box">
-            <p>
-                Aunty Suzy started as a passion project. What began in a small kitchen with a few handmade items has blossomed into a collection of carefully crafted products that bring joy to people across the UK. Every item is made with genuine care and attention to detail, reflecting a commitment to quality and sustainability.
-            </p>
+            <p>More than twenty years ago, I arrived in London carrying with me the flavours, traditions, and spirit of my Palestinian heritage. What began as sharing homemade dishes and family recipes with neighbours slowly grew into something much bigger—a way to celebrate Palestinian culture, preserve traditions, and bring people together through food and craft.</p>
         </div>
 
-        <p>
-            I'm Suzy, and I believe in creating things that matter—products that make you smile, that tell a story, and that are made with intention. Whether it's food, recipes, handicrafts, or art, each product in the Aunty Suzy collection represents a piece of creativity and dedication.
-        </p>
+        <p>Aunty Suzy started as a small passion project in my kitchen, where a handful of handmade items and simple recipes became meaningful connections between communities. Over time, that little kitchen grew into a collection of carefully crafted products—from Labaneh and preserved vegetables to handwoven textiles and embroidered pieces—each one created with genuine care, authenticity, and a commitment to quality.</p>
 
-        <p>
-            My passion for handmade goods comes from a belief that there's something special about owning something created by real hands with real care. In a world of mass production, I wanted to create an alternative—a space where quality, creativity, and personal touch are valued.
-        </p>
+        <p>Every item in the Aunty Suzy collection carries a story: a memory from home, a technique passed down through generations, or the artistry of Palestinian craftspeople whose work deserves to be seen and celebrated. In a world of mass production, I wanted to create an alternative—a space where handmade goods, creativity, and personal touch truly matter.</p>
+
+        <p>Today, Aunty Suzy is more than a brand. It’s a bridge between cultures, a celebration of heritage, and a way to support artisans and makers who share the same passion for preserving tradition. My hope is that each product brings a little joy, a little beauty, and a little piece of Palestine into your home.</p>
+        </hgroup>
 
         <h2>Our Values</h2>
         <div class="values">
@@ -171,7 +130,7 @@
         <p>
             I'd love to hear from you! Whether you have questions, feedback, or just want to say hello, feel free to reach out. You'll find all the ways to contact me on our Support page.
         </p>
-    </div>
+    </section>
 
     <div class="gh-content gh-canvas">
         {{content}}
