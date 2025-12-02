@@ -172,17 +172,22 @@ details[open] p {
 				object-fit: contain;
 			}
 
+			.logo figcaption {
+				color: var(--accent-color);
+				font-size: .75rem;
+			}
+
 			/* Improved navigation styling */
 			nav.desktop-nav {
 				flex: 1;
 				flex: 1;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-content: center;
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 			}
 
 			nav.desktop-nav ul.nav {
@@ -190,6 +195,11 @@ details[open] p {
 				list-style: none;
 				gap: 2rem;
 				align-items: center;
+			}
+
+			nav.desktop-nav ul.nav .nav-shop a {
+				font-weight: 700;
+				border-bottom-color: var(--light-text);
 			}
 
 			nav.desktop-nav a {
@@ -224,7 +234,6 @@ details[open] p {
 			}
 
 			.snipcart-summary {
-				margin-left: .5rem;
 				padding-left: .5rem;
 				border-left: 1px solid var(--border-color);
 			}
