@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tufan — Channels powered by Ghost</title>
+  <meta name="description" content="Discover creator channels, watch posts, and join as a member. Create your own channel powered by Ghost tiers and memberships." />
+  <link rel="icon" href="data:," />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --surface: #121318;
+      --text: #e9edf1;
+      --muted: #a7b0be;
+      --brand: #7c5cff;
+      --brand-2: #3ad1ff;
+      --ok: #28c76f;
+      --warn: #ffae42;
+      --danger: #ff5d5d;
+      --border: #21242d;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root {
+        --bg: #f7f8fb; --surface: #ffffff; --text: #0b1324; --muted:#475569; --border:#e5e7eb;
+        --shadow: 0 10px 30px rgba(2,6,23,.08);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(124,92,255,.15), transparent),
+                  radial-gradient(800px 600px at 110% -20%, rgba(58,209,255,.15), transparent),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    a { color: var(--brand-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+    .btn { display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.2rem; border-radius: 999px; font-weight: 700; border:1px solid var(--border); background: linear-gradient(180deg, var(--brand), #5a3dff); color:white; box-shadow: var(--shadow); }
+    .btn.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn.ghost { background: transparent; border-color: transparent; }
+    .btn:focus-visible { outline: 3px solid var(--brand-2); outline-offset: 2px; }
+
+    header { position: sticky; top:0; backdrop-filter: blur(8px); background: color-mix(in oklab, var(--bg) 80%, transparent); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0; }
+    .brand { display:flex; align-items:center; gap:.7rem; font-weight: 900; letter-spacing:.2px; }
+    .logo { width: 28px; height: 28px; border-radius: 6px; background: conic-gradient(from 210deg at 50% 50%, var(--brand), var(--brand-2), var(--brand)); box-shadow: inset 0 0 0 2px #ffffff22; }
+    nav ul { display:flex; gap:1rem; list-style:none; padding:0; margin:0; }
+    nav a { padding:.6rem .8rem; border-radius: 10px; display:inline-block; }
+    nav a:hover { background: color-mix(in oklab, var(--surface), transparent 30%); text-decoration:none; }
+
+    .menu-toggle,
+    .mobile-menu { display:none; }
+    @media (max-width: 860px){
+      nav ul { display:none; }
+      .menu-toggle { display:block; }
+      .mobile-menu { display:none; position: absolute; left:0; right:0; top:100%; background: var(--surface); border-bottom: 1px solid var(--border); padding: .6rem .9rem; }
+      .mobile-menu.open { display:block; }
+      .mobile-menu a { display:block; padding:.75rem; border-radius: 10px; }
+      .mobile-menu a:hover { background: color-mix(in oklab, var(--surface), transparent 30%); text-decoration:none; }
+    }
+
+    .hero { padding: 6rem 0 3rem; text-align:center; }
+    .hero h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); line-height:1.1; margin:.5rem 0 1rem; }
+    .hero p { color: var(--muted); font-size: clamp(1rem, 2vw, 1.15rem); }
+
+    .hero-cta { display:flex; gap: .8rem; justify-content:center; flex-wrap:wrap; margin-top:1.6rem; }
+
+    .grid { display:grid; gap:1rem; }
+    .features { grid-template-columns: repeat(3, 1fr); margin: 3rem 0; }
+    .feature { background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); padding:1.2rem; box-shadow: var(--shadow); }
+    .feature h3 { margin: .2rem 0 .5rem; }
+    .feature p { color: var(--muted); margin:0; }
+    @media (max-width: 950px){ .features { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px){ .features { grid-template-columns: 1fr; } }
+
+    .section { padding: 3rem 0; }
+    .section h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin: 0 0 1rem; }
+    .card { background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+    .how { gap:1rem; grid-template-columns: repeat(3, 1fr); }
+    .how .step { padding: 1.2rem; }
+    .step-num { font-weight:800; font-size: .95rem; letter-spacing: .08em; color: var(--brand-2); }
+
+    .tiers { grid-template-columns: repeat(3, 1fr); margin-top:1rem; }
+    .tier { padding:1.4rem; border:1px solid var(--border); border-radius: var(--radius); }
+    .tier h3 { margin: .2rem 0 .6rem; }
+    .price { font-size: 2rem; font-weight:800; }
+    .muted { color: var(--muted); }
+    @media (max-width: 950px){ .how, .tiers { grid-template-columns: 1fr; } }
+
+    .channels { grid-template-columns: repeat(4, 1fr); margin-top: .8rem; }
+    .channel { padding: .9rem; display:flex; gap:.8rem; align-items:center; border:1px solid var(--border); border-radius: 14px; background: linear-gradient(180deg, color-mix(in oklab, var(--surface), transparent 12%), color-mix(in oklab, var(--surface), transparent)); }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #fff6, #0000), conic-gradient(from 0deg, var(--brand), var(--brand-2), var(--brand)); box-shadow: inset 0 0 0 2px #00000022; }
+    .channel strong { display:block; }
+
+    .faq details { border:1px solid var(--border); border-radius: 12px; padding: .9rem 1rem; background: var(--surface); }
+    .faq details + details { margin-top: .7rem; }
+    .faq summary { cursor: pointer; font-weight:700; }
+    .faq summary::-webkit-details-marker{ display:none; }
+
+    footer { border-top:1px solid var(--border); padding: 2rem 0; color: var(--muted); font-size:.95rem; }
+
+    .notice { border:1px dashed var(--border); padding: .8rem 1rem; border-radius: 12px; font-size:.95rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#home" aria-label="Tufan home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Tufan</span>
+      </a>
+      <nav>
+        <ul aria-label="Main menu">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="menu-toggle btn ghost" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+        <div id="mobile-menu" class="mobile-menu" role="menu" aria-label="Mobile">
+          <a href="#features" role="menuitem">Features</a>
+          <a href="#how" role="menuitem">How it works</a>
+          <a href="#pricing" role="menuitem">Pricing</a>
+          <a href="#faq" role="menuitem">FAQ</a>
+          <a href="#contact" role="menuitem">Contact</a>
+          <a href="/signup" class="btn" role="menuitem">Sign up</a>
+        </div>
+      </nav>
+      <div class="cta">
+        <a class="btn secondary" href="/login">Log in</a>
+        <a class="btn" href="/signup">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero container" aria-labelledby="hero-title">
+      <p class="notice" role="note">Open platform preview — Channels + memberships powered by Ghost visibility & tiers.</p>
+      <h1 id="hero-title">Create your channel. Grow your members. Get paid.</h1>
+      <p>Tufan lets creators run channel pages with posts, shorts, playlists and a shop — with free members, paid members, or specific tiers.</p>
+      <div class="hero-cta" role="group" aria-label="Primary calls to action">
+        <a class="btn" href="/signup">Get started free</a>
+        <a class="btn secondary" href="#how">See how it works</a>
+      </div>
+
+      <div class="grid channels">
+        <div class="channel"><div class="avatar" aria-hidden="true"></div><div><strong>@sarah-tech</strong><span class="muted">AI & Web Dev</span></div></div>
+        <div class="channel"><div class="avatar" aria-hidden="true"></div><div><strong>@chef-maya</strong><span class="muted">Plant-based cooking</span></div></div>
+        <div class="channel"><div class="avatar" aria-hidden="true"></div><div><strong>@mr-trails</strong><span class="muted">Outdoors & travel</span></div></div>
+        <div class="channel"><div class="avatar" aria-hidden="true"></div><div><strong>@beatsbyjo</strong><span class="muted">Music production</span></div></div>
+      </div>
+    </section>
+
+    <section id="features" class="section container">
+      <h2>Why creators choose Tufan</h2>
+      <div class="grid features">
+        <article class="feature" aria-labelledby="feat1"><h3 id="feat1">Own your channel</h3><p>Clean URLs like <code>/@username</code> with posts, shorts, playlists and an about page.</p></article>
+        <article class="feature" aria-labelledby="feat2"><h3 id="feat2">Memberships & tiers</h3><p>Publish as Public, Members-only, Paid, or limit to specific tiers.</p></article>
+        <article class="feature" aria-labelledby="feat3"><h3 id="feat3">Creator Studio</h3><p>Simple posting UI for channel owners. Site admins manage pricing, roles, and settings.</p></article>
+        <article class="feature" aria-labelledby="feat4"><h3 id="feat4">Fast & portable</h3><p>Built on Ghost APIs. You can export your content any time.</p></article>
+        <article class="feature" aria-labelledby="feat5"><h3 id="feat5">Monetisation</h3><p>Charge for paid memberships or offer perks to tiers.</p></article>
+        <article class="feature" aria-labelledby="feat6"><h3 id="feat6">SEO-friendly</h3><p>Clean markup, metadata, and speedy pages to help you grow.</p></article>
+      </div>
+    </section>
+
+    <section id="how" class="section container">
+      <h2>How it works</h2>
+      <div class="grid how">
+        <article class="card step"><div class="step-num">STEP 1</div><h3>Create your account</h3><p>Join as a member to follow channels. Apply to open your own creator channel when you’re ready.</p><p><a class="btn secondary" href="/signup">Sign up</a></p></article>
+        <article class="card step"><div class="step-num">STEP 2</div><h3>Launch your channel</h3><p>Pick your handle, customise your about page, and publish your first post or short.</p></article>
+        <article class="card step"><div class="step-num">STEP 3</div><h3>Set access levels</h3><p>Choose Public, Members-only, Paid, or specific tiers per post. Grow your paid community.</p></article>
+      </div>
+    </section>
+
+    <section id="pricing" class="section container" aria-labelledby="pricing-title">
+      <h2 id="pricing-title">Memberships</h2>
+      <p class="muted">Join free to follow channels. Upgrade to support creators and unlock paid posts.</p>
+      <div class="grid tiers">
+        <div class="tier card" aria-labelledby="free">
+          <h3 id="free">Free Member</h3>
+          <div class="price">£0</div>
+          <ul>
+            <li>Follow channels</li>
+            <li>Members-only posts</li>
+            <li>Newsletter updates</li>
+          </ul>
+          <p><a class="btn secondary" href="/signup">Create free account</a></p>
+        </div>
+        <div class="tier card" aria-labelledby="paid">
+          <h3 id="paid">Paid Member</h3>
+          <div class="price">From £5/mo</div>
+          <ul>
+            <li>All Free benefits</li>
+            <li>Paid members-only posts</li>
+            <li>Creator perks & downloads</li>
+          </ul>
+          <p><a class="btn" href="/signup">Become a supporter</a></p>
+        </div>
+        <div class="tier card" aria-labelledby="creator">
+          <h3 id="creator">Creator Channel</h3>
+          <div class="price">Apply</div>
+          <ul>
+            <li>Channel at <code>/@yourname</code></li>
+            <li>Creator Studio access</li>
+            <li>Memberships & tiers</li>
+          </ul>
+          <p><a class="btn secondary" href="#contact">Contact us</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section container faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <details>
+        <summary>Is Tufan a video platform or a blog?</summary>
+        <div>
+          <p>Tufan is a channel-based publishing front-end. Each post can be a video, article, or short. We use Ghost memberships and visibility to gate content.</p>
+        </div>
+      </details>
+      <details>
+        <summary>What are the access levels?</summary>
+        <div>
+          <p>Creators can mark posts as <strong>Public</strong>, <strong>Members only</strong>, <strong>Paid-members only</strong>, or restrict to <strong>specific tier(s)</strong>.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do I start a channel?</summary>
+        <div>
+          <p>Create a free account, then head to <code>/apply</code> or contact us. We’ll get you set up with a handle and Creator Studio access.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Do I need to use Ghost?</summary>
+        <div>
+          <p>Yes, Tufan connects to Ghost Content/Admin APIs behind the scenes. You’ll manage pricing, tiers and site-wide settings in Ghost Admin.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Can I export my content?</summary>
+        <div>
+          <p>Absolutely. Your content lives in Ghost and can be exported any time.</p>
+        </div>
+      </details>
+    </section>
+
+    <section id="contact" class="section container" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact us</h2>
+      <div class="grid" style="grid-template-columns: 2fr 3fr; gap:1rem;">
+        <div class="card" style="padding:1rem;">
+          <p>Want your own channel or need help migrating? Send us a message and we’ll reply promptly.</p>
+          <form id="contact-form" class="grid" style="grid-template-columns:1fr 1fr; gap:.7rem;" action="/contact" method="post">
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required style="grid-column: span 1; padding:.8rem; border-radius: 10px; border:1px solid var(--border); background: var(--surface); color:var(--text);" />
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required style="grid-column: span 1; padding:.8rem; border-radius: 10px; border:1px solid var(--border); background: var(--surface); color:var(--text);" />
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your channel…" rows="5" required style="grid-column: 1/-1; padding:.8rem; border-radius: 10px; border:1px solid var(--border); background: var(--surface); color:var(--text);"></textarea>
+            <button class="btn" type="submit" style="grid-column: 1/-1;">Send message</button>
+          </form>
+          <p class="muted" id="form-feedback" role="status" aria-live="polite" style="margin-top:.6rem;"></p>
+        </div>
+        <div class="card" style="padding:1rem;">
+          <h3>Prefer email?</h3>
+          <p>Reach us at <a href="mailto:hello@tufan.uk">hello@tufan.uk</a> or join the community in <a href="/community">Community</a>.</p>
+          <h3>For creators</h3>
+          <ul>
+            <li><a href="/apply">Apply for a channel</a></li>
+            <li><a href="/docs">Docs</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+        <div class="brand"><span class="logo" aria-hidden="true"></span><span>Tufan</span></div>
+        <div class="muted">© <span id="y"></span> Tufan. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle?.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // Smooth scroll for in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); menu?.classList.remove('open'); toggle?.setAttribute('aria-expanded','false'); }
+      });
+    });
+
+    // Contact form: client-side validation + demo submission
+    const form = document.getElementById('contact-form');
+    const feedback = document.getElementById('form-feedback');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
+        feedback.textContent = 'Please provide a valid email address.';
+        feedback.style.color = 'var(--warn)';
+        return;
+      }
+      // Replace with your real POST endpoint
+      feedback.textContent = 'Thanks! We\'ll get back to you shortly.';
+      feedback.style.color = 'var(--ok)';
+      form.reset();
+    });
+
+    // Year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

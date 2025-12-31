@@ -14,8 +14,8 @@
         <ul class="flexy row start-content gapy-1 width-full">
             <li><span title="{{t 'Total author posts'}}">{{plural ../pagination.total empty=(t "No author posts") singular=(t "% author post") plural=(t "% author posts")}}</span></li>
             {{#if location}}<li><address title="{{t 'Location'}}">{{t location}}</address></li>{{/if}}
-            {{#if facebook}}<li><a href="{{facebook_url facebook}}" title="{{t 'Facebook'}}" target="_blank" rel="noopener">{{readable_url facebook}}</a></li>{{/if}}
-            {{#if twitter}}<li><a href="{{twitter_url twitter}}" title="{{t 'X &lpar;formerly Twitter&rpar;'}}" target="_blank" rel="noopener">{{readable_url twitter}}</a></li>{{/if}}
+            {{#if facebook}}<li><a href="{{social_url type="facebook"}}" title="{{t 'Facebook'}}" target="_blank" rel="noopener">{{readable_url facebook}}</a></li>{{/if}}
+            {{#if twitter}}<li><a href="{{social_url type="twitter"}}" title="{{t 'X &lpar;formerly Twitter&rpar;'}}" target="_blank" rel="noopener">{{readable_url twitter}}</a></li>{{/if}}
             {{#if website}}<li><a href="{{website}}" title="{{t 'Personal website'}}" target="_blank" rel="noopener">{{readable_url website}}</a></li>{{/if}}
         </ul>
         {{#if bio}}<p title="{{t 'Biography'}}">{{bio}}</p>{{/if}}

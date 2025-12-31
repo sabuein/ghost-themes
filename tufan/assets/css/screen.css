@@ -54,6 +54,11 @@
     font-size: 18px;
 }
 
+:root {
+    --gh-font-heading: Fira Mono;
+    --gh-font-body: IBM Plex Serif;
+  }
+
 html:has(#sodo-search-root:not(:empty)),
 html:has(#ghost-portal-root > div),
 html:has(dialog[open]) {
@@ -503,7 +508,12 @@ body {
     font-weight: 400;
     font-style: normal;
     font-family: system-ui;
+    font-family: var(--gh-font-body);
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--gh-font-heading, var(--theme-font-heading));
+  }
 
 footer {
     position: relative;
@@ -911,8 +921,8 @@ strong {
 
 *.recommendation-url {
     overflow-wrap: anywhere;
-    flex-direction: row;
-    justify-content: flex-start;
+      place-content: flex-start;
+  place-items: flex-start;
     gap: .25rem;
 }
 
@@ -929,7 +939,7 @@ strong {
 }
 
 *.recommendation p {
-    color: darkgray;
+    color: #a9a9a9;
     font-size: .75rem;
     transition: color 250ms linear 0s;
 }
@@ -953,4 +963,201 @@ strong {
 *.recommendation-title,
 a:is(:focus, :hover) *.recommendation-title {
     transition: color 250ms linear 0s;
+}
+
+.flexy .feed {
+    position: relative;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.flexy .feed section {
+    max-width: 100%;
+    gap: 2rem;
+}
+
+.flexy .feed section:nth-of-type(1) {
+    width: 15rem;
+  flex: 0 1 15rem;
+}
+
+.flexy .feed section:nth-of-type(2) {
+    width: 35rem;
+  flex: 1 0 35rem;
+}
+
+.flexy .feed section:nth-of-type(3) {
+    width: 20rem;
+  flex: 0 1 20rem;
+}
+
+.flexy .feed section:nth-of-type(1),
+.flexy .feed section:nth-of-type(3) {
+    position: sticky;
+    top: 0;
+}
+
+.flexy .feed section article {
+    position: relative;
+    overflow: hidden;
+    border-radius: .5rem;
+    border: thin outset currentColor;
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 0px 1px rgb(140 140 140/.2);
+    width: inherit;
+}
+
+.flexy .feed section article hgroup {
+    padding: .5rem 1rem;
+    padding-top: 1.25rem;
+  place-items: flex-start;
+  place-content: flex-start;
+
+    background-color: #e6e6fa;
+      background: radial-gradient(circle, #e6e6fa 0%, transparent 100%);
+    width: inherit;
+}
+
+.flexy .feed section article hgroup h3 {
+    line-height: normal;
+}
+
+.flexy .feed section article .new-post {
+    flex-direction: row;
+    width: inherit;
+  gap: .5rem;
+  padding: .5rem;
+}
+
+.flexy .feed section article ul {
+    list-style-type: none;
+    width: inherit;
+}
+
+.flexy .feed section article ul li {
+    padding-left: .5rem;
+}
+
+.flexy .feed section article ul .recommendation {
+    padding: .5rem 1rem;
+    width: inherit;
+}
+
+.feed .top-stories {
+    counter-reset: stories;
+}
+
+.feed .top-stories li::before {
+    counter-increment: stories;
+    content: counter(stories) ". ";
+}
+
+.flexy .feed section article ul li:hover {
+    background-color: #f5f5f5;
+}
+
+.flexy .feed section article ul li:focus-within {
+    background-color: #d7d7d7;
+}
+
+
+.flexy .feed section:nth-of-type(1) article figure {
+    background-color: var(--accent-color);
+      width: 100%;
+  padding: .5rem;
+  position: relative;
+  padding-bottom: 4rem;
+}
+
+.flexy .feed p {
+    
+    line-height: 1.5;
+}
+
+.flexy .feed hgroup p {
+    font-size: .75rem;
+}
+
+.flexy .feed section:nth-of-type(1) article hgroup p {
+    font-size: .75rem;
+}
+
+.flexy .feed section:nth-of-type(1) article hgroup p:nth-of-type(1) {
+    color: #4a4a4a;
+    padding: .25rem 0;
+}
+
+.flexy .feed section:nth-of-type(1) article hgroup p:nth-of-type(2) {
+    color: #808080;
+}
+
+.flexy .feed section:nth-of-type(2) article .bio {
+    line-height: 1.25;
+    font-size: .75rem;
+    color: #808080;
+    padding: .5rem 0;
+}
+
+.flexy .feed section:nth-of-type(1) article figure img {
+    border-radius: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: thick solid white;
+  position: absolute;
+  top: 1rem;
+}
+
+.feed small {
+    display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: .15rem;
+  justify-content: flex-start;
+  align-items: center;
+  width: fit-content;
+  font-size: .75rem;
+}
+
+.feed .excerpt {
+    padding: 1rem;
+    border-top: thin inset currentColor;
+}
+
+.feed .excerpt h5 {
+    font-size: 1.25rem;
+}
+
+.feed input[type="text"] {
+    box-shadow: 0px 0px 0px 1px rgb(140 140 140/.2);
+}
+
+.flexy .feed section article footer {
+  width: inherit;
+}
+
+.flexy .feed section article .meta {
+    padding: .5rem;
+    width: inherit;
+    background-color: #f5fffa;
+    background: radial-gradient(circle, #f5fffa 0%, transparent 100%);
+    user-select: none;
+}
+
+.flexy .feed section article footer p {
+    padding: 1rem;
+    flex-direction: row;
+  gap: 1rem;
+  width: inherit;
+  background-color: #f5fffa;
+  background: radial-gradient(circle, #f5fffa 0%, transparent 100%);
+}
+
+.flexy .feed section article footer a {
+    border: thin dashed currentColor;
+  padding: .25rem .5rem;
+  border-radius: .85rem;
+  text-decoration: none;
+    background-color: #e6e6fa;
+    
 }

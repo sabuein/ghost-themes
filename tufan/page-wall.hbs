@@ -1,0 +1,129 @@
+{{!< default}}
+<!-- page.hbs -->
+{{#is "page"}}
+{{#post}}
+{{#primary_tag}}{{#if accent_color}}<style>
+    :root {
+        --accent-color: {{accent_color}};
+        --brandcolor: {{accent_color}};
+    }
+
+    *.kg-button-card a.kg-btn-accent {
+        background-color: {{accent_color}};
+    }
+</style>{{else}}<span style="display: none;">No accent color</span>{{/if}}{{/primary_tag}}
+<main id="content" class="{{post_class}} flexy feed" role="main">
+    <section class="flexy">
+        <article{{#if @member}} id="{{@member.uuid}}"{{/if}} class="flexy">
+            <figure class="flexy">
+                <img src="{{@site.logo}}" />
+            </figure>
+            <hgroup class="flexy">
+                <h3>Salaheddin AbuEin</h3>
+                <p>Experienced in web development, full-stack projects, server management, system integration, Ghost Expert, and Shopify Partner.</p>
+                <p>London, England, United Kingdom</p>
+            </hgroup>
+        </article>
+        <article class="flexy">
+            <hgroup class="flexy">
+                <h3>Tags</h3>
+            </hgroup>
+            {{#get "tags" include="count.posts" order="count.posts desc" limit=@config.posts_per_page}}<ul>
+                {{#foreach tags}}<li><a href="#/portal/account" title="{{name}}">{{name}} ({{count.posts}})</a></li>{{/foreach}}
+            </ul>{{/get}}
+        </article>
+        <article class="flexy">
+            <hgroup class="flexy">
+                <h3>Portal</h3>
+            </hgroup>
+            <ul>
+                {{#if @member}}<li role="menuitem"><a href="#/portal/account" title="{{t 'Account'}}" data-portal="account">{{t "Account"}}</a></li>
+                <li role="menuitem"><a href="#/portal/account/plans" title="{{t 'Plans'}}" data-portal="account/plans">{{t "Plans"}}</a></li>
+                <li role="menuitem"><a href="#/portal/account/profile" title="{{t 'Profile'}}" data-portal="account/profile">{{t "Profile"}}</a></li>
+                <li role="menuitem"><a href="#/portal/account/newsletters" title="{{t 'Newsletters'}}" data-portal="account/newsletters">{{t "Newsletters"}}</a></li>
+                <li role="menuitem"><a href="#/portal/account/newsletters/help" title="{{t 'Newsletter help'}}" data-portal="account/newsletters/help">{{t "Newsletter help"}}</a></li>
+                <li role="menuitem"><a href="javascript:void(0);" title="{{t 'Sign out'}}" data-members-signout="true">{{t "Sign out"}}</a></li>{{else}}<li role="menuitem"><a href="#/portal/signup" title="{{t 'Sign up'}}" data-portal="signup">{{t "Sign up"}}</a></li>
+                <li role="menuitem"><a href="#/portal/signin" title="{{t 'Sign in'}}" data-portal="signin">{{t "Sign in"}}</a></li>{{/if}}
+                <li role="menuitem"><a href="javascript:void(0);" class="gh-search" title="{{t 'Search'}}" target="_blank" data-ghost-search="true">{{t "Search"}}</a></li>
+            </ul>
+        </article>
+    </section>
+    <section class="flexy">
+        <article class="flexy">
+            <hgroup class="flexy">
+                <h3>What&apos;s on your mind{{#if @member}}&comma; {{@member.firstname}}{{/if}}&quest;</h3>
+                <a href="javascript:void(0);">XxXx</a>
+                <form class="flexy">
+                    <label for="start-a-post">Start a post&colon;</label>
+                    <input type="text" name="body" id="start-a-post" placeholder="Start a post&hellip;" required="required" />
+                    <input type="submit" value="Post" />
+                </form>
+            </hgroup>
+            <div class="new-post flexy">
+                <figure class="flexy">{{> "icons/video"}}</figure>
+                <figure class="flexy">{{> "icons/photo"}}</figure>
+                <figure class="flexy" title="Write article">{{> "icons/article"}}</figure>
+            </div>
+        </article>
+        {{#get "posts" visibility="all" include="authors,tags" filter="id:-{{id}}" limit=@config.posts_per_page as |result|}}{{#if result}}{{#foreach result}}<article class="{{post_class}} flexy" data-index="{{@index}}" data-number="{{@number}}">
+            <hgroup>
+                {{#primary_author}}<h4><a href="{{url}}" title="{{name}}" data-author="posts-by-{{slug}}">{{name}}</a></h4>
+                <p class="bio">{{bio}}</p>{{/primary_author}}
+            </hgroup>
+            <div class="meta flexy">
+                <p>
+                    <small>&#8986;<strong title="{{t 'Published'}}">{{t "Published"}}&colon;</strong>
+                    <time datetime='{{date published_at format="YYYY-MM-DD"}}' title='{{date published_at format="DD MMMM YYYY"}}'>{{date published_at format="DD MMMM YYYY"}}</time><span title="{{t 'at'}}">{{t "at"}}</span><time datetime='{{date published_at format="h:mm A"}}' title='{{date published_at format="h:mm A"}}'>{{date published_at format="h:mm A"}}</time></small>
+                </p>
+                <p>
+                    <small>&#8986;<strong title="{{t 'Updated'}}">{{t "Updated"}}&colon;</strong><time datetime='{{date updated_at format="YYYY-MM-DD"}}' title='{{date updated_at format="DD MMMM YYYY"}}'>{{date updated_at format="DD MMMM YYYY"}}</time><span title="{{t 'at'}}">{{t "at"}}</span><time datetime='{{date updated_at format="h:mm A"}}' title='{{date updated_at format="h:mm A"}}'>{{date updated_at format="h:mm A"}}</time></small>
+                </p>
+            </div>
+            <div class="excerpt">
+                <h5 id="{{slug}}">{{title}}</h5>
+                {{#if custom_excerpt}}<p title="{{t 'Custom excerpt'}}">{{custom_excerpt}}&period;</p>{{else}}<p title="{{t 'Excerpt'}}">{{excerpt characters="224"}}&hellip;</p>{{/if}}
+            </div>
+            {{#if feature_image}}<figure class="flexy has-bg" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})" title="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{t title}}{{/if}}">
+                <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{t title}}" loading="lazy" onerror="this.style.display='none';" />
+                {{#match feature_image_caption}}<figcaption title="{{t 'Image caption'}}" class="width-full">{{feature_image_caption}}</figcaption>{{/match}}
+            </figure>{{/if}}
+            <footer class="flexy">
+                <p class="flexy"><a href="{{url absolute='true'}}" title="Read post">&#9994; Read post</a>
+                <a href="{{url absolute='true'}}" title="Copy link to post">&#128279; Copy link to post</a><a href="{{url absolute='true'}}" title="Share post">&#128279; Share post</a></p>
+            </footer>
+        </article>{{/foreach}}{{else}}<p title="{{t 'There were no more posts by this author'}}">{{t "There were no more posts by this author"}}&hellip;</p>{{/if}}{{else}}<p><small>This is not the correct context</small></p>{{/get}}
+    </section>
+    <section class="flexy">
+        <article class="flexy">
+            <hgroup class="flexy">
+                <h3>{{@site.title}} News</h3>
+                <p>Featured posts</p>
+            </hgroup>
+            {{#get "posts" visibility="all" include="authors,tags" filter="featured:true" limit=@config.posts_per_page as |result|}}{{#if result}}<ul class="top-stories">
+                {{#foreach result}}<li data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}" title="{{title}}">{{title}}</a></li>{{/foreach}}
+            </ul>{{else}}<p title="{{t 'There were no more posts by this author'}}">{{t "There were no more posts by this author"}}&hellip;</p>{{/if}}{{else}}<p><small>This is not the correct context</small></p>{{/get}}
+        </article>
+        <article>
+            <hgroup class="flexy">
+                <h3>Authors</h3>
+            </hgroup>
+            {{#get "authors" limit=@config.posts_per_page}}<ul>
+                {{#foreach authors}}<li data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}" title="{{name}}">{{name}}</a></li>{{/foreach}}
+            </ul>{{/get}}
+        </article>
+        {{#match @site.recommendations_enabled}}<article class="flexy">
+            {{#if @site.icon}}<figure class="flexy">
+                <img class="site-icon" src="{{@site.icon}}" alt="{{@site.title}}" />
+            </figure>{{/if}}
+            <hgroup class="flexy">
+                <h3 id="recommendations" title='{{t "Recommendations"}}'>{{t "Recommendations"}}</h3>
+                <p title="{{t 'Here are a few other sites you may enjoy'}}">{{t "Here are a few other sites you may enjoy"}}</p>
+            </hgroup>
+        {{recommendations limit="10" order="title asc"}}
+    </section>{{/match}}
+        </article>
+    </section>
+</main>
+{{^has slug="tags"}}{{^has slug="contact"}}{{> "cta-newsletters" heading=(t "Stay informed and enriched with our dynamic content updates")}}{{/has}}{{/has}}
+{{/post}}
+{{/is}}
