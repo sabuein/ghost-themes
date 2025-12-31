@@ -1,6 +1,14 @@
-Thank you! :)
+A Ghost theme by Salaheddin AbuEin
+
+AbuEin Technologies https://abuein.dev/
+
+Thanks to:
 
 - Bcrypt Generator https://bcrypt-generator.com/
+- PWABuilder https://www.pwabuilder.com/imageGenerator
+- Favicon Generator https://favicon.io/favicon-converter/
+- Screenshot Generator https://brave-sand-0d1e1301e.azurestaticapps.net/
+- Fonts https://gwfh.mranftl.com/fonts
 - SVG Minifier https://www.svgminify.com/
 - Tabler Icons https://github.com/tabler/tabler-icons/tree/main
 - Worldvectorlogo https://worldvectorlogo.com/

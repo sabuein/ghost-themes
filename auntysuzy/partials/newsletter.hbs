@@ -1,8 +1,9 @@
 <!-- newsletter.hbs -->
 {{^if @member}}{{#unless @site.members_invite_only}}<section class="newsletter-section flexy column">
     <hgroup class="flexy column">
-        <h3>Join our community</h3>
-        <p>Sign up to receive early access to new handmade pieces, members-only offers, behind-the-scenes stories, and special announcements.</p>
+        <p><small>Stay connected</small></p>
+        <h2>Join our community</h2>
+        <p>Subscribe to our newsletter for exclusive recipes, new product announcements, and special offers delivered straight to your inbox.</p>
     </hgroup>
     {{!-- Sign-in form send a magic link to the member's email address and include a one-time code option. --}}
     <form class="newsletter-form flexy column" data-members-form="subscribe" data-members-otc="true" data-members-autoredirect="false">
@@ -15,5 +16,5 @@
         <input type="submit" value="{{t "Subscribe"}}" />
         <p data-members-error=""><!-- error message will appear here --></p>
     </form>
-    <p class="newsletter-privacy" style="font-size: 11px; margin-top: 10px;">We respect your privacy. Unsubscribe anytime.</p>
+    <p class="newsletter-privacy" style="font-size: 11px; margin-top: 10px;">No spam, unsubscribe at any time.</p>
 </section>{{/unless}}{{/if}}

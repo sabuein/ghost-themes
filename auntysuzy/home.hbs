@@ -4,19 +4,18 @@
         <hgroup class="flexy column">
             <p><small>Welcome to <strong>{{@site.title}}</strong>&period;</small></p>
             <p><small>{{#if @member.paid}}Thanks for becoming a paying member&comma; {{@member.firstname}}&excl; 🎉{{else if @member}}Thanks for being a member&comma; {{@member.firstname}}&excl; 🙌{{else}}You are warmly invited to join our family&hellip; 🖋{{/if}}</small></p>
+            <p><small>Authentic traditional flavors</small></p>
             <h1>Heritage Delivered to Your Door</h1>
-            <p>Experience the true taste of Palestine &mdash; authentic flavours, handcrafted treasures, and heartfelt stories. Every month, discover a beautifully curated collection celebrating culture, tradition, and the comfort of home.</p>
+            <p>Experience the true taste of Palestine with our handcrafted delicacies. Each product carries generations of culinary wisdom, made with love and the finest ingredients.</p>
             <div class="flexy">
-                {{^if @member}}<a href="#start-your-story-with-us" class="cta-button">Start your story with us</a>{{/if}}
-                <a href="#discover-our-collections" class="cta-button">Discover our collections</a>
+                {{^if @member}}<a href="#start-your-story" class="cta-button">Start your story</a>{{/if}}
+                <a href="#explore-collections" class="cta-button">Explore collections</a>
             </div>
+            {{> "trust-badge"}}
         </hgroup>
         {{#if @site.cover_image}}<figure class="flexy column">
             <img src="{{img_url @site.cover_image size="l"}}" alt="Aunty Suzy Discovery Box" />
         </figure>{{/if}}
-        <footer class="flexy column">
-            {{> "trust-badges"}}
-        </footer>
     </section>
 
 
@@ -24,8 +23,9 @@
 
     <section id="prodcuts">
         <hgroup class="shop-intro">
-            <h2 id="discover-our-collections">Discover our collections</h2>
-            <p>{{@site.title}} brings you a curated range of artisanal foods, heritage-inspired crafts, and limited-edition art. Each piece is crafted with intention and sourced from independent makers who honour tradition and quality.</p>
+            <p><small>Our products</small></p>
+            <h2 id="explore-collections">Discover our collections</h2>
+            <p>{{@site.title}} brings you a diverse range of traditional foods, heritage recipes, herbs and delicacies to add a taste of authentic flavors to your table.</p>
         </hgroup>
         <div class="filters">
             <button class="filter-btn active" data-filter="all">All</button>
@@ -37,7 +37,8 @@
         <!-- Existing product cards -->
         {{#get "posts" filter="tags:[art,food-pickles,handicrafts,recipes,tickets]" include="tags" order="title asc"
         limit=@config.posts_per_page}}{{#if posts}}<div class="products-grid" id="productsGrid">
-            {{> "product-card"}}{{pagination}}
+            {{> "product-card"}}
+            <a href="https://shop.auntysuzy.co.uk/products" class="cta-button" title="View all products">View all products</a>
         </div>{{else}}
         <pre class="no-results">No results were returned from this request&period;</pre>{{/if}}{{else}}
         <pre class="loop-error">{{error}}</pre>{{/get}}

@@ -1,7 +1,15 @@
 {{#if @site.members_enabled}}{{#unless @member}}<section id="membership" class="membership-tiers flexy column">
     <hgroup class="flexy column">
-        <h2 id="start-your-story-with-us">Start your story with us</h2>
-        <p>Whether you would love to stay connected or receive our monthly heritage boxes, there is a perfect way to join the {{@site.title}} community.</p>
+        <p><small>Our story</small></p>
+        <h2 id="start-your-story">Start your story with us</h2>
+        <p>What sets us apart is our dedication to preserving age-old recipes and techniques. Every jar, every bite is a journey back to the kitchens of our grandmothers, where meals were made with patience, love, and the freshest ingredients.</p>
+        <ul>
+            <li>Small-batch production for quality control</li>
+            <li>Locally sourced, organic ingredients</li>
+            <li>Traditional recipes passed down generations</li>
+            <li>No artificial preservatives or additives</li>
+        </ul>
+        <a href="/about/" class="cta-button" title="Read our full story">Read our full story</a>
     </hgroup>
     {{#get "tiers" include="monthly_price,yearly_price,benefits" limit="100" as |tiers|}}<div class="flexy">
         {{!--
