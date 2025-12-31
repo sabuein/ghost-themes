@@ -35,7 +35,7 @@
         "build": "echo 'no build script'"
     },
     "config": {
-        "posts_per_page": 10,
+        "posts_per_page": 8,
         "card_assets": true,
         "image_sizes": {}
     },

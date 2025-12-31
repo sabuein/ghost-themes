@@ -64,7 +64,7 @@ header {
 
     background-color: #fff;
 				border-bottom: 2px solid var(--border-color);
-				padding: 1.5rem 2rem;
+				padding: 1rem;
 				position: sticky;
 				top: 0;
 				z-index: 1000;
@@ -182,7 +182,7 @@ details[open] p {
 				flex: 1;
 				flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   align-content: center;
   flex-wrap: wrap;
   flex-direction: row;
@@ -195,11 +195,6 @@ details[open] p {
 				list-style: none;
 				gap: 2rem;
 				align-items: center;
-			}
-
-			nav.desktop-nav ul.nav .nav-shop a {
-				font-weight: 700;
-				border-bottom-color: var(--light-text);
 			}
 
 			nav.desktop-nav a {

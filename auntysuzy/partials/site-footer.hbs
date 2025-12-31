@@ -3,21 +3,28 @@
 	<div class="footer-content">
 		<div class="footer-sections">
 			<div class="footer-section">
+				<h3>{{@site.title}}</h3>
+				<p>{{@site.description}}</p>
+				<p>Bringing the authentic taste of heritage to your table. Each product is crafted with love, using traditional recipes passed down through generations.</p>
+				<address>123 Heritage Lane, London, UK</address>
+				<a href="tel:+441234567890">+44 123 456 7890</a>
+				<a href="emailto:">hello@auntysuzy.co.uk</a>
+			</div>
+			<div class="footer-section">
 				<h3>SHOP</h3>
 				<ul>
-					<li><a href="/all-products/">All Products</a></li>
-					<li><a href="/tag/food/">Food & Pickles</a></li>
-					<li><a href="/tag/art/">Art</a></li>
-					<li><a href="/tag/handicrafts/">Handicrafts</a></li>
+					<li><a href="https://shop.auntysuzy.co.uk/products">All Products</a></li>
+					<li><a href="https://shop.auntysuzy.co.uk/products?category=b25edd77-f2aa-465e-adaf-836816478565">Food &amp; pickles</a></li>
+					<li><a href="https://shop.auntysuzy.co.uk/products?category=5a46c8af-14b3-4be7-ac38-a2c0484f25e4">Books</a></li>
 				</ul>
 			</div>
 			<div class="footer-section">
 				<h3>BLOG</h3>
 				<ul>
-					<li><a href="/blog/">All Posts</a></li>
+					<li><a href="/blog/">Latest posts</a></li>
 					<li><a href="/tag/recipes/">Recipes</a></li>
-					<li><a href="/tag/crafts/">Crafts</a></li>
-					<li><a href="/tag/wellness/">Wellness</a></li>
+					<li><a href="/tag/food-stories/">Food stories</a></li>
+					<li><a href="/tag/tips-and-tricks/">Tips &amp; tricks</a></li>
 				</ul>
 			</div>
 			<div class="footer-section">
@@ -25,7 +32,7 @@
 				<ul>
 					<li><a href="/about/">About</a></li>
 					{{#if @member}}<li><a href="/account/">Account</a></li>{{/if}}
-					<li><a href="/support/">Support</a></li>
+					<li><a href="/faq/">Frequently asked questions (FAQ)</a></li>
 					{{#if @member}}<li><a href="javascript:void(0);" title="Sign out" data-members-signout="">Sign out</a></li>{{else}}<li><a href="#/portal/signin" title="Sign in" data-portal="signin">Sign in</a></li>
 					<li><a href="#/portal/signup" title="Sign up" data-portal="signup">Sign up</a></li>{{/if}}
 				</ul>
@@ -39,10 +46,16 @@
 		<div class="footer-bottom">
 			<p>&copy; 2016 &mdash; {{date format="YYYY"}} {{@site.title}}&period; All rights reserved&period;</p>
 			{{navigation type="secondary"}}
-			<p style="text-align: center; margin-top: 1.5rem;">Designed by <a href="https://abuein.dev/contact/?ref={{@site.url}}" title="AbuEin Technologies" target="_blank" rel="nofollow noopener">AbuEin Technologies</a>&mdash; Powered by <a href="https://ghost.org/experts/salaheddin-abuein/?ref={{@site.url}}" title="Ghost" target="_blank" rel="nofollow noopener">Ghost</a>&period;</p>
+			<p style="text-align: center; margin-top: 1.5rem;">Designed by <a href="https://abuein.dev/contact/?ref={{@site.url}}" title="AbuEin Technologies" target="_blank" rel="nofollow noopener">AbuEin Technologies</a> &mdash; Powered by <a href="https://ghost.org/experts/salaheddin-abuein/?via=salaheddin43&ref={{@site.url}}" title="Ghost" target="_blank" rel="nofollow noopener">Ghost</a>&period;</p>
 			<p>(Total members: <span>{{total_members}}</span>&comma; Paid members: <span>{{total_paid_members}}</span>)</p>
 			<a href="#top" class="flexy column" title="Back to top">{{> "icons/arrow-up"}}<span>Back to top</span></a>
 		</div>
-			
+		<div>
+			{{> "icons/pound"}}
+			{{> "icons/visa"}}
+			{{> "icons/mastercard"}}
+			{{> "icons/stripe"}}
+			{{> "icons/paypal"}}
+		</div>
 	</div>
 </footer>
