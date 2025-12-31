@@ -7,6 +7,8 @@ Thanks to:
 - https://www.shapedivider.app/
 - https://nekocalc.com/px-to-rem-converter
 - https://gwfh.mranftl.com/fonts
+- tabler/tabler-icons: A set of over 5800 free MIT-licensed high-quality SVG icons for you to use in your web projects. https://github.com/tabler/tabler-icons
+
 
 https://www.almendron.com/tribuna/a-catastrophic-success-for-hamas/
 https://afgazad.com/2023-EU-Langueges/100823-Tufan-al-Aqsa-what-can.pdf

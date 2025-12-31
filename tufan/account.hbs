@@ -4,7 +4,7 @@
     
 {{!-- Check https://github.com/TryGhost/Lyra/blob/4ca9576/members/account.hbs/#L15-L65 --}}
 
-{{#get "tiers" include="monthly_price,yearly_price,benefits" limit="all" as |tiers|}}
+{{#get "tiers" include="monthly_price,yearly_price,benefits" limit=config.posts_per_page as |tiers|}}
     {{! Loop through our tiers collection }}
     {{#foreach tiers}}
         {{#if monthly_price}}

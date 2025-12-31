@@ -64,7 +64,7 @@
             <div class="extra flexy row gapy-2 width-full">
                 <p class="flexy"><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a><span title="{{t 'Copyright'}}">&copy;</span><span title="{{date format='YYYY'}}">{{date format="YYYY"}}</span></p>
                 {{^if @member}}<strong><a href="#/portal/signup" class="flexy" data-portal="signup" title="{{t 'Sign up'}}">{{t "Sign up"}}</a></strong>
-                <strong><a href="#/portal/signin" class="flexy" data-portal="signin" title="{{t 'Sign in'}}">{{t "Sign in"}}</a></strong>{{else}}<strong><a href="javascript:void(0);" class="flexy" data-members-signout title="{{t 'Sign out'}}">{{t "Sign out"}}</a></strong>{{/if}}
+                <strong><a href="#/portal/signin" class="flexy" data-portal="signin" title="{{t 'Sign in'}}">{{t "Sign in"}}</a></strong>{{else}}<strong><a href="javascript:void(0);" class="flexy" data-members-signout="true" title="{{t 'Sign out'}}">{{t "Sign out"}}</a></strong>{{/if}}
                 <p class="flexy" title="{{t 'Total members'}}"><span title="{{t 'Members'}}">{{t "Members"}}&colon;</span><span title="{{total_members}}">{{total_members}}</span></p>
                 <p class="flexy" title="{{t 'Total paid members'}}"><span title="{{t 'Paid members'}}">{{t "Paid members"}}&colon;</span><span title="{{total_paid_members}}">{{total_paid_members}}</span></p>
             </div>

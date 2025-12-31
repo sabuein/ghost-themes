@@ -1,15 +1,11 @@
 <!-- partials/recommendations.hbs -->
-{{#if recommendations}}<ol class="recommendations flexy content-width">
-    {{#foreach recommendations as |rec|}}<li class="recommendation flexy width-full"><a href="{{rec.url}}?ref={{readable_url @site.url}}" data-recommendation="{{rec.id}}" title="{{rec.title}}" target="_blank" rel="noopener" class="recommendation-url flexy">
-        {{#if rec.favicon}}<figure class="recommendation-favicon flexy" title="{{rec.title}}">
-            <img src="{{rec.favicon}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';" />
-        </figure>{{/if}}
-        <hgroup class="flexy">
-            <h4 class="recommendation-title" title="{{rec.title}}">{{rec.title}}</h4>
-            {{#if rec.description}}<p class="recommendation-description" title='{{t "Description"}}'>{{rec.description}}</p>{{/if}}
-        </hgroup>
+{{#if recommendations}}<ul class="recommendations flexy">
+    {{#foreach recommendations as |rec|}}<li class="recommendation flexy"><a href="{{rec.url}}?ref={{readable_url @site.url}}" data-recommendation="{{rec.id}}" title="{{rec.title}}" target="_blank" rel="noopener" class="recommendation-url flexy">
+        {{#if rec.favicon}}<img src="{{rec.favicon}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';" />{{/if}}
+        <h4 class="recommendation-title" title="{{rec.title}}">{{rec.title}}</h4>
+        {{#if rec.description}}<p class="recommendation-description" title='{{t "Description"}}'>{{rec.description}}</p>{{/if}}
     </a></li>{{/foreach}}
-</ol>{{/if}}
+</ul>{{/if}}
 {{!--
 When building a custom template, the recommendation object contains the following data:
 

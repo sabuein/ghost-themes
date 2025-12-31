@@ -28,19 +28,19 @@
             },
             "github_url": {
                 "type": "text",
-                "default": "https://github.com/sabuein/tufan"
+                "default": "https://github.com/sabuein/ghost-themes/tree/main/tufan"
             }
         }
     },
     "scripts": {
-        "link": "ln -s /home/sabuein/my/projects/tufan /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
+        "link": "ln -s /home/sabuein/my/projects/ghost-themes/tufan /home/sabuein/my/instances/ghost-25/content/themes | ls ../../../instances/ghost-25/content/themes/",
         "test": "npx gscan .",
-        "start": "ghost start -d ~/my/instances/ghost/",
-        "restart": "ghost restart -d ~/my/instances/ghost/",
-        "stop": "ghost stop -d ~/my/instances/ghost/",
-        "update": "ghost update -d ~/my/instances/ghost/",
-        "debug": "ghost run -D -d ~/my/instances/ghost/",
-        "log": "ghost log -d ~/my/instances/ghost/",
+        "start": "ghost start -d ~/my/instances/ghost-25/",
+        "restart": "ghost restart -d ~/my/instances/ghost-25/",
+        "stop": "ghost stop -d ~/my/instances/ghost-25/",
+        "update": "ghost update -d ~/my/instances/ghost-25/",
+        "debug": "ghost run -D -d ~/my/instances/ghost-25/",
+        "log": "ghost log -d ~/my/instances/ghost-25/",
         "ls": "ghost ls",
         "help": "ghost help",
         "zip": "zip -r /home/sabuein/Desktop/tufan.zip * -x *.zip /assets/labs/* .gitignore",
@@ -53,11 +53,11 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/sabuein/tufan.git"
+        "url": "https://github.com/sabuein/ghost-themes/tree/main/tufan"
     },
-    "bugs": "https://github.com/sabuein/tufan/issues",
+    "bugs": "https://github.com/sabuein/ghost-themes/issues",
     "contributors": [
-        "https://github.com/sabuein/tufan/graphs/contributors"
+        "https://github.com/sabuein/ghost-themes/graphs/contributors"
     ],
     "browserslist": [
         "defaults"
