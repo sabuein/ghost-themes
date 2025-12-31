@@ -31,10 +31,10 @@
                 <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
             {{/if}}
             {{#if twitter}}
-                <a class="author-profile-social-link" href="{{twitter_url}}" target="_blank" rel="noopener">{{> "icons/x"}}</a>
+                <a class="author-profile-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "brands/x"}}</a>
             {{/if}}
             {{#if facebook}}
-                <a class="author-profile-social-link" href="{{facebook_url}}" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                <a class="author-profile-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> "brands/facebook"}}</a>
             {{/if}}
         </div>
     </footer>
@@ -45,6 +45,4 @@
     <hr />
     {{> "loop"}}
 </section>
-{{> "fly-buttons"}}
-{{> "cookies"}}
 {{/is}}

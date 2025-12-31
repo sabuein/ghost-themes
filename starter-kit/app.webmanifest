@@ -1,31 +1,31 @@
 {
     "dir": "ltr",
     "lang": "en",
-    "name": "247 London Emergency Plumbing",
-    "short_name": "247LEP",
-    "description": "Expert plumbing and heating services whenever you need them",
-    "id": "/?launcher=homescreen",
-    "start_url": "/?launcher=homescreen",
+    "name": "Starter Kit",
+    "short_name": "Starter",
+    "description": "A simple PWA to indicate a Ghost site is under construction.",
+    "id": "./?launcher=homescreen",
+    "start_url": "./?launcher=homescreen",
     "launch_handler": {
         "client_mode": [
             "focus-existing",
             "auto"
         ]
     },
-    "scope": "/",
+    "scope": "./",
+    "display": "standalone",
     "display_override": [
         "window-controls-overlay",
         "fullscreen",
         "minimal-ui"
     ],
-    "display": "standalone",
     "orientation": "portrait-primary",
-    "theme_color": "#d4af37",
-    "background_color": "#151206",
+    "theme_color": "#6200ea",
+    "background_color": "#6200ea",
     "protocol_handlers": [
         {
             "protocol": "web+service",
-            "url": "/services?type=%s"
+            "url": "./services?type=%s"
         }
     ],
     "icons": [

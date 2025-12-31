@@ -1,32 +1,32 @@
 {
-    "name": "247lep",
-    "description": "A ghost theme for providers of plumbing and heating services",
-    "demo": "https://247lep.co.uk/",
+    "name": "starter-kit",
+    "description": "A simple PWA to indicate a Ghost site is under construction.",
+    "demo": "https://abuein.com/",
     "version": "1.0.0",
     "engines": {
-        "ghost": ">=5.0.0"
+        "ghost": ">=6.10.3"
     },
     "license": "MIT",
     "author": {
         "name": "Salaheddin AbuEin",
-        "email": "sabuein@gmail.com",
-        "url": "https://sabuein.github.io/"
+        "email": "salaheddin@abuein.dev",
+        "url": "https://abuein.dev/"
     },
     "screenshots": {
         "desktop": "assets/screenshot-desktop.jpg",
         "mobile": "assets/screenshot-mobile.jpg"
     },
     "scripts": {
-        "start": "ghost start -d ~/my/instances/ghost-en",
-        "restart": "ghost restart -d ~/my/instances/ghost-en",
-        "update": "ghost update -d ~/my/instances/ghost-en",
-        "stop": "ghost stop -d ~/my/instances/ghost-en",
-        "debug": "ghost run -D -d ~/my/instances/ghost-en",
-        "log": "ghost log -d ~/my/instances/ghost-en",
-        "zip": "zip -r /home/sabuein/Desktop/247lep.zip * -x *.zip /assets/labs/* .gitignore",
+        "start": "ghost start -d ~/my/instances/ghost-25",
+        "restart": "ghost restart -d ~/my/instances/ghost-25",
+        "update": "ghost update -d ~/my/instances/ghost-25",
+        "stop": "ghost stop -d ~/my/instances/ghost-25",
+        "debug": "ghost run -D -d ~/my/instances/ghost-25",
+        "log": "ghost log -d ~/my/instances/ghost-25",
+        "zip": "zip -r /home/sabuein/Desktop/starter-kit.zip * -x *.zip /assets/labs/* .gitignore",
         "scan": "npx gscan .",
-        "scan-zip": "npx gscan -z /home/sabuein/Desktop/247lep.zip",
-        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/247lep ~/my/instances/ghost-en/content/themes"
+        "scan-zip": "npx gscan -z /home/sabuein/Desktop/starter-kit.zip",
+        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/starter-kit ~/my/instances/ghost-25/content/themes"
     },
     "config": {
         "posts_per_page": 10,
@@ -55,7 +55,8 @@
     "keywords": [
         "ghost",
         "theme",
-        "ghost-theme"
+        "ghost-theme",
+        "rtl"
     ],
     "repository": {
         "type": "git",

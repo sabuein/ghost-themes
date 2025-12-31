@@ -1,17 +1,22 @@
-A theme for Ghost CMS
+A Ghost theme by Salaheddin AbuEin salaheddin@abuein.dev
+
+AbuEin Technologies https://abuein.dev/
 
 Thanks to:
 
-- https://bcrypt-generator.com/
-- Favicon Generator https://favicon.io/favicon-converter/
-- SVG Repo - Free SVG Vectors and Icons https://www.svgrepo.com/
-- Flowbite - Free and open-source SVG Icons https://flowbite.com/
-- SVG Minifier https://www.svgminify.com/
-- https://www.shapedivider.app/
-- PX to REM converter https://nekocalc.com/px-to-rem-converter
-- Fonts https://gwfh.mranftl.com/fonts
-- Colors https://colorbase.app/
+- Bcrypt Generator https://bcrypt-generator.com/
 - PWABuilder https://www.pwabuilder.com/imageGenerator
-- https://logo.com/dashboard
+- Favicon Generator https://favicon.io/favicon-converter/
+- Screenshot Generator https://brave-sand-0d1e1301e.azurestaticapps.net/
+- Fonts https://gwfh.mranftl.com/fonts
+- SVG Minifier https://www.svgminify.com/
+- Tabler Icons https://github.com/tabler/tabler-icons/tree/main
+- Worldvectorlogo https://worldvectorlogo.com/
+- unDraw https://undraw.co/
+- FormSubmit https://formsubmit.co/
+- Random User Generator https://randomuser.me/
+- Flowbite - Free and open-source SVG Icons https://flowbite.com/
+- PX to REM converter https://nekocalc.com/px-to-rem-converter
+- Colors https://colorbase.app/
+- https://www.shapedivider.app/
 - https://imageresizer.com/
-
