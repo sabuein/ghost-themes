@@ -1,7 +1,11 @@
 <!-- partials/social-media.hbs -->
-<ul class="flexy row social-media">
-    {{#if @site.twitter}}<li class="x"><a href="{{twitter_url @site.twitter}}" title="X" target="_blank" rel="noopener noreferrer" aria-label="X">{{> "icons/x"}}</a></li>{{/if}}
-    {{#if @site.facebook}}<li class="facebook"><a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">{{> "icons/facebook"}}</a></li>{{/if}}
-    <li class="instagram"><a href="https://www.instagram.com/elitedrivershertfordshire/" title="Instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">{{> "icons/instagram"}}</a></li>
-    <li class="linkedin"><a href="https://www.linkedin.com/company/elite-drivers-hertfordshire-ltd/" title="LinkedIn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">{{> "icons/linkedin"}}</a></li>
+<ul class="social-media">
+    {{#if @site.twitter}}<li class="x"><a href="{{social_url type="twitter"}}" title="X" target="_blank" rel="noopener noreferrer" aria-label="X">{{> "brands/x"}}</a></li>{{/if}}
+    {{#if @site.facebook}}<li class="facebook"><a href="{{social_url type="facebook"}}" title="Facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">{{> "brands/facebook"}}</a></li>{{/if}}
+    <li class="instagram"><a href="https://www.instagram.com/sabuein/" title="Instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">{{> "brands/instagram"}}</a></li>
+    <li class="linkedin"><a href="https://www.linkedin.com/in/sabuein/" title="LinkedIn" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">{{> "brands/linkedin"}}</a></li>
+    <li class="github"><a href="https://github.com/sabuein" title="GitHub" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{{> "brands/github"}}</a></li>
+    <li class="gitlab"><a href="https://gitlab.com/sabuein" title="GitLab" target="_blank" rel="noopener noreferrer" aria-label="GitLab">{{> "brands/gitlab"}}</a></li>
+    <li class="tiktok"><a href="https://www.tiktok.com/@sabuein" title="TikTok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">{{> "brands/tiktok"}}</a></li>
+    <li class="mastodon"><a href="https://mastodon.social/@sabuein" title="Mastodon" target="_blank" rel="noopener noreferrer" aria-label="Mastodon">{{> "brands/mastodon"}}</a></li>
 </ul>

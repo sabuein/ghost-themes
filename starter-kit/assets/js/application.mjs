@@ -28,11 +28,6 @@ switch (document.readyState) {
         // The document has finished loading and we can access DOM elements.
         // Sub-resources such as scripts, images, stylesheets and frames are still loading.
 
-        registerServiceWorker();
-
-        offlineDetection();
-        setupDialogs();
-
         const consent = window.localStorage.getItem("isCookiesVisible");
         if (!!id("cookies")) {
             if (!!consent && consent === "false") id("cookies").remove();
@@ -51,10 +46,10 @@ switch (document.readyState) {
             }
         }
 
-        showSubMenu("*.site-navigation *.primary-nav *.nav-services", "*.site-navigation *.primary-nav *.services-nav");
+        // showSubMenu("*.site-navigation *.primary-nav *.nav-services", "*.site-navigation *.primary-nav *.services-nav");
 
         const menuButton = qs(`button[data-html-symbol="trigram-for-heaven"]`);
-        if(!!menuButton) {
+        if (!!menuButton) {
             // Toggle the menu
             const menu = qs(`ul.primary-nav`);
             if (!!menu) menuButton.addEventListener("click", () => menu.classList.toggle("menu-visible"));
@@ -65,13 +60,37 @@ switch (document.readyState) {
         const clearButton = id("clearSiteDataButton");
         if (!!clearButton) clearButton.addEventListener("click", clearSiteData);
 
-        const backToTop = qs(`a[href="#site-header"]`);
+        const backToTop = qs(`a[href="#app"]`);
         backToTop.addEventListener("click", scrollBackToTop);
         window.onscroll = () => toggleBackToTopButton(backToTop);
 
-        // Enable client left auto-scrolling
-        const clients = $("*.inner-clients");
-        if (!!clients.length) horizontalScrolling(clients.first(), 850, 3000);
+        // Initialize light mode
+        if (document.documentElement.dataset.theme === "") document.documentElement.dataset.theme = "light";
+
+        /* ---------- THEME TOGGLE ---------- */
+        const themeToggles = document.querySelectorAll('[data-action="mode"]');
+        themeToggles.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const theme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+                document.documentElement.dataset.theme = theme;
+                if (theme === "light") {
+                    themeToggles[0].hidden = false;
+                    themeToggles[0].disabled = false;
+                    themeToggles[1].hidden = true;
+                    themeToggles[1].disabled = true;
+                } else {
+                    themeToggles[1].hidden = false;
+                    themeToggles[1].disabled = false;
+                    themeToggles[0].hidden = true;
+                    themeToggles[0].disabled = true;
+                }
+            });
+        });
+
+        /* ---------- SERVICE WORKER ---------- */
+        if ("serviceWorker" in window.navigator) registerServiceWorker();
+        offlineDetection();
+        setupDialogs();
         break;
     }
 

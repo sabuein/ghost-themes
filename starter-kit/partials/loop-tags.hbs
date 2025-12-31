@@ -1,0 +1,9 @@
+<section class="loop">
+{{!-- Get all tags and order them by post count --}}
+  <hgroup>
+    <h2>Tags</h2>
+    <p>Lorem ipsum&comma; dolor sit amet consectetur adipisicing elitem quam quibusdam repudiandae&excl;</p>
+  </hgroup>
+  <hr />
+  {{#get "tags" limit="30" include="count.posts" order="count.posts desc"}}{{#if tags}}{{#foreach tags}}<a href="{{url}}" title="{{name}}" target="_top">{{name}} ({{count.posts}})</a>{{/foreach}}{{else}}<pre>This Ghost instance does not have any tags yet&period;</pre>{{/if}}{{/get}}
+</section>
