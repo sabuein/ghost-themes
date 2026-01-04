@@ -1,6 +1,9 @@
-# Ghost
-
+# Private
 assets/labs/
+config.development.json
+*.development.json
+*.local.json
+.env
 
 # Logs
 logs
