@@ -28,14 +28,6 @@ switch (document.readyState) {
         // The document has finished loading and we can access DOM elements.
         // Sub-resources such as scripts, images, stylesheets and frames are still loading.
 
-<<<<<<< HEAD
-=======
-        registerServiceWorker();
-
-        offlineDetection();
-        setupDialogs();
-
->>>>>>> 263ea70 (Updating starter-kit files)
         const consent = window.localStorage.getItem("isCookiesVisible");
         if (!!id("cookies")) {
             if (!!consent && consent === "false") id("cookies").remove();
@@ -54,17 +46,10 @@ switch (document.readyState) {
             }
         }
 
-<<<<<<< HEAD
         // showSubMenu("*.site-navigation *.primary-nav *.nav-services", "*.site-navigation *.primary-nav *.services-nav");
 
         const menuButton = qs(`button[data-html-symbol="trigram-for-heaven"]`);
         if (!!menuButton) {
-=======
-        showSubMenu("*.site-navigation *.primary-nav *.nav-services", "*.site-navigation *.primary-nav *.services-nav");
-
-        const menuButton = qs(`button[data-html-symbol="trigram-for-heaven"]`);
-        if(!!menuButton) {
->>>>>>> 263ea70 (Updating starter-kit files)
             // Toggle the menu
             const menu = qs(`ul.primary-nav`);
             if (!!menu) menuButton.addEventListener("click", () => menu.classList.toggle("menu-visible"));
@@ -75,7 +60,6 @@ switch (document.readyState) {
         const clearButton = id("clearSiteDataButton");
         if (!!clearButton) clearButton.addEventListener("click", clearSiteData);
 
-<<<<<<< HEAD
         const backToTop = qs(`a[href="#app"]`);
         backToTop.addEventListener("click", scrollBackToTop);
         window.onscroll = () => toggleBackToTopButton(backToTop);
@@ -107,15 +91,6 @@ switch (document.readyState) {
         if ("serviceWorker" in window.navigator) registerServiceWorker();
         offlineDetection();
         setupDialogs();
-=======
-        const backToTop = qs(`a[href="#site-header"]`);
-        backToTop.addEventListener("click", scrollBackToTop);
-        window.onscroll = () => toggleBackToTopButton(backToTop);
-
-        // Enable client left auto-scrolling
-        const clients = $("*.inner-clients");
-        if (!!clients.length) horizontalScrolling(clients.first(), 850, 3000);
->>>>>>> 263ea70 (Updating starter-kit files)
         break;
     }
 

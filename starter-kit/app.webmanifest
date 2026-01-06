@@ -1,37 +1,24 @@
 {
     "dir": "ltr",
     "lang": "en",
-<<<<<<< HEAD
     "name": "Starter Kit",
     "short_name": "Starter",
     "description": "A simple PWA to indicate a Ghost site is under construction.",
     "id": "./?launcher=homescreen",
     "start_url": "./?launcher=homescreen",
-=======
-    "name": "247 London Emergency Plumbing",
-    "short_name": "247LEP",
-    "description": "Expert plumbing and heating services whenever you need them",
-    "id": "/?launcher=homescreen",
-    "start_url": "/?launcher=homescreen",
->>>>>>> 263ea70 (Updating starter-kit files)
     "launch_handler": {
         "client_mode": [
             "focus-existing",
             "auto"
         ]
     },
-<<<<<<< HEAD
     "scope": "./",
     "display": "standalone",
-=======
-    "scope": "/",
->>>>>>> 263ea70 (Updating starter-kit files)
     "display_override": [
         "window-controls-overlay",
         "fullscreen",
         "minimal-ui"
     ],
-<<<<<<< HEAD
     "orientation": "portrait-primary",
     "theme_color": "#6200ea",
     "background_color": "#6200ea",
@@ -39,16 +26,6 @@
         {
             "protocol": "web+service",
             "url": "./services?type=%s"
-=======
-    "display": "standalone",
-    "orientation": "portrait-primary",
-    "theme_color": "#d4af37",
-    "background_color": "#151206",
-    "protocol_handlers": [
-        {
-            "protocol": "web+service",
-            "url": "/services?type=%s"
->>>>>>> 263ea70 (Updating starter-kit files)
         }
     ],
     "icons": [
@@ -537,7 +514,7 @@
     ],
     "url_handlers": [
         {
-            "origin": "https://247lep.co.uk/"
+            "origin": "https://abuein.com/"
         }
     ]
 }
