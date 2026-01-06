@@ -1,5 +1,4 @@
 <!-- partials/header.hbs --> 
-<<<<<<< HEAD
 <header class="header">
     <div>
         <figure class="logo">
@@ -9,14 +8,4 @@
         {{navigation}}
     </div>
     {{> "nav-icons"}}
-=======
-<header id="site-header" class="flexy row site-header">
-    <div class="flexy row container">
-        {{#if @site.logo}}<figure class="flexy site-logo">
-            <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" /></a>
-        </figure>{{else}}<a href="{{@site.url}}">{{@site.title}}</a>{{/if}}   
-        {{navigation}}
-    </div>
-    {{> "app-nav"}}
->>>>>>> 263ea70 (Updating starter-kit files)
 </header>
