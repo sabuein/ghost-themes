@@ -1,0 +1,84 @@
+<!-- partials/footer.hbs -->
+<<<<<<< HEAD
+<footer class="footer">
+    {{navigation type="secondary"}}
+    <div class="container">
+        <p class="meta">Built as a Progressive Web App for <a href="https://ghost.org?via=salaheddin43&ref={{@site.url}}" title="Publish with Ghost" target="_blank">Ghost CMS</a> with {{> "icons/heart"}} by&nbsp;<strong><a href="https://abuein.dev/contact/?ref={{@site.url}}" title="Contact AbuEin Technologies" target="_blank">AbuEin Technologies</a></strong>&period;</p>
+        <p class="meta"><span>Copyright&nbsp;&copy;</span>&nbsp;<span id="year">2016&nbsp;&dash;&nbsp;{{date format="YYYY"}}&period;</span>&nbsp;<span>All&nbsp;Rights&nbsp;Reserved&period;</span></p>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h4>Make a call</h4>
+            <a href="tel:+447930120661" title="Make a call" target="_blank" rel="noopener noreferrer" aria-label="Make a call">{{> "icons/phone"}}<span>0793&dash;0120&dash;661</span></a>
+        </div>
+        <div class="card">
+            <h4>Drop us a line</h4>
+            <a href="mailto:ghost@abuein.dev?subject=I%20am%20inquiring%20about%20your%20Ghost%20services" title="Drop us a line" target="_blank" rel="noopener noreferrer" aria-label="Drop us a line">ghost@abuein.dev</a>
+        </div>
+        <div class="card">
+            <h4>Get direction</h4>
+            <address>32 Malvern Road&comma; Thornton Heath&comma; Surrey CR7 7LH&comma; United Kingdom</address>
+            <ul>
+                <li class="google-maps"><a href="{{@site.url}}/sitemap.xml" title="Google Maps" target="_blank" rel="noopener noreferrer" aria-label="Google Maps">{{> "brands/google-maps"}}</a></li>
+                <li class="what3words"><a href="{{@site.url}}/sitemap.xml" title="what3words" target="_blank" rel="noopener noreferrer" aria-label="what3words">{{> "brands/what3words"}}</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h4>Follow us</h4>
+            {{> "social-media"}}
+        </div>
+    </div>
+    <div class="container">
+        <figure>
+            {{> "brands/ghost"}}
+            <figcaption><a href="https://ghost.org?via=salaheddin43&ref={{@site.url}}" title="Publish with Ghost" target="_blank">Publish with Ghost</a></figcaption>
+        </figure>
+        <p>Timezone&colon; <strong>{{@site.timezone}}</strong></p>
+        {{> "disclosure"}}
+        <p><a href="{{@site.url}}/sitemap.xml" title="XML Sitemap" target="_blank" rel="noopener noreferrer" aria-label="XML Sitemap">{{> "icons/xml"}}</a></p>
+        {{> "icons/halal"}}
+    </div>
+    <div class="fly">
+        <a href="https://wa.me/447930120661?text=I%20am%20inquiring%20about%20your%20Ghost%20services" title="Chat on WhatsApp" aria-label="Chat on WhatsApp" target="_blank">{{> "brands/whatsapp"}}</a>
+        <a href="#app" title="Scroll back to top" aria-label="Scroll back to top" target="_top">{{> "icons/arrow-up"}}</a>
+    </div>
+    <a href="#" title="Support Occupied Palestine" id="support-palestine">Support Occupied Palestine</a>
+=======
+<footer class="flexy site-footer">
+    <div class="flexy container">
+        <div class="flexy widget">
+            <figure class="flexy site-logo">
+                <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" /></a>
+            </figure>
+            <p class="flexy"><strong class="flexy row">{{@site.title}}</strong>{{#if @site.description}}<span class="flexy row">{{@site.description}}</span>{{/if}}</p>
+            {{> "social-media"}}
+        </div>
+        <div class="flexy widget">
+            <h5>Latest insights</h5>
+            {{> "latest-insights"}}
+        </div>
+        <div class="flexy widget">
+            <h5>Popular services</h5>
+            {{> "popular-services"}}
+        </div>
+        <div class="flexy widget">
+            <h5>Emergency service</h5>
+            <h6>Make a call</h6>
+            <a href="tel:+447773222722" title="Call us&excl;" target="_blank"><button type="button" class="btn btn-fill">{{> "icons/phone"}}<span>0777&dash;3222&dash;722</span></button></a>
+            <h6>Drop us a line</h6>
+            <a href="mailto:hello@247lep.co.uk">hello@247lep.co.uk</a>
+            <h6>Get direction</h6>
+            <address>31 Spring Street, London, England, W2 1JA</address>
+        </div>
+    </div>
+    {{navigation type="secondary"}}
+    <div class="flexy fin">
+        {{> "company-meta"}}
+        <p>Timezone&colon; <strong>{{@site.timezone}}</strong></p>
+        <p class="flexy row web-app-by"><a href="/sitemap.xml" title="XML Sitemap" target="_top">XML Sitemap</a><a href="https://sabuein.github.io/" title="Web app by Salaheddin AbuEin" target="_blank" rel="noopener">Web app by Salaheddin AbuEin</a></p>
+        {{!--
+        <p class="flexy row"><a href="/ghost/#/dashboard" title="Ghost Admin" target="_blank">Ghost Admin</a></p>
+        --}}
+    </div>
+>>>>>>> 263ea70 (Updating starter-kit files)
+</footer>

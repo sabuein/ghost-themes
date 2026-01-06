@@ -1,0 +1,10 @@
+<!-- partials/loop-partners.hbs -->
+{{#get "posts" filter="tags:[blog]" include="authors, tags" order="title asc" limit=@config.posts_per_page as |posts|}}<section class="flexy loop">
+    <h3>Our accreditations and trusted partners</h3>
+    <p class="quote">We are proud to hold accreditations from leading industry bodies and collaborate with trusted partners. These affiliations showcase our commitment to delivering top-quality service, ensuring safety, and maintaining professionalism in every project we undertake&period;</p>
+    <hr />
+    <div class="flexy row accreditations">
+        {{> "icons/gas-safe"}}
+    </div>
+    {{#if posts}}{{> "loop"}}{{else}}<pre>There is no content to return&period;</pre>{{/if}}
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
