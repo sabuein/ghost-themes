@@ -476,14 +476,14 @@
     ],
     "screenshots": [
         {
-            "src": "assets/images/247lep-720x720.png",
+            "src": "assets/images/starter-kit-720x720.png",
             "sizes": "720x720",
             "type": "image/png",
             "form_factor": "wide",
             "label": "Our logo"
         },
         {
-            "src": "assets/images/247lep-1080x720.webp",
+            "src": "assets/images/starter-kit-1080x720.webp",
             "sizes": "1080x720",
             "type": "image/webp",
             "label": "Our car"
@@ -492,29 +492,29 @@
     "related_applications": [
         {
             "platform": "webapp",
-            "url": "http://localhost:2368//app.webmanifest"
+            "url": "https://abuein.com/app.webmanifest"
         },
         {
             "platform": "webapp",
-            "url": "https://247lep.co.uk/app.webmanifest"
+            "url": "https://abuein.dev/app.webmanifest"
         },
         {
             "platform": "play",
-            "url": "https://play.google.com/store/apps/details?id=com.example.app1",
-            "id": "com.example.app1"
+            "url": "https://play.google.com/store/apps/details?id=com.abuein.dev",
+            "id": "com.abuein.dev"
         },
         {
             "platform": "itunes",
-            "url": "https://itunes.apple.com/app/example-app1/id123456789"
+            "url": "https://itunes.apple.com/app/abuein-dev/id123456789"
         },
         {
             "platform": "windows",
-            "url": "https://apps.microsoft.com/store/detail/example-app1/id123456789"
+            "url": "https://apps.microsoft.com/store/detail/abuein-dev/id123456789"
         }
     ],
     "url_handlers": [
         {
-            "origin": "https://abuein.com/"
+            "origin": "https://abuein.dev/"
         }
     ]
 }
