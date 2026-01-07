@@ -10,4 +10,5 @@
             <p class="recommendation-description">{{rec.description}}</p>
         </a>
     </li>{{/foreach}}
-</ul>{{else}}<pre>This Ghost instance does not have any recommendations yet&period;</pre>{{/if}}
+</ul>
+<button data-portal="recommendations">Show all recommendations</button><!-- href="/#/portal/recommendations" -->{{else}}<pre>This Ghost instance does not have any recommendations yet&period;</pre>{{/if}}

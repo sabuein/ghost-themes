@@ -8,33 +8,34 @@
   <hgroup>
     <h1>{{@site.title}}</h1>
     {{#if @site.description}}<p>{{@site.description}}</p>{{/if}}
-    <h2>This site is under construction — and fully operational</h2>
-    <p>A modern progressive web experience is live while content and features are being refined.</p>
-    <div class="status">🟢 System status: Online · ⚡ Performance: Optimised · 📱 PWA: Ready</div>
+    <h2>This site is under construction &mdash; and fully operational</h2>
+    <p>A modern progressive web experience is live while content and features are being refined&period;</p>
+    <div class="status">🟢 <strong>System status</strong>&colon; Online &bull; ⚡ <strong>Performance</strong>&colon; Optimised &bull; 📱 <strong>PWA</strong>&colon; Ready</div>
   </hgroup>
 </section>
 <section class="cards">
   <div class="card">
     <h3>⚡ Fast by Design</h3>
-    <p>Single-page architecture focused on clarity and speed.</p>
+    <p>Single&dash;page architecture focused on clarity and speed&period;</p>
   </div>
   <div class="card">
     <h3>📱 Progressive Web Ready</h3>
-    <p>Installable, offline-friendly, responsive.</p>
+    <p>Installable&comma; offline&dash;friendly&comma; responsive&period;</p>
   </div>
   <div class="card">
-    <h3>🎨 Theme-Driven</h3>
-    <p>Reusable, modular design system for Ghost CMS.</p>
+    <h3>🎨 Theme&dash;Driven</h3>
+    <p>Reusable&comma; modular design system for Ghost CMS&period;</p>
   </div>
   <div class="card">
-    <h3>🔐 Privacy-Aware</h3>
-    <p>Minimal tracking, accessibility-first.</p>
+    <h3>🔐 Privacy&dash;Aware</h3>
+    <p>Minimal tracking&comma; accessibility&dash;first&period;</p>
   </div>
 </section>
 {{> "loop-featured"}}
 {{> "loop-posts"}}
 {{> "loop-tags"}}
 {{> "cta-signup"}}
+{{> "sharing"}}
 {{#match @site.recommendations_enabled}}<section class="recommendations">
     <hgroup>
       <h2>Recommendations</h2>
@@ -42,7 +43,6 @@
     </hgroup>
     <hr />
     {{recommendations limit="4" order="title asc"}}
-    <button data-portal="recommendations">Show all recommendations</button><!-- href="/#/portal/recommendations" -->
 </section>{{/match}}
 {{#contentFor "scripts"}}
 <script type="text/javascript">

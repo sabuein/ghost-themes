@@ -17,19 +17,22 @@
         <meta name="format-detection" content="telephone=no" />
         <meta http-equiv="x-rim-auto-match" content="none" />
         {{!-- Preload scripts --}}
+        {{!--
         <link rel="preload" href="{{asset 'js/application.mjs'}}" type="text/javascript" crossorigin="anonymous" as="script" />
+        <link rel="preload" href="{{asset 'css/components/animation.css'}}" type="text/css" as="style" />
+        <link rel="preload" href="{{asset 'css/components/breakpoints.css'}}" type="text/css" as="style" />
+        <link rel="preload" href="{{asset 'css/components/ghost.css'}}" type="text/css" as="style" />
+        <link rel="preload" href="{{asset 'css/components/pwa.css'}}" type="text/css" as="style" />
+        <link rel="preload" href="{{asset 'css/components/reset.css'}}" type="text/css" as="style" />
+        --}}
         <link rel="preload" href="{{asset 'css/screen.css'}}" type="text/css" as="style" />
-        <link rel="preload" href="{{asset 'css/breakpoints.css'}}" type="text/css" as="style" />
-        <link rel="preload" href="{{asset 'css/pwa.css'}}" type="text/css" as="style" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
         <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" type="text/javascript" />
         <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" type="text/javascript" />
         <link rel="shortcut icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
         <link rel="icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
-        <link rel="stylesheet" href="{{asset 'css/screen.css'}}" type="text/css" media="all" />
-        <link rel="stylesheet" href="{{asset 'css/breakpoints.css'}}" {{!-- hasMinFile='true' --}} type="text/css" media="all" />
-        <link rel="stylesheet" href="{{asset 'css/pwa.css'}}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{{asset 'css/screen.css'}}" {{!-- hasMinFile='true' --}} type="text/css" media="all" />
         <link rel="manifest" href="/app.webmanifest" type="application/manifest+json" crossorigin="anonymous" />
         <script type="importmap">
             {
