@@ -1,15 +1,9 @@
-<<<<<<< HEAD
 # Private
 assets/labs/
 config.development.json
 *.development.json
 *.local.json
 .env
-=======
-# Ghost
-
-assets/labs/config/*
->>>>>>> 263ea70 (Updating starter-kit files)
 
 # Logs
 logs
