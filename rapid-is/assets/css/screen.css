@@ -2330,6 +2330,11 @@ nav li[role="menuitem"]:is(:hover, :focus-within) {
     background-color: var(--link-button-secondary);
 }
 
+footer *.nav li.nav-current {
+    background-color: var(--accent-color);
+    padding: 0 .25rem;
+}
+
 nav li[role="menuitem"],
 *.about-nav li,
 *.about-nav li.nav-current,
