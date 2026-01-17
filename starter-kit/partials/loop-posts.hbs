@@ -1,9 +1,11 @@
-<!-- partials/loop-posts.hbs -->
-{{#get "posts" filter="tags:[tips]" include="authors, tags" order="title asc, published_at desc" limit="6" as |posts|}}<section class="loop">
+<!-- partials/loop-posts.hbs --> {{!-- filter="tags:[tips]" --}}
+{{#get "posts" include="authors,tags" order="title asc, published_at desc" limit=@config.posts_per_page as |articles pages|}}<section class="loop">
     <hgroup>
         <h2>Posts</h2>
         <p>Lorem ipsum&comma; dolor sit amet consectetur adipisicing elitem quam quibusdam repudiandae&excl;</p>
     </hgroup>
     <hr />
-    {{#if posts}}{{> "loop"}}{{else}}<pre>This Ghost instance does not have any posts yet&period;</pre>{{/if}}
+    <div class="container">
+        {{#foreach articles}}{{> "loop"}}{{else}}<pre>This Ghost instance does not have any posts yet&period;</pre>{{/foreach}}
+    </div>
 </section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

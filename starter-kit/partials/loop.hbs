@@ -1,1 +1,12 @@
-loop
+<article>
+    <hgroup>
+        <h3>{{title}}</h3>
+        <div>
+            <p>Written by: {{authors separator=", "}}</p>
+            <p>keywords: {{tags separator=", "}}</p>
+        </div>
+    </hgroup>
+    <div>
+        <p><a href="{{slug}}">{{title}}</a></p>
+    </div>
+</article>

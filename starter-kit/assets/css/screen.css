@@ -301,3 +301,19 @@ hr {
 .portal-links ul {
   list-style-type: none;
 }
+
+.loop .container {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.loop .container article {
+  flex-basis: 20rem;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.loop .container article hgroup {
+  align-items: flex-start;
+}
