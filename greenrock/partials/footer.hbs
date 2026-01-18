@@ -1,0 +1,13 @@
+<!-- partials/footer.hbs -->
+<footer class="footer bg-foreground">
+    <div class="flexy-r">
+        <figure class="logo">
+            <a href="{{@site.url}}" title="{{@site.title}}">{{#if @site.logo}}<img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" />{{else}}<img src="https://placehold.co/150x75" alt="{{@site.title}}" loading="lazy" />{{/if}}</a>
+            <figcaption>{{@site.title}}</figcaption>    
+        </figure>
+        <p>معاً، نحوّل الدمار إلى فرصة للحياة.</p>
+        <div class="flexy-r">صنع بكل {{> "icons/heart"}} في فلسطين المحتلة.</div>
+    </div>
+    {{!--navigation type="secondary"--}}
+    {{> "fly-buttons"}}
+</footer>

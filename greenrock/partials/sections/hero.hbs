@@ -1,0 +1,33 @@
+<section id="home" class="hero-gradient bg-gradient">
+  <div class="pattern">
+    <div class="brick rotate-12"></div>
+    <div class="brick rotate-6"></div>
+    <div class="brick"></div>
+  </div>
+
+  <figure class="apply-full-cover" title="{{@site.title}}"
+    style="{{#if @site.accent_color}}--cover-color: {{@site.accent_color}}; {{/if}}--cover-url: url({{img_url @site.cover_image}})">
+    {{#if @site.cover_image}}<img
+      srcset="{{img_url @site.cover_image size='s'}} 300w, {{img_url @site.cover_image size='m'}} 600w, {{img_url @site.cover_image size='l'}} 1000w, {{img_url @site.cover_image size='xl'}} 2000w"
+      sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url @site.cover_image size='xl'}}" alt="{{@site.title}}"
+      loading="lazy" />{{else}}{{> "drawings/coming-soon"}}{{/if}}
+  </figure>
+
+  <hgroup>
+    <span class="text-top animate-fade-up">ابتكار إنساني من فلسطين</span>
+    <h1 class="animate-fade-up">
+      إعادة بناء الكرامة<br />
+      <span class="text-highlight">من بين الأنقاض</span>
+    </h1>
+    {{#if @site.description}}<p class="animate-fade-up">{{@site.description}}</p>
+    {{/if}}
+    <div class="flexy-r animate-fade-up" style="animation-delay: 0.3s;">
+      <a type="text/html" href="#about" class="secondary" title="عن المشروع" target="_top">عن المشروع</a>
+      <a type="text/html" href="#contact" class="outline" title="كن شريكاً لنا" target="_top">كن شريكاً لنا</a>
+    </div>
+  </hgroup>
+
+  <a href="#about" class="scroll-indicator animate-bounce">
+    {{> "icons/arrow-down"}}
+  </a>
+</section>
