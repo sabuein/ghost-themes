@@ -1,0 +1,16 @@
+<!-- partials/recommendations.hbs -->
+{{#if recommendations}}<ul class="grid x4">
+    {{#foreach recommendations as |rec|}}<li class="grid-card recommendation">
+        <a href="{{rec.url}}" data-recommendation="{{rec.id}}" class="flexy-r" target="_blank" rel="noopener">
+            <figure class="recommendation-favicon">
+                <img src="{{#if rec.favicon}}{{rec.favicon}}{{else}}https://placehold.co/80x40{{/if}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';" />
+            </figure>
+            <div>
+                <h5 class="recommendation-title">{{rec.title}}</h5>
+                <span class="recommendation-url">{{readable_url rec.url}}</span>
+                <p class="recommendation-description">{{rec.description}}</p>
+            </div>
+        </a>
+    </li>{{/foreach}}
+</ul>
+<button type="button" title="عرض كل التوصيات" data-portal="recommendations">عرض كل التوصيات</button><!-- href="/#/portal/recommendations" -->{{else}}<pre>This Ghost instance does not have any recommendations yet&period;</pre>{{/if}}

@@ -1,0 +1,12 @@
+<!-- navigation.hbs -->
+{{#if isSecondary}}<ul class="footer-links-bottom" role="menu">
+    {{#foreach navigation}}<li class="nav-{{slug}}{{#if current}} nav-current{{/if}}" role="menuitem">
+        <a href="{{url absolute="true"}}" title="{{label}}">{{label}}</a>
+    </li>{{/foreach}}
+</ul>{{else}}<nav class="flexy-r desktop-nav">
+    <ul class="flexy-r nav" role="menu">
+        {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat "nav-" slug)}}" role="menuitem">
+            <a href="{{url absolute="true"}}" title="{{label}}">{{label}}</a>
+        </li>{{/foreach}}
+    </ul>
+</nav>{{/if}}

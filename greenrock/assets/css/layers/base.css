@@ -1,0 +1,116 @@
+:root {
+    /* Earthy Green Rock palette */
+    --background: 40 20% 98%;
+    --foreground: 30 10% 15%;
+
+    --card: 40 15% 96%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 40 20% 98%;
+    --popover-foreground: 30 10% 15%;
+
+    /* Olive green - primary brand color */
+    --primary: 85 35% 35%;
+    --primary-foreground: 40 20% 98%;
+
+    /* Warm sand/stone */
+    --secondary: 35 25% 90%;
+    --secondary-foreground: 30 10% 25%;
+
+    --muted: 35 15% 92%;
+    --muted-foreground: 30 10% 45%;
+
+    /* Terracotta accent */
+    --accent: 18 60% 55%;
+    --accent-foreground: 40 20% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 85 35% 35%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(85 35% 30%) 0%, hsl(85 40% 45%) 100%);
+    --section-alt: 35 20% 94%;
+    --text-warm: 30 10% 35%;
+    --highlight: 45 80% 55%;
+
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 40 15% 95%;
+
+    --card: 30 15% 14%;
+    --card-foreground: 40 15% 95%;
+
+    --popover: 30 15% 10%;
+    --popover-foreground: 40 15% 95%;
+
+    --primary: 85 40% 50%;
+    --primary-foreground: 30 15% 10%;
+
+    --secondary: 30 15% 20%;
+    --secondary-foreground: 40 15% 90%;
+
+    --muted: 30 15% 18%;
+    --muted-foreground: 35 10% 60%;
+
+    --accent: 18 55% 50%;
+    --accent-foreground: 40 20% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 15% 22%;
+    --input: 30 15% 22%;
+    --ring: 85 40% 50%;
+
+    --section-alt: 30 15% 12%;
+    --text-warm: 35 10% 70%;
+  }
+
+  *, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+}
+
+.flexy-c {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flexy-r {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
