@@ -4,34 +4,196 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 :root {
-  --max-width: 1280px;
-  --max-width: 100dvw;
-  --accent: #4fd1c5;
-  --bg: #111;
-  --fg: #eee;
-  --muted: #999;
-  --card: #1c1c1c;
+    --max-width: 1280px;
+    --max-width: 100dvw;
+    --accent: #4fd1c5;
+    --bg: #111;
+    --fg: #eee;
+    --muted: #999;
+    --card: #1c1c1c;
+    --header-height: 3rem;
 }
 
 [data-theme="light"] {
-  --bg: #f9f9f9;
-  --fg: #111;
-  --muted: #555;
-  --card: #ffffff;
+    --bg: #f9f9f9;
+    --fg: #111;
+    --muted: #555;
+    --card: #ffffff;
+}
+
+/* roboto-flex-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Roboto Flex";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/roboto-flex-v26-latin-regular.eot"); /* IE9 Compat Modes */
+    src:
+        url("../fonts/roboto-flex-v26-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */ url("../fonts/roboto-flex-v26-latin-regular.woff2")
+            format("woff2"),
+        /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+            url("../fonts/roboto-flex-v26-latin-regular.woff") format("woff"),
+        /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+, iOS 5+ */
+            url("../fonts/roboto-flex-v26-latin-regular.ttf") format("truetype"),
+        /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+            url("../fonts/roboto-flex-v26-latin-regular.svg#RobotoFlex")
+            format("svg"); /* Legacy iOS */
 }
 
 html {
     font-size: var(--font-size-base);
-    scroll-behavior: smooth;
-    scroll-padding-top: var(--header-height);
+    font-size: clamp(1rem, 1rem + 0.5vw, 2rem);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    hanging-punctuation: first allow-end last;
 }
 
-img, svg, video, canvas, audio, iframe, embed, object {
-  display: block;
-  vertical-align: middle;
+html[lang="ar"] {
+    direction: rtl;
+}
+
+:not(dialog) {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    min-block-size: 100svb;
+    min-inline-size: 300px;
+    min-height: 100svh; /* Small viewport height for full coverage */
+}
+
+body {
+    margin: 0;
+    font-family:
+        "Roboto Flex",
+        "Amiri",
+        var(--gh-font-body),
+        system-ui,
+        -apple-system,
+        sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body:has(dialog[open]) {
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+:heading {
+    margin: 0;
+    text-wrap: balance;
+    font-family: var(--gh-font-heading);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+label,
+select,
+textarea {
+    line-height: 1.1;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+    vertical-align: middle;
+}
+
+ul,
+ol,
+dl {
+    list-style-position: inside;
+
+    ul,
+    ol,
+    dl {
+        padding-inline-start: 1lh;
+    }
+}
+
+ul[class],
+ol[class],
+ul[role] {
+    list-style-type: none;
+}
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+button,
+a,
+label {
+    cursor: pointer;
+}
+
+svg,
+img,
+figure,
+picture,
+video,
+audio {
+    height: auto;
+    max-width: 100%;
+}
+
+section,
+article {
+    padding: 3rem 1.5rem;
+    padding-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 100%;
+}
+
+hgroup[class] {
+    padding: 1rem;
+    gap: 1rem;
 }

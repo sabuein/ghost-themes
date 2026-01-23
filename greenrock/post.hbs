@@ -1,0 +1,40 @@
+{{!< default}}
+<!-- post.hbs -->
+{{#is "post"}}
+{{#post}}
+<article class="{{post_class}}">
+    {{#match @page.show_title_and_feature_image}}<header class="flexy row">
+        <hgroup class="flexy-c animate-fade-up">
+            <h1 id="{{slug}}" class="flexy row" title="{{title}}">{{title}}</h1>
+            <p class="quote">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}&hellip;{{/if}}</p>
+            <p class="flexy row">{{#if featured}}<span>{{> "icons/popular"}}</span>{{/if}}{{#if reading_time}}<span>{{reading_time}}</span>{{/if}}</p>
+        </hgroup>
+        {{#if feature_image}}<figure class="flexy-c" style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
+            <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" />
+            {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>{{/if}}
+    </header>{{/match}}
+    <section class="primary-content">
+        {{content}}
+        {{!--
+        <div class="flexy details">
+            <ul class="flexy row author-list">
+                {{#foreach authors}}<li>
+                    {{#if profile_image}}<a type="text/html" href="{{url}}" target="_top" title="Read more by {{name}}" aria-label="Read more by {{name}}"><img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" /></a>{{else}}<a type="text/html" href="{{url}}" target="_top" title="Read more by {{name}}" class="author-avatar author-profile-image" aria-label="Read more of {{name}}">{{> "icons/avatar"}}</a>{{/if}}
+                </li>{{/foreach}}
+            </ul>
+            <div class="flexy row">
+                <strong title="Published on">Published on&colon;</strong>
+                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+            </div>
+            {{tags prefix="<div class='flexy row'><strong>Keywords&colon;</strong>" separator="<span>&bull;</span>" autolink="true" limit="5" visibility="public" suffix="</div>"}}<!-- all / internal / public -->
+        </div>
+        --}}
+    </section>
+    {{> "discussion"}}
+</article>
+{{#contentFor "scripts"}}<script type="text/javascript">
+    console.log("Hello from post.hbs!");
+</script>{{/contentFor}}
+{{/post}}
+{{/is}}

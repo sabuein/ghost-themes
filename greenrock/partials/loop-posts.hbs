@@ -1,11 +1,11 @@
 <!-- partials/loop-posts.hbs --> {{!-- filter="tags:[tips]" --}}
-{{#get "posts" include="authors,tags" order="title asc, published_at desc" limit=@config.posts_per_page as |articles pages|}}<section class="loop">
-    <hgroup>
-        <h2>Posts</h2>
-        <p>Lorem ipsum&comma; dolor sit amet consectetur adipisicing elitem quam quibusdam repudiandae&excl;</p>
+{{#get "posts" include="authors,tags" order="title asc, published_at desc" limit=@config.posts_per_page as |articles pages|}}<section id="blog" class="loop">
+    <hgroup class="flexy-c animate-fade-up">
+        <h2>تدوينات</h2>
+        <p>آخر المستجدات والمقالات</p>
+        <hr />
     </hgroup>
-    <hr />
-    <div class="container">
-        {{#foreach articles}}{{> "loop"}}{{else}}<pre>This Ghost instance does not have any posts yet&period;</pre>{{/foreach}}
+    <div class="flexy-r">
+        {{#foreach articles}}{{> "loop"}}{{else}}<pre>لا توجد أي تدوينات منشورة بعد&period;</pre>{{/foreach}}
     </div>
 </section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}
