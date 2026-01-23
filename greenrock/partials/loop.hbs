@@ -1,12 +1,12 @@
 <article>
-    <hgroup>
+    <hgroup class="flexy-c animate-fade-up">
         <h3>{{title}}</h3>
-        <div>
-            <p>Written by: {{authors separator=", "}}</p>
-            <p>keywords: {{tags separator=", "}}</p>
+        <div class="flexy-r">
+            <p><small>بقلم&colon; {{authors separator="،و "}}</small></p>
+            <p><small>الكلمات المفتاحية&colon; {{tags separator="،و "}}</small></p>
         </div>
     </hgroup>
-    <div>
-        <p><a href="{{slug}}">{{title}}</a></p>
+    <div class="flexy-c">
+        <p><strong>تابع القراءة</strong>&colon; <a href="{{slug}}" title="{{title}}" target="_top">{{title}}</a></p>
     </div>
 </article>

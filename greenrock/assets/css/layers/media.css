@@ -1,5 +1,87 @@
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--header-height);
+        interpolate-size: allow-keywords;
+    }
+
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    :root {
+        --header-height: 10rem;
+    }
+
+    .hero-gradient,
+    .video-playback {
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    .hero-gradient hgroup {
+        align-items: center;
+    }
+
+    .grid.x2,
+    .grid.x3,
+    .grid.x4 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .footer > .flexy-r {
+        justify-content: center;
+    }
+
+    .nav-icons button {
+        margin-left: 0;
+    }
+
+    section,
+    article {
+        padding: 2rem 1rem;
+    }
+
+    .grid .grid-card {
+        padding: 1rem;
+    }
+
+    .flexy-c,
+    .flexy-r {
+        gap: 0.5rem;
+    }
+
+    .grid .grid-card svg {
+        height: 2rem;
+        width: 2rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
