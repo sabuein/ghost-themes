@@ -35,7 +35,7 @@ Salah.
 
 [domain]: https://abuein.com/ "Dar AbuEin"
 [google-domains]: https://domains.google/ "Google Domains: Register your domain name"
-[ghost]: https://ghost.org/ "Ghost: Turn your audience into a business"
+[ghost]: https://ghost.org/?via=sabuein "Ghost: Turn your audience into a business"
 [linode]: https://www.linode.com/ "Linode: Cloud computing & Linux servers, alternative to AWS"
 [repo]: https://github.com/sabuein/ghost.abuein.com "sabuein/ghost.abuein.com: Viva la familia!"
 [handle]: https://handlebarsjs.com/ "Handlebars.js"

@@ -1,14 +1,14 @@
 <!-- partials/social-media.hbs -->
 <ul class="social-icons flexy" role="menu">
-    <li><a href="https://ghost.org/experts/salaheddin-abuein/" title='{{t "Ghost"}}' class="flexy" target="_blank" rel="noopener">
+    <li><a href="https://ghost.org/experts/salaheddin-abuein/?via=sabuein&ref={{readable_url @site.url}}" title='{{t "Ghost"}}' class="flexy" target="_blank" rel="nofollow noopener">
     {{> "icons/ghost"}}
     </a></li>
-    {{#if @custom.github_url}}<li><a href="{{@custom.github_url}}?ref={{readable_url @site.url}}" title='{{t "GitHub"}}' class="flexy" target="_blank" rel="noopener">
+    {{#if @custom.github_url}}<li><a href="{{@custom.github_url}}?ref={{readable_url @site.url}}" title='{{t "GitHub"}}' class="flexy" target="_blank" rel="nofollow noopener">
     {{> "icons/github"}}
     </a></li>{{/if}}
-    {{#if @custom.linkedin_url}}<li><a href="{{@custom.linkedin_url}}?ref={{readable_url @site.url}}" title='{{t "LinkedIn"}}' class="flexy" target="_blank" rel="noopener">
+    {{#if @custom.linkedin_url}}<li><a href="{{@custom.linkedin_url}}?ref={{readable_url @site.url}}" title='{{t "LinkedIn"}}' class="flexy" target="_blank" rel="nofollow noopener">
     {{> "icons/linkedin"}}
     </a></li>{{/if}}
-    {{#if @site.facebook}}<li><a href="{{social_url type="facebook"}}?ref={{readable_url @site.url}}" title='{{t "Facebook"}}' class="flexy" target="_blank" rel="noopener">{{> "icons/facebook"}}</a></li>{{/if}}
-    {{#if @site.twitter}}<li><a href="{{social_url type="twitter"}}?ref={{readable_url @site.url}}" title='{{t "X &lpar;formerly Twitter&rpar;"}}' class="flexy" target="_blank" rel="noopener">{{> "icons/x"}}</a></li>{{/if}}
+    {{#if @site.facebook}}<li><a href="{{social_url type="facebook"}}?ref={{readable_url @site.url}}" title='{{t "Facebook"}}' class="flexy" target="_blank" rel="nofollow noopener">{{> "icons/facebook"}}</a></li>{{/if}}
+    {{#if @site.twitter}}<li><a href="{{social_url type="twitter"}}?ref={{readable_url @site.url}}" title='{{t "X &lpar;formerly Twitter&rpar;"}}' class="flexy" target="_blank" rel="nofollow noopener">{{> "icons/x"}}</a></li>{{/if}}
 </ul>

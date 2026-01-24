@@ -13,5 +13,5 @@
     {{> "social-media"}}
     {{> "general-enquiries"}}
     {{> "cta-signup"}}
-    {{navigation type="secondary"}}
+    {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{/if}}
 </footer>

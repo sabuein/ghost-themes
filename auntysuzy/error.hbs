@@ -40,10 +40,10 @@
         <div class="gh-head-actions">
             <div class="gh-head-actions-list">
                 {{#if @site.facebook}}
-                <a href="{{social_url type="facebook"}}?ref={{@site.url}}" title="Facebook" target="_blank" rel="nofollow noopener">{{> "icons/facebook"}}</a>
+                <a href="{{social_url type="facebook"}}?ref={{readable_url @site.url}}" title="Facebook" target="_blank" rel="nofollow noopener">{{> "icons/facebook"}}</a>
                 {{/if}}
                 {{#if @site.twitter}}
-                <a href="{{social_url type="twitter"}}?ref={{@site.url}}" title="X" target="_blank" rel="nofollow noopener">{{> "icons/x"}}</a>
+                <a href="{{social_url type="twitter"}}?ref={{readable_url @site.url}}" title="X" target="_blank" rel="nofollow noopener">{{> "icons/x"}}</a>
                 {{/if}}
                 <a href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="nofollow noopener">{{> "icons/rss"}}</a>
             </div>
@@ -93,7 +93,7 @@
             {{navigation type="secondary"}}
         </div>{{/if}}
         <div class="gh-foot-meta">
-            Published with <a href="https://ghost.org?via=salaheddin43" target="_blank" rel="nofollow noopener">Ghost</a>
+            <p style="text-align: center; margin-top: 1.5rem;">Designed by <a href="https://abuein.dev/contact/?ref={{readable_url @site.url}}" title="AbuEin Technologies" target="_blank" rel="nofollow noopener">AbuEin Technologies</a> &mdash; Powered by <a href="https://ghost.org/experts/salaheddin-abuein/?via=sabuein&ref={{@site.url}}" title="Ghost" target="_blank" rel="nofollow noopener">Ghost</a> platform&period;</p>
         </div>
     </div>
 </footer>

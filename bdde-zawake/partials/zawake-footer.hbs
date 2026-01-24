@@ -1,7 +1,7 @@
 <!-- zawake-footer.hbs -->
 <header class="zawake-footer-heading flex row nowrap align-content-center justify-content-center align-items-center">
     <h3>{{heading}}</h3>
-    <nav>{{navigation type="secondary"}}</nav>
+    {{#if @site.secondary_navigation}}<nav>{{navigation type="secondary"}}</nav>{{/if}}
 </header>
 <section class="zawake-footer-login flex row nowrap align-content-center justify-content-center align-items-center">{{> "login" heading="Portal links"}}</section>
 <footer>

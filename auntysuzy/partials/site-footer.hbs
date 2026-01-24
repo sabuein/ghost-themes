@@ -45,9 +45,9 @@
 		<div class="footer-divider"></div>
 		<div class="footer-bottom">
 			<p>&copy; 2016 &mdash; {{date format="YYYY"}} {{@site.title}}&period; All rights reserved&period;</p>
-			{{navigation type="secondary"}}
-			<p style="text-align: center; margin-top: 1.5rem;">Designed by <a href="https://abuein.dev/contact/?ref={{@site.url}}" title="AbuEin Technologies" target="_blank" rel="nofollow noopener">AbuEin Technologies</a> &mdash; Powered by <a href="https://ghost.org/experts/salaheddin-abuein/?via=salaheddin43&ref={{@site.url}}" title="Ghost" target="_blank" rel="nofollow noopener">Ghost</a>&period;</p>
-			<p>(Total members: <span>{{total_members}}</span>&comma; Paid members: <span>{{total_paid_members}}</span>)</p>
+			{{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{/if}}
+			<p style="text-align: center; margin-top: 1.5rem;">Designed by <a href="https://abuein.dev/contact/?ref={{readable_url @site.url}}" title="AbuEin Technologies" target="_blank" rel="nofollow noopener">AbuEin Technologies</a> &mdash; Powered by <a href="https://ghost.org/experts/salaheddin-abuein/?via=sabuein&ref={{@site.url}}" title="Ghost" target="_blank" rel="nofollow noopener">Ghost</a> platform&period;</p>
+			<p>&lpar;Total members&colon; <span>{{total_members}}</span>&comma; Paid members&colon; <span>{{total_paid_members}}</span>&rpar;</p>
 			<a href="#top" class="flexy column" title="Back to top">{{> "icons/arrow-up"}}<span>Back to top</span></a>
 		</div>
 		<div>
