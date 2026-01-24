@@ -63,7 +63,7 @@
         <pre>ISO/IEC 27001:2022 UKAS accredited by <a href="https://cvs.babcert.com/babcert.asp?c=253038&v=gxy835f67t" title="The British Assessment Bureau" target="_blank" rel="noopener">The British Assessment Bureau</a>&period;</pre>
     </div>
     <div class="finally flexy">
-        {{navigation type="secondary"}}
+        {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{/if}}
         <pre>&copy; 2005 &dash; {{date format="YYYY"}} <a href="{{@site.url}}" title="{{@site.title}} Ltd">{{@site.title}} Ltd</a>&period; All Rights Reserved&period;</pre>
     </div>
     {{> "cookies"}}

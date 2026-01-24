@@ -70,7 +70,7 @@
         <p>Made with <span class="hearts" title="unconditional love">&hearts;</span> by our team&excl;</p>
     </div>
     {{> "cookies"}}
-    {{navigation type="secondary"}}
+    {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{/if}}
     <div class="flexy back-to-top">
         <a href="#main-content" title="Back to top" class="shadowed">
             {{> "icons/angle-down"}}

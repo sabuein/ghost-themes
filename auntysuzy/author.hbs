@@ -18,13 +18,13 @@
                 <p>{{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</p>
                 <div class="gh-author-links">
                     {{#if website}}
-                        <a href="{{website}}?ref={{@site.url}}" title="Website" target="_blank" rel="nofollow noopener">Website</a>
+                        <a href="{{website}}?ref={{readable_url @site.url}}" title="Website" target="_blank" rel="nofollow noopener">Website</a>
                     {{/if}}
                     {{#if twitter}}
-                        <a href="{{social_url type="twitter"}}?ref={{@site.url}}" title="Twitter" target="_blank" rel="nofollow noopener">Twitter</a>
+                        <a href="{{social_url type="twitter"}}?ref={{readable_url @site.url}}" title="Twitter" target="_blank" rel="nofollow noopener">Twitter</a>
                     {{/if}}
                     {{#if facebook}}
-                        <a href="{{social_url type="facebook"}}?ref={{@site.url}}" title="Facebook" target="_blank" rel="nofollow noopener">Facebook</a>
+                        <a href="{{social_url type="facebook"}}?ref={{readable_url @site.url}}" title="Facebook" target="_blank" rel="nofollow noopener">Facebook</a>
                     {{/if}}
                 </div>
             </div>

@@ -28,7 +28,7 @@
             <address>31 Spring Street, London, England, W2 1JA</address>
         </div>
     </div>
-    {{navigation type="secondary"}}
+    {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{/if}}
     <div class="flexy fin">
         {{> "company-meta"}}
         <p>Timezone&colon; <strong>{{@site.timezone}}</strong></p>
