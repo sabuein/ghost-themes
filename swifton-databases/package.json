@@ -12,13 +12,14 @@
         "desktop": "assets/screenshot-desktop.jpg"
     },
     "scripts": {
-        "link": "ln -s /home/sabuein/my/projects/rapid-is /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
+        "link": "ln -s /home/sabuein/my/projects/swifton-databases /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
         "check": "npx gscan .",
         "start": "ghost start -d C:\\Users\\sala\\my\\ghost-cms",
         "restart": "ghost restart -d ~/my/instances/ghost/",
         "stop": "ghost stop -d ~/my/instances/ghost/",
         "update": "ghost update -d ~/my/instances/ghost/",
-        "debug": "ghost run -D -d ~/my/instances/ghost/"
+        "debug": "ghost run -D -d ~/my/instances/ghost/",
+        "zip": "zip -r /home/sabuein/Desktop/swifton-databases.zip * -x *.zip /assets/labs/* .gitignore"
     },
     "author": {
         "name": "Salaheddin AbuEin",
