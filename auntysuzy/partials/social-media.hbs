@@ -3,6 +3,6 @@
     {{#if @site.twitter}}<li><a href="https://x.com/{{@site.twitter}}?ref={{readable_url @site.url}}" title="X" target="_blank" rel="nofollow noopener">{{> "icons/x"}}</a></li>{{/if}}
     <li><a href="https://www.instagram.com/auntysuzyuk/?ref={{readable_url @site.url}}" title="Instagram" target="_blank" rel="nofollow noopener">{{> "icons/instagram"}}</a></li>
     <li><a href="https://chat.whatsapp.com/HJfbxLKRBt98F3ivjqNwty?ref={{readable_url @site.url}}" title="Join {{@site.title}} group on WhatsApp" target="_blank" rel="nofollow noopener">{{> "icons/whatsapp"}}</a></li>
-    <li><a href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="nofollow noopener">{{> "icons/rss"}}</a></li>
+    <li><a href="https://feedly.com/i/subscription/feed/{{readable_url @site.url}}/rss/" title="RSS" target="_blank" rel="nofollow noopener">{{> "icons/rss"}}</a></li>
     <li><a href="{{@site.url}}/sitemap.xml" title="XML Sitemap" target="_blank" rel="nofollow noopener">{{> "icons/xml"}}</a></li>
 </ul>
