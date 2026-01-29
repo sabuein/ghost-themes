@@ -13,7 +13,7 @@
         <a href="{{@site.url}}/ghost/#/dashboard/" title="Dashboard" target="_blank">Dashboard</a>
         <a href="{{@site.url}}/ghost/#/editor{{#is "post"}}/post/{{post.id}}{{else}}{{#is "page"}}/page/{{page.id}}{{/is}}{{/is}}/" title="Edit" target="_blank">Edit</a>
         <a href="{{@site.url}}/ghost/#/settings/design/change-theme/" title="Upload a theme" target="_blank">Upload a theme</a>
-        <a href="https://ghost.org/docs/admin-api/?via=sabuein" alt="Ghost admin API documentation" title="Read the admin API documentation" target="_blank">Docs</a>
+        <a href="https://ghost.org/docs/admin-api/?via=sabuein&ref={{readable_url @site.url}}" alt="Ghost admin API documentation" title="Read the admin API documentation" target="_blank">Docs</a>
     </pre>
     {{/is}}
 </footer>
