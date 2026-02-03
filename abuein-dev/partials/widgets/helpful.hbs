@@ -1,0 +1,43 @@
+{{!-- Was Helpful Widget --}}
+<!-- widgets/helpful.hbs -->
+<div class="devsite-thumb-rating" role="form" aria-labelledby="devsite-thumb-label-footer">
+    <div class="devsite-thumb-label" id="devsite-thumb-label-footer">Was this helpful?</div>
+    <div class="devsite-thumbs"><button class="devsite-thumb devsite-thumb-up" data-title="Helpful"
+            aria-label="Helpful"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M21,7h-6.31l0.95-4.57l0.03-0.32c0-0.41-0.17-0.79-0.44-1.06L14.17,0c0,0-7.09,6.85-7.17,7v13h11c0.83,0,1.54-0.5,1.84-1.22 l3.02-7.05C22.95,11.5,23,11.26,23,11V9C23,7.9,22.1,7,21,7z">
+                </path>
+                <path d="M5,7H1v13h4V7L5,7z"></path>
+            </svg></button><button class="devsite-thumb devsite-thumb-down" data-title="Not helpful"
+            aria-label="Not helpful"><svg class="devsite-thumb-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M3,17h6.31l-0.95,4.57l-0.03,0.32c0,0.41,0.17,0.79,0.44,1.06L9.83,24c0,0,7.09-6.85,7.17-7h5V4H6 C5.17,4,4.46,4.5,4.16,5.22l-3.02,7.05C1.05,12.5,1,12.74,1,13v2C1,16.1,1.9,17,3,17z M17,6h3v9h-3V6z M3,13l3-7h9v10l-4.34,4.34 L12,15H3V13z">
+                </path>
+            </svg></button></div>
+</div>
+<devsite-dialog class="devsite-thumb-rating-dialog" id="devsite-thumb-up-dialog"
+    aria-label="What is the reason for your feedback?" open="" aria-modal="true" role="dialog">
+    <div class="devsite-dialog-contents">
+        <h3 class="no-link">What is the reason for your feedback?</h3>
+        <form class="devsite-thumb-rating-categories">
+            <div class="devsite-thumb-rating-category"><input type="radio" name="thumb-up" id="easyToUnderstand"><label
+                    for="easyToUnderstand">Easy to understand</label></div>
+            <div class="devsite-thumb-rating-category"><input type="radio" name="thumb-up" id="solvedMyProblem"><label
+                    for="solvedMyProblem">Solved my problem</label></div>
+            <div class="devsite-thumb-rating-category"><input type="radio" name="thumb-up" id="otherUp"><label
+                    for="otherUp">Other</label></div>
+        </form>
+    </div>
+    <div class="devsite-dialog-buttons"><button type="submit"
+            class="button button-primary devsite-thumb-rating-submit">Submit</button><button type="button"
+            class="button devsite-dialog-close">Cancel</button></div>
+</devsite-dialog>
+
+<devsite-dialog class="devsite-thumb-rating-dialog" id="devsite-thumb-thank-you-dialog"
+    aria-label="Thank you for your feedback." open="" aria-modal="true" role="dialog">
+    <div class="devsite-dialog-contents">
+        <h3 class="no-link">Thank you for your feedback.</h3>
+    </div>
+    <div class="devsite-dialog-buttons"><button type="button"
+            class="button button-primary devsite-dialog-close">Dismiss</button></div>
+</devsite-dialog>

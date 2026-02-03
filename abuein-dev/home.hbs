@@ -1,0 +1,18 @@
+{{!< default}}
+<!-- home.hbs -->
+{{> "tech-logo-banner"}}
+{{> "what-we-build"}}
+{{> "pwa-expertise"}}
+{{> "contact"}}
+
+<div class="gh-postfeed">
+    {{#get "posts" filter="primary_tag:registry"}}<ul class="ae-flexy-col">
+        {{#foreach posts}}{{> "domain" page=../pagination.page }}{{/foreach}}
+    </ul>{{/get}}
+    {{!-- If JS isn't enabled, fallback to standard pagination --}}
+    <noscript>
+        <div class="ae-pagination">
+            {{pagination}}
+        </div>
+    </noscript>
+</div>

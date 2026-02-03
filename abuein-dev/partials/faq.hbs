@@ -1,0 +1,13 @@
+<!-- faq-general-questions.hbs -->
+<article id="{{tag}}-faq" class="flexy">
+    <hgroup class="flexy">
+        {{#if heading}}<h3>{{heading}}</h3>{{/if}}
+        {{#if subheading}}<p>{{subheading}}</p>{{/if}}
+    </hgroup>
+    {{#get "posts" filter="tag:hash-{{tag}}-faq" include="authors,tags" limit="all" order="published_at asc" as |articles pages|}}<div class="flexy">
+        {{#foreach articles visibility="all"}}{{> "card-faq" name="faq-item"}}{{else}}<p>No questions found&excl;</p>{{/foreach}}
+    </div>
+    <footer>
+        <p>Total&colon; {{pages.total}}</p>
+    </footer>{{else}}<p class="error">{{error}}</p>{{/get}}
+</article>

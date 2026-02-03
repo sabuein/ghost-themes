@@ -1,0 +1,383 @@
+<!-- page-pwa.hbs -->
+{{!< default}}
+{{#post}}<section class="flexy row hero">
+    {{#match @page.show_title_and_feature_image}}<hgroup class="flexy">
+        <h2>{{title}}</h2>
+        {{#if custom_excerpt}}<p>{{custom_excerpt}}</p>{{/if}}
+        <div class="hero-cta">
+            <a href="#contact" class="btn primary">Discuss Your PWA Project</a>
+            <a href="#benefits" class="btn secondary">Learn More</a>
+        </div>
+    </hgroup>
+    <figure>
+        {{#if feature_image}}<img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" width="500" height="350" loading="lazy" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}{{else}}<img src="https://placehold.co/500x350" alt="PWA on multiple devices" width="500" height="350" loading="lazy" />{{/if}}
+    </figure>{{/match}}
+</section>
+<!--section class=" flexy">
+    {{content}}
+</section-->{{/post}}
+
+<!-- Benefits Section -->
+<section id="benefits" class="benefits">
+    <hgroup class="flexy">
+        <h2>Why Choose Progressive Web Apps?</h2>
+        <p>PWAs combine the best features of websites and native applications to deliver exceptional user experiences</p>
+    </hgroup>
+    <div class="container-grid">
+        <div class="highlight-card">
+            <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 22h20"></path>
+                    <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"></path>
+                    <path d="M18 2H6a2 2 0 0 0-2 2v10.172a2 2 0 0 0 .586 1.414L12 22l7.414-7.414A2 2 0 0 0 20 13.172V4a2 2 0 0 0-2-2Z"></path>
+                </svg>
+            </div>
+            <h3>Works Offline</h3>
+            <p>PWAs continue to function even when users are offline or in areas with poor connectivity, ensuring uninterrupted access to your content.</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="16" height="20" x="4" y="2" rx="2"></rect>
+                    <path d="M9 22v-4h6v4"></path>
+                    <path d="M12 18v-4"></path>
+                    <circle cx="12" cy="9" r="2"></circle>
+                    <path d="M12 11v3"></path>
+                </svg>
+            </div>
+            <h3>App-Like Experience</h3>
+            <p>Installable on home screens without app stores, PWAs provide a native app-like experience with full-screen mode and app icons.</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+            </div>
+            <h3>Lightning Fast</h3>
+            <p>PWAs load instantly and respond quickly to user interactions, significantly improving user experience and reducing bounce rates.</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+            </div>
+            <h3>Push Notifications</h3>
+            <p>Re-engage users with timely, relevant push notifications even when they're not actively using your application.</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                    <path d="M12 18V6"></path>
+                </svg>
+            </div>
+            <h3>Cost-Effective</h3>
+            <p>Develop once and deploy everywhere, eliminating the need for separate iOS and Android development teams and reducing maintenance costs.</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+                </svg>
+            </div>
+            <h3>SEO Friendly</h3>
+            <p>PWAs are discoverable by search engines, helping you reach more users through organic search traffic.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <hgroup class="flexy">
+        <h2>Our PWA Development Approach</h2>
+        <p>We build lightweight, high-performance PWAs using pure web technologies</p>
+    </hgroup>
+    <div class="features-content">
+        <div class="features-text">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2H2v10h10V2Z"></path>
+                        <path d="M22 12h-10v10h10V12Z"></path>
+                        <path d="M12 12H2v10h10V12Z"></path>
+                        <path d="M22 2h-10v10h10V2Z"></path>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h3>Pure Web Technologies</h3>
+                    <p>We build with HTML5, CSS3, and vanilla JavaScript—no bloated frameworks or unnecessary dependencies.</p>
+                    <div class="flexy row">
+                        <figure class="logo-item">
+                        {{> "icons/html5"}}
+                        <figcaption class="logo-name"><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" title="HTML5" target="_blank" rel="nofollow noopener">HTML5</a></figcaption>
+                        </figure>
+                        <figure class="logo-item">
+                            {{> "icons/css3"}}
+                            <figcaption class="logo-name"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" title="CSS3" target="_blank" rel="nofollow noopener">CSS3</a></figcaption>
+                        </figure>
+                        <figure class="logo-item">
+                            {{> "icons/js"}}
+                            <figcaption class="logo-name"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="ECMAScript (JS)" target="_blank" rel="nofollow noopener">ECMAScript (JS)</a></figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v8"></path>
+                        <path d="m4.93 10.93 1.41 1.41"></path>
+                        <path d="M2 18h2"></path>
+                        <path d="M20 18h2"></path>
+                        <path d="m19.07 10.93-1.41 1.41"></path>
+                        <path d="M22 22H2"></path>
+                        <path d="M16 6 8 14"></path>
+                        <path d="m16 14-8-8"></path>
+                        <path d="M12 16a4 4 0 0 1-4 4"></path>
+                        <path d="M12 16a4 4 0 0 0 4 4"></path>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h3>Performance Optimized</h3>
+                    <p>We meticulously optimize every aspect of your PWA for maximum speed and minimal resource usage.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h3>Security First</h3>
+                    <p>All our PWAs are served over HTTPS and follow the latest security best practices to protect your data.</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                        <path d="M7 7h10"></path>
+                        <path d="M7 12h10"></path>
+                        <path d="M7 17h10"></path>
+                    </svg>
+                </div>
+                <div class="feature-content">
+                    <h3>Progressive Enhancement</h3>
+                    <p>Our PWAs work on all devices, gracefully adapting to provide the best experience based on device capabilities.</p>
+                </div>
+            </div>
+        </div>
+        <div class="features-image">
+            <img src="https://placehold.co/500x400" alt="PWA Development" width="500" height="400">
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process">
+    <hgroup class="flexy">
+        <h2>Our PWA Development Process</h2>
+        <p>A structured approach to delivering high-quality Progressive Web Applications</p>
+    </hgroup>
+    <div class="process-steps">
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Discovery & Planning</h3>
+                <p>We analyze your business needs, target audience, and technical requirements to create a comprehensive development plan.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>UX/UI Design</h3>
+                <p>Our designers create intuitive, engaging interfaces that work seamlessly across all devices and screen sizes.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Development</h3>
+                <p>We build your PWA using clean, efficient code with pure HTML5, CSS3, and vanilla JavaScript for optimal performance.</p>
+                <div class="flexy row">
+                    <figure class="logo-item">
+                    {{> "icons/html5"}}
+                    <figcaption class="logo-name"><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" title="HTML5" target="_blank" rel="nofollow noopener">HTML5</a></figcaption>
+                    </figure>
+                    <figure class="logo-item">
+                        {{> "icons/css3"}}
+                        <figcaption class="logo-name"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" title="CSS3" target="_blank" rel="nofollow noopener">CSS3</a></figcaption>
+                    </figure>
+                    <figure class="logo-item">
+                        {{> "icons/js"}}
+                        <figcaption class="logo-name"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="ECMAScript (JS)" target="_blank" rel="nofollow noopener">ECMAScript (JS)</a></figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3>Testing & Optimization</h3>
+                <p>Rigorous testing across devices and network conditions ensures your PWA performs flawlessly in all scenarios.</p>
+            </div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h3>Deployment & Support</h3>
+                <p>We handle the deployment process and provide ongoing support to keep your PWA running smoothly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies Section -->
+<section class="case-studies">
+    <hgroup class="flexy">
+        <h2>PWA Success Stories</h2>
+        <p>Real-world examples of how PWAs have transformed businesses</p>
+    </hgroup>
+    <div class="case-studies-grid">
+        <div class="case-study">
+            <div class="case-study-image">
+                <img src="https://placehold.co/350x200" alt="E-commerce PWA" width="350" height="200">
+            </div>
+            <div class="case-study-content">
+                <h3>E-commerce Transformation</h3>
+                <p>An online retailer saw a 134% increase in mobile conversions after switching to a PWA, with page load times reduced by 65%.</p>
+            </div>
+        </div>
+        <div class="case-study">
+            <div class="case-study-image">
+                <img src="https://placehold.co/350x200" alt="News Portal PWA" width="350" height="200">
+            </div>
+            <div class="case-study-content">
+                <h3>News Portal Engagement</h3>
+                <p>A news website increased user session duration by 280% with push notifications driving 23% more repeat visits.</p>
+            </div>
+        </div>
+        <div class="case-study">
+            <div class="case-study-image">
+                <img src="https://placehold.co/350x200" alt="SaaS Dashboard PWA" width="350" height="200">
+            </div>
+            <div class="case-study-content">
+                <h3>SaaS Dashboard</h3>
+                <p>A B2B SaaS company reduced app size by 70% while improving load time by 3.8x, resulting in 42% longer user sessions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq">
+    <hgroup class="flexy">
+        <h2>Frequently Asked Questions (FAQs)</h2>
+        <p>Common questions about Progressive Web Applications</p>
+    </hgroup>
+    <div class="container">
+        <details name="faq-item">
+            <summary>What exactly is a Progressive Web App?</summary>
+            <p>A Progressive Web App (PWA) is a type of application built using web technologies (HTML, CSS, and JavaScript), but offers an experience similar to native mobile apps. PWAs are progressive, responsive, connectivity independent, app-like, fresh, safe, discoverable, re-engageable, installable, and linkable.</p>
+        </details>
+        <details name="faq-item">
+            <summary>How do PWAs work offline?</summary>
+            <p>PWAs use service workers, which are JavaScript files that run separately from the main browser thread, to intercept network requests and cache resources. This allows the app to load previously visited pages and assets even when there's no internet connection.</p>
+        </details>
+        <details name="faq-item">
+            <summary>Are PWAs supported on all browsers?</summary>
+            <p>Most modern browsers support PWA features, including Chrome, Firefox, Edge, Safari, and Opera. While some features may have varying levels of support across browsers, we build PWAs with progressive enhancement in mind, ensuring they work for all users while providing enhanced experiences where supported.</p>
+        </details>
+        <details name="faq-item">
+            <summary>How long does it take to develop a PWA?</summary>
+            <p>Development time varies based on complexity, features, and design requirements. A basic PWA might take 4-6 weeks, while more complex applications with extensive functionality could take 3-6 months. We'll provide a detailed timeline during our initial consultation based on your specific needs.</p>
+        </details>
+        <details name="faq-item">
+            <summary>Can I convert my existing website to a PWA?</summary>
+            <p>Yes, most existing websites can be converted to PWAs. The process typically involves adding a service worker, creating a web app manifest, ensuring the site is served over HTTPS, and optimizing for performance. We can assess your current website and recommend the best approach for conversion.</p>
+        </details>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <hgroup class="flexy">
+        <h2>What Our Clients Say</h2>
+        <p>Hear from businesses that have transformed with our PWA solutions</p>
+    </hgroup>
+    <div class="testimonials-slider">
+        <div class="testimonial-slide active">
+            <div class="testimonial-content">
+                <p>"<strong>AbuEin Technologies</strong> transformed our e-commerce platform into a lightning-fast PWA. Our mobile conversion rate increased by 86% within the first month, and customers love the app-like experience."</p>
+                <div class="testimonial-author">
+                    <img src="https://placehold.co/60x60" alt="Sarah Johnson" width="60" height="60">
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>E-commerce Director, FashionHub</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-slide">
+            <div class="testimonial-content">
+                <p>"The PWA developed by <strong>AbuEin Technologies</strong> allowed our content to be accessible even in areas with poor connectivity. Our engagement metrics have skyrocketed, with users spending 3x more time on our platform."</p>
+                <div class="testimonial-author">
+                    <img src="https://placehold.co/60x60" alt="Michael Chen" width="60" height="60">
+                    <div class="author-info">
+                        <h4>Michael Chen</h4>
+                        <p>CTO, GlobalNews Network</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-slide">
+            <div class="testimonial-content">
+                <p>"Working with <strong>AbuEin Technologies</strong> was a game-changer for our SaaS platform. Their PWA expertise helped us deliver a seamless experience across all devices while significantly reducing our development and maintenance costs."</p>
+                <div class="testimonial-author">
+                    <img src="https://placehold.co/60x60" alt="Jessica Martinez" width="60" height="60">
+                    <div class="author-info">
+                        <h4>Jessica Martinez</h4>
+                        <p>Product Manager, CloudSolutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="testimonial-controls">
+        <button class="prev-btn" aria-label="Previous testimonial">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"></path>
+            </svg>
+        </button>
+        <div class="testimonial-dots">
+            <button class="dot active" aria-label="Go to testimonial 1"></button>
+            <button class="dot" aria-label="Go to testimonial 2"></button>
+            <button class="dot" aria-label="Go to testimonial 3"></button>
+        </div>
+        <button class="next-btn" aria-label="Next testimonial">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </button>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Web Presence?</h2>
+            <p>Let's build a fast, reliable, and engaging Progressive Web App for your business</p>
+            <a href="#contact" class="btn primary">Start Your PWA Project</a>
+        </div>
+    </div>
+</section>
+{{> "signup"}}
+{{> "contact"}}

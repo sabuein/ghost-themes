@@ -1,0 +1,81 @@
+<!-- footer.hbs -->
+<footer>
+    <div class="brand-container">
+        <button class="btn btn-secondary scroll-to-top" id="go-to-top" aria-label="Back to top">
+            <span>Back to top</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+        </button>
+        <div class="logo-container">
+            <a href="{{@site.url}}" title="{{@site.title}}" target="_top"><figure class="logo">
+                {{> "icons/logo"}}
+            </figure>
+            <div class="brand-info">
+                <h2 class="highlight-txt">{{@site.title}}</h2>
+                <p>Professional web development services{{!--@site.description--}}</p>
+            </div></a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Company</h3>
+                {{navigation type="secondary"}}
+            </div>
+            <div class="footer-links">
+                <details open="open">
+                    <summary><h3>Services</h3></summary>
+                    <ul>
+                        <li><a href="#services">Web Development</a></li>
+                        <li><a href="#cms">CMS Solutions</a></li>
+                        <li><a href="#pwa">PWA Development</a></li>
+                        <li><a href="#services">Technical Support</a></li>
+                    </ul>
+                </details>
+                <details open="open">
+                    <summary><h3>Platforms</h3></summary>
+                    <ul>
+                        <li><a href="#services">Ghost</a></li>
+                        <li><a href="#cms">WordPress</a></li>
+                        <li><a href="#pwa">Joomla&excl;</a></li>
+                        <li><a href="#services">Drupal</a></li>
+                    </ul>
+                </details>
+            </div>
+            <div class="footer-extra">
+                {{> "widgets/feedback"}}
+                {{> "contact-info"}}
+                <div class="locale-selector">
+                    <label for="locale-select" id="locale-label">Language:</label>
+                    <select id="locale-select">
+                        <option value="en-US">🇺🇸 English (US)</option>
+                        <option value="de-DE">🇩🇪 Deutsch (DE)</option>
+                        <option value="en-DE">🇩🇪 English (DE)</option>
+                        <option value="en-NZ">🇳🇿 English (NZ)</option>
+                        <option value="en-AU">🇦🇺 English (AU)</option>
+                    </select>
+                </div>
+                <div class="footer-bottom flexy">
+                    <p>
+                        <span>&copy; 2016 &mdash;</span>
+                        <span id="current-year">{{date format="YYYY"}}</span>
+                        <span>{{@site.title}}&period;</span>
+                        <span>All rights reserved&period;</span>
+                    </p>
+                    <p>
+                        <span>Made with</span>
+                        {{> "icons/heart"}}
+                        <span>in Thornton Heath&period;</span>
+                    </p>
+                    <figure>
+                        {{> "icons/ghost"}}
+                        <figcaption>Powered by <a href="https://ghost.org/experts/salaheddin-abuein/?via=sabuein&ref={{readable_url @site.url}}" title="Ghost" target="_blank" rel="nofollow noopener">Ghost</a> platform</figcaption>
+                    </figure>
+                    <p><a href="/sitemap.xml" title="XML Sitemap">XML Sitemap</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,240 @@
+{{!-- Feedback Widget --}}
+<!-- widgets/feedback.hbs -->
+<div class="feedback-widget">
+    <h3>Help us improve our web app</h3>
+    <button type="button" id="openFeedbackBtn" class="feedback-button" title="Send feedback">Send feedback</button>
+</div>
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="feedbackModal">
+    <div class="modal-dialog" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <div class="modal-header">
+            <h2 class="modal-title" id="modalTitle">Send Feedback</h2>
+            <button class="close-button" id="closeModalBtn" aria-label="Close dialog">×</button>
+        </div>
+        
+        <div class="modal-body">
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="feedbackType" class="form-label">Feedback Type</label>
+                    <select id="feedbackType" class="form-input" required>
+                        <option value="">Select feedback type</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="improvement">Improvement</option>
+                        <option value="general">General Feedback</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackSubject" class="form-label">Subject</label>
+                    <input 
+                        type="text" 
+                        id="feedbackSubject" 
+                        class="form-input" 
+                        placeholder="Brief description of your feedback"
+                        required
+                        maxlength="100"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackMessage" class="form-label">Message</label>
+                    <textarea 
+                        id="feedbackMessage" 
+                        class="form-input form-textarea" 
+                        placeholder="Please provide detailed feedback..."
+                        required
+                        maxlength="1000"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedbackEmail" class="form-label">Email (optional)</label>
+                    <input 
+                        type="email" 
+                        id="feedbackEmail" 
+                        class="form-input" 
+                        placeholder="your@email.com"
+                    >
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        Send Feedback
+                    </button>
+                </div>
+            </form>
+
+            <!-- Success Message (hidden by default) -->
+            <div class="success-message" id="successMessage" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h3 class="success-title">Thank you for your feedback!</h3>
+                <p class="success-text">We appreciate your input and will review it shortly.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    class FeedbackWidget {
+        constructor() {
+            this.modal = document.getElementById('feedbackModal');
+            this.form = document.getElementById('feedbackForm');
+            this.successMessage = document.getElementById('successMessage');
+            this.submitBtn = document.getElementById('submitBtn');
+            
+            this.initEventListeners();
+        }
+
+        initEventListeners() {
+            // Open modal
+            document.getElementById('openFeedbackBtn').addEventListener('click', () => {
+                this.openModal();
+            });
+
+            // Close modal events
+            document.getElementById('closeModalBtn').addEventListener('click', () => {
+                this.closeModal();
+            });
+
+            document.getElementById('cancelBtn').addEventListener('click', () => {
+                this.closeModal();
+            });
+
+            // Close on overlay click
+            this.modal.addEventListener('click', (e) => {
+                if (e.target === this.modal) {
+                    this.closeModal();
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && this.modal.classList.contains('active')) {
+                    this.closeModal();
+                }
+            });
+
+            // Form submission
+            this.form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleSubmit();
+            });
+
+            // Real-time validation
+            this.form.addEventListener('input', () => {
+                this.validateForm();
+            });
+        }
+
+        openModal() {
+            this.modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Focus first input for accessibility
+            setTimeout(() => {
+                document.getElementById('feedbackType').focus();
+            }, 100);
+        }
+
+        closeModal() {
+            this.modal.classList.remove('active');
+            document.body.style.overflow = '';
+            this.resetForm();
+        }
+
+        validateForm() {
+            const type = document.getElementById('feedbackType').value;
+            const subject = document.getElementById('feedbackSubject').value.trim();
+            const message = document.getElementById('feedbackMessage').value.trim();
+            const email = document.getElementById('feedbackEmail').value.trim();
+
+            let isValid = type && subject && message;
+
+            // Email validation if provided
+            if (email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                isValid = isValid && emailRegex.test(email);
+            }
+
+            this.submitBtn.disabled = !isValid;
+            return isValid;
+        }
+
+        async handleSubmit() {
+            if (!this.validateForm()) return;
+
+            const formData = {
+                type: document.getElementById('feedbackType').value,
+                subject: document.getElementById('feedbackSubject').value.trim(),
+                message: document.getElementById('feedbackMessage').value.trim(),
+                email: document.getElementById('feedbackEmail').value.trim(),
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                url: window.location.href
+            };
+
+            // Show loading state
+            this.submitBtn.disabled = true;
+            this.submitBtn.textContent = 'Sending...';
+
+            try {
+                // Simulate API call (replace with your actual endpoint)
+                await this.simulateApiCall(formData);
+                
+                // Show success message
+                this.showSuccess();
+            } catch (error) {
+                console.error('Failed to submit feedback:', error);
+                alert('Failed to send feedback. Please try again.');
+            } finally {
+                this.submitBtn.disabled = false;
+                this.submitBtn.textContent = 'Send Feedback';
+            }
+        }
+
+        async simulateApiCall(data) {
+            // Replace this with your actual API endpoint
+            console.log('Feedback submitted:', data);
+            
+            // Simulate network delay
+            return new Promise(resolve => {
+                setTimeout(resolve, 1000);
+            });
+            
+            // Example of actual API call:
+            // return fetch('/api/feedback', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(data)
+            // });
+        }
+
+        showSuccess() {
+            this.form.style.display = 'none';
+            this.successMessage.style.display = 'block';
+
+            // Auto-close after 3 seconds
+            setTimeout(() => {
+                this.closeModal();
+            }, 3000);
+        }
+
+        resetForm() {
+            this.form.reset();
+            this.form.style.display = 'block';
+            this.successMessage.style.display = 'none';
+            this.submitBtn.disabled = false;
+            this.submitBtn.textContent = 'Send Feedback';
+        }
+    }
+
+    // Initialize the feedback widget when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        new FeedbackWidget();
+    });
+</script>

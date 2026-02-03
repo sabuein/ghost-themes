@@ -1,0 +1,75 @@
+<!-- contact.hbs -->
+<section id="contact" class="contact">
+    <hgroup class="flexy">
+        <h2>Ready to <span class="highlight-txt">Get Started</span>&quest;</h2>
+        <p>Let&apos;s discuss your project and bring your digital vision to life&period; Based in Thornton Heath&comma; serving businesses across South London and beyond&period;</p>
+    </hgroup>
+    <div class="container contact-content">
+        <div class="contact-form-container">
+            <form id="contact-form" class="contact-form" action="https://formsubmit.co/salaheddin@abuein.dev" method="post" autocomplete="on" enctype="multipart/form-data">
+                <legend><h3>Drop us a <span class="highlight-txt">message</span></h3></legend>
+                <input type="hidden" name="_template" value="basic" />
+                <input type="hidden" name="_autoresponse" value="Your message has been sent successfully! We&apos;ll get back to you soon&period;" />
+                <input type="hidden" name="_blacklist" value="spammy pattern, banned term, phrase" />
+                <input type="hidden" name="_cc" value="sabuein@gmail.com" />
+                <input type="hidden" name="_webhook" value="{{@site.url}}/contact-webhook" />
+
+                <!-- Disable captcha -->
+                <input type="hidden" name="_captcha" value="false" />
+
+                <!-- Success page redirect -->
+                <input type="hidden" name="_next" value="{{@site.url}}/form-submitted-successfully/" />
+
+                <!-- Email template subject -->
+                <input type="hidden" name="_subject" value="New Contact Form Submission" />
+                
+                <!-- Honeypot field to prevent spam -->
+                <input type="text" name="_honey" style="display: none;" />
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Your full name" required="required" minlength="2" maxlength="100" aria-required="true" />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder="Your email address" required="required" aria-required="true" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" />
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" autocomplete="off" placeholder="What is this regarding&quest;" required="required" aria-required="true" minlength="3" maxlength="100" />
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service</label>
+                    <select id="service" name="service" required="required" aria-required="true">
+                        <option value="" disabled="disabled" selected="selected">Select a Service</option>
+                        <option value="website">Business Website</option>
+                        <option value="webapp">Web Application</option>
+                        <option value="cms">CMS Solution</option>
+                        <option value="pwa">PWA Development</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us more&hellip;" required="required" aria-required="true" minlength="10" maxlength="1000"></textarea>
+                </div>
+
+                <button type="submit" class="btn primary" title="Send message" aria-label="Send message">Send Message</button>
+            </form>
+        </div>
+        <div>
+            <figure class="section-illustration">
+                {{> "illustrations/contact-us"}}
+            </figure>
+            {{> "contact-info"}}
+        </div>
+    </div>
+</section>
+<script type="module">
+    import initContact from "/assets/js/mods/contact.mjs";
+    document.addEventListener("DOMContentLoaded", initContact);
+</script>
