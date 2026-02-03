@@ -1,0 +1,48 @@
+{
+    "name": "z23",
+    "description": "A Ghost Handlebars theme for art galleries",
+    "version": "0.1.0",
+    "license": "MIT",
+    "engines": {
+        "ghost": ">=5.44.0"
+    },
+    "demo": "https://zawyeh.dev/",
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme",
+        "responsive",
+        "mobile-friendly"
+    ],
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "salah@zawyeh.dev",
+        "url": "https://sabuein.github.io/"
+    },
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg",
+        "mobile": "assets/screenshot-mobile.jpg"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sabuein/z23.git"
+    },
+    "bugs": "https://github.com/sabuein/z23/issues/",
+    "contributors": [
+        "https://github.com/sabuein/z23/issues/graphs/contributors"
+    ],
+    "browserslist": [
+        "defaults"
+    ],
+    "config": {
+        "posts_per_page": 100,
+        "image_sizes": {},
+        "card_assets": true
+    },
+    "scripts": {
+        "start": "ghost start --dir ../../instances/ghost-en/",
+        "restart": "ghost restart --dir ../../instances/ghost-en/",
+        "test": "gscan .",
+        "zip": "./assets/backups/scripts/zip.sh"
+    }
+}
