@@ -1,5 +1,8 @@
-# Temp
-abuein-dev
+# Labs
+**/assets/labs/
+
+# Custom
+**/z23/**/*.txt
 
 # Logs
 logs
@@ -131,3 +134,31 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+
+# VS Code (keep shared config if needed)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# General build output
+build
+tmp
+temp
+
+# Env files
+.env*
+!.env.example
+
+# Additional logs
+*.out
