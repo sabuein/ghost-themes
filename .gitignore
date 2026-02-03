@@ -1,5 +1,6 @@
-# Labs
+# General
 **/assets/labs/
+**/*.zip
 
 # Custom
 **/z23/**/*.txt
