@@ -1,0 +1,12 @@
+<!-- page-portfolio.hbs -->
+{{!< default}}
+<hgroup class="flexy">
+    <h2>Our work speaks for itself&period;</h2>
+    <p>As we continue to grow, we&apos;ll showcase some of our projects here &mdash; including public platforms&comma; PWAs&comma; and internal tools&period;</p>
+    <p>Want a sneak peek now? Contact us and we&apos;ll be happy to show you what we&apos;ve done&period;</p>
+</hgroup>
+<div id="portfolio-widget" class="widget-container"></div>
+<script type="module">
+    import initPortfolio from "/assets/js/mods/portfolio.mjs";
+    document.addEventListener("DOMContentLoaded", initPortfolio);
+</script>

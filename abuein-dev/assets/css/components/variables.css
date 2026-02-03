@@ -1,0 +1,124 @@
+/* Variables
+/* ---------------------------------------------------------- */
+/* Base Styles and Variables */
+:root {
+    /* Primary Colors */
+    --primary-color: #3a7bd5;
+    --primary-dark: #2d5ca0;
+    --primary-light: #6fa1e9;
+
+    /* Secondary Colors */
+    --secondary-color: #00d084;
+    --secondary-dark: #00a066;
+    --secondary-light: #33dba0;
+
+    /* Neutral Colors */
+    --text-color: #2d3748;
+    --text-light: #4a5568;
+    --text-lighter: #718096;
+    --bg-color: #ffffff;
+    --bg-light: #f7fafc;
+    --bg-dark: #edf2f7;
+    --border-color: #e2e8f0;
+
+    /* Accent Colors */
+    --accent-color: #f56565;
+    --success-color: #48bb78;
+    --warning-color: #ed8936;
+    --error-color: #e53e3e;
+
+    /* Icon Colors */
+    --icon-aws: #ff9900;
+    --icon-linode: #00a95c;
+    --icon-html5: #e34f26;
+    --icon-css3: #1572b6;
+    --icon-javascript: #f7df1e;
+
+    /* Backgrounds */
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+
+    /* Typography */
+    --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 18px;
+    --line-height-base: 1.5;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Ghost CMS */
+    --gh-font-heading: Geneva;
+    --gh-font-body: var(--font-family);
+
+    /* Spacing */
+    --spacing-xs: .25rem;
+    --spacing-sm: .5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+
+    /* Border Radius */
+    --border-radius-sm: .25rem;
+    --border-radius-md: .5rem;
+    --border-radius-lg: 1rem;
+    --border-radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* Container */
+    --container-max-width: 1200px;
+    --container-padding: var(--spacing-lg);
+
+    /* Z-index layers */
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-fixed: 1030;
+    --z-index-modal-backdrop: 1040;
+    --z-index-modal: 1050;
+    --z-index-popover: 1060;
+    --z-index-tooltip: 1070;
+
+    --background: #ffffff;
+    --foreground: #0f172a;
+    --muted-background: #f1f5f9;
+    --muted-foreground: #64748b;
+    --primary: #0ea5e9;
+    --primary-foreground: #ffffff;
+    --border: #e2e8f0;
+
+    --header-height: 7rem;
+    --scroll-duration: 18s;
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+    --primary-color: #4a8eff;
+    --primary-dark: #3a7bd5;
+    --primary-light: #6fa1e9;
+
+    --secondary-color: #00e696;
+    --secondary-dark: #00d084;
+    --secondary-light: #33eaa8;
+
+    --text-color: #f7fafc;
+    --text-light: #e2e8f0;
+    --text-lighter: #cbd5e0;
+    --bg-color: #1a202c;
+    --bg-light: #2d3748;
+    --bg-dark: #171923;
+    --border-color: #4a5568;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.6);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.2);
+}

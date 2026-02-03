@@ -1,0 +1,81 @@
+<!-- page-testing.hbs -->
+{{!< default}}
+<div class="container">
+    <div class="banner banner-728x90">
+        <span class="banner-label">728×90</span>
+    </div>
+</div>
+
+<!-- New layout with sticky sidebar ads -->
+<div class="container main-layout">
+    <!-- Left Sticky Sidebar -->
+    <aside class="sidebar-left">
+        <div class="sticky-container">
+            <div class="banner banner-120x600">
+                <span class="banner-label">120×600</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="content-area">
+        <!-- Hero CTA Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2 id="hero-title">Discover Amazing Content</h2>
+                <p id="hero-description">Explore our curated collection of articles, insights, and stories from around the world. Stay informed with the latest trends, expert opinions, and in-depth analysis across technology, lifestyle, and more.</p>
+                <button class="cta-button" id="cta-button">Get Started</button>
+            </div>
+        </section>
+
+        <!-- Featured Posts Section -->
+        <section class="posts-section">
+            <h2 id="featured-title" class="section-title">Featured Posts</h2>
+            <p class="section-description" id="featured-description">Handpicked articles that showcase the best of our content</p>
+            <div id="featured-posts" class="posts-grid"></div>
+        </section>
+
+        <!-- Full width banner -->
+        <div class="banner banner-1920x1080">
+            <span class="banner-label">1920×1080</span>
+        </div>
+
+        <!-- Technology Posts Section -->
+        <section class="posts-section">
+            <h2 id="technology-title" class="section-title">Technology</h2>
+            <p class="section-description" id="technology-description">Latest insights on tech trends, innovations, and digital transformation</p>
+            <div id="technology-posts" class="posts-grid"></div>
+        </section>
+
+        <!-- Square banner -->
+        <div class="banner banner-300x300 center-banner">
+            <span class="banner-label">300×300</span>
+        </div>
+
+        <!-- Lifestyle Posts Section -->
+        <section class="posts-section">
+            <h2 id="lifestyle-title" class="section-title">Lifestyle</h2>
+            <p class="section-description" id="lifestyle-description">Inspiration for living your best life, from wellness to travel</p>
+            <div id="lifestyle-posts" class="posts-grid"></div>
+        </section>
+
+        <!-- Large square banner -->
+        <div class="banner banner-1080x1080">
+            <span class="banner-label">1080×1080</span>
+        </div>
+    </div>
+
+    <!-- Right Sticky Sidebar -->
+    <aside class="sidebar-right">
+        <div class="sticky-container">
+            <div class="banner banner-300x600">
+                <span class="banner-label">300×600</span>
+            </div>
+        </div>
+    </aside>
+</div>
+<script type="module">
+    import initTesting from "/assets/js/pages/testing.mjs";
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initTesting)
+    else initTesting();
+</script>

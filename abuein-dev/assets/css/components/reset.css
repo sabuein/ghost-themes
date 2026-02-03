@@ -1,0 +1,25 @@
+/* Reset and Base Styles */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Ghost CMS */
+
+.kg-width-wide {
+    max-width: 100%;
+}
+
+.ghost-orb-logo {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(../../images/logos/ghost-logo-dark.png);
+}
+
+[data-theme="dark"] .ghost-orb-logo {
+    background-image: url(../../images/logos/ghost-logo-light.png);
+}

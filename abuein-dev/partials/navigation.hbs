@@ -1,0 +1,9 @@
+<!-- navigation.hbs -->
+{{#if isSecondary}}<ul class="nav-secondary" role="menu">
+    {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+    <li class="nav-signin" role="menuitem"><a href="javascript: null" title="Sign in" data-portal="signin">Sign in</a></li>
+    <li class="nav-signup" role="menuitem"><a href="javascript: null" title="Sign up" data-portal="signup">Sign up</a></li>
+    <li class="nav-dashboard" role="menuitem"><a href="/ghost/#/dashboard" title="Dashboard" target="_blank" rel="nofollow noopener">Dashboard</a></li>
+</ul>{{else}}<ul>
+    {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+</ul>{{/if}}

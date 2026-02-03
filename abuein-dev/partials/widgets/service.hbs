@@ -1,0 +1,274 @@
+<div class="serviceSnapIn__inner js-accordionItem is-accordionItemOpen">
+
+    <div class="serviceSnapIn__content js-accordionItem__content">
+        <ul class="serviceSnapIn__itemList">
+
+            <li class="serviceSnapIn__item embeddedService js-chatListItem slds-scope" data-ltngout-rendered-by="7:0">
+                <script>
+                    var initESW = function (embedded_svc) {
+                        embedded_svc.settings.displayHelpButton = true; //Or false
+                        embedded_svc.settings.language = 'en-GB';
+
+                        embedded_svc.settings.defaultMinimizedText = 'Chat with an employee';
+                        embedded_svc.settings.disabledMinimizedText = 'Chat offline';
+
+                        //embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+                        //embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+                        // Settings for Live Agent
+                        //embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+                        // Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+                        // Returns a valid button ID.
+                        //};
+                        //embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+                        //embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+                        //embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+                        embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+                        embedded_svc.settings.entryFeature = 'LiveAgent';
+
+                        embedded_svc.settings.prepopulatedPrechatFields = { FirstName: 'Salaheddin', LastName: 'AbuEin', Email: 'sabuein@gmail.com' };
+
+                        embedded_svc.settings.targetElement = document.querySelector('.embeddedService');
+
+                        embedded_svc.settings.extraPrechatInfo = [{
+                            'entityFieldMaps': [{
+                                'doCreate': false,
+                                'doFind': false,
+                                'fieldName': 'LastName',
+                                'isExactMatch': true,
+                                'label': 'Last Name'
+                            }, {
+                                'doCreate': false,
+                                'doFind': false,
+                                'fieldName': 'FirstName',
+                                'isExactMatch': true,
+                                'label': 'First Name'
+                            }, {
+                                'doCreate': false,
+                                'doFind': false,
+                                'fieldName': 'Email',
+                                'isExactMatch': true,
+                                'label': 'Email'
+                            }],
+                            'entityName': 'Contact',
+                            'saveToTranscript': ''
+                        }, {
+                            'entityName': 'Case',
+                            'showOnCreate': true,
+                            'saveToTranscript': 'CaseId',
+                            'entityFieldMaps': [{
+                                'isExactMatch': false,
+                                'fieldName': 'Territory_Country__c',
+                                'doCreate': true,
+                                'doFind': false,
+                                'label': 'Country'
+                            }, {
+                                'isExactMatch': false,
+                                'fieldName': 'Territory_Language__c',
+                                'doCreate': true,
+                                'doFind': false,
+                                'label': 'Language'
+                            }, {
+                                doCreate: true,
+                                doFind: false,
+                                fieldName: 'Last_Name__c',
+                                isExactMatch: true,
+                                label: 'Last Name',
+                            }, {
+                                doCreate: true,
+                                doFind: false,
+                                fieldName: 'First_Name__c',
+                                isExactMatch: true,
+                                label: 'First Name',
+                            }, {
+                                doCreate: true,
+                                doFind: false,
+                                fieldName: 'SuppliedEmail',
+                                isExactMatch: true,
+                                label: 'Email',
+                            }]
+                        }];
+                        embedded_svc.settings.extraPrechatFormDetails = [];
+
+                        embedded_svc.settings.extraPrechatFormDetails.push({
+                            label: 'Language',
+                            value: 'en',
+                            transcriptFields: ['Territory_Language__c'],
+                            displayToAgent: false
+                        });
+
+
+                        embedded_svc.settings.extraPrechatFormDetails.push({
+                            label: 'Country',
+                            value: 'GB',
+                            transcriptFields: ['Territory_Country__c'],
+                            displayToAgent: false
+                        });
+
+
+
+
+                        embedded_svc.init(
+                            'https://canyon.my.salesforce.com',
+                            'https://canyon.my.salesforce-sites.com',
+                            null,
+                            '00D0Y000000Lcab',
+                            'CC_EMEA_Bot',
+                            {
+                                baseLiveAgentContentURL: 'https://c.la11-core1.sfdc-yzvdd4.salesforceliveagent.com/content',
+                                deploymentId: '5720Y0000008ShP',
+                                buttonId: '5731v000000CrJW',
+                                baseLiveAgentURL: 'https://d.la11-core1.sfdc-yzvdd4.salesforceliveagent.com/chat',
+                                eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I1v000000Gn8GEAS_18809d67ec6',
+                                isOfflineSupportEnabled: false,
+                            }
+                        );
+
+                        /* try to delay guuru chat until the regular chat is ready, if this fails for some reason, guuru
+                            will get visible by timeout */
+                        chatItem = document.querySelector('.js-chatListItem');
+                        if (chatItem) {
+                            const showGuuru = () => {
+                                const guuruItem = document.querySelector('.js-guuruListItem');
+                                if (guuruItem) {
+                                    guuruItem.removeAttribute('hidden')
+                                }
+                            }
+
+                            const observeChatReadiness = (mutationList, observer) => {
+                                mutationList.filter(mutation => mutation.addedNodes && mutation.addedNodes[0].classList.contains('embeddedServiceHelpButton')).forEach(mutations => {
+                                    showGuuru();
+                                    chatReadinessObserver.disconnect();
+                                });
+                            };
+
+                            const chatReadinessObserver = new MutationObserver(observeChatReadiness);
+                            chatReadinessObserver.observe(chatItem, { childList: true });
+                        }
+
+                    };
+                </script>
+
+                <iframe id="esw_storage_iframe"
+                    src="https://canyon.my.salesforce.com/embeddedservice/5.0/esw.html?parent=https://www.canyon.com/en-gb/orders/history/"
+                    title="Live Chat Metadata" style="display: none;"></iframe>
+                <div class="embeddedServiceHelpButton" style="display: block;">
+                    <div class="helpButton" style="width: 290px;"><button class="uiButton helpButtonEnabled"
+                            href="javascript:void(0)"><span class="embeddedServiceIcon" aria-hidden="true" data-icon=""
+                                style="display: none;"></span><span class="helpButtonLabel" id="helpButtonSpan"
+                                aria-live="polite" aria-atomic="true"><span class="assistiveText">Live chat:</span><span
+                                    class="message">Chat with an employee</span></span></button></div>
+                </div>
+            </li>
+
+
+
+            <li class="serviceSnapIn__item js-serviceButton">
+                <a aria-hidden="true" class="serviceSnapIn__link" href="/en-gb/customer-service/" tabindex="-1">
+                    Do you need help?
+                </a>
+            </li>
+            <li class="serviceSnapIn__item js-ordertrackingButton">
+                <a aria-hidden="true" class="serviceSnapIn__link" href="/en-gb/customer-service/order-tracking/"
+                    tabindex="-1">
+                    Order tracking
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="embeddedServiceInvitation js-embeddedServiceInvitation js-modalDoesNotStackOnTop" id="snapins_invite"
+        aria-labelledby="snapins_titletext" aria-describedby="snapins_bodytext" aria-live="assertive" role="dialog"
+        aria-atomic="true" data-view-id="modal-view42" style="" inert="" aria-hidden="true">
+
+        <div class="embeddedServiceInvitationInner">
+            <div class="embeddedServiceInvitationHeader">
+                <div class="heading heading--4 embeddedServiceTitleText" id="snapins_titletext">
+
+                    Do you need help?
+
+                </div>
+                <button aria-hidden="true" tabindex="-1" type="button"
+                    class="buttonIcon buttonIcon--small js-closeModal" aria-label="Exit invitation">
+
+
+
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" class="icon icon-close buttonIcon__icon"
+                        aria-hidden="true" focusable="false">
+
+
+
+                        <use
+                            xlink:href="/on/demandware.static/Sites-RoW-Site/-/en_GB/v1756905895561/images/iconsNew.svg#sprite-close">
+                        </use>
+
+
+                    </svg>
+
+
+                </button>
+            </div>
+
+            <div class="embeddedServiceInvitationBody">
+                <p class="paragraph">
+
+                    Our customer support experts are waiting to answer your questions.
+
+                </p>
+            </div>
+
+            <div class="embeddedServiceInvitationFooter" aria-describedby="snapins_bodytext">
+                <button aria-hidden="true" tabindex="-1" type="button"
+                    class="button button--primary embeddedServiceActionButton js-closeModal" data-closecause="start">
+                    Start Chat
+                </button>
+                <button aria-hidden="true" tabindex="-1" type="button"
+                    class="button button--secondary embeddedServiceActionButton js-closeModal">
+                    Close
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <button aria-hidden="false" aria-label="Show Service SnapIn" id="serviceSnapIn__trigger"
+        class="serviceSnapIn__trigger js-accordionToggle" tabindex="0" aria-expanded="true" type="button">
+
+
+
+        <svg xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="icon icon-chat2 serviceSnapIn__triggerIcon serviceSnapIn__triggerIcon--inactive" aria-hidden="false"
+            focusable="false">
+
+
+
+            <use
+                xlink:href="/on/demandware.static/Sites-RoW-Site/-/en_GB/v1756905895561/images/iconsNew.svg#sprite-chat2">
+            </use>
+
+
+        </svg>
+
+
+
+
+
+        <svg xmlns:xlink="http://www.w3.org/1999/xlink"
+            class="icon icon-minimize serviceSnapIn__triggerIcon serviceSnapIn__triggerIcon--active" aria-hidden="false"
+            focusable="false">
+
+
+
+            <use
+                xlink:href="/on/demandware.static/Sites-RoW-Site/-/en_GB/v1756905895561/images/iconsNew.svg#sprite-minimize">
+            </use>
+
+
+        </svg>
+
+
+    </button>
+
+</div>

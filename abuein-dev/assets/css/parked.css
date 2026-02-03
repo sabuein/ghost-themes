@@ -1,0 +1,47 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: #000
+        url(https://static-images.objects-us-east-1.dream.io/cat-sleep.gif)
+        no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+}
+
+a,
+p {
+    position: absolute;
+    left: 0;
+}
+
+a {
+    background: #203243 url(../images/logo-pill-b.svg);
+    background-size: 206px 45px;
+    display: block;
+    width: 206px;
+    height: 45px;
+    top: 0;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+p {
+    margin: 0;
+    padding: 0 0 10px;
+    top: 43px;
+    width: 206px;
+    background: #203243;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: default;
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-align: center;
+    text-transform: uppercase;
+}

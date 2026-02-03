@@ -1,0 +1,31 @@
+<!-- page-faq.hbs -->
+{{!< default}}
+{{#post}}<article class="abuein-article {{post_class}}">
+    {{#match @page.show_title_and_feature_image}}<hgroup class="abuein-header abuein-canvas">
+        <h2 class="abuein-title">{{title}}</h2>
+        <p class="abuein-excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}{{/if}}</p>
+    </hgroup>
+    {{#if feature_image}}<figure class="abuein-feature-image">
+        <img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" onerror="this.remove();" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{/if}}{{/match}}
+
+    <div class="abuein-content">
+        <div class="flexy">
+            <p>Filter by category&colon;</p>
+            <p><a href="#general-questions-faq" class="btn-outline" title="General questions FAQ">General questions</a>
+            <a href="#services-faq" class="btn-outline" title="Services FAQ">Services</a></p>
+        </div>
+        {{> "faq" tag="general-questions" heading="General questions" subheading="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci quis nisi officiis cumque omnis enim impedit velit voluptatum, quas itaque? Id mollitia deleniti enim harum dolore, nisi magnam esse nam."}}
+        {{> "faq" tag="services" heading="Services" subheading="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci quis nisi officiis cumque omnis enim impedit velit voluptatum, quas itaque? Id mollitia deleniti enim harum dolore, nisi magnam esse nam."}}
+    </div>
+
+    <div class="abuein-content">
+        {{content}}
+    </div>
+</article>{{/post}}
+{{> "signup"}}
+<script type="module">
+    import initContact from "/assets/js/mods/contact.mjs";
+    // document.addEventListener("DOMContentLoaded", initContact);
+</script>

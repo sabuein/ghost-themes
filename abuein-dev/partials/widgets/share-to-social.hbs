@@ -1,0 +1,34 @@
+<!-- partials/widgets/share-to-social.hbs -->
+<div class="sharing-is-caring">
+    <h5 title="Share"><span>&#x27A6;</span>Share</h5>{{!----}}
+    <p>If you liked this post, consider <a href="#/portal/signup" data-portal="signup">subscribing to our newsletter here</a>, or <a href="https://news.ycombinator.com/submitlink?u={{url}}&t={{title}}" title="Share on Hacker News" target="_blank" rel="nofollow noopener">sharing it on Hacker News</a>&period;</p>
+    <ul class="share-buttons flexy row"><!-- /sharer/sharer.php -->
+        <li class="flexy"><a href="https://www.facebook.com/share.php?u={{encode url absolute='true'}}&quote={{encode title}}" title="Post on Facebook" target="_blank" rel="nofollow noopener">{{!--  onclick="window.open(this.href, 'Facebook-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/facebook"}}
+        </a></li>
+        <li class="flexy"><a href="https://x.com/share?text=Check%20out%20{{encode title}}&url={{url absolute='true'}}{{#if @site.twitter}}&via={{@site.twitter}}{{/if}}&related=sabuein" title="Post on X" target="_blank" rel="nofollow noopener">{{!--  onclick="window.open(this.href, 'X-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/x"}}
+        </a></li>
+        <li class="flexy"><a href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute='true'}}&title={{encode title}}&summary={{#if custom_excerpt}}{{encode custom_excerpt}}{{else}}{{encode excerpt words="50"}}{{/if}}&source={{readable_url @site.url}}" title="Post on LinkedIn" target="_blank" rel="nofollow noopener">{{!-- onclick="window.open(this.href, 'LinkedIn-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/linkedin"}}
+        </a></li><!--https://wa.me/?text=-->
+        <li class="flexy"><a href="https://api.whatsapp.com/send?text=Check%20out%20%27{{encode title}}%27%20post%20from%20{{encode @site.title}}%20at%20{{encode url absolute='true'}}&type=custom_url&app_absent=0" title="Share on WhatsApp" target="_blank" rel="nofollow noopener">{{!-- onclick="window.open(this.href, 'WhatsApp-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/whatsapp"}}
+        </a></li>
+        <li class="flexy"><a href="http://pinterest.com/pin/create/button?url={{url absolute='true'}}{{#if feature_image}}&media={{encode img_url feature_image absolute='true'}}{{/if}}&description={{#if custom_excerpt}}{{encode custom_excerpt}}{{else}}{{encode excerpt words="50"}}{{/if}}" title="Pin this post on Pinterest" target="_blank" rel="nofollow noopener">{{!-- onclick="window.open(this.href, 'Pinterest-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/pinterest"}}
+        </a></li>
+        <li class="flexy"><a href="https://t.me/share/url?text=Check%20out%20%27{{encode title}}%27%20post%20from%20{{encode @site.title}} at%20{{encode url absolute='true'}}" title="Share on Telegram" target="_blank" rel="nofollow noopener">{{!-- onclick="window.open(this.href, 'Telegram-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/telegram"}}
+        </a></li>
+        <li class="flexy"><a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl={{encode url absolute='true'}}&caption={{encode title}}" title="Share on Tumblr" target="_blank" rel="nofollow noopener">{{!-- onclick="window.open(this.href, 'Tumblr-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/tumblr"}}
+        </a></li>
+        <li class="flexy"><a href="https://www.reddit.com/submit?url={{encode url absolute='true'}}&title={{encode title}}" title="Share on Reddit" target="_blank" rel="nofollow noopener">{{!-- onclick="window.open(this.href, 'Reddit-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/reddit"}}
+        </a></li>
+        <li class="flexy"><a href="https://mail.google.com/mail/u/0/?view=cm&to&su={{encode title}}&body={{encode url absolute='true'}}&bcc&cc&fs=1&tf=1" title="Share on Gmail" target="_blank" rel="nofollow noopener">{{!-- onclick="window.open(this.href, 'Gmail-Share', 'width=550,height=235'); return false;" --}}
+            {{> "brands/gmail"}}
+        </a></li>
+    </ul>
+</div>

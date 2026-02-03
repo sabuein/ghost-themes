@@ -1,0 +1,12 @@
+<!-- page-offline.hbs -->
+{{!< default}}
+<hgroup class="flexy">
+    <h1>{{title}}</h1>
+    <p>The page will automatically reload once the connection is re&dash;established&period; Click the button below to try reloading manually&period;</p>
+    <button type="button">⤾ Reload</button>
+</hgroup>
+<div id="portfolio-widget" class="widget-container"></div>
+<script type="module">
+    import { detectNetworkThrottling } from "/assets/js/mods/pwa.mjs";
+    document.addEventListener("DOMContentLoaded", detectNetworkThrottling);
+</script>

@@ -1,0 +1,347 @@
+
+
+/* Main Content */
+.main {
+    padding: 20px 0 60px;
+    background-color: #fafafa;
+}
+
+/* New three-column layout with sticky sidebars */
+.main-layout {
+    display: grid;
+    grid-template-columns: 140px 1fr 320px;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.sidebar-left,
+.sidebar-right {
+    position: relative;
+}
+
+/* Sticky container that follows scroll */
+.sticky-container {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+}
+
+.content-area {
+    min-width: 0;
+}
+
+/* Updated hero section with better colors */
+.hero-section {
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+    color: white;
+    padding: 60px 50px;
+    border-radius: 16px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 20px rgba(0, 102, 204, 0.15);
+}
+
+.hero-content h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.95;
+    line-height: 1.7;
+    max-width: 700px;
+}
+
+.cta-button {
+    background-color: white;
+    color: #0066cc;
+    border: none;
+    padding: 16px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: #f8f9fa;
+}
+
+/* Updated banner styles with better appearance */
+.banner {
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    border: 2px dashed #b0b0b0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.banner-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #666;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banner-728x90 {
+    width: 100%;
+    max-width: 728px;
+    height: 90px;
+}
+
+.banner-120x600 {
+    width: 120px;
+    height: 600px;
+}
+
+.banner-300x300 {
+    width: 300px;
+    height: 300px;
+}
+
+.banner-300x600 {
+    width: 300px;
+    height: 600px;
+}
+
+.banner-1080x1080 {
+    width: 100%;
+    max-width: 1080px;
+    height: 600px;
+}
+
+.banner-1920x1080 {
+    width: 100%;
+    height: 400px;
+}
+
+.center-banner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Posts Section */
+.posts-section {
+    margin-bottom: 60px;
+}
+
+/* Better section titles */
+.section-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+/* Added section descriptions */
+.section-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Improved post card design */
+.post-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid #f0f0f0;
+}
+
+.post-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+}
+
+.post-content {
+    padding: 24px;
+}
+
+.post-category {
+    display: inline-block;
+    background-color: #0066cc;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.post-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+    line-height: 1.4;
+}
+
+.post-excerpt {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.post-meta {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 13px;
+    color: #999;
+}
+
+/* Updated footer design */
+.footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 40px 0;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-info {
+    flex: 1;
+}
+
+.footer-tagline {
+    margin-top: 8px;
+    color: #999;
+    font-size: 14px;
+}
+
+.locale-selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.locale-selector label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#locale-select {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #2a2a2a;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#locale-select:hover {
+    background-color: #333;
+    border-color: #444;
+}
+
+#locale-select:focus {
+    outline: none;
+    border-color: #0066cc;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 1fr 300px;
+    }
+
+    .sidebar-left {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-right {
+        display: none;
+    }
+
+    .hero-content h2 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .posts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .banner-1920x1080 {
+        height: 300px;
+    }
+
+    .banner-1080x1080 {
+        height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section {
+        padding: 40px 30px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
