@@ -1,0 +1,31 @@
+{{!< default}}
+<!-- home.hbs -->
+<!-- HOME VIEW: full-screen grid -->
+{{#is "home"}}<section id="home-view" class="view active">
+  {{#if @site.cover_image}}<figure class="apply-full-cover" title="{{@site.title}}" style="{{#if @site.accent_color}}--cover-color: {{@site.accent_color}}; {{/if}}--cover-url: url({{img_url @site.cover_image}})">
+    <img srcset="{{img_url @site.cover_image size='s'}} 300w, {{img_url @site.cover_image size='m'}} 600w, {{img_url @site.cover_image size='l'}} 1000w, {{img_url @site.cover_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url @site.cover_image size='xl'}}" alt="{{@site.title}}" loading="lazy" />
+  </figure>{{/if}}
+  {{#get "posts" include="authors,tags" order="title asc, published_at desc" limit=@config.posts_per_page as |posts pages|}}<div id="content-grid">
+     {{> "card"}}
+  </div>{{else}}<div class="loop-error">
+    <p>{{error}}</p>
+  </div>{{/get}}
+</section>
+  {{!--
+  {{> "loop-featured"}}
+  {{> "loop-tags"}}
+  {{> "cta-signup"}}
+  {{#match @site.recommendations_enabled}}<section class="recommendations">
+      <hgroup>
+        <h2>Recommendations</h2>
+        <p>Lorem ipsum&comma; dolor sit amet consectetur adipisicing elitem quam quibusdam repudiandae&excl;</p>
+      </hgroup>
+      <hr />
+      {{recommendations limit="4" order="title asc"}}
+  </section>{{/match}}
+  --}}
+{{#contentFor "scripts"}}<script type="text/javascript">
+  // FitVids - Makes video embeds responsive
+  $(document).ready(() => $(".gh-content").fitVids());
+  console.log("Hello from home.hbs!");
+</script>{{/contentFor}}{{/is}}

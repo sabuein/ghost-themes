@@ -1,0 +1,140 @@
+/* ── Home Grid ───────────────────────────────── */
+#home-view {
+    overflow: hidden;
+}
+
+#content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+    align-content: start;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+/* Card */
+.card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+        transform 0.18s,
+        border-color 0.18s,
+        box-shadow 0.18s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.5),
+        0 0 0 1px var(--accent);
+}
+
+.card-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    background: var(--bg3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* placeholder thumb with gradient */
+.card-thumb-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--bg3) 0%, var(--surface) 100%);
+    position: relative;
+}
+
+.card-type-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+}
+.badge-video {
+    background: var(--accent3);
+    color: #fff;
+}
+.badge-post {
+    background: var(--accent);
+    color: #111;
+}
+.badge-podcast {
+    background: var(--accent2);
+    color: #111;
+}
+
+.badge-events {
+    background: #046137;
+    color: #fff;
+}
+
+.badge-page {
+    background: #4a7acc;
+    color: #fff;
+}
+
+.card-body {
+    padding: 12px 14px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.card-authors {
+    padding: 12px 14px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 6px;
+}
+
+.card-authors img {
+    width: 3rem;
+    border-radius: 50%;
+}
+
+.card-category {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent2);
+}
+
+.card-title {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.card-meta {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: auto;
+    padding-top: 8px;
+    display: flex;
+    gap: 12px;
+}

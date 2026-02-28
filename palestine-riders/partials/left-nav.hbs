@@ -1,0 +1,12 @@
+<!-- partials/left-nav.hbs --> 
+<nav id="sidebar">
+    <figure id="brand">
+        <a id="brand-icon" href="{{@site.url}}" title="{{@site.title}}">{{#if @site.logo}}<img src="{{img_url @site.logo size="l"}}" alt="{{@site.title}}" loading="lazy" />{{else}}⛰{{/if}}</a>
+        <figcaption>
+            <p id="brand-name">{{@site.title}}</p>
+            <p id="brand-tagline">{{@site.description}}</p>
+        </figcaption>
+    </figure>
+    {{navigation}}
+    {{> "sidebar-footer"}}
+</nav>

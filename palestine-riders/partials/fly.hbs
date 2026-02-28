@@ -1,0 +1,18 @@
+<!-- partials/fly.hbs -->
+<aside id="fly">
+    <div class="container">
+        <a href="https://wa.me/447930120661?text={{encode 'I am inquiring about your bike rides!'}}" title="Chat on WhatsApp" target="_blank" rel="noopener noreferrer nofollow" aria-label="Chat on WhatsApp">{{> "brands/whatsapp"}}<span>Chat on WhatsApp</span></a>
+        <a href="#content-body" title="Scroll back to top" target="_top" aria-label="Scroll back to top">{{> "icons/arrow-up"}}<span>Back to top</span></a>
+    </div>
+    <div class="container" style="min-height: 58px;max-width: 440px;margin: 0 auto;width: 100%"><script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.3/umd/signup-form.min.js" data-button-color="{{@site.accent_color}}" data-button-text-color="#FFFFFF" data-site="{{@site.url}}" data-locale="{{@site.locale}}" async="async"></script></div>
+    {{!--<form class="relative flex w-full rounded-[.5rem] border bg-white p-[3px] text-grey-900 transition hover:border-grey-400 focus-visible:border-grey-500 border-grey-300" novalidate=""><input aria-invalid="false" autocomplete="email" class="w-full px-2 py-1 focus-visible:outline-none disabled:bg-white xs:p-2" data-testid="input" placeholder="Your email address" type="email" value=""><button class="my-auto grid h-7 touch-manipulation grid-cols-[1fr] items-center rounded-[.3rem] px-2 font-medium text-white xs:h-[3rem] xs:px-3" data-testid="button" type="submit" style="background-color: rgb(81, 103, 50); color: rgb(255, 255, 255);"><span class="col-start-1 row-start-1 whitespace-nowrap opacity-1 [opacity_200ms,visibility_200ms_step-start] visible">Subscribe</span><span class="col-start-1 row-start-1 whitespace-nowrap invisible mx-[-40px] opacity-0 [transition:margin_300ms,opacity_200ms,visibility_200ms_step-end]">Email sent</span><span class="inset-0 col-start-1 row-start-1 flex items-center justify-center transition-opacity duration-200 [opacity_200ms,visibility_200ms_step-end] invisible opacity-0">{{> "nav/loading"}}</span></button></form>--}}
+</aside>
+{{#contentFor "scripts"}}<script type="module">
+    import { scrollTop } from "nav";
+    document
+        .querySelector(`[href="#content-body"]`)
+        .addEventListener("click", (e) => {
+            e.preventDefault();
+            scrollTop();
+        });
+</script>{{/contentFor}}

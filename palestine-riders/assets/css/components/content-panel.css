@@ -1,0 +1,109 @@
+/* ── Content Panel (post/page view) ─────────── */
+#content-view {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#content-header {
+    flex: 0 0 fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    flex-shrink: 0;
+    min-height: var(--header-h);
+}
+
+#back-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    transition:
+        background 0.15s,
+        border-color 0.15s;
+    white-space: nowrap;
+}
+
+#back-btn:hover {
+    background: var(--border);
+    border-color: var(--accent);
+}
+
+#content-title {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: var(--accent);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#content-body {
+    flex: 5;
+    overflow-y: auto; /* ← only this scrolls */
+    overflow-x: hidden;
+    margin-bottom: 2rem;
+    padding: 2rem 2.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    scroll-behavior: smooth;
+}
+
+body:has(dialog[open]) #content-body {
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+#content-body aside {
+    padding: 1rem;
+    margin: 2rem 0;
+    border: thin dashed currentColor;
+    border-radius: var(--radius);
+}
+
+#content-body #fly {
+    padding: 1rem;
+    border: none;
+}
+
+#content-body aside .container {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#content-body aside .container a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+#content-body .cta hgroup {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    line-height: 2;
+}

@@ -1,0 +1,11 @@
+<!-- partials/loop-featured.hbs -->
+{{#get "posts" filter="featured:true" include="authors,tags" order="title asc, published_at desc" limit=@config.posts_per_page as |articles pages|}}<section class="loop">
+    <hgroup>
+        <h2>Featured posts</h2>
+        <p>Lorem ipsum&comma; dolor sit amet consectetur adipisicing elitem quam quibusdam repudiandae&excl;</p>
+    </hgroup>
+    <hr />
+    <div class="container">
+        {{#foreach articles}}{{> "card"}}{{else}}<pre>This Ghost instance does not have any featured posts yet&period;</pre>{{/foreach}}
+    </div>
+</section>{{else}}<pre class="loop-error">{{error}}</pre>{{/get}}

@@ -1,0 +1,40 @@
+/* ═══════════════════════════════════════════════
+   Palestine Riders: Global Theme
+   Full-viewport. No scroll on body. Ever.
+═══════════════════════════════════════════════ */
+
+/* ── Base components ───────────────────────────────── */
+@import url("components/reset.css");
+@import url("components/app.css");
+@import url("components/sidebar.css");
+@import url("components/main.css");
+@import url("components/home-grid.css");
+@import url("components/content-panel.css");
+@import url("components/content-body-typography.css");
+@import url("components/scrollbar-global.css");
+@import url("components/ghost.css");
+@import url("components/responsive.css");
+
+button,
+a,
+label {
+    cursor: pointer;
+    color: var(--text);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+svg,
+img,
+figure,
+picture {
+    height: auto;
+    max-width: 100%;
+}
+
+/* TODO */
+#analytics-cookies {
+    display: none !important;
+}

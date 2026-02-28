@@ -1,0 +1,37 @@
+{{!< default}}
+<!-- post.hbs -->
+<!-- CONTENT PANEL: post/page viewer (no full-page nav) -->
+{{#is "post"}}{{#post}}<article id="content-view" class="view active">
+    {{#match @page.show_title_and_feature_image}}<hgroup id="content-header">
+        <button type="button" id="back-btn" title="Click to go back">&#8592; Back</button>
+        <h1 id="content-title">{{title}}</h1>
+        {{#if custom_excerpt}}<p class="quote">{{custom_excerpt}}</p>{{/if}}
+        {{#match featured}}<p>{{> "nav/featured"}}</p>{{/match}}
+        {{#if reading_time}}<p><span>{{reading_time}}</span></p>{{/if}}
+    </hgroup>
+    <div id="content-body">
+        {{^has tag="video"}}{{#if feature_image}}<figure class="apply-full-cover" style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
+            <img srcset="{{img_url feature_image size='s'}} 300w, {{img_url feature_image size='m'}} 600w, {{img_url feature_image size='l'}} 1000w, {{img_url feature_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size='xl'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>{{/if}}{{/has}}{{/match}}
+        <div class="post-content {{post_class}}">
+            {{content}}
+            {{> "sharing"}}
+        </div>
+        {{> "cookies"}}
+        {{> "fly"}}
+        {{> "cta"}}
+    </div>
+</article>
+{{#contentFor "scripts"}}<script type="text/javascript">
+    // FitVids - Makes video embeds responsive
+    $(document).ready(() => {
+        $("*.html5-main-video").fitVids();
+        document.getElementById("back-btn").addEventListener("click", (e) => {
+            e.preventDefault();
+            window.history.back();
+        });
+    });
+    console.log("Hello from post.hbs!");
+</script>{{/contentFor}}
+{{/post}}{{/is}}
