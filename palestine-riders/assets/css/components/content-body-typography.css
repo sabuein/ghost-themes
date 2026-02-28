@@ -1,0 +1,62 @@
+/* ── Content Body Typography ─────────────────── */
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    font-family: var(--font-head);
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin: 24px 0 10px;
+    text-transform: uppercase;
+}
+
+.post-content h2 {
+    font-size: 1.4rem;
+}
+.post-content h3 {
+    font-size: 1.1rem;
+    color: var(--accent2);
+}
+
+.post-content h4 {
+    font-size: 1rem;
+    color: var(--accent2);
+}
+
+.post-content p {
+    line-height: 1.75;
+    color: var(--text);
+    margin: 12px 0;
+    max-width: 72ch;
+}
+.post-content img {
+    width: 100%;
+    border-radius: var(--radius);
+    margin: 16px 0;
+    border: 1px solid var(--border);
+}
+
+.post-content video,
+.post-content iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin: 16px 0;
+    background: #000;
+}
+
+.post-content blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 8px 16px;
+    margin: 16px 0;
+    background: var(--surface);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 12px 0 12px 24px;
+    line-height: 1.7;
+}

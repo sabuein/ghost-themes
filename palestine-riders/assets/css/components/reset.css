@@ -1,0 +1,39 @@
+/* ── Reset ───────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #111210;
+    --bg2: #1c1e1a;
+    --bg3: #252720;
+    --surface: #2a2d26;
+    --border: #3a3f33;
+    --accent: #c8a84b; /* trail-dust gold */
+    --accent2: #7ab648; /* trail-green */
+    --accent3: #e05c2a; /* dirt-orange  */
+    --text: #e8e6df;
+    --text-muted: #888c80;
+    --diagonal-stripe-accent: linear-gradient(90deg, var(--accent3), var(--accent), var(--accent2));
+    --sidebar-w: 260px;
+    --header-h: 56px;
+    --radius: 6px;
+    --font: "Segoe UI", system-ui, sans-serif;
+    --font-head: "Impact", "Arial Narrow", sans-serif;
+    --gh-font-body: var(--font);
+    --gh-font-heading: var(--font-head);
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden; /* body NEVER scrolls */
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+}

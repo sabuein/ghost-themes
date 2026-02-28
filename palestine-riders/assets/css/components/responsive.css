@@ -1,0 +1,36 @@
+/* ══════════════ RESPONSIVE ══════════════ */
+@media (max-width: 680px) {
+    :root {
+        --sidebar-w: 220px;
+    }
+    #content-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    #sidebar {
+        position: fixed;
+        left: -100%;
+        transition: left 0.3s;
+    }
+    #sidebar.open {
+        left: 0;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.6);
+    }
+    #portal-buttons {
+        display: flex;
+    }
+    #main {
+        width: 100%;
+    }
+    #content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #content-body {
+        scroll-behavior: auto;
+    }
+}

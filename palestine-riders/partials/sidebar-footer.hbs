@@ -1,0 +1,11 @@
+<!-- partials/sidebar-footer.hbs -->
+<footer id="sidebar-footer">
+    {{> "social-media"}}
+    {{> "disclosure"}}
+    <figure>
+        <a href="https://ghost.org/experts/salaheddin-abuein/?via=sabuein&ref={{readable_url @site.url}}" title="Publish with Ghost" target="_blank" rel="noopener noreferrer nofollow" aria-label="Publish with Ghost">{{> "brands/ghost"}}</a>
+    </figure>
+    <p><span id="pwa-status">&times;</span></p>
+    <p><a href="{{@site.url}}" title="{{@site.title}}" target="_top" aria-label="{{@site.title}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}&period;</p>
+    <p>Timezone&colon; <strong>{{@site.timezone}}</strong></p>
+</footer>

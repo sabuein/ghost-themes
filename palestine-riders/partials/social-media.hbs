@@ -1,0 +1,10 @@
+<!-- partials/social-media.hbs -->
+<div id="connect-with-us">
+    <h4 title="Connect with us">Connect with us&colon;</h4>
+    <ul class="row-buttons">
+        {{#if @site.twitter}}<li><a href="{{social_url type='twitter'}}?ref={{readable_url @site.url}}" title="X" target="_blank" rel="noopener noreferrer nofollow" aria-label="X">{{> "brands/x"}}</a></li>{{/if}}
+        {{#if @site.facebook}}<li><a href="{{social_url type='facebook'}}?ref={{readable_url @site.url}}" title="Facebook" target="_blank" rel="noopener noreferrer nofollow" aria-label="Facebook">{{> "brands/facebook"}}</a></li>{{/if}}
+        <li><a href="https://www.instagram.com/palestineriders/?ref={{readable_url @site.url}}" title="Instagram" target="_blank" rel="noopener noreferrer nofollow" aria-label="Instagram">{{> "brands/instagram"}}</a></li>
+        <li><a href="{{@site.url}}/sitemap.xml" title="XML Sitemap" target="_top" aria-label="XML Sitemap">{{> "brands/xml"}}</a></li>
+    </ul>
+</div>

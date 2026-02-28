@@ -1,0 +1,23 @@
+<!-- navigation.hbs -->
+{{#if isSecondary}}<ul class="nav-secondary" role="menu">
+    {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat 'nav-' slug)}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+    <li class="nav-signin" role="menuitem"><a href="javascript: null" title="Sign in" data-portal="signin">Sign in</a></li>
+    <li class="nav-signup" role="menuitem"><a href="javascript: null" title="Sign up" data-portal="signup">Sign up</a></li>
+    <li class="nav-dashboard" role="menuitem"><a href="/ghost/#/dashboard" title="Dashboard" target="_blank" rel="nofollow noopener">Dashboard</a></li>
+</ul>{{else}}<ul id="nav-list">
+    {{#foreach navigation}}<li class="nav-item" data-id="{{slug}}" role="menuitem">{{#has slug="trails"}}
+        <div class="nav-parent" role="button" tabindex="0">
+            <span>{{> (concat "nav/" slug)}}{{label}}</span>{{> "nav/arrow"}}
+        </div>
+        <ul class="nav-sub">
+            <li><a href="#" data-id="local-trails">Local Trails</a></li>
+            <li><a href="#" data-id="epic-routes">Epic Routes</a></li>
+            <li><a href="#" data-id="trail-reports">Trail Reports</a></li>
+        </ul>{{else has slug="gear"}}<div class="nav-parent" role="button" tabindex="0">
+            <span>{{> (concat "nav/" slug)}}{{label}}</span>{{> "nav/arrow"}}
+        </div>
+        <ul class="nav-sub">
+            <li><a href="#" data-id="gear-reviews">Reviews</a></li>
+            <li><a href="#" data-id="setup-guides">Setup Guides</a></li>
+        </ul>{{else has slug="videos"}}<a href="{{url absolute='true'}}" title="{{label}}" data-id="{{slug}}"><span>{{> (concat "nav/" slug)}}{{label}}</span>{{> "nav/new"}}</a>{{else}}<a href="{{url absolute='true'}}" title="{{label}}" data-id="{{slug}}"><span>{{> (concat "nav/" slug)}}{{label}}</span></a>{{/has}}</li>{{/foreach}}
+</ul>{{/if}}

@@ -1,0 +1,61 @@
+/* Ghost CMS */
+
+#announcement-bar-root {
+    width: 100dvw;
+    max-width: 100%;
+}
+
+*.kg-width-wide,
+*.kg-width-full {
+    max-width: 100%;
+}
+
+.ghost-orb-logo {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(../../images/logos/ghost-logo-dark.png);
+}
+
+[data-theme="dark"] .ghost-orb-logo {
+    background-image: url(../../images/logos/ghost-logo-light.png);
+}
+
+.gh-announcement-bar.accent {
+    background: var(--diagonal-stripe-accent);
+}
+
+/* ── Video embed helper ───────────────────────── */
+.kg-card.kg-embed-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 16px 0;
+}
+
+.kg-card.kg-embed-card iframe {
+    margin: 0;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ── Audio embed helper ───────────────────────── */
+.kg-card.kg-audio-card {
+    width: 100%;
+    margin: 16px 0;
+    accent-color: var(--accent);
+}
+
+
+/*
+<audio controls="">
+<source src="episode-12.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+
+*/
