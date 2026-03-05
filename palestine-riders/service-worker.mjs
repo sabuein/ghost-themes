@@ -7,7 +7,6 @@
 
 const CACHE_NAME = "palestine-riders-v1";
 const SHELL_ASSETS = [
-    '/',
     '/assets/css/screen.css',
     '/assets/js/application.mjs',
     '/app.webmanifest',
@@ -33,24 +32,34 @@ self.addEventListener('activate', event => {
 
 // ── Fetch: cache-first for shell, network-first for API/media ────────────────
 self.addEventListener('fetch', event => {
-    const url = new URL(event.request.url);
+    const req = event.request;
+    const url = new URL(req.url);
 
-    // Shell assets — cache first
-    if (SHELL_ASSETS.some(a => url.pathname.endsWith(a.replace('./', '/')))) {
+    // 1) Navigations (HTML pages) - network first, DON'T cache
+    if (req.mode === 'navigate') {
+        event.respondWith(fetch(req).catch(() => caches.match('/')));
+        return;
+    }
+
+    // 2) Static assets - cache first
+    if (url.pathname.startsWith('/assets/') || url.pathname.endsWith('.css') || url.pathname.endsWith('.js') || url.pathname.endsWith('.mjs')) {
         event.respondWith(
-            caches.match(event.request).then(cached => cached || fetch(event.request))
+            caches.match(req, { ignoreSearch: true }).then(cached => cached || fetch(req))
         );
         return;
     }
 
-    // Everything else — network first, fallback to cache
+    // 3) Everything else - network first, cache ok (optional)
     event.respondWith(
-        fetch(event.request)
+        fetch(req)
             .then(res => {
-                const clone = res.clone();
-                caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
+                // optionally cache only GET and only same-origin
+                if (req.method === 'GET' && url.origin === self.location.origin) {
+                    const clone = res.clone();
+                    caches.open(CACHE_NAME).then(c => c.put(req, clone));
+                }
                 return res;
             })
-            .catch(() => caches.match(event.request))
+            .catch(() => caches.match(req))
     );
 });
