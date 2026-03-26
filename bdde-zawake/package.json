@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "engines": {
-    "ghost": ">=5.0.0"
+    "ghost": ">=6.17.0"
   },
   "author": {
     "name": "Salaheddin AbuEin",
