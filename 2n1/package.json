@@ -4,7 +4,7 @@
     "demo": "https://2n1.co.uk/",
     "version": "1.0.0",
     "engines": {
-        "ghost": ">=5.130.1"
+        "ghost": ">=6.17.0"
     },
     "license": "MIT",
     "author": {
