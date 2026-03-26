@@ -5,7 +5,7 @@
  * Cache-first for shell assets, network-first for content
  */
 
-const CACHE_NAME = "palestine-riders-v1";
+const CACHE_NAME = "palestine-riders-v2";
 const SHELL_ASSETS = [
     '/assets/css/screen.css',
     '/assets/js/application.mjs',
