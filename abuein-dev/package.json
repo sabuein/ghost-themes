@@ -3,7 +3,7 @@
     "description": "A theme with RTL support",
     "demo": "https://abuein.dev/",
     "engines": {
-        "ghost": ">=5.0.0"
+        "ghost": ">=6.17.0"
     },
     "version": "0.1.0",
     "private": true,
