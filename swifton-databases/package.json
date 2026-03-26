@@ -4,7 +4,7 @@
     "demo": "https://swifton.co.uk/",
     "version": "1.0.0",
     "engines": {
-        "ghost": ">=5.116.1"
+        "ghost": ">=6.17.0"
     },
     "license": "NA",
     "screenshots": {
