@@ -3,7 +3,7 @@
     "description": "A theme for sole traders",
     "demo": "https://auntysuzy.co.uk/",
     "engines": {
-        "ghost": ">=5.0.0"
+        "ghost": ">=6.17.0"
     },
     "version": "0.1.0",
     "private": true,
