@@ -18,7 +18,12 @@
     --accent3: #e05c2a; /* dirt-orange  */
     --text: #e8e6df;
     --text-muted: #888c80;
-    --diagonal-stripe-accent: linear-gradient(90deg, var(--accent3), var(--accent), var(--accent2));
+    --diagonal-stripe-accent: linear-gradient(
+        90deg,
+        var(--accent3),
+        var(--accent),
+        var(--accent2)
+    );
     --sidebar-w: 260px;
     --header-h: 56px;
     --radius: 6px;

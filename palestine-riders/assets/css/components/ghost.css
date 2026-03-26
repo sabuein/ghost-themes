@@ -13,11 +13,16 @@
 .ghost-orb-logo {
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url(../../images/logos/ghost-logo-dark.png);
 }
 
 [data-theme="dark"] .ghost-orb-logo {
+    background-image: url(../../images/logos/ghost-logo-dark.png);
+    transition: opacity .25s ease;
+}
+
+[data-theme="dark"] a:is(:hover, :focus) .ghost-orb-logo {
     background-image: url(../../images/logos/ghost-logo-light.png);
+    transition: opacity .25s ease;
 }
 
 .gh-announcement-bar.accent {
@@ -50,7 +55,6 @@
     margin: 16px 0;
     accent-color: var(--accent);
 }
-
 
 /*
 <audio controls="">
