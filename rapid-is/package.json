@@ -4,7 +4,7 @@
     "demo": "https://www.rapid-is.co.uk/",
     "version": "1.0.0",
     "engines": {
-        "ghost": ">=5.58.0"
+        "ghost": ">=6.17.0"
     },
     "license": "NA",
     "screenshots": {
