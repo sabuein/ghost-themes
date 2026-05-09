@@ -4,7 +4,7 @@
     "demo": "https://gracegs.com/",
     "version": "1.0.0",
     "engines": {
-        "ghost": ">=6.36.0"
+        "ghost": ">=6.36.0 <7.0.0"
     },
     "license": "MIT",
     "author": {
@@ -13,31 +13,46 @@
         "url": "https://abuein.dev/"
     },
     "screenshots": {
-        "desktop": "assets/screenshot-desktop.jpg",
-        "mobile": "assets/screenshot-mobile.jpg"
+        "desktop": "/assets/screenshots/screenshot-desktop.png",
+        "mobile": "/assets/screenshots/screenshot-mobile.png"
     },
     "scripts": {
-        "start": "ghost start -d ~/my/instances/ghost-25",
-        "restart": "ghost restart -d ~/my/instances/ghost-25",
-        "update": "ghost update -d ~/my/instances/ghost-25",
-        "stop": "ghost stop -d ~/my/instances/ghost-25",
-        "debug": "ghost run -D -d ~/my/instances/ghost-25",
-        "log": "ghost log -d ~/my/instances/ghost-25",
-        "zip": "zip -r /home/sabuein/Desktop/grace-gs.zip * -x *.zip /assets/audio/* /assets/files/* /assets/labs/* /assets/videos/* .gitignore",
-        "scan": "npx gscan .",
-        "scan-zip": "npx gscan -z /home/sabuein/Desktop/grace-gs.zip",
-        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/grace-gs ~/my/instances/ghost-25/content/themes",
-        "start-win": "ghost start -d C:/Users/sala/my/ghost-cms",
-        "restart-win": "ghost restart -d C:/Users/sala/my/ghost-cms",
-        "update-win": "ghost update -d C:/Users/sala/my/ghost-cms",
-        "stop-win": "ghost stop -d C:/Users/sala/my/ghost-cms",
-        "debug-win": "ghost run -D -d C:/Users/sala/my/ghost-cms",
-        "log-win": "ghost log -d C:/Users/sala/my/ghost-cms",
-        "zip-win": "powershell -NoProfile -ExecutionPolicy Bypass -File ./assets/scripts/zip.ps1",
-        "7zip-win": "7z a -tzip C:/Users/sala/Desktop/grace-gs.zip * -xr!*.zip -xr!assets/audio -xr!assets/files -xr!assets/labs -xr!assets/videos -xr!.gitignore",
-        "scan-win": "npx gscan .",
-        "scan-zip-win": "npx gscan -z C:/Users/sala/Desktop/grace-gs.zip",
-        "symlink-win": "New-Item -ItemType SymbolicLink -Path C:/Users/sala/my/ghost-cms/content/themes/grace-gs -Target C:/Users/sala/git/ghost-themes/grace-gs"
+        "suppress": "npm config set fund false",
+        "verify": "node -e \"const p=require('./package.json');console.log(Object.keys(p.config||{}))\"",
+        "dev": "npm-run-all ghost:start scan",
+        "scan": "gscan . --verbose",
+        "scan:zip": "gscan -z $HOME/Desktop/grace-gs.zip",
+        "clean:min": "node ./assets/scripts/clean.js",
+        "build:css": "node ./assets/scripts/build-css.js",
+        "minify:css": "node ./assets/scripts/minify-css.js",
+        "minify:js": "node ./assets/scripts/minify-js.js",
+        "build": "npm run --silent clean:min && npm run --silent build:css && npm run --silent minify:css && npm run --silent minify:js",
+        "minify:css:files": "lightningcss --minify --targets \">= 0.25%\" \"assets/css/**/*.css\" --output-dir-in-place --extension .min.css",
+        "zip": "npm-run-all build win:zip",
+        "zip:posix": "zip -r $HOME/Desktop/grace-gs.zip * -x '.git/*' '*.zip' 'assets/audio/*' 'assets/files/*' 'assets/labs/*' 'assets/videos/*' 'ghost-config/*' '.gitignore'",
+        "ghost:start": "ghost start -d ~/my/instances/ghost-25",
+        "ghost:restart": "ghost restart -d ~/my/instances/ghost-25",
+        "ghost:stop": "ghost stop -d ~/my/instances/ghost-25",
+        "ghost:update": "ghost update -d ~/my/instances/ghost-25",
+        "ghost:debug": "ghost run -D -d ~/my/instances/ghost-25",
+        "ghost:log": "ghost log -d ~/my/instances/ghost-25",
+        "ghost:symlink": "ln -s $PWD ~/my/instances/ghost-25/content/themes/grace-gs",
+        "win:start": "ghost start -d C:/Users/sala/my/ghost-cms",
+        "win:stop": "ghost stop  -d C:/Users/sala/my/ghost-cms",
+        "win:restart": "ghost restart -d C:/Users/sala/my/ghost-cms",
+        "win:run": "ghost run -D -d C:/Users/sala/my/ghost-cms",
+        "win:log": "ghost log -d C:/Users/sala/my/ghost-cms",
+        "win:debug": "npm-run-all win:stop win:run",
+        "win:dev": "npm-run-all win:start scan",
+        "win:zip": "powershell -NoProfile -ExecutionPolicy Bypass -File ./assets/scripts/zip.ps1",
+        "win:symlink": "npm run build && powershell -Command \"New-Item -ItemType SymbolicLink -Path C:/Users/sala/my/ghost-cms/content/themes/grace-gs -Target $PWD\""
+    },
+    "devDependencies": {
+        "gscan": "^4.45.0",
+        "lightningcss": "^1.32.0",
+        "lightningcss-cli": "^1.32.0",
+        "npm-run-all": "^4.1.5",
+        "terser": "^5.47.1"
     },
     "config": {
         "posts_per_page": 10,
@@ -60,6 +75,27 @@
             },
             "xl": {
                 "width": 2000
+            }
+        },
+        "custom": {
+            "show_title_and_feature_image": {
+                "type": "boolean",
+                "default": true,
+                "description": "Show the post title and feature image at the top of each post."
+            },
+            "site_layout": {
+                "type": "select",
+                "options": [
+                    "Standard",
+                    "Magazine"
+                ],
+                "default": "Standard",
+                "description": "Choose how the homepage lays out posts."
+            },
+            "accent_color": {
+                "type": "color",
+                "default": "#84cc16",
+                "description": "Primary brand colour."
             }
         }
     },
