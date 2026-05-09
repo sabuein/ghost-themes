@@ -1,0 +1,156 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer components {
+
+    /* ===== Contact Dialog ===== */
+    /* Reset native <dialog> defaults so our existing .dialog styles take over */
+    dialog.dialog-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: var(--z-modal);
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        margin: 0;
+        padding: var(--spacing-lg);
+        border: 0;
+        background-color: transparent;
+        color: inherit;
+        overflow: visible;
+    }
+
+    /* Native dialog uses [open] instead of a .show class */
+    dialog.dialog-overlay[open] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.2s ease;
+    }
+
+    /* The dim/blur layer is now a pseudo-element — no extra div needed */
+    dialog.dialog-overlay::backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+    }
+
+    /* The inline form wrapping the close button shouldn't add layout */
+    .dialog-close-form {
+        display: contents;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .dialog {
+        position: relative;
+        width: 100%;
+        max-width: 480px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: var(--spacing-2xl);
+        background-color: var(--color-surface);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-xl);
+        animation: scaleIn 0.2s ease;
+    }
+
+    @keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .dialog-close {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        width: 32px;
+        height: 32px;
+        font-size: var(--text-2xl);
+        color: var(--color-text-muted);
+        transition: color var(--transition-fast);
+    }
+
+    .dialog-close:hover {
+        color: var(--color-text);
+    }
+
+    .dialog h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .dialog>p {
+        color: var(--color-text-secondary);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .hp {
+        position: absolute;
+        left: -10000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+
+    .hp input {
+        position: absolute;
+        left: -9999px;
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .form-group label {
+        display: block;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: var(--spacing-md);
+        font-size: var(--text-base);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background-color: var(--color-background);
+        color: var(--color-text);
+        transition: border-color var(--transition-fast);
+        font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--color-primary);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+}

@@ -1,0 +1,31 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer overrides {
+
+    @media print {
+
+        .header,
+        .nav-actions,
+        #cookie-notice,
+        dialog,
+        .cta-section {
+            display: none !important;
+        }
+
+        body {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        a::after {
+            content: " (" attr(href) ")";
+            font-size: 0.8em;
+            color: #555;
+        }
+    }
+
+}

@@ -1,0 +1,70 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer components {
+
+    /* ===== Newsletter Section ===== */
+    .newsletter-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--spacing-3xl);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .newsletter-content h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .newsletter-content p {
+        color: var(--color-text-secondary);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .newsletter-form {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .input-group {
+        display: flex;
+        gap: var(--spacing-sm);
+        max-width: 480px;
+        margin: var(--spacing-lg) auto;
+    }
+
+    .input-group input {
+        flex: 1;
+        padding: var(--spacing-md);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background: var(--color-background);
+        color: var(--color-text);
+        font-size: var(--text-base);
+    }
+
+    .input-group input:focus {
+        outline: none;
+        border-color: var(--color-primary);
+    }
+
+    .newsletter-disclaimer {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        margin-top: var(--spacing-md);
+    }
+
+}
