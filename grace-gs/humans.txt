@@ -1,0 +1,35 @@
+# Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin
+# https://abuein.dev/  •  salaheddin@abuein.dev
+# SPDX-License-Identifier: MIT
+
+/* AUTHOR */ 
+	Developer: Salaheddin AbuEin
+	Contact: salaheddin [at] abuein.dev
+	X: @sabuein
+	From: Ramallah, occupied Palestine
+
+/* BIG THANK YOU */
+
+	Name: Tabler Icons
+	URL: https://github.com/tabler/tabler-icons/tree/main
+
+	Name: 
+	URL: 
+
+	Name: PWABuilder
+	URL: https://www.pwabuilder.com/
+
+	Name: Maskable.app
+	URL: https://maskable.app/
+
+	Name: WebAIM contrast checker
+	URL: https://webaim.org/resources/contrastchecker/
+
+	Name: Google's structured-data guidelines
+	URL: https://developers.google.com/search/docs/appearance/structured-data/sd-policies
+
+/* SITE */
+	Last update:2026/05/07
+	Language: English
+	Doctype:HTML5
+	IDE: VSCode, Photoshop
