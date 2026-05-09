@@ -1,1 +1,113 @@
-<!-- error-4xx.hbs -->
+{{!< default}}
+{{!
+    Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+    https://abuein.dev/
+    SPDX-License-Identifier: MIT
+}}
+{{log "4xx error rendered" statusCode message code}}
+
+<section class="error-page container" aria-labelledby="error-heading">
+  <header class="error-header">
+    <p class="error-code" aria-hidden="true">
+      {{statusCode}}
+    </p>
+    <h1 id="error-heading" class="error-description">
+      {{message}}
+    </h1>
+    <span class="sr-only">
+      HTTP status code {{statusCode}}.
+    </span>
+  </header>
+
+  <div class="error-body">
+    {{#match statusCode "400"}}
+      <p>
+        The server couldn't understand the request — it may be malformed or missing required information.
+      </p>
+    {{else}}
+      {{#match statusCode "401"}}
+        <p>
+          You need to sign in to view this page.
+        </p>
+      {{else}}
+        {{#match statusCode "403"}}
+          <p>
+            You don't have permission to view this page.
+          </p>
+        {{else}}
+          {{#match statusCode "410"}}
+            <p>
+              This page has been permanently removed and won't be coming back.
+            </p>
+          {{else}}
+            {{#match statusCode "429"}}
+              <p>
+                Too many requests in a short period — please wait a moment and try again.
+              </p>
+            {{else}}
+              {{#match statusCode "500"}}
+                <p>
+                  Something went wrong on our end. We've been notified and are looking into it.
+                </p>
+              {{else}}
+                {{#match statusCode "503"}}
+                  <p>
+                    The service is temporarily unavailable. Please try again shortly.
+                  </p>
+                {{else}}
+                  <p>
+                    Something went wrong with your request.
+                  </p>
+                {{/match}}
+              {{/match}}
+            {{/match}}
+          {{/match}}
+        {{/match}}
+      {{/match}}
+    {{/match}}
+
+    <p>
+      You can return to the
+      <a href="{{@site.url}}">
+        homepage
+      </a>
+      or use the
+            navigation above to find what you're looking for.
+    </p>
+
+    <div class="error-actions">
+      <a href="{{@site.url}}" class="btn btn-md btn-primary" rel="home">
+        Return to homepage
+      </a>
+    </div>
+
+    {{#if errorDetails}}
+      {{log "Theme error details:" errorDetails}}
+      <details class="error-stack">
+        <summary>
+          Technical details
+        </summary>
+        <ul>
+          {{#foreach errorDetails}}
+            <li>
+              <strong>
+                {{{rule}}}
+              </strong>
+              {{#foreach failures}}
+                <p>
+                  Ref:
+                  <code>
+                    {{ref}}
+                  </code>
+                </p>
+                <p>
+                  Message: {{message}}
+                </p>
+              {{/foreach}}
+            </li>
+          {{/foreach}}
+        </ul>
+      </details>
+    {{/if}}
+  </div>
+</section>
