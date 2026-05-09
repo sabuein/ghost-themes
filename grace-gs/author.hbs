@@ -1,51 +1,101 @@
 {{!< default}}
-<!-- author.hbs -->
+{{!--
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+
+  author.hbs — Author archive page.
+  Scope: author (the active author), posts (their posts), pagination.
+--}}
 {{#is "author"}}
 {{#author}}
-{{#if cover_image}}<div class="post-card-image-link">
-    {{!-- This is a responsive image, it loads different sizes depending on device
-    https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-    <img class="post-card-image"
-        srcset="{{img_url cover_image size="s"}} 300w,
-                {{img_url cover_image size="m"}} 600w,
-                {{img_url cover_image size="l"}} 1000w,
-                {{img_url cover_image size="xl"}} 2000w"
-        sizes="(max-width: 1000px) 400px, 800px"
-        src="{{img_url cover_image size="m"}}"
-        alt="{{title}}"
-    />
-</div>{{/if}}
-{{#if profile_image}}<header>
-    <img src="{{img_url profile_image}}" alt="{{name}}'s Picture" />
-</header>{{/if}}
-<section class="author-profile">
-    <h1 class="author-title">{{name}}</h1>
-    {{#author}}
-  {{#if threads}}<a href="{{social_url type="threads"}}">Follow me on Threads</a>{{/if}}
-{{/author}}
-    {{#if bio}}<h2 class="author-bio">{{bio}}</h2>{{/if}}
-    <div class="author-meta">
-        {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}
-    </div>
-    <footer class="author-profile-footer">
-        {{#if location}}<div class="author-profile-location">{{location}}</div>{{/if}}
-        <div class="author-profile-meta">
-            {{#if website}}
-                <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
-            {{/if}}
-            {{#if twitter}}
-                <a class="author-profile-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "brands/x"}}</a>
-            {{/if}}
-            {{#if facebook}}
-                <a class="author-profile-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> "brands/facebook"}}</a>
-            {{/if}}
+
+<header class="author-header">
+  {{#if cover_image}}
+    <figure class="author-cover">
+      <img srcset="{{img_url cover_image size='m'}} 600w,
+                   {{img_url cover_image size='l'}} 1000w,
+                   {{img_url cover_image size='xl'}} 2000w"
+           sizes="100vw"
+           src="{{img_url cover_image size='xl'}}"
+           alt=""
+           loading="eager" decoding="async" fetchpriority="high" />
+    </figure>
+  {{/if}}
+
+  <div class="container author-profile">
+    {{#if profile_image}}
+      <img class="author-avatar"
+           src="{{img_url profile_image size='m'}}"
+           alt="Profile photo of {{name}}"
+           width="120" height="120"
+           loading="eager" decoding="async" />
+    {{/if}}
+
+    <h1 class="author-name">{{name}}</h1>
+
+    {{#if bio}}<p class="author-bio">{{bio}}</p>{{/if}}
+
+    <dl class="author-meta">
+      {{#if location}}
+        <div>
+          <dt class="sr-only">Location</dt>
+          <dd>{{location}}</dd>
         </div>
-    </footer>
-</section>
+      {{/if}}
+      <div>
+        <dt class="sr-only">Posts</dt>
+        <dd>{{plural ../pagination.total empty='No posts yet' singular='% post' plural='% posts'}}</dd>
+      </div>
+    </dl>
+
+    <ul class="author-links">
+      {{#if website}}
+        <li>
+          <a href="{{website}}" rel="me noopener" target="_blank">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-link"/></svg>
+            <span>Website</span>
+          </a>
+        </li>
+      {{/if}}
+      {{#if twitter}}
+        <li>
+          <a href="{{social_url type="twitter"}}" rel="me noopener" target="_blank"
+             aria-label="{{name}} on X / Twitter">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-twitter"/></svg>
+            <span>X / Twitter</span>
+          </a>
+        </li>
+      {{/if}}
+      {{#if facebook}}
+        <li>
+          <a href="{{social_url type="facebook"}}" rel="me noopener" target="_blank"
+             aria-label="{{name}} on Facebook">
+            <svg width="16" height="16" aria-hidden="true"><use href="#i-facebook"/></svg>
+            <span>Facebook</span>
+          </a>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+</header>
+
 {{/author}}
-<section class="flexy loop">
-    <h2>Author posts&colon;</h2>
-    <hr />
-    {{> "card"}}
+
+<section class="container author-posts">
+  <h2 class="section-title">Latest from {{primary_author.name}}</h2>
+
+  {{#if posts}}
+    <ul class="post-feed-grid post-feed-grid--standard">
+      {{#foreach posts}}
+        <li>{{> "card"}}</li>
+      {{/foreach}}
+    </ul>
+
+    {{pagination}}
+  {{else}}
+    <p class="loop-empty">{{primary_author.name}} hasn't published any posts yet.</p>
+  {{/if}}
 </section>
+
 {{/is}}

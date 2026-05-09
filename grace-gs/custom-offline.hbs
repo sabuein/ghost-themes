@@ -1,5 +1,117 @@
 {{!< default}}
-<!-- custom-offline.hbs -->
-<header class="flexy">
-    <h1>{{@site.title}}</h1>
-</header>
+{{!
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+
+  custom-offline.hbs
+  Rendered when:
+    1. A static page selects "Offline" template via the editor's template
+       dropdown (Ghost's custom-{slug}.hbs convention), OR
+    2. routes.yaml maps /offline/ → custom-offline (see ghost-config/routes.yaml), OR
+    3. The service worker serves the cached version of /offline as a
+       fallback for failed navigations.
+}}
+<section class="offline-page">
+  <div class="container offline-content">
+    <div class="offline-icon" aria-hidden="true">
+      <svg
+        viewBox="0 0 24 24"
+        width="64"
+        height="64"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+        <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+        <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+        <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+        <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+        <line x1="12" y1="20" x2="12.01" y2="20"></line>
+      </svg>
+    </div>
+
+    <h1 class="offline-title">
+      You're offline
+    </h1>
+
+    <p class="offline-description">
+      It looks like you've lost your connection. Some content may not be
+      available until you're back online.
+    </p>
+
+    <div class="offline-actions">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-action="reload"
+        aria-label="Try reloading the page"
+      >
+        Try again
+      </button>
+      <a href="{{@site.url}}" class="btn btn-outline">
+        Go home
+      </a>
+    </div>
+
+    <p class="offline-status" id="offline-status" aria-live="polite"></p>
+
+    {{! Show recently visited pages from the cache, if available }}
+    <section class="offline-cached" hidden id="offline-cached">
+      <h2 class="offline-cached-title">
+        Available offline
+      </h2>
+      <ul class="offline-cached-list" id="offline-cached-list"></ul>
+    </section>
+  </div>
+</section>
+
+{{#contentFor "scripts"}}
+  <script type="module">
+    // Reload button
+  document.querySelector('[data-action="reload"]')?.addEventListener('click', () => {
+    location.reload();
+  });
+
+  // Live online/offline status
+  const status = document.getElementById('offline-status');
+  function update() {
+    if (navigator.onLine) {
+      status.textContent = "You're back online — reloading...";
+      setTimeout(() => location.reload(), 1000);
+    } else {
+      status.textContent = "Still offline. Check your connection.";
+    }
+  }
+  window.addEventListener('online',  update);
+  window.addEventListener('offline', update);
+
+  // List previously cached pages so the user can navigate to them
+  if ('caches' in window) {
+    (async () => {
+      try {
+        const cache = await caches.open('grace-gs-v1');
+        const requests = await cache.keys();
+        const pages = requests
+          .map(r => new URL(r.url))
+          .filter(u => u.origin === location.origin)
+          .filter(u => !u.pathname.match(/\\.(css|js|mjs|png|jpg|jpeg|svg|ico|woff2?)$/))
+          .filter(u => u.pathname !== '/offline/' && u.pathname !== '/offline')
+          .slice(0, 8);
+
+        if (pages.length) {
+          const list = document.getElementById('offline-cached-list');
+          list.innerHTML = pages.map(u =>
+            `<li><a href="${u.pathname}">${u.pathname}</a></li>`
+          ).join('');
+          document.getElementById('offline-cached').hidden = false;
+        }
+      } catch (e) { /* silent */ }
+    })();
+  }
+  </script>
+{{/contentFor}}
