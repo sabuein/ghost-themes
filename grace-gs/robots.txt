@@ -1,3 +1,7 @@
+# Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin
+# https://abuein.dev/  •  salaheddin@abuein.dev
+# SPDX-License-Identifier: MIT
+
 # Grace Governance Solutions Ltd
 # robots.txt - Search Engine Crawler Directives
 # https://www.robotstxt.org/
@@ -17,8 +21,6 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 Disallow: /tmp/
-Disallow: /*.json$
-Disallow: /service-worker.js
 
 # Disallow query strings that create duplicate content
 Disallow: /*?*
@@ -140,17 +142,11 @@ Crawl-delay: 10
 User-agent: MJ12bot
 Disallow: /
 
-User-agent: AhrefsBot
-Crawl-delay: 10
-
 User-agent: DotBot
 Disallow: /
 
 User-agent: BLEXBot
 Disallow: /
-
-User-agent: SemrushBot
-Crawl-delay: 10
 
 # ══════════════════════════════════════════════════════════════════════════════
 # SITEMAP
