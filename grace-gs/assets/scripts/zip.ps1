@@ -1,20 +1,22 @@
-$ErrorActionPreference = 'Stop'
-$dest = 'C:/Users/sala/Desktop/grace-gs.zip'
+<#
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+#>
 
-if (Test-Path $dest) { Remove-Item $dest -Force }
+$ErrorActionPreference = "Stop"
+$ThemeRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$Output    = "$env:USERPROFILE\Desktop\grace-gs.zip"
+$Stage     = Join-Path $env:TEMP "grace-gs-stage"
 
-$items = Get-ChildItem -Path . -Recurse -File | Where-Object {
-    $rel = $_.FullName.Substring((Get-Location).Path.Length + 1)
-    -not (
-        $_.Extension -eq '.zip' -or
-        $_.Name -eq '.gitignore' -or
-        $rel -like 'assets\audio\*' -or
-        $rel -like 'assets\files\*' -or
-        $rel -like 'assets\labs\*' -or
-        $rel -like 'assets\videos\*' -or
-        $rel -like 'assets\scripts\*'
-    )
-}
+if (Test-Path $Output) { Remove-Item $Output -Force }
+if (Test-Path $Stage)  { Remove-Item $Stage  -Recurse -Force }
 
-Compress-Archive -Path $items.FullName -DestinationPath $dest -Force
-Write-Host "Created $dest"
+# Mirror the theme into a clean staging folder, dropping junk on the way
+robocopy $ThemeRoot $Stage /MIR `
+    /XD ".git" ".git\*" "node_modules" "ghost-config" "assets\audio" "assets\files" "assets\labs" "assets\videos" `
+    /XF "*.zip" ".gitignore" | Out-Null
+
+Compress-Archive -Path (Join-Path $Stage '*') -DestinationPath $Output -Force
+Remove-Item $Stage -Recurse -Force
+Write-Host "Zipped to $Output"
