@@ -1,0 +1,34 @@
+<!-- Hero Section -->
+{{!--
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+--}}
+    <section class="hero">
+      {{#if @site.cover_image}}<figure class="hero-bg" title="{{@site.title}}" style="{{#if @site.accent_color}}--cover-color: {{@site.accent_color}}; {{/if}}--cover-url: url({{img_url @site.cover_image}})">
+        <img srcset="{{img_url @site.cover_image size='s'}} 300w, {{img_url @site.cover_image size='m'}} 600w, {{img_url @site.cover_image size='l'}} 1000w, {{img_url @site.cover_image size='xl'}} 2000w" sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url @site.cover_image size='xl'}}" alt="{{@site.title}}" fetchpriority="high" loading="eager" decoding="async" role="presentation" />
+      </figure>{{else}}<figure class="hero-bg"></figure>{{/if}}
+      <div class="container hero-content">
+        <div class="hero-badge">Trusted by 200+ Organisations</div>
+        <h1 class="hero-title">Helping You <span class="text-accent">Manage Your Risks</span></h1>
+        <p class="hero-subtitle">Professional governance, risk management, and compliance software for internal auditors, risk managers, health & safety officers, and operational managers.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary btn-lg">Get Started</a>
+          <a href="#products" class="btn btn-outline btn-lg">Explore Products</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">30+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">180+</span>
+            <span class="stat-label">Risk Profiles</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">200+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+        </div>
+      </div>
+    </section>

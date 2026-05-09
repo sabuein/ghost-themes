@@ -1,0 +1,67 @@
+{{!--
+  partials/pagination.hbs
+  Replaces Ghost's default {{pagination}} output.
+  Scope: page, pages, total, limit, prev, next.
+--}}
+{{#if pages}}
+<nav class="pagination" role="navigation" aria-label="Pagination">
+
+  {{!-- Prev --}}
+  {{#if prev}}
+    <a class="pagination-link pagination-prev"
+       href="{{page_url prev}}" rel="prev" aria-label="Previous page">
+      <svg width="16" height="16" aria-hidden="true"><use href="#i-chevron-left"/></svg>
+      <span>Prev</span>
+    </a>
+  {{else}}
+    <span class="pagination-link pagination-prev is-disabled" aria-hidden="true">
+      <svg width="16" height="16" aria-hidden="true"><use href="#i-chevron-left"/></svg>
+      <span>Prev</span>
+    </span>
+  {{/if}}
+
+  {{!-- Numbered list, populated by JS for 4+ pages --}}
+  <ol class="pagination-pages"
+      data-current-page="{{page}}"
+      data-total-pages="{{pages}}"
+      aria-label="Page numbers">
+    {{!-- JS-disabled fallback: just first / current / last --}}
+    <li>
+      {{#match page "1"}}
+        <span class="pagination-link is-current" aria-current="page">1</span>
+      {{else}}
+        <a class="pagination-link" href="{{page_url 1}}">1</a>
+      {{/match}}
+    </li>
+    {{#match page "1"}}{{else}}{{#match page pages}}{{else}}
+      <li>
+        <span class="pagination-link is-current" aria-current="page">{{page}}</span>
+      </li>
+    {{/match}}{{/match}}
+    {{#match pages "1"}}{{else}}
+      <li>
+        {{#match page pages}}
+          <span class="pagination-link is-current" aria-current="page">{{pages}}</span>
+        {{else}}
+          <a class="pagination-link" href="{{page_url pages}}">{{pages}}</a>
+        {{/match}}
+      </li>
+    {{/match}}
+  </ol>
+
+  {{!-- Next --}}
+  {{#if next}}
+    <a class="pagination-link pagination-next"
+       href="{{page_url next}}" rel="next" aria-label="Next page">
+      <span>Next</span>
+      <svg width="16" height="16" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+    </a>
+  {{else}}
+    <span class="pagination-link pagination-next is-disabled" aria-hidden="true">
+      <span>Next</span>
+      <svg width="16" height="16" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+    </span>
+  {{/if}}
+
+</nav>
+{{/if}}

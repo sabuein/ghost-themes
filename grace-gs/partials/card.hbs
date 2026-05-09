@@ -1,0 +1,70 @@
+{{!--
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+
+  card.hbs — Single post card. Expects to be called inside {{#foreach posts}}.
+  Reads from the post in scope: title, excerpt, feature_image, primary_author, etc.
+--}}
+<article class="post-card {{post_class}}" itemscope itemtype="https://schema.org/Article">
+  <a class="post-card-link" href="{{url}}" aria-label="{{title}}">
+
+    {{#if feature_image}}
+      <figure class="post-card-image-wrap">
+        <img class="post-card-image"
+             srcset="{{img_url feature_image size='s'}} 300w,
+                     {{img_url feature_image size='m'}} 600w,
+                     {{img_url feature_image size='l'}} 1000w"
+             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+             src="{{img_url feature_image size='m'}}"
+             alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+             loading="lazy" decoding="async"
+             itemprop="image" />
+      </figure>
+    {{/if}}
+
+    <div class="post-card-body">
+      {{#primary_tag}}
+        <span class="post-card-tag" itemprop="articleSection">{{name}}</span>
+      {{/primary_tag}}
+
+      <h3 class="post-card-title" itemprop="headline">{{title}}</h3>
+
+      {{#if custom_excerpt}}
+        <p class="post-card-excerpt" itemprop="description">{{custom_excerpt}}</p>
+      {{else}}
+        <p class="post-card-excerpt" itemprop="description">{{excerpt words="24"}}</p>
+      {{/if}}
+
+      <footer class="post-card-meta">
+        {{#primary_author}}
+          <span class="post-card-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            {{#if profile_image}}
+              <img class="post-card-author-avatar"
+                   src="{{img_url profile_image size='xs'}}"
+                   alt="" width="24" height="24" loading="lazy" decoding="async" />
+            {{/if}}
+            <span itemprop="name">{{name}}</span>
+          </span>
+        {{/primary_author}}
+
+        <time class="post-card-date"
+              datetime="{{date published_at format='YYYY-MM-DD'}}"
+              itemprop="datePublished">
+          {{date published_at format="DD MMM YYYY"}}
+        </time>
+
+        {{#if reading_time}}
+          <span class="post-card-reading-time">{{reading_time}}</span>
+        {{/if}}
+
+        {{#match featured}}
+          <span class="post-card-featured" aria-label="Featured post">
+            {{> "icons/featured"}}
+          </span>
+        {{/match}}
+      </footer>
+    </div>
+
+  </a>
+</article>
