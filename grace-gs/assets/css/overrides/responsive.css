@@ -1,0 +1,204 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer overrides {
+
+    /* ===== Responsive Styles ===== */
+    @media (max-width: 1100px) {
+        .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .about-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-brand {
+            grid-column: span 2;
+        }
+    }
+
+    /* ── Mobile: dialog becomes a slide-in panel ──────────────────────── */
+    @media (max-width: 767px) {
+        .nav-links {
+            display: none;
+            /* closed state */
+        }
+
+        .nav-links[open] {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            position: fixed;
+            inset: 4rem 0 0 0;
+            width: 100%;
+            /* below header */
+            max-width: 100%;
+            height: calc(100dvh - 4rem);
+            max-height: calc(100dvh - 4rem);
+            margin: 0;
+            padding: var(--spacing-lg);
+            background-color: var(--color-background);
+            border: none;
+            border-top: 1px solid var(--color-border);
+            z-index: var(--z-modal);
+        }
+
+        .nav-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            width: 100%;
+        }
+
+        .nav-links::backdrop {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-toggle {
+            display: flex;
+        }
+
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (min-width: 768px) {
+
+        /* On desktop, never run as a modal — even if JS calls showModal() */
+        .nav-links::backdrop {
+            display: none;
+        }
+
+        .mobile-toggle {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        .mobile-toggle {
+            display: flex;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .hero-stats {
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .cookie-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .footer-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .footer-brand {
+            grid-column: auto;
+        }
+
+        .footer-brand p {
+            max-width: none;
+        }
+
+        .footer-brand .logo {
+            justify-content: center;
+        }
+
+        .social-links {
+            justify-content: center;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            gap: var(--spacing-md);
+            text-align: center;
+        }
+
+        .input-group {
+            flex-direction: column;
+        }
+
+        .clients-row {
+            gap: var(--spacing-sm);
+        }
+
+        .client-card {
+            min-width: 140px;
+            padding: var(--spacing-md);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-actions {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .hero-actions .btn {
+            width: 100%;
+        }
+
+        .cta-actions {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .cta-actions .btn {
+            width: 100%;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .feature-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .feature-icon {
+            margin: 0 auto;
+        }
+
+        .input-group {
+            flex-direction: column;
+        }
+    }
+
+}

@@ -1,0 +1,121 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer tokens {
+    :root {
+        color-scheme: light dark;
+
+        /* ─────────── Brand / Colour ─────────── */
+        --color-primary: #84cc16;
+        --color-primary-dark: #65a30d;
+        --color-primary-light: #a3e635;
+
+        /* Text-safe accent that meets WCAG AA on body backgrounds.
+           #3f6212 on #ffffff → 7.1:1   (AAA)
+           #bef264 on #0a0a0a → 13.5:1  (AAA)                       */
+        --color-accent-text: light-dark(#3f6212, #bef264);
+
+        --color-primary-muted: light-dark(rgba(132, 204, 22, 0.10), rgba(132, 204, 22, 0.15));
+        --color-primary-emphasis: light-dark(var(--color-primary-dark), var(--color-primary-light));
+
+        /* Surfaces */
+        --color-background: light-dark(#ffffff, #0a0a0a);
+        --color-background-alt: light-dark(#f8fafc, #111111);
+        --color-surface: light-dark(#ffffff, #171717);
+        --color-surface-elevated: light-dark(#ffffff, #1f1f1f);
+        --color-header-scrolled: light-dark(rgba(255, 255, 255, 0.85), rgba(10, 10, 10, 0.85));
+
+        --header-height: 4rem;
+        /* matches .nav { height: 4rem } in nav.css */
+
+        /* Text */
+        --color-text: light-dark(#0f172a, #fafafa);
+        --color-text-secondary: light-dark(#475569, #a1a1aa);
+        --color-text-muted: light-dark(#94a3b8, #71717a);
+
+        /* Borders */
+        --color-border: light-dark(#e2e8f0, #27272a);
+        --color-border-light: light-dark(#f1f5f9, #1f1f1f);
+
+        /* ─────────── Typography ─────────── */
+        --font-sans: var(--gh-font-body, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+        --font-display: var(--gh-font-heading, "Space Grotesk", "Inter", sans-serif);
+
+        --text-xs: 0.75rem;
+        /* 12px */
+        --text-sm: 0.875rem;
+        /* 14px */
+        --text-base: 1rem;
+        /* 16px */
+        --text-lg: 1.125rem;
+        /* 18px */
+        --text-xl: 1.25rem;
+        /* 20px */
+        --text-2xl: 1.5rem;
+        /* 24px */
+        --text-3xl: 1.875rem;
+        /* 30px */
+        --text-4xl: 2.25rem;
+        /* 36px */
+
+        /* ─────────── Spacing (4-pt scale) ─────────── */
+        --spacing-xs: 0.5rem;
+        /*  8px */
+        --spacing-sm: 0.75rem;
+        /* 12px */
+        --spacing-md: 1rem;
+        /* 16px */
+        --spacing-lg: 1.5rem;
+        /* 24px */
+        --spacing-xl: 2rem;
+        /* 32px */
+        --spacing-2xl: 3rem;
+        /* 48px */
+        --spacing-3xl: 4rem;
+        /* 64px */
+
+        /* ─────────── Radius ─────────── */
+        --radius-sm: 0.25rem;
+        /*  4px */
+        --radius-md: 0.5rem;
+        /*  8px */
+        --radius-lg: 0.75rem;
+        /* 12px */
+        --radius-xl: 1rem;
+        /* 16px */
+        --radius-full: 9999px;
+
+        /* ─────────── Z-index ─────────── */
+        --z-fixed: 1030;
+        --z-modal: 1050;
+        --z-tooltip: 1080;
+
+        /* ─────────── Motion ─────────── */
+        --transition-fast: 150ms ease;
+        --transition-base: 250ms ease;
+        --transition-slow: 400ms ease;
+
+        /* ─────────── Shadows ─────────── */
+        --shadow-sm: light-dark(0 1px 2px 0 rgba(0, 0, 0, 0.05),
+                0 1px 2px 0 rgba(0, 0, 0, 0.3));
+        --shadow-md: light-dark(0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1),
+                0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3));
+        --shadow-lg: light-dark(0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1),
+                0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4));
+        --shadow-xl: light-dark(0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1),
+                0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5));
+    }
+
+    /* User chose light explicitly */
+    [data-theme="light"] {
+        color-scheme: light;
+    }
+
+    /* User chose dark explicitly */
+    [data-theme="dark"] {
+        color-scheme: dark;
+    }
+}

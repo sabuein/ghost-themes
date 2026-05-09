@@ -1,0 +1,110 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer components {
+
+    /* ===== Footer ===== */
+    .footer {
+        background-color: var(--color-background-alt);
+        border-top: 1px solid var(--color-border);
+        padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr repeat(3, 1fr);
+        gap: var(--spacing-2xl);
+        margin-bottom: var(--spacing-2xl);
+    }
+
+    .footer-brand .logo {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .footer-brand p {
+        font-size: var(--text-sm);
+        color: var(--color-text-secondary);
+        margin-bottom: var(--spacing-lg);
+        max-width: 300px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: var(--spacing-md);
+    }
+
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        color: var(--color-text-secondary);
+        transition: all var(--transition-fast);
+    }
+
+    .social-links a:hover {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        color: #0a0a0a;
+    }
+
+    .footer-links h4 {
+        font-size: var(--text-sm);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .footer-links ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .footer-links a {
+        font-size: var(--text-sm);
+        color: var(--color-text-secondary);
+        transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+        color: var(--color-primary);
+    }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: var(--spacing-xl);
+        border-top: 1px solid var(--color-border);
+    }
+
+    .footer-bottom p {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+    }
+
+    .footer-legal {
+        display: flex;
+        gap: var(--spacing-xl);
+    }
+
+    .footer-legal a {
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+        transition: color var(--transition-fast);
+    }
+
+    .footer-legal a:hover {
+        color: var(--color-primary);
+    }
+
+}

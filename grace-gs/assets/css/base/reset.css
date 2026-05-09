@@ -1,0 +1,23 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer reset {
+
+    /* ===== Reset & Base ===== */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-block-start: var(--header-height);
+    }
+
+}
