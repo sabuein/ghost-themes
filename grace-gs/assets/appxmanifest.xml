@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+Route A — PWABuilder generates it (recommended)
+For a first Store submission, this is the path of least resistance:
+
+Go to pwabuilder.com and enter your URL (https://gracegs.com/).
+Click Package for stores → Windows.
+Fill in:
+
+Package ID — reserved name from Microsoft Partner Center (e.g. 1234AbuEinTechnologies.GraceGS)
+Publisher ID — also from Partner Center (e.g. CN=ABCD1234-...)
+Display name — what users see in Start menu
+App version — 4-part version like 1.0.0.0
+
+
+Download the zip — it includes a generated appxmanifest.xml plus the MSIX package.
+
+The generated file is what Microsoft Store actually wants. You can keep a copy in your repo as a
+record, but PWABuilder will regenerate it for each new release.
+Route B — Hand-write it
+Useful if you want full control, are doing CI-driven Store submissions, or want to keep the
+manifest in version control. Here's a complete one tailored to your project:
+
+-->
+
+<!--
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+
+  appxmanifest.xml — Microsoft Store PWA package descriptor.
+  Used by MSIX/AppX packaging tooling (PWABuilder, MakeAppx, MSBuild).
+
+  IMPORTANT: Identity/Name and Publisher MUST match values reserved at
+  https://partner.microsoft.com/dashboard. The placeholders below will
+  fail Store submission until replaced with your real reservation values.
+-->
+
+<!--
+
+What needs filling in before submission
+
+Field               Where to get it                             Example 
+Identity Name       Partner Center → App → Product identity     1234AbuEinTechnologies.GraceGS
+Identity Publisher  Partner Center → App → Product identity     CN=ABCD1234-...
+Identity Version    Match package.json version + revision       1.0.0.0
+Properties Logo     Path to a 50×50 store logo                  already in the theme assets
+
+-->
+<Package
+    xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+    xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+    xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+    xmlns:uap10="http://schemas.microsoft.com/appx/manifest/uap/windows10/10"
+    xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+    IgnorableNamespaces="uap uap3 uap10 rescap">
+
+    <!--
+    Identity:
+      Name      — reserved package name from Partner Center
+                  (e.g. "1234AbuEinTechnologies.GraceGS")
+      Publisher — reserved publisher CN from Partner Center
+                  (e.g. "CN=ABCD1234-1234-1234-1234-1234ABCD5678")
+      Version   — must be 4-part (Major.Minor.Build.Revision); the
+                  Revision MUST end in 0 for Store submissions.
+  -->
+    <Identity
+        Name="REPLACE.GraceGS"
+        Publisher="CN=REPLACE_WITH_PUBLISHER_CN"
+        Version="1.0.0.0" />
+
+    <Properties>
+        <DisplayName>Grace Governance Solutions</DisplayName>
+        <PublisherDisplayName>AbuEin Technologies</PublisherDisplayName>
+        <Logo>assets/images/windows11/StoreLogo.scale-100.png</Logo>
+    </Properties>
+
+    <Dependencies>
+        <!-- Windows 10 1809 / Windows 11 baseline. Bump if you need newer APIs. -->
+        <TargetDeviceFamily Name="Windows.Universal"
+            MinVersion="10.0.17763.0"
+            MaxVersionTested="10.0.22621.0" />
+        <TargetDeviceFamily Name="Windows.Desktop"
+            MinVersion="10.0.17763.0"
+            MaxVersionTested="10.0.22621.0" />
+    </Dependencies>
+
+    <Resources>
+        <Resource Language="en-GB" />
+        <Resource Language="en-US" />
+    </Resources>
+
+    <Applications>
+        <Application Id="App"
+            StartPage="https://gracegs.com/"
+            uap10:RuntimeBehavior="packagedClassicApp"
+            uap10:TrustLevel="mediumIL">
+
+            <uap:VisualElements
+                DisplayName="Grace GS"
+                Description="Keeping public sector organisations in control since 2003."
+                BackgroundColor="#0a0a0a"
+                Square150x150Logo="assets/images/windows11/Square150x150Logo.scale-100.png"
+                Square44x44Logo="assets/images/windows11/Square44x44Logo.scale-100.png">
+
+                <uap:DefaultTile
+                    ShortName="Grace GS"
+                    Wide310x150Logo="assets/images/windows11/Wide310x150Logo.scale-100.png"
+                    Square71x71Logo="assets/images/windows11/SmallTile.scale-100.png"
+                    Square310x310Logo="assets/images/windows11/LargeTile.scale-100.png">
+                    <uap:ShowNameOnTiles>
+                        <uap:ShowOn Tile="square150x150Logo" />
+                        <uap:ShowOn Tile="wide310x150Logo" />
+                        <uap:ShowOn Tile="square310x310Logo" />
+                    </uap:ShowNameOnTiles>
+                </uap:DefaultTile>
+
+                <uap:SplashScreen
+                    Image="assets/images/windows11/SplashScreen.scale-100.png"
+                    BackgroundColor="#0a0a0a" />
+
+                <uap:LockScreen
+                    BadgeLogo="assets/images/windows11/StoreLogo.scale-100.png"
+                    Notification="badge" />
+            </uap:VisualElements>
+
+            <!-- Web app integration: the Store launches the URL via Edge WebView2 -->
+            <Extensions>
+
+                <!-- Protocol handler: web+service:// links open the PWA -->
+                <uap:Extension Category="windows.protocol">
+                    <uap:Protocol Name="web+service">
+                        <uap:DisplayName>Grace Service Link</uap:DisplayName>
+                    </uap:Protocol>
+                </uap:Extension>
+
+                <!-- Jump list shortcuts (mirrors app.webmanifest "shortcuts") -->
+                <uap3:Extension Category="windows.appExtension">
+                    <uap3:AppExtension Name="com.gracegs.shortcuts"
+                        Id="contact-shortcut"
+                        DisplayName="Contact Us"
+                        Description="Get in touch with Grace Governance Solutions"
+                        PublicFolder="Public" />
+                </uap3:Extension>
+
+            </Extensions>
+        </Application>
+    </Applications>
+
+    <Capabilities>
+        <!-- The PWA needs network access to load https://gracegs.com -->
+        <Capability Name="internetClient" />
+        <!-- If the PWA later uses geolocation, push notifications, etc.,
+         declare those capabilities here. -->
+    </Capabilities>
+
+</Package>
