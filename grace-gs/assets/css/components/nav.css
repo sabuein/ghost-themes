@@ -87,6 +87,14 @@
         /* let <li> children flow into the flex row */
     }
 
+    .nav-links .nav-menu-item {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .nav-links .nav-menu-item.is-current {
+        background: linear-gradient(135deg, var(--color-primary-muted), var(--color-surface-elevated));
+    }
+
     /* When the dialog is closed on desktop, still show as a row */
     .nav-links:not([open]) {
         display: flex;

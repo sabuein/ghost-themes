@@ -48,8 +48,12 @@
         margin: 0;
     }
 
-    .post-comments-cta a {
+    .post-comments-cta a:not(.btn) {
         color: var(--color-primary);
+        text-decoration: none;
+    }
+
+    .post-comments-cta a:not(.btn):hover {
         text-decoration: underline;
     }
 
