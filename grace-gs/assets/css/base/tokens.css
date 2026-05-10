@@ -9,36 +9,36 @@
         color-scheme: light dark;
 
         /* ─────────── Brand / Colour ─────────── */
-        --color-primary: #84cc16;
-        --color-primary-dark: #65a30d;
-        --color-primary-light: #a3e635;
+        --color-primary: light-dark(#2563EB, #38BDF8);
+        --color-primary-dark: light-dark(#1D4ED8, #0EA5E9);
+        --color-primary-light: light-dark(#3B82F6, #7DD3FC);
 
-        /* Text-safe accent that meets WCAG AA on body backgrounds.
-           #3f6212 on #ffffff → 7.1:1   (AAA)
-           #bef264 on #0a0a0a → 13.5:1  (AAA)                       */
-        --color-accent-text: light-dark(#3f6212, #bef264);
+        /* WCAG AA-safe accent for body text
+   #1D4ED8 on #FFFFFF → 7.6:1   (AAA)
+   #7DD3FC on #0B1324 → 11.8:1  (AAA) */
+        --color-accent-text: light-dark(#1D4ED8, #7DD3FC);
 
-        --color-primary-muted: light-dark(rgba(132, 204, 22, 0.10), rgba(132, 204, 22, 0.15));
+        --color-primary-muted: light-dark(rgba(37, 99, 235, 0.10), rgba(56, 189, 248, 0.15));
         --color-primary-emphasis: light-dark(var(--color-primary-dark), var(--color-primary-light));
 
         /* Surfaces */
-        --color-background: light-dark(#ffffff, #0a0a0a);
-        --color-background-alt: light-dark(#f8fafc, #111111);
-        --color-surface: light-dark(#ffffff, #171717);
-        --color-surface-elevated: light-dark(#ffffff, #1f1f1f);
-        --color-header-scrolled: light-dark(rgba(255, 255, 255, 0.85), rgba(10, 10, 10, 0.85));
+        --color-background: light-dark(#FFFFFF, #0B1324);
+        --color-background-alt: light-dark(#F4F6F8, #111C2F);
+        --color-surface: light-dark(#FFFFFF, #1B2436);
+        --color-surface-elevated: light-dark(#FFFFFF, #243049);
+        --color-header-scrolled: light-dark(rgba(255, 255, 255, 0.85), rgba(11, 19, 36, 0.85));
 
         --header-height: 4rem;
         /* matches .nav { height: 4rem } in nav.css */
 
         /* Text */
-        --color-text: light-dark(#0f172a, #fafafa);
-        --color-text-secondary: light-dark(#475569, #a1a1aa);
-        --color-text-muted: light-dark(#94a3b8, #71717a);
+        --color-text: light-dark(#0F172A, #F5F7FA);
+        --color-text-secondary: light-dark(#475569, #94A3B8);
+        --color-text-muted: light-dark(#64748B, #64748B);
 
         /* Borders */
-        --color-border: light-dark(#e2e8f0, #27272a);
-        --color-border-light: light-dark(#f1f5f9, #1f1f1f);
+        --color-border: light-dark(#E2E8F0, #243049);
+        --color-border-light: light-dark(#F1F5F9, #1B2436);
 
         /* ─────────── Typography ─────────── */
         --font-sans: var(--gh-font-body, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
