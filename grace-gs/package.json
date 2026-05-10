@@ -26,9 +26,9 @@
         "build:css": "node ./assets/scripts/build-css.js",
         "minify:css": "node ./assets/scripts/minify-css.js",
         "minify:js": "node ./assets/scripts/minify-js.js",
-        "build": "npm run --silent clean:min && npm run --silent build:css && npm run --silent minify:css && npm run --silent minify:js",
-        "minify:css:files": "lightningcss --minify --targets \">= 0.25%\" \"assets/css/**/*.css\" --output-dir-in-place --extension .min.css",
-        "zip": "npm-run-all build win:zip",
+        "build": "npm run clean:min && npm run build:css && npm run minify:css && npm run minify:css:files && npm run minify:js",
+        "minify:css:files": "node ./assets/scripts/minify-css-files.js",
+        "zip": "npm run win:zip",
         "zip:posix": "zip -r $HOME/Desktop/grace-gs.zip * -x '.git/*' '*.zip' 'assets/audio/*' 'assets/files/*' 'assets/labs/*' 'assets/videos/*' 'ghost-config/*' '.gitignore'",
         "ghost:start": "ghost start -d ~/my/instances/ghost-25",
         "ghost:restart": "ghost restart -d ~/my/instances/ghost-25",
@@ -44,7 +44,8 @@
         "win:log": "ghost log -d C:/Users/sala/my/ghost-cms",
         "win:debug": "npm-run-all win:stop win:run",
         "win:dev": "npm-run-all win:start scan",
-        "win:zip": "powershell -NoProfile -ExecutionPolicy Bypass -File ./assets/scripts/zip.ps1",
+        "win:zip": "npm-run-all build win:zip:archive",
+        "win:zip:archive": "powershell -NoProfile -ExecutionPolicy Bypass -File ./assets/scripts/zip.ps1",
         "win:symlink": "npm run build && powershell -Command \"New-Item -ItemType SymbolicLink -Path C:/Users/sala/my/ghost-cms/content/themes/grace-gs -Target $PWD\""
     },
     "devDependencies": {
