@@ -4,6 +4,7 @@ assets/**/*.min.mjs
 assets/**/*.min.js
 assets/favicon.ico
 assets/images/*
+assets/screenshots/*
 assets/labs/*
 node_modules/*
 package-lock.json
