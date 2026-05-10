@@ -12,7 +12,7 @@
  * any enhancements that the current browser supports.
  */
 
-const SW_URL = "/service-worker.mjs";
+const SW_URL = (location.hostname === "localhost") ? "/service-worker.mjs" : "/service-worker.min.mjs";
 const SW_SCOPE = "/";
 
 export async function initPWA() {

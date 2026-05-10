@@ -40,8 +40,9 @@ const SHELL_ASSETS = [
     "/assets/js/enhancements/view-transitions.mjs",
 
     // Ghost
-    "https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js",
-    "https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js",
+    "https://cdn.jsdelivr.net/ghost/portal@~2.68/umd/portal.min.js",
+    "https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js",
+    "https://cdn.jsdelivr.net/ghost/announcement-bar@~1.1/umd/announcement-bar.min.js",
 
     // JSON-LD module
     "/assets/json/site.jsonld",
