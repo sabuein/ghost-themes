@@ -6,17 +6,27 @@
 
 $ErrorActionPreference = "Stop"
 $ThemeRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
-$Output    = "$env:USERPROFILE\Desktop\grace-gs.zip"
+$Output = Join-Path ([Environment]::GetFolderPath('Desktop')) "grace-gs.zip"
 $Stage     = Join-Path $env:TEMP "grace-gs-stage"
 
 if (Test-Path $Output) { Remove-Item $Output -Force }
 if (Test-Path $Stage)  { Remove-Item $Stage  -Recurse -Force }
 
 # Mirror the theme into a clean staging folder, dropping junk on the way
-robocopy $ThemeRoot $Stage /MIR `
-    /XD ".git" ".git\*" "node_modules" "ghost-config" "assets\audio" "assets\files" "assets\labs" "assets\videos" `
-    /XF "*.zip" ".gitignore" | Out-Null
+$exDirs = @(
+    (Join-Path $ThemeRoot ".git"),
+    "node_modules",
+    (Join-Path $ThemeRoot "ghost-config"),
+    (Join-Path $ThemeRoot "assets\audio"),
+    (Join-Path $ThemeRoot "assets\files"),
+    (Join-Path $ThemeRoot "assets\labs"),
+    (Join-Path $ThemeRoot "assets\videos")
+)
+robocopy $ThemeRoot $Stage /MIR /XD @exDirs /XF "*.zip" ".gitignore" | Out-Null
+if ($LASTEXITCODE -ge 8) { throw "robocopy failed with exit code $LASTEXITCODE" }
+$global:LASTEXITCODE = 0
+if (-not (Test-Path $Stage)) { throw "Staging folder was not created -- check exclusions." }
 
-Compress-Archive -Path (Join-Path $Stage '*') -DestinationPath $Output -Force
+Get-ChildItem -Path $Stage -Force | Compress-Archive -DestinationPath $Output -Force
 Remove-Item $Stage -Recurse -Force
 Write-Host "Zipped to $Output"
