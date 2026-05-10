@@ -8,8 +8,8 @@
 
 /* ── Theme tokens kept in one place so JS and CSS agree ─────────────────── */
 const THEME_COLORS = {
-    light: '#ffffff',
-    dark: '#0a0a0a'
+    light: '#2563EB',
+    dark: '#0B1324'
 };
 
 /**
