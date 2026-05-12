@@ -7,7 +7,7 @@
   Reads from the post in scope: title, excerpt, feature_image, primary_author, etc.
 --}}
 <article class="post-card {{post_class}}" itemscope itemtype="https://schema.org/Article">
-  <a class="post-card-link" href="{{url}}" aria-label="{{title}}">
+  <a class="post-card-link" href="{{url}}" title="{{title}}" aria-label="{{title}}">
 
     {{#if feature_image}}
       <figure class="post-card-image-wrap">

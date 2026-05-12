@@ -7,11 +7,11 @@
     <section class="section cta-section" id="contact">
       <div class="container">
         <div class="cta-container">
-          <h2>Ready to Transform Your Risk Management?</h2>
-          <p>Get in touch with our team to discover how Grace Governance Solutions can help your organization achieve excellence in governance and compliance.</p>
+          <h2>{{#if @custom.cta_heading}}{{@custom.cta_heading}}{{else}}{{/if}}</h2>
+          <p>{{#if @custom.cta_text}}{{@custom.cta_text}}{{else}}{{/if}}</p>
           <div class="cta-actions">
-            <button class="btn btn-primary btn-lg" id="contact-btn">Contact Us</button>
-            <a href="tel:+441onal234567890" class="btn btn-outline btn-lg">Call Us</a>
+            <button type="button" class="btn btn-primary btn-lg" id="contact-btn" title="Contact Us">Contact Us</button>
+            <a href="tel:+{{#if @custom.cta_tel}}{{@custom.cta_tel}}{{else}}599094095{{/if}}" class="btn btn-outline btn-lg" title="Call Us">Call Us</a>
           </div>
         </div>
       </div>

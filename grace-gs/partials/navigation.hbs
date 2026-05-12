@@ -7,16 +7,8 @@
   In scope: navigation (array of {label, url, current}).
   The `type` arg lets us style primary vs. secondary differently.
 --}}
-{{#if navigation}}
-<ul class="nav-menu nav-menu--{{type}}">
-  {{#foreach navigation}}
-    <li class="nav-menu-item{{#if current}} is-current{{/if}}">
-      <a href="{{url}}"
-         {{#if current}}aria-current="page"{{/if}}
-         class="nav-menu-link">
-        {{label}}
-      </a>
-    </li>
-  {{/foreach}}
-</ul>
-{{/if}}
+{{#if isSecondary}}<ul class="nav-menu nav-menu--{{type}}" role="menu">
+  {{#foreach navigation}}<li class="nav-menu-item {{slug}}{{#if current}} is-current{{/if}}" title="{{label}}" role="menuitem"><a href="{{url}}" {{#if current}}aria-current="page"{{/if}} class="nav-menu-link" title="{{label}}">{{label}}</a>{{/foreach}}
+</ul>{{else}}<ul class="nav-menu nav-menu--{{type}}" role="menu">
+  {{#foreach navigation}}<li class="nav-menu-item{{#if current}} is-current{{/if}} {{link_class for=(url) class=(concat "nav-" slug)}}" role="menuitem"><a href="{{url absolute='true'}}" {{#if current}}aria-current="page"{{/if}} class="nav-menu-link" title="{{label}}">{{label}}</a></li>{{/foreach}}
+</ul>{{/if}}
