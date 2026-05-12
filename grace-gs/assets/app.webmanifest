@@ -503,14 +503,14 @@
     ],
     "screenshots": [
         {
-            "src": "/assets/screenshots/screenshot-desktop.png",
+            "src": "/assets/images/screenshots/screenshot-desktop.png",
             "sizes": "1280x720",
             "type": "image/png",
             "form_factor": "wide",
             "label": "Grace GS Desktop View"
         },
         {
-            "src": "/assets/screenshots/screenshot-mobile.png",
+            "src": "/assets/images/screenshots/screenshot-mobile.png",
             "sizes": "390x844",
             "type": "image/png",
             "form_factor": "narrow",
