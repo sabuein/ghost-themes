@@ -8,7 +8,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="{{@site.url}}" title="{{@site.title}}" class="logo">
+          <a href="{{@site.url}}" title="{{@site.title}}" class="logo" rel="home">
             <div class="logo-icon">
               <span class="logo-square"></span>
               <span class="logo-square"></span>
@@ -18,22 +18,22 @@
           </a>
           <p>{{@site.description}}</p>
           <div class="social-links">
-            <a href="{{@site.linkedin}}" title="{{@site.title}} on LinkedIn" aria-label="{{@site.title}} on LinkedIn">
+            <a href="https://www.linkedin.com/company/rapid-information-systems/" title="{{@site.title}} on LinkedIn" aria-label="{{@site.title}} on LinkedIn"  target="_blank" rel="me noopener">
               <svg width="20" height="20" aria-hidden="true">
         <use href="#i-linkedin"/>
     </svg>
             </a>
-            {{#if @site.twitter}}<a href="{{@site.twitter}}" aria-label="Twitter">
+            {{#if @site.twitter}}<a href="https://x.com/{{@site.twitter}}" title="{{@site.title}} on X" aria-label="{{@site.title}} on X"  target="_blank" rel="me noopener">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
               </svg>
             </a>{{/if}}
-            {{#if @site.facebook}}<a href="{{@site.facebook}}" aria-label="Facebook">
+            {{#if @site.facebook}}<a href="https://www.facebook.com/{{@site.facebook}}/" title="{{@site.title}} on Facebook" aria-label="{{@site.title}} on Facebook"  target="_blank" rel="me noopener">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>
             </a>{{/if}}
-            <a href="https://www.youtube.com/@Rapid-isUk" title="{{@site.title}} on YouTube" aria-label="{{@site.title}} on YouTube" target="_blank" rel="noopener">
+            <a href="https://www.youtube.com/@Rapid-isUk" title="{{@site.title}} on YouTube" aria-label="{{@site.title}} on YouTube"  target="_blank" rel="me noopener">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
                 <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
@@ -70,12 +70,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Grace Governance Solutions Ltd. All rights reserved.</p>
-        <div class="footer-legal">
-          <button disabled="disabled"><a href="{{@site.url}}">Privacy Policy</a></button>
-          <button disabled="disabled"><a href="{{@site.url}}">Terms & Conditions</a></button>
-          <button disabled="disabled"><a href="{{@site.url}}">Cookie Policy</a></button>
-        </div>
+        <p>&copy; 2026 {{@site.title}}. All rights reserved.</p>
+        {{#if @site.secondary_navigation}}<nav class="footer-legal" aria-label="Secondary">{{navigation type="secondary"}}</nav>{{/if}}
       </div>
     </div>
   </footer>
