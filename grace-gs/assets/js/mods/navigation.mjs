@@ -34,6 +34,10 @@ function applyTheme(theme) {
             "aria-label",
             isDark ? "Switch to light mode" : "Switch to dark mode"
         );
+        toggle.setAttribute(
+            "title",
+            isDark ? "Switch to light mode" : "Switch to dark mode"
+        );
     }
 }
 

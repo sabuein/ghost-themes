@@ -21,7 +21,10 @@ export async function initPWA() {
     // Don't fight the browser during local dev with hot reloads
     // Swap to 127.0.0.1:2368 in the URL bar and the SW will register.
     // Or temporarily comment out the line below while testing PWA features.
-    if (location.hostname === "localhost") return;
+    if (location.hostname === "localhost") {
+        console.info("Swap to 127.0.0.1:2368 in the URL bar and the SW will register.");
+        return;
+    }
 
     try {
         const reg = await navigator.serviceWorker.register(SW_URL, {

@@ -130,21 +130,19 @@ function initForms() {
   // Newsletter Form
   const newsletterForm = document.getElementById("newsletter-form");
   if (!newsletterForm) return;
-  newsletterForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const email = newsletterForm.querySelector('input[type="email"]').value;
-
+  newsletterForm.addEventListener("reset", (e) => {
+    // e.preventDefault();
+    // const email = newsletterForm.querySelector('input[type="email"]').value;
     // Simulate subscription
-    console.log("Newsletter subscription:", email);
-
-    // Show success message
-    const status = document.getElementById('newsletter-status');
-    status.textContent = "Thank you for subscribing — check your email.";
-    newsletterForm.reset();
-    setTimeout(() => { status.textContent = ""; }, 6000);
-
+    // console.log("Newsletter subscription:", email);
     // Reset form
-    newsletterForm.reset();
+    /*
+    setTimeout(() => {
+      newsletterForm.reset();
+      newsletterForm.classList.remove(...["loading", "success", "error", "invalid"]);
+    }, 5000);
+    */
+   newsletterForm.classList.remove(...["loading", "success", "error", "invalid"]);
+   newsletterForm.querySelector('input[type="text"]').focus();
   });
 }
