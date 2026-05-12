@@ -23,7 +23,7 @@ const SHELL_ASSETS = [
     "/offline",                             // pre-cache offline route
     "/assets/app.webmanifest",
     "/assets/appxmanifest.xml",
-    "/assets/favicon.ico",
+    "/assets/icons/favicon.ico",
 
     // JS modules
     "/assets/js/application.mjs",
