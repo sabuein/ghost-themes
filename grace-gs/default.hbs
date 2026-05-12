@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<!-- default.hbs -->
-{{!--
-Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  {{!--
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
   https://abuein.dev/
   SPDX-License-Identifier: MIT
   --}}
+  <!-- default.hbs -->
   <html lang="{{@site.locale}}">
-
   <head>
     {{!-- log this --}}
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="keywords"
-      content="risk management, governance, compliance, internal audit, GRACE, HARRIET, health and safety" />
+    <meta name="keywords" content="risk management, governance, compliance, internal audit, GRACE, HARRIET, health and safety" />
     <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -20,12 +18,11 @@ Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.
     <meta name="theme-color" content="#0B1324" media="(prefers-color-scheme: dark)" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="author" href="{{@site.url}}/humans.txt" type="text/plain" />
-
     <link rel="modulepreload" href="{{asset 'js/application.mjs'}}" crossorigin="anonymous" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous" />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
-    <link rel="icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset 'icons/favicon.ico'}}" />
+    <link rel="icon" type="image/x-icon" href="{{asset 'icons/favicon.ico'}}" />
     {{!-- This boot script sets the theme pre-paint so there's no flash --}}
     <script>
       try {
@@ -38,68 +35,52 @@ Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.
     </script>
     {{> "json-ld"}}
     <script type="importmap">
-{
-  "imports": {
-    "helpers":    "{{asset 'js/mods/helpers.mjs' hasMinFile='true'}}",
-    "jsonld":     "{{asset 'js/mods/jsonld.mjs' hasMinFile='true'}}",
-    "nav":        "{{asset 'js/mods/navigation.mjs' hasMinFile='true'}}",
-    "pagination": "{{asset 'js/mods/pagination.mjs' hasMinFile='true'}}",
-    "pwa":        "{{asset 'js/mods/pwa.mjs' hasMinFile='true'}}",
-    "comments":   "{{asset 'js/enhancements/comments-theme.mjs' hasMinFile='true'}}",
-    "share":      "{{asset 'js/enhancements/share.mjs' hasMinFile='true'}}"
-  }
-}
-</script>
+        {
+          "imports": {
+            "helpers":    "{{asset 'js/mods/helpers.mjs' hasMinFile='true'}}",
+            "jsonld":     "{{asset 'js/mods/jsonld.mjs' hasMinFile='true'}}",
+            "nav":        "{{asset 'js/mods/navigation.mjs' hasMinFile='true'}}",
+            "pagination": "{{asset 'js/mods/pagination.mjs' hasMinFile='true'}}",
+            "pwa":        "{{asset 'js/mods/pwa.mjs' hasMinFile='true'}}",
+            "comments":   "{{asset 'js/enhancements/comments-theme.mjs' hasMinFile='true'}}",
+            "share":      "{{asset 'js/enhancements/share.mjs' hasMinFile='true'}}"
+          }
+        }
+    </script>
     <style>
-      :root {
-        --color-primary: {{#if @custom.accent_color}}{{@custom.accent_color}}{{else}}var(--ghost-accent-color){{/if}};
-      }
+      @layer reset, tokens, base, utilities, components, overrides, ghost;
+      {{#if @custom.accent_color}}:root {--package_color: {{@custom.accent_color}};}{{/if}}
     </style>
-    {{!-- Cascade layer order — declare once --}}
-<style>@layer reset, tokens, base, utilities, components, overrides, ghost;</style>
     {{!-- Tokens & base --}}
     <link rel="stylesheet" href="{{asset 'css/base/reset.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/base/tokens.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/base/elements.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/base/utilities.css' hasMinFile='true'}}" type="text/css" media="all" />
     {{!-- Components --}}
-    <link rel="stylesheet" href="{{asset 'css/components/buttons.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/buttons.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/nav.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/hero.css' hasMinFile='true'}}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/section.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/section.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/about.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/author.css' hasMinFile='true'}}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/products.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/features.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/clients.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/products.css' hasMinFile='true'}}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/features.css' hasMinFile='true'}}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/clients.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/faq.css' hasMinFile='true'}}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/newsletter.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/offline.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/post.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
-      <link rel="stylesheet" href="{{asset 'css/components/sharing.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
-      <link rel="stylesheet" href="{{asset 'css/components/post-card.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/pagination.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/newsletter.css' hasMinFile='true'}}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/offline.css' hasMinFile='true'}}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/post.css' hasMinFile='true'}}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/sharing.css' hasMinFile='true'}}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/post-card.css' hasMinFile='true'}}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/pagination.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/cta.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/comments.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/footer.css' hasMinFile='true'}}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{asset 'css/components/cookie-notice.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
+    <link rel="stylesheet" href="{{asset 'css/components/cookie-notice.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/dialog.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/components/error.css' hasMinFile='true'}}" type="text/css" media="all" />
     {{!-- Overrides --}}
-    <link rel="stylesheet" href="{{asset 'css/overrides/responsive.css' hasMinFile='true'}}" type="text/css"
-      media="all" />
+    <link rel="stylesheet" href="{{asset 'css/overrides/responsive.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/overrides/motion.css' hasMinFile='true'}}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{asset 'css/overrides/print.css' hasMinFile='true'}}" type="text/css" media="print" />
     {{!-- Ghost-required overrides last --}}
@@ -122,16 +103,15 @@ Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.
     {{> "app-footer"}}
     {{> "cookie-notice"}}
     {{> "contact-dialog"}}
-    {{#if @site.secondary_navigation}}<nav class="nav container" aria-label="Secondary">{{navigation type="secondary"}}
-    </nav>{{/if}}
-    {{!-- <script type="module">
+    {{!--
+    <script type="module">
       // No DOMContentLoaded wrapper needed — type="module" defers by default
       console.log("Hello from default.hbs!");
     </script> --}}
-    {{!-- Serving a minified asset in production and unminified file in development using hasMinFile hasMinFile='true'
-    --}}
+    {{!-- Serving a minified asset in production and unminified file in development using hasMinFile. --}}
     <script type="module" src="{{asset 'js/application.mjs' hasMinFile='true'}}"></script>
     {{{block "scripts"}}}
     {{ghost_foot}}
   </body>
-</html>
+
+  </html>
