@@ -201,4 +201,11 @@
         }
     }
 
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --color-primary-dark: color-mix(in srgb, var(--accent) 80%, white);
+            --color-primary-light: color-mix(in srgb, var(--accent) 80%, black);
+        }
+    }
+
 }

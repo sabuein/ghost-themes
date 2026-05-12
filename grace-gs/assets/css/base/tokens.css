@@ -9,17 +9,41 @@
         color-scheme: light dark;
 
         /* ─────────── Brand / Colour ─────────── */
-        --color-primary: light-dark(#2563EB, #38BDF8);
-        --color-primary-dark: light-dark(#1D4ED8, #0EA5E9);
-        --color-primary-light: light-dark(#3B82F6, #7DD3FC);
+        /* Single source of truth — Ghost injects --ghost-accent-color on render.
+           Fallback covers local dev, email renders, and offline SW boot. */
+        --accent: var(--ghost-accent-color, #2563EB);
 
-        /* WCAG AA-safe accent for body text
-   #1D4ED8 on #FFFFFF → 7.6:1   (AAA)
-   #7DD3FC on #0B1324 → 11.8:1  (AAA) */
-        --color-accent-text: light-dark(#1D4ED8, #7DD3FC);
+        /* Core accent ramp — derived so any Ghost accent flows through */
+        --color-primary: var(--accent);
+        --color-primary-dark: color-mix(in srgb, var(--accent) 80%, black);
+        --color-primary-light: color-mix(in srgb, var(--accent) 80%, white);
 
-        --color-primary-muted: light-dark(rgba(37, 99, 235, 0.10), rgba(56, 189, 248, 0.15));
+        /* Text-on-accent (for filled buttons, badges, etc.)
+           Pure white is the safest universal pairing for typical Ghost accents.
+           If you ever want auto-contrast, swap to: light-dark(#FFFFFF, #0B1324) */
+        --color-on-accent: #FFFFFF;
+
+        /* Accent used *as text* on page background (links, inline emphasis).
+           Darken in light mode, lighten in dark mode so it stays AA-readable
+           regardless of which accent the user picks. */
+        --color-accent-text: light-dark(color-mix(in srgb, var(--accent) 70%, black),
+                color-mix(in srgb, var(--accent) 60%, white));
+
+        /* Hover variant of accent text — slightly stronger */
+        --color-accent-text-hover: light-dark(color-mix(in srgb, var(--accent) 55%, black),
+                color-mix(in srgb, var(--accent) 75%, white));
+
+        /* Subtle tinted backgrounds (callouts, hover states, selection) */
+        --color-primary-muted: light-dark(color-mix(in srgb, var(--accent) 10%, transparent),
+                color-mix(in srgb, var(--accent) 18%, transparent));
+
+        --color-primary-subtle: light-dark(color-mix(in srgb, var(--accent) 6%, white),
+                color-mix(in srgb, var(--accent) 12%, #0B1324));
+
         --color-primary-emphasis: light-dark(var(--color-primary-dark), var(--color-primary-light));
+
+        /* Focus ring (accessibility) */
+        --color-focus-ring: color-mix(in srgb, var(--accent) 50%, transparent);
 
         /* Surfaces */
         --color-background: light-dark(#FFFFFF, #0B1324);
@@ -39,6 +63,7 @@
         /* Borders */
         --color-border: light-dark(#E2E8F0, #243049);
         --color-border-light: light-dark(#F1F5F9, #1B2436);
+        --color-border-accent: color-mix(in srgb, var(--accent) 40%, transparent);
 
         /* ─────────── Typography ─────────── */
         --font-sans: var(--gh-font-body, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
@@ -107,6 +132,9 @@
                 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4));
         --shadow-xl: light-dark(0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1),
                 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5));
+
+        /* Optional: accent-tinted shadow for hero/CTA cards */
+        --shadow-accent: 0 10px 30px -10px color-mix(in srgb, var(--accent) 50%, transparent);
     }
 
     /* User chose light explicitly */

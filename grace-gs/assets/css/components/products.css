@@ -10,6 +10,11 @@
     .products-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-auto-flow: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
         gap: var(--spacing-xl);
     }
 
@@ -60,16 +65,36 @@
         background: var(--color-primary-dark);
     }
 
+    .connie-icon {
+        background: var(--color-primary);
+    }
+
+    .emma-icon {
+        background: var(--color-primary-light);
+    }
+
+    .product-card:has(.emma-icon) {
+        display: none;
+    }
+
     .product-header h3 {
         font-family: var(--font-display);
         font-size: var(--text-2xl);
         font-weight: 700;
+        text-transform: uppercase;
         margin-bottom: var(--spacing-sm);
     }
 
     .product-tagline {
         font-size: var(--text-sm);
         color: var(--color-text-muted);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .product-purpose {
+        font-size: var(--text-md);
+        color: var(--color-text-secondary);
+        text-wrap: pretty;
     }
 
     .product-features {

@@ -50,8 +50,8 @@
     }
 
     .social-links a:hover {
-        background-color: var(--color-primary);
-        border-color: var(--color-primary);
+        background-color: var(--color-accent-text);
+        border-color: var(--color-accent-text);
         color: #0a0a0a;
     }
 
