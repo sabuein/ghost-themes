@@ -13,8 +13,8 @@
 	Name: Tabler Icons
 	URL: https://github.com/tabler/tabler-icons/tree/main
 
-	Name: 
-	URL: 
+	Name: SVG Minifier
+	URL: https://www.svgminify.com/
 
 	Name: PWABuilder
 	URL: https://www.pwabuilder.com/
