@@ -11,7 +11,7 @@
         {{#if custom_excerpt}}<p class="quote">{{custom_excerpt}}</p>{{/if}}
         <div class="post-meta">
     <span class="post-author">
-        {{> "icons/events"}}<span>By: {{authors}}</span>
+        {{> "icons/events"}}<span title="By&colon;">By&colon; {{authors}}</span>
     </span>
     <time datetime="{{date published_at format='YYYY-MM-DD'}}" title="Published">
         {{> "icons/events"}}{{date published_at format="DD MMMM YYYY"}}
