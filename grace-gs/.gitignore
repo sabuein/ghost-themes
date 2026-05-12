@@ -2,9 +2,8 @@
 assets/**/*.min.css
 assets/**/*.min.mjs
 assets/**/*.min.js
-assets/favicon.ico
+assets/icons/*
 assets/images/*
-assets/screenshots/*
 assets/labs/*
 node_modules/*
 package-lock.json
