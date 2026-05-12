@@ -13,8 +13,8 @@
         "url": "https://abuein.dev/"
     },
     "screenshots": {
-        "desktop": "/assets/screenshots/screenshot-desktop.png",
-        "mobile": "/assets/screenshots/screenshot-mobile.png"
+        "desktop": "/assets/images/screenshots/screenshot-desktop.png",
+        "mobile": "/assets/images/screenshots/screenshot-mobile.png"
     },
     "scripts": {
         "suppress": "npm config set fund false",
@@ -96,7 +96,25 @@
             "accent_color": {
                 "type": "color",
                 "default": "#84cc16",
-                "description": "Primary brand colour."
+                "description": "Primary brand colour. #84cc16"
+            },
+            "cta_heading": {
+                "type": "text",
+                "default": "Ready to Transform Your Risk Management?",
+                "group": "post",
+                "description": "Used in a large CTA on the homepage and small one on the sidebar as well."
+            },
+            "cta_text": {
+                "type": "text",
+                "default": "Get in touch with our team to discover how Grace Governance Solutions can help your organization achieve excellence in governance and compliance.",
+                "group": "post",
+                "description": "CTA text."
+            },
+            "cta_tel": {
+                "type": "text",
+                "default": "447930120661",
+                "group": "post",
+                "description": "Primary telephone number."
             }
         }
     },
