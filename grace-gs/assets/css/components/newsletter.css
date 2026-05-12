@@ -31,19 +31,26 @@
 
     .newsletter-content p {
         color: var(--color-text-secondary);
-        margin-bottom: var(--spacing-xl);
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-md);
     }
 
     .newsletter-form {
+        display: flex;
+        flex-direction: column;
         width: 100%;
         max-width: 500px;
     }
 
     .input-group {
         display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
         gap: var(--spacing-sm);
         max-width: 480px;
-        margin: var(--spacing-lg) auto;
     }
 
     .input-group input {
@@ -65,6 +72,29 @@
         font-size: var(--text-xs);
         color: var(--color-text-muted);
         margin-top: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .newsletter-disclaimer a {
+        font-weight: 600;
+        color: var(--color-primary);
+    }
+
+    .newsletter-disclaimer a:hover {
+        color: var(--color-primary-dark);
+        transform: translateY(-1px);
+    }
+
+    /* Form states */
+    :where(.loading, .success, .error, .invalid) {
+        display: none;
+    }
+
+    .loading .loading,
+    .success .success,
+    .error .error,
+    .invalid .invalid {
+        display: block;
     }
 
 }
