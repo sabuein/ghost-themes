@@ -3,14 +3,14 @@
     "description": "A brief explanation of your theme",
     "demo": "demo",
     "version": "1.0.0",
-    "license": "MIT",
     "engines": {
         "ghost": ">=6.17.0"
     },
+    "license": "MIT",
     "author": {
         "name": "Salaheddin AbuEin",
-        "email": "web@support.tufan.uk",
-        "url": "https://sabuein.github.io/"
+        "email": "salaheddin@abuein.dev",
+        "url": "https://abuein.dev/"
     },
     "screenshots": {
         "desktop": "assets/screenshot-desktop.jpg",

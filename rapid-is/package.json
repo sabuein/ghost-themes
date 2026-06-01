@@ -6,7 +6,6 @@
     "engines": {
         "ghost": ">=6.17.0"
     },
-    "license": "NA",
     "screenshots": {
         "mobile": "assets/screenshot-mobile.jpg",
         "desktop": "assets/screenshot-desktop.jpg"
@@ -22,10 +21,11 @@
         "zipl": "zip -r /home/sabuein/Desktop/rapid-is.zip * -x *.zip /assets/labs/* .gitignore",
         "zipw": "zip -r /mnt/c/Users/Sala/Desktop/rapid-is.zip * -x *.zip /assets/labs/* .gitignore"
     },
+    "license": "MIT",
     "author": {
         "name": "Salaheddin AbuEin",
-        "email": "salaheddin.abuein@rapid-is.co.uk",
-        "url": "https://sabuein.github.io/"
+        "email": "salaheddin@abuein.dev",
+        "url": "https://abuein.dev/"
     },
     "gpm": {
         "type": "theme",
