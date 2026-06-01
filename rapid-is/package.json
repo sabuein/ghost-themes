@@ -18,8 +18,8 @@
         "stop": "ghost stop -d ~/my/instances/ghost/",
         "update": "ghost update -d ~/my/instances/ghost/",
         "debug": "ghost run -D -d ~/my/instances/ghost/",
-        "zipl": "zip -r /home/sabuein/Desktop/rapid-is.zip * -x *.zip /assets/labs/* .gitignore",
-        "zipw": "zip -r /mnt/c/Users/Sala/Desktop/rapid-is.zip * -x *.zip /assets/labs/* .gitignore"
+        "zipl": "zip -r /home/sabuein/Desktop/rapid-is.zip * -x *.zip /server/* /assets/labs/* .gitignore",
+        "zipw": "zip -r /mnt/c/Users/Sala/Desktop/rapid-is.zip * -x *.zip /server/* /assets/labs/* .gitignore"
     },
     "license": "MIT",
     "author": {
