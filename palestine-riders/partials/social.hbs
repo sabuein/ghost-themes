@@ -1,0 +1,15 @@
+{{!--
+{{#social_accounts @site}}
+{{#social_accounts author}}
+--}}
+<a href="{{href}}" target="_blank" rel="noopener" aria-label="{{name}}">
+  {{#> (concat "icons/" type)}}
+    {{!-- Fallback rendered when no per-platform icon partial exists --}}
+    <span class="icon icon-web">{{name}}</span>
+  {{/undefined}}
+</a>
+{{else}}
+<p>No social accounts connected yet.</p>
+{{!--
+{{/social_accounts}}
+--}}

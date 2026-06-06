@@ -1,8 +1,11 @@
 <!-- partials/sidebar-footer.hbs -->
 <footer id="sidebar-footer">
-    {{> "social-media"}}
-    {{> "disclosure"}}
     {{> "tips-donations"}}
+    {{!--
+    {{> "social-media"}}
+    --}}
+    {{#social_accounts @site}}{{> "social"}}{{/social_accounts}}
+    {{> "disclosure"}}
     <figure>
         <a href="https://ghost.org/experts/salaheddin-abuein/?via=sabuein&ref={{readable_url @site.url}}" title="Publish with Ghost" target="_blank" rel="noopener noreferrer nofollow" aria-label="Publish with Ghost">{{> "brands/ghost"}}</a>
     </figure>

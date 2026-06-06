@@ -29,7 +29,7 @@
     </div>
     <footer class="author-profile-footer">
         {{#if location}}<div class="author-profile-location">{{location}}</div>{{/if}}
-        <div class="author-profile-meta">
+        {{#social_accounts author}}<div class="author-profile-meta">
             {{#if website}}
                 <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
             {{/if}}
@@ -39,7 +39,7 @@
             {{#if facebook}}
                 <a class="author-profile-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> "brands/facebook"}}</a>
             {{/if}}
-        </div>
+        </div>{{> "social"}}{{/social_accounts}}
     </footer>
 </section>
 {{/author}}
