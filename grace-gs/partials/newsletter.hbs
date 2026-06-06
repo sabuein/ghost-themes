@@ -1,0 +1,32 @@
+<!-- Newsletter Section -->
+{{!--
+Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+  --}}
+  <section class="section section-alt" id="newsletter">
+    <div class="container">
+      <div class="newsletter-container">
+        <div class="newsletter-content">
+          <h2>Stay Updated with Industry Insights</h2>
+          <p>Subscribe to our newsletter for the latest updates on risk management, governance best practices, and
+            product news.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form" data-members-form="subscribe">
+          <input data-members-label="data-members-label" type="hidden" value="Newsletter theme partial." />
+          <input data-members-label="data-members-label" type="hidden" value="{{meta_title}}" />
+          <div class="input-group">
+            <label for="membersName"><input type="text" id="membersName" title="Enter your name" placeholder="John Doe" required="required" autocomplete="name" aria-label="Email address" data-members-name="data-members-name" /></label>
+            <label for="membersEmail"><input type="email" id="membersEmail" title="Enter your email address" placeholder="john.doe@example.com" required="required" autocomplete="email" aria-label="Email address" data-members-email="data-members-email" /></label>
+            <button type="submit" title="Subscribe" class="btn btn-primary">Subscribe</button>
+            <button type="reset" title="Reset" class="btn btn-outline">Reset</button>
+          </div>
+          <p class="loading" aria-live="polite">⏲️ Please hold while we check our collection&hellip;</p>
+          <p class="success" aria-live="polite">🎸 Success! Check your inbox for our email.</p>
+          <p class="error" aria-live="polite">❗Something&apos;s gone wrong. Please try again.</p>
+          <p class="invalid" aria-live="polite">❗Something&apos;s is invalid. Please try again.</p>
+          <p class="newsletter-disclaimer">By subscribing, you agree to our <a href="javascript: return null;" title="Privacy Policy">Privacy Policy</a>. Unsubscribe at any time.</p>
+        </form>
+      </div>
+    </div>
+  </section>

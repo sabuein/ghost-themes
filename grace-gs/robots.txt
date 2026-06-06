@@ -1,0 +1,168 @@
+# Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin
+# https://abuein.dev/  •  salaheddin@abuein.dev
+# SPDX-License-Identifier: MIT
+
+# Grace Governance Solutions Ltd
+# robots.txt - Search Engine Crawler Directives
+# https://www.robotstxt.org/
+
+# ══════════════════════════════════════════════════════════════════════════════
+# DEFAULT RULES - All well-behaved crawlers
+# ══════════════════════════════════════════════════════════════════════════════
+
+User-agent: *
+
+# Allow all public content
+Allow: /
+
+# Disallow administrative and system paths
+Disallow: /ghost/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /tmp/
+
+# Disallow query strings that create duplicate content
+Disallow: /*?*
+Disallow: /*&*
+
+# Allow specific query parameters if needed (uncomment as required)
+# Allow: /*?page=
+# Allow: /*?search=
+
+# Crawl-delay for polite crawling (seconds between requests)
+Crawl-delay: 1
+
+# ══════════════════════════════════════════════════════════════════════════════
+# GOOGLE SPECIFIC
+# ══════════════════════════════════════════════════════════════════════════════
+
+User-agent: Googlebot
+Allow: /
+Disallow: /ghost/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Allow Google to index images
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /assets/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# ══════════════════════════════════════════════════════════════════════════════
+# BING SPECIFIC
+# ══════════════════════════════════════════════════════════════════════════════
+
+User-agent: Bingbot
+Allow: /
+Disallow: /ghost/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Crawl-delay: 1
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SOCIAL MEDIA CRAWLERS
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# ══════════════════════════════════════════════════════════════════════════════
+# AI/LLM CRAWLERS - Block or allow as per your preference
+# ══════════════════════════════════════════════════════════════════════════════
+
+# OpenAI GPTBot
+User-agent: GPTBot
+Disallow: /
+
+# Google Bard / Gemini
+User-agent: Google-Extended
+Disallow: /
+
+# Common Crawl (used for AI training)
+User-agent: CCBot
+Disallow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Disallow: /
+
+# ChatGPT plugins
+User-agent: ChatGPT-User
+Disallow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Disallow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Disallow: /
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SEO TOOL CRAWLERS
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Ahrefs
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 10
+
+# SEMrush
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 10
+
+# Moz
+User-agent: rogerbot
+Allow: /
+Crawl-delay: 10
+
+# ══════════════════════════════════════════════════════════════════════════════
+# BLOCK MALICIOUS/AGGRESSIVE BOTS
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Known aggressive scrapers
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SITEMAP
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Point crawlers to your sitemap
+Sitemap: https://gracegs.com/sitemap.xml
+
+# ══════════════════════════════════════════════════════════════════════════════
+# NOTES
+# ══════════════════════════════════════════════════════════════════════════════
+# 
+# 1. Update the Sitemap URL to match your actual domain
+# 2. AI crawler blocking is optional - remove those sections to allow AI training
+# 3. Crawl-delay is respected by Bing but ignored by Google
+# 4. Test your robots.txt at: https://www.google.com/webmasters/tools/robots-testing-tool
+# 5. Monitor crawl stats in Google Search Console
+#
+# Last updated: 2026

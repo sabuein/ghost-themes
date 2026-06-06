@@ -1,0 +1,87 @@
+{{!--
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+
+  Custom JSON-LD structured data, rendered into <head>.
+  Ghost emits its own Article/Person/WebSite blocks via {{ghost_head}};
+  this partial adds Organization + extras tailored to the theme.
+--}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{@site.url}}/#organization",
+      "name": "{{@site.title}}",
+      "url": "{{@site.url}}",
+      "description": "{{@site.description}}",
+      {{#if @site.logo}}"logo": {
+        "@type": "ImageObject",
+        "url": "{{img_url @site.logo}}"
+      },{{/if}}
+      "sameAs": [
+        {{#if @site.facebook}}"https://facebook.com/{{@site.facebook}}"{{#if @site.twitter}},{{/if}}{{/if}}
+        {{#if @site.twitter}}"https://twitter.com/{{@site.twitter}}"{{/if}}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{@site.url}}/#website",
+      "url": "{{@site.url}}",
+      "name": "{{@site.title}}",
+      "publisher": { "@id": "{{@site.url}}/#organization" },
+      "inLanguage": "{{@site.locale}}"
+    }
+    {{#is "home, index"}},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is GRACE software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GRACE (Governance, Risk and Control Evaluation) is a comprehensive software solution designed to help organisations manage their risk registers, conduct control evaluations, and maintain compliance with governance requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does HARRIET differ from GRACE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HARRIET (Hazard Assessment and Risk Review Identification Evaluation and Treatment) specialises in health and safety management, hazard identification, workplace risk assessments, and safety compliance tracking."
+          }
+        }
+      ]
+    }
+    {{/is}}
+    {{#is "post, page"}},
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{@site.url}}"
+        }{{#post}}{{#primary_tag}},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{name}}",
+          "item": "{{url absolute="true"}}"
+        }{{/primary_tag}},
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{title}}",
+          "item": "{{url absolute="true"}}"
+        }{{/post}}
+      ]
+    }
+    {{/is}}
+  ]
+}
+</script>

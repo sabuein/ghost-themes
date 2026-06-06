@@ -1,0 +1,63 @@
+<!-- Navigation -->
+{{!
+Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+  }}
+<header class="header" id="header">
+  <nav class="nav container" aria-label="Primary">
+    <a
+      href="{{@site.url}}"
+      class="logo"
+      title="{{@site.title}}"
+      aria-label="{{@site.title}} Home"
+    >
+      <div class="logo-icon">
+        <span class="logo-square"></span>
+        <span class="logo-square"></span>
+        <span class="logo-square"></span>
+      </div>
+      <span class="logo-text">
+        {{@site.title}}
+      </span>
+    </a>
+
+    <div class="nav-actions">
+      <button
+        type="button"
+        id="mobile-toggle"
+        class="mobile-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <dialog
+        id="nav-links"
+        class="nav-links nav-dialog"
+        aria-label="Primary navigation"
+      >
+        {{navigation}}
+      </dialog>
+      <!-- Convention: aria-pressed="true" means "dark mode is on." Pick whichever direction feels intuitive but stay consistent. -->
+      <!-- Screen readers will announce "toggle button, pressed" / "not pressed." -->
+      <button
+        type="button"
+        id="theme-toggle"
+        class="theme-toggle"
+        aria-pressed="false"
+        aria-label="Switch to dark mode"
+      >
+        <svg class="icon-sun" width="20" height="20" aria-hidden="true">
+          <use href="#i-sun"></use>
+        </svg>
+        <svg class="icon-moon" width="20" height="20" aria-hidden="true">
+          <use href="#i-moon"></use>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>

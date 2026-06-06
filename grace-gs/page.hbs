@@ -1,0 +1,31 @@
+{{!< default}}
+{{!--
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+--}}
+{{#is "page"}}{{#post}}
+<article id="content-view" class="view active">
+
+    {{!--
+        Title + feature image visibility:
+        1. @page.show_title_and_feature_image    — beta page editor (per-page)
+        2. @custom.show_title_and_feature_image  — theme-wide fallback
+        Show the header if either is true.
+    --}}
+    {{#if @page.show_title_and_feature_image}}
+        {{> "page-header"}}
+    {{else if @custom.show_title_and_feature_image}}
+        {{> "page-header"}}
+    {{/if}}
+
+    <div id="content-body">
+        <div class="post-content {{post_class}}">
+            {{content}}
+            {{> "sharing"}}
+        </div>
+        {{#has slug="contact"}}{{> "loop-featured"}}{{/has}}
+        {{> "cta"}}
+    </div>
+</article>
+{{/post}}{{/is}}

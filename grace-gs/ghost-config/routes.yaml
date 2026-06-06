@@ -1,0 +1,19 @@
+# Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+# https://abuein.dev/
+# SPDX-License-Identifier: MIT
+
+# After editing, upload the file via Ghost Admin → Settings → Labs → Routes → Upload,
+# or just copy it into the Ghost instance's content/settings/routes.yaml and restart Ghost.
+
+routes:
+  /offline/:
+    template: custom-offline
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

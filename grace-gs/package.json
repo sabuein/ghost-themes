@@ -1,0 +1,140 @@
+{
+    "name": "grace-gs",
+    "description": "Keeping public sector organisations in control since 2003.",
+    "demo": "https://gracegs.com/",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=6.36.0 <7.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "salaheddin@abuein.dev",
+        "url": "https://abuein.dev/"
+    },
+    "screenshots": {
+        "desktop": "/assets/images/screenshots/screenshot-desktop.png",
+        "mobile": "/assets/images/screenshots/screenshot-mobile.png"
+    },
+    "scripts": {
+        "suppress": "npm config set fund false",
+        "verify": "node -e \"const p=require('./package.json');console.log(Object.keys(p.config||{}))\"",
+        "dev": "npm-run-all ghost:start scan",
+        "scan": "gscan . --verbose",
+        "scan:zip": "gscan -z $HOME/Desktop/grace-gs.zip",
+        "clean:min": "node ./assets/scripts/clean.js",
+        "build:css": "node ./assets/scripts/build-css.js",
+        "minify:css": "node ./assets/scripts/minify-css.js",
+        "minify:js": "node ./assets/scripts/minify-js.js",
+        "build": "npm run clean:min && npm run build:css && npm run minify:css && npm run minify:css:files && npm run minify:js",
+        "minify:css:files": "node ./assets/scripts/minify-css-files.js",
+        "zip": "npm run win:zip",
+        "zip:posix": "zip -r $HOME/Desktop/grace-gs.zip * -x '.git/*' '*.zip' 'assets/audio/*' 'assets/files/*' 'assets/labs/*' 'assets/videos/*' 'ghost-config/*' '.gitignore'",
+        "ghost:start": "ghost start -d ~/my/instances/ghost-25",
+        "ghost:restart": "ghost restart -d ~/my/instances/ghost-25",
+        "ghost:stop": "ghost stop -d ~/my/instances/ghost-25",
+        "ghost:update": "ghost update -d ~/my/instances/ghost-25",
+        "ghost:debug": "ghost run -D -d ~/my/instances/ghost-25",
+        "ghost:log": "ghost log -d ~/my/instances/ghost-25",
+        "ghost:symlink": "ln -s $PWD ~/my/instances/ghost-25/content/themes/grace-gs",
+        "win:start": "ghost start -d C:/Users/sala/my/ghost-cms",
+        "win:stop": "ghost stop  -d C:/Users/sala/my/ghost-cms",
+        "win:restart": "ghost restart -d C:/Users/sala/my/ghost-cms",
+        "win:run": "ghost run -D -d C:/Users/sala/my/ghost-cms",
+        "win:log": "ghost log -d C:/Users/sala/my/ghost-cms",
+        "win:debug": "npm-run-all win:stop win:run",
+        "win:dev": "npm-run-all win:start scan",
+        "win:zip": "npm-run-all build win:zip:archive",
+        "win:zip:archive": "powershell -NoProfile -ExecutionPolicy Bypass -File ./assets/scripts/zip.ps1",
+        "win:symlink": "npm run build && powershell -Command \"New-Item -ItemType SymbolicLink -Path C:/Users/sala/my/ghost-cms/content/themes/grace-gs -Target $PWD\""
+    },
+    "devDependencies": {
+        "gscan": "^4.45.0",
+        "lightningcss": "^1.32.0",
+        "lightningcss-cli": "^1.32.0",
+        "npm-run-all": "^4.1.5",
+        "terser": "^5.47.1"
+    },
+    "config": {
+        "posts_per_page": 10,
+        "card_assets": true,
+        "image_sizes": {
+            "xxs": {
+                "width": 30
+            },
+            "xs": {
+                "width": 100
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 600
+            },
+            "l": {
+                "width": 1200
+            },
+            "xl": {
+                "width": 2000
+            }
+        },
+        "custom": {
+            "show_title_and_feature_image": {
+                "type": "boolean",
+                "default": true,
+                "description": "Show the post title and feature image at the top of each post."
+            },
+            "site_layout": {
+                "type": "select",
+                "options": [
+                    "Standard",
+                    "Magazine"
+                ],
+                "default": "Standard",
+                "description": "Choose how the homepage lays out posts."
+            },
+            "accent_color": {
+                "type": "color",
+                "default": "#84cc16",
+                "description": "Primary brand colour. #84cc16"
+            },
+            "cta_heading": {
+                "type": "text",
+                "default": "Ready to Transform Your Risk Management?",
+                "group": "post",
+                "description": "Used in a large CTA on the homepage and small one on the sidebar as well."
+            },
+            "cta_text": {
+                "type": "text",
+                "default": "Get in touch with our team to discover how Grace Governance Solutions can help your organization achieve excellence in governance and compliance.",
+                "group": "post",
+                "description": "CTA text."
+            },
+            "cta_tel": {
+                "type": "text",
+                "default": "447930120661",
+                "group": "post",
+                "description": "Primary telephone number."
+            }
+        }
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme",
+        "rtl"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sabuein/ghost-themes.git"
+    },
+    "bugs": "https://github.com/sabuein/ghost-themes/issues",
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine"
+        ]
+    },
+    "type": "module"
+}

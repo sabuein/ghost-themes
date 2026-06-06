@@ -1,0 +1,59 @@
+{{!
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+
+  Comments — Ghost native comments, only renders if:
+    - the comments feature is enabled in Ghost Admin → Settings → Comments
+    - the post is not marked "no comments"
+    - the visitor is a logged-in member (Ghost handles the gate)
+
+  Helper options:
+    title       — heading text (default: "Discussion")
+    count       — show comment count
+    mode        — "all" | "free" | "paid" (override post-level setting)
+}}
+{{#if comments}}
+  <section
+    class="post-comments"
+    id="comments"
+    aria-labelledby="comments-heading"
+  >
+    <hgroup class="post-comments-header">
+      <h2 id="comments-heading" class="post-comments-title">
+        Discussion
+        {{#if comment_count}}
+          <span class="post-comments-count">
+            ({{comment_count}})
+          </span>
+        {{/if}}
+      </h2>
+
+      {{#unless @member}}
+        <p class="post-comments-cta">
+          <a
+            href="#/portal/signin"
+            class="btn btn-outline btn-sm"
+            data-portal="signin"
+          >
+            Sign in
+          </a>
+          to join the conversation, or
+          <a href="#/portal/signup" data-portal="signup">
+            become a member
+          </a>
+          for free.
+        </p>
+      {{/unless}}
+    </hgroup>
+
+    {{! Ghost injects the comment thread here }}
+    {{!-- title="Comments" --}}
+    {{comments color_scheme="auto" count=true}}
+  </section>
+{{/if}}{{#contentFor "scripts"}}
+  <script type="module">
+    import { initComments } from "comments";
+    initComments();
+  </script>
+{{/contentFor}}

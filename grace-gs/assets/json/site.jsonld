@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gracegs.com/#organization",
+      "name": "Grace Governance Solutions",
+      "url": "https://gracegs.com",
+      "logo": "https://gracegs.com/assets/images/logo.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/grace-governance-solutions"
+      ]
+    }
+  ]
+}
