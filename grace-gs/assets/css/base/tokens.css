@@ -1,0 +1,149 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer tokens {
+    :root {
+        color-scheme: light dark;
+
+        /* ─────────── Brand / Colour ─────────── */
+        /* Single source of truth — Ghost injects --ghost-accent-color on render.
+           Fallback covers local dev, email renders, and offline SW boot. */
+        --accent: var(--ghost-accent-color, #2563EB);
+
+        /* Core accent ramp — derived so any Ghost accent flows through */
+        --color-primary: var(--accent);
+        --color-primary-dark: color-mix(in srgb, var(--accent) 80%, black);
+        --color-primary-light: color-mix(in srgb, var(--accent) 80%, white);
+
+        /* Text-on-accent (for filled buttons, badges, etc.)
+           Pure white is the safest universal pairing for typical Ghost accents.
+           If you ever want auto-contrast, swap to: light-dark(#FFFFFF, #0B1324) */
+        --color-on-accent: #FFFFFF;
+
+        /* Accent used *as text* on page background (links, inline emphasis).
+           Darken in light mode, lighten in dark mode so it stays AA-readable
+           regardless of which accent the user picks. */
+        --color-accent-text: light-dark(color-mix(in srgb, var(--accent) 70%, black),
+                color-mix(in srgb, var(--accent) 60%, white));
+
+        /* Hover variant of accent text — slightly stronger */
+        --color-accent-text-hover: light-dark(color-mix(in srgb, var(--accent) 55%, black),
+                color-mix(in srgb, var(--accent) 75%, white));
+
+        /* Subtle tinted backgrounds (callouts, hover states, selection) */
+        --color-primary-muted: light-dark(color-mix(in srgb, var(--accent) 10%, transparent),
+                color-mix(in srgb, var(--accent) 18%, transparent));
+
+        --color-primary-subtle: light-dark(color-mix(in srgb, var(--accent) 6%, white),
+                color-mix(in srgb, var(--accent) 12%, #0B1324));
+
+        --color-primary-emphasis: light-dark(var(--color-primary-dark), var(--color-primary-light));
+
+        /* Focus ring (accessibility) */
+        --color-focus-ring: color-mix(in srgb, var(--accent) 50%, transparent);
+
+        /* Surfaces */
+        --color-background: light-dark(#FFFFFF, #0B1324);
+        --color-background-alt: light-dark(#F4F6F8, #111C2F);
+        --color-surface: light-dark(#FFFFFF, #1B2436);
+        --color-surface-elevated: light-dark(#FFFFFF, #243049);
+        --color-header-scrolled: light-dark(rgba(255, 255, 255, 0.85), rgba(11, 19, 36, 0.85));
+
+        --header-height: 4rem;
+        /* matches .nav { height: 4rem } in nav.css */
+
+        /* Text */
+        --color-text: light-dark(#0F172A, #F5F7FA);
+        --color-text-secondary: light-dark(#475569, #94A3B8);
+        --color-text-muted: light-dark(#64748B, #64748B);
+
+        /* Borders */
+        --color-border: light-dark(#E2E8F0, #243049);
+        --color-border-light: light-dark(#F1F5F9, #1B2436);
+        --color-border-accent: color-mix(in srgb, var(--accent) 40%, transparent);
+
+        /* ─────────── Typography ─────────── */
+        --font-sans: var(--gh-font-body, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+        --font-display: var(--gh-font-heading, "Space Grotesk", "Inter", sans-serif);
+
+        --text-xs: 0.75rem;
+        /* 12px */
+        --text-sm: 0.875rem;
+        /* 14px */
+        --text-base: 1rem;
+        /* 16px */
+        --text-lg: 1.125rem;
+        /* 18px */
+        --text-xl: 1.25rem;
+        /* 20px */
+        --text-2xl: 1.5rem;
+        /* 24px */
+        --text-3xl: 1.875rem;
+        /* 30px */
+        --text-4xl: 2.25rem;
+        /* 36px */
+
+        /* ─────────── Spacing (4-pt scale) ─────────── */
+        --spacing-xs: 0.5rem;
+        /*  8px */
+        --spacing-sm: 0.75rem;
+        /* 12px */
+        --spacing-md: 1rem;
+        /* 16px */
+        --spacing-lg: 1.5rem;
+        /* 24px */
+        --spacing-xl: 2rem;
+        /* 32px */
+        --spacing-2xl: 3rem;
+        /* 48px */
+        --spacing-3xl: 4rem;
+        /* 64px */
+
+        /* ─────────── Radius ─────────── */
+        --radius-sm: 0.25rem;
+        /*  4px */
+        --radius-md: 0.5rem;
+        /*  8px */
+        --radius-lg: 0.75rem;
+        /* 12px */
+        --radius-xl: 1rem;
+        /* 16px */
+        --radius-full: 9999px;
+
+        /* ─────────── Z-index ─────────── */
+        --z-fixed: 1030;
+        --z-modal: 1050;
+        --z-tooltip: 1080;
+
+        /* ─────────── Motion ─────────── */
+        --transition-fast: 150ms ease;
+        --transition-base: 250ms ease;
+        --transition-slow: 400ms ease;
+
+        /* ─────────── Shadows ─────────── */
+        --shadow-sm: light-dark(0 1px 2px 0 rgba(0, 0, 0, 0.05),
+                0 1px 2px 0 rgba(0, 0, 0, 0.3));
+        --shadow-md: light-dark(0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1),
+                0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3));
+        --shadow-lg: light-dark(0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1),
+                0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4));
+        --shadow-xl: light-dark(0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1),
+                0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5));
+
+        /* Optional: accent-tinted shadow for hero/CTA cards */
+        --shadow-accent: 0 10px 30px -10px color-mix(in srgb, var(--accent) 50%, transparent);
+    }
+
+    /* User chose light explicitly */
+    [data-theme="light"] {
+        color-scheme: light;
+    }
+
+    /* User chose dark explicitly */
+    [data-theme="dark"] {
+        color-scheme: dark;
+    }
+}

@@ -1,0 +1,111 @@
+{{!< default}}
+{{!
+    Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+    https://abuein.dev/
+    SPDX-License-Identifier: MIT
+
+    Generic error fallback. Ghost falls back to this template for any
+    status code not matched by a more specific error-{code}.hbs or
+    error-{class}xx.hbs file. In practice that's mostly 5xx server
+    errors, but it also catches unexpected status codes.
+}}
+{{log "Generic error rendered" statusCode message code stack}}
+
+<section class="error-page container" aria-labelledby="error-heading">
+  <header class="error-header">
+    <p class="error-code" aria-hidden="true">
+      {{statusCode}}
+    </p>
+    <h1 id="error-heading" class="error-description">
+      {{message}}
+    </h1>
+    <span class="sr-only">
+      HTTP status code {{statusCode}}.
+    </span>
+  </header>
+
+  <div class="error-body">
+    {{#match statusCode ">=" 500}}
+      <p>
+        Something went wrong on our end. The team has been notified and
+                we're looking into it.
+      </p>
+      <p>
+        This is usually temporary — please try again in a moment, or
+                head back to the
+        <a href="{{@site.url}}" title="homepage" rel="home">
+          homepage
+        </a>
+        .
+      </p>
+    {{else}}
+      <p>
+        An unexpected error occurred while loading this page.
+      </p>
+      <p>
+        You can return to the
+        <a href="{{@site.url}}" title="homepage" rel="home">
+          homepage
+        </a>
+        or
+                use the navigation above to find what you're looking for.
+      </p>
+    {{/match}}
+
+    <div class="error-actions">
+      <a href="{{@site.url}}" class="btn btn-md btn-primary" title="Return to homepage" rel="home">
+        Return to homepage
+      </a>
+      <button
+        type="button"
+        class="btn btn-md btn-outline"
+        onclick="window.location.reload()"
+      >
+        Try again
+      </button>
+    </div>
+
+    {{#if errorDetails}}
+      {{log "Theme error details:" errorDetails}}
+      <details class="error-stack">
+        <summary>
+          Technical details
+        </summary>
+        <ul>
+          {{#foreach errorDetails}}
+            <li>
+              <strong>
+                {{{rule}}}
+              </strong>
+              {{#foreach failures}}
+                <p>
+                  Ref:
+                  <code>
+                    {{ref}}
+                  </code>
+                </p>
+                <p>
+                  Message: {{message}}
+                </p>
+              {{/foreach}}
+            </li>
+          {{/foreach}}
+        </ul>
+      </details>
+    {{/if}}
+
+    {{#if stack}}
+      {{! Ghost only exposes `stack` in development mode. }}
+      <details class="error-stack">
+        <summary>
+          Stack trace (dev only)
+        </summary>
+        <pre>
+          <code>
+            {{stack}}
+          </code>
+        </pre>
+      </details>
+    {{/if}}
+  </div>
+</section>

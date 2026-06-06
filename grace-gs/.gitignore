@@ -1,0 +1,10 @@
+# .gitignore
+assets/**/*.min.css
+assets/**/*.min.mjs
+assets/**/*.min.js
+assets/icons/*
+assets/images/*
+assets/labs/*
+node_modules/*
+package-lock.json
+service-worker.min.mjs

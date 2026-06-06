@@ -1,0 +1,99 @@
+{{!
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+}}
+<aside
+  class="post-sharing"
+  aria-labelledby="share-heading"
+  data-share-url="{{url absolute="true"}}"
+  data-share-title="{{meta_title}}"
+  data-share-text="{{meta_description}}"
+>
+  <h3 id="share-heading" class="sr-only">
+    Share this post
+  </h3>
+
+  <button type="button" class="btn btn-outline btn-sm share-native" hidden>
+    <svg width="16" height="16" aria-hidden="true">
+      <use href="#i-share"></use>
+    </svg>
+    <span>
+      Share
+    </span>
+  </button>
+
+  <details class="share-fallback">
+    <summary class="btn btn-outline btn-sm">
+      <svg width="16" height="16" aria-hidden="true">
+        <use href="#i-share"></use>
+      </svg>
+      <span>
+        Share
+      </span>
+    </summary>
+    <ul class="share-menu">
+      <li>
+        <a
+          href="#"
+          data-share-target="linkedin"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="#i-linkedin"></use>
+          </svg>
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          data-share-target="twitter"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="#i-twitter"></use>
+          </svg>
+          X / Twitter
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          data-share-target="facebook"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="#i-facebook"></use>
+          </svg>
+          Facebook
+        </a>
+      </li>
+      <li>
+        <a href="#" data-share-target="email">
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="#i-mail"></use>
+          </svg>
+          Email
+        </a>
+      </li>
+      <li>
+        <button type="button" class="share-copy">
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="#i-link"></use>
+          </svg>
+          Copy link
+        </button>
+      </li>
+    </ul>
+  </details>
+</aside>
+{{#contentFor "scripts"}}
+  <script type="module">
+    import { initShare } from "share";
+    initShare();
+  </script>
+{{/contentFor}}

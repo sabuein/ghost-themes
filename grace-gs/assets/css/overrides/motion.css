@@ -1,0 +1,58 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer overrides {
+
+    /* Visible focus ring for keyboard users, suppressed for mouse */
+    :focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+        border-radius: var(--radius-sm);
+    }
+
+    /* Skip link — pair with the markup change in default.hbs */
+    .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        padding: var(--spacing-sm) var(--spacing-md);
+        background-color: var(--color-primary);
+        color: #0a0a0a;
+        z-index: var(--z-tooltip);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 0 0 var(--radius-md) 0;
+    }
+
+    .skip-link:focus {
+        top: 0;
+    }
+
+    /* Honour user motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
+    /* Forced colours (Windows High Contrast) — preserve interactive affordance */
+    @media (forced-colors: active) {
+        .btn {
+            border: 1px solid CanvasText;
+        }
+
+        :focus-visible {
+            outline-color: Highlight;
+        }
+    }
+
+}

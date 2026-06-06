@@ -1,0 +1,48 @@
+{{!< default}}
+<!-- home.hbs -->
+{{!--
+  Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+  https://abuein.dev/
+  SPDX-License-Identifier: MIT
+--}}
+{{#is "home"}}{{> "hero"}}
+{{#get "posts" include="authors,tags" order="published_at desc" limit="6" as |posts pagination|}}
+  <section class="container post-feed">
+    <h2 class="section-title">Latest Posts</h2>
+    {{#if posts}}
+      <ul class="post-feed-grid post-feed-grid--standard">
+        {{#foreach posts}}
+          <li>{{> "card"}}</li>
+        {{/foreach}}
+      </ul>
+    {{else}}
+      <p class="loop-empty">No posts yet — check back soon.</p>
+    {{/if}}
+  </section>
+{{else}}
+  <div class="loop-error">
+    <p>{{error}}</p>
+  </div>
+{{/get}}
+{{> "about"}}
+{{> "products"}}
+{{> "features"}}
+{{> "clients"}}
+{{> "faq"}}
+{{> "newsletter"}}
+{{> "cta"}}
+  {{!--
+  {{#match @site.recommendations_enabled}}<section class="recommendations">
+      <hgroup>
+        <h2>Recommendations</h2>
+        <p>Lorem ipsum&comma; dolor sit amet consectetur adipisicing elitem quam quibusdam repudiandae&excl;</p>
+      </hgroup>
+      <hr />
+      {{recommendations limit=@config.posts_per_page order="title asc"}}
+  </section>{{/match}}
+  --}}
+{{#contentFor "scripts"}}<script type="text/javascript">
+  // FitVids - Makes video embeds responsive
+  // $(document).ready(() => $(".video-content").fitVids());
+  console.log("Hello from home.hbs!");
+</script>{{/contentFor}}{{/is}}

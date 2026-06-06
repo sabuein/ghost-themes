@@ -1,0 +1,100 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer components {
+
+    /* ===== Newsletter Section ===== */
+    .newsletter-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--spacing-3xl);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-xl);
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .newsletter-content h2 {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .newsletter-content p {
+        color: var(--color-text-secondary);
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-sm);
+        max-width: 480px;
+    }
+
+    .input-group input {
+        flex: 1;
+        padding: var(--spacing-md);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background: var(--color-background);
+        color: var(--color-text);
+        font-size: var(--text-base);
+    }
+
+    .input-group input:focus {
+        outline: none;
+        border-color: var(--color-primary);
+    }
+
+    .newsletter-disclaimer {
+        font-size: var(--text-xs);
+        color: var(--color-text-muted);
+        margin-top: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .newsletter-disclaimer a {
+        font-weight: 600;
+        color: var(--color-primary);
+    }
+
+    .newsletter-disclaimer a:hover {
+        color: var(--color-primary-dark);
+        transform: translateY(-1px);
+    }
+
+    /* Form states */
+    :where(.loading, .success, .error, .invalid) {
+        display: none;
+    }
+
+    .loading .loading,
+    .success .success,
+    .error .error,
+    .invalid .invalid {
+        display: block;
+    }
+
+}

@@ -1,0 +1,60 @@
+/*!
+ * Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin <salaheddin@abuein.dev>
+ * https://abuein.dev/
+ * SPDX-License-Identifier: MIT
+ */
+
+@layer base {
+
+    body {
+        font-family: var(--font-sans);
+        font-size: var(--text-base);
+        line-height: 1.6;
+        color: var(--color-text);
+        background-color: var(--color-background);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
+
+    ul,
+    ol {
+        list-style: none;
+    }
+
+    main {
+        padding-block-start: var(--header-height);
+    }
+
+    /* Responsive video embeds — replaces fitVids */
+    iframe[src*="youtube.com"],
+    iframe[src*="youtube-nocookie.com"],
+    iframe[src*="vimeo.com"],
+    iframe[src*="dailymotion.com"],
+    .kg-embed-card iframe,
+    .kg-video-card iframe,
+    figure.kg-embed-card>iframe {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+}
