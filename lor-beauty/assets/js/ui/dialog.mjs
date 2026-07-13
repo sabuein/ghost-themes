@@ -136,6 +136,30 @@ export function initDialogs(root = document) {
         trigger.addEventListener("click", () =>
             openDialog(trigger.dataset.dialogOpen),
         );
+
+        trigger.addEventListener("click", () => {
+            const id = trigger.dataset.dialogOpen;
+            const dialog = document.getElementById(id);
+            if (!(dialog instanceof HTMLDialogElement)) return;
+
+            let payload = null;
+            try {
+                payload = trigger.dataset.dialogPayload
+                    ? JSON.parse(trigger.dataset.dialogPayload)
+                    : null;
+            } catch {
+                payload = null;
+            }
+
+            dialog.dispatchEvent(
+                new CustomEvent("lor:dialog-before-open", {
+                    bubbles: true,
+                    detail: { trigger, payload },
+                }),
+            );
+
+            openDialog(id);
+        });
     });
 }
 

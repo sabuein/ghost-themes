@@ -1,6 +1,32 @@
-<!-- Requires JS to trigger open as a modal -->
-{{!-- Use this for critical mobile interruptions like an "Are you sure you want to delete your data?" prompt or a full-screen Settings Menu. --}}
-<dialog id="delete-modal">
-  <p>Delete all app data?</p>
-  <button onclick="this.closest('dialog').close()">Cancel</button>
+<dialog
+    id="{{id}}"
+    class="lor-dialog {{#if class}}{{class}}{{/if}}"
+    {{#if title}}aria-labelledby="{{id}}-title"{{/if}}
+    {{#if description}}aria-describedby="{{id}}-desc"{{/if}}
+>
+    <header class="lor-dialog-header">
+        {{#if title}}<h2 id="{{id}}-title">{{title}}</h2>{{/if}}
+        <button type="button" data-dialog-close aria-label="Close">×</button>
+    </header>
+
+    <section class="lor-dialog-body">
+        {{#if description}}<p id="{{id}}-desc">{{description}}</p>{{/if}}
+        {{#if body}}{{body}}{{/if}}
+    </section>
+
+    <footer class="lor-dialog-actions">
+        {{#if cancelLabel}}
+            <button type="button" data-dialog-close>{{cancelLabel}}</button>
+        {{/if}}
+        {{#if confirmLabel}}
+            <button
+                type="button"
+                class="dialog-confirm"
+                data-dialog-confirm
+                {{#if confirmValue}}data-dialog-confirm-value="{{confirmValue}}"{{/if}}
+            >
+                {{confirmLabel}}
+            </button>
+        {{/if}}
+    </footer>
 </dialog>

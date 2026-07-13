@@ -1,0 +1,22 @@
+<dialog id="contact-dialog" aria-labelledby="contact-dialog-title">
+    <header class="lor-dialog-header">
+        <h2 id="contact-dialog-title">Contact us</h2>
+        <button type="button" data-dialog-close="" aria-label="Close">&cross;</button>
+    </header>
+    <section class="lor-dialog-body">
+        <form id="contact-form" class="contact-form">
+            <label>Name<input name="name" type="text" required /></label>
+            <label>Email<input name="email" type="email" required /></label>
+            <label>Message<textarea name="message" rows="5" required></textarea></label>
+            <div class="lor-dialog-actions">
+                <button type="button" title="Cancel" data-dialog-close="">Cancel</button>
+                <button type="submit" title="Send">Send</button>
+            </div>
+        </form>
+    </section>
+</dialog>
+<script type="module">
+    import { initContactForm } from "contact";
+    initContactForm();
+</script>
+{{/contentFor}}
