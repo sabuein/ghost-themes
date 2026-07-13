@@ -1,0 +1,16 @@
+{{!--
+    Member account menu. Uses Ghost's Portal (#/portal/... links + the
+    data-members-signout attribute) rather than made-up routes, and the
+    native Popover API for the open/close behavior — no JS required.
+--}}
+{{#if @member}}
+    <button type="button" popovertarget="user-menu" class="user-menu-toggle" aria-label="{{t "Account"}}">
+        {{t "Account"}}
+    </button>
+    <div id="user-menu" popover class="user-menu">
+        <a href="#/portal/account">{{t "My Account"}}</a>
+        <a href="javascript:" data-members-signout>{{t "Log Out"}}</a>
+    </div>
+{{else}}
+    <a href="#/portal/signin" class="btn btn-secondary">{{t "Sign In"}}</a>
+{{/if}}

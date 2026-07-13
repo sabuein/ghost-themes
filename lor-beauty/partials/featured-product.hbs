@@ -1,0 +1,16 @@
+{{!--
+    Pulls the single most-recent post tagged "product" and renders it through
+    the shared product-card partial (same one used on the shop grid).
+--}}
+<section class="featured-product" aria-labelledby="featured-product-heading">
+    <div class="container">
+        <h2 id="featured-product-heading">{{t "Featured Product"}}</h2>
+        {{#get "posts" filter="tag:product" limit="1" include="tags"}}
+            {{#if posts}}
+                {{#foreach posts}}{{> "product-card"}}{{/foreach}}
+            {{else}}
+                <p>{{t "No products available at the moment."}}</p>
+            {{/if}}
+        {{/get}}
+    </div>
+</section>

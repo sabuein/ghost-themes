@@ -1,0 +1,11 @@
+{{!--
+    Driven by Ghost Admin > Settings > General (title, description) and
+    Settings > Design & branding (cover image) — no hardcoded copy here.
+--}}
+<section class="hero-section" aria-labelledby="hero-heading"{{#if @site.cover_image}} style="--hero-cover-image: url({{@site.cover_image}})"{{/if}}>
+    <div class="container hero-section-inner">
+        <h1 id="hero-heading">{{@site.title}}</h1>
+        {{#if @site.description}}<p class="hero-section-tagline">{{@site.description}}</p>{{/if}}
+        <a href="{{@site.url}}shop/" class="btn btn-primary">{{t "Shop Now"}}</a>
+    </div>
+</section>

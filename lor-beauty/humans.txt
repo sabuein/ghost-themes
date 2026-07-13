@@ -1,0 +1,28 @@
+L'OR Beauty
+https://lor.beauty/
+
+A theme for Ghost CMS developed by:
+
+Salaheddin AbuEin
+Thornton Heath, United Kingdom
+https://sabuein.github.io/
+https://abuein.dev/
+
+Many thanks to the people behind:
+
+- Humans TXT: We Are People, Not Machines. https://humanstxt.org/
+- YouTube Downloader - Download YouTube Videos in HD | YTDown https://app.ytdown.to/en7/
+- Online Video Downloader for Saving Instagram, Facebook, Twitter, TikTok and Vimeo Videos https://www.viddown.net/
+- https://bcrypt-generator.com/
+- PWABuilder https://www.pwabuilder.com/imageGenerator
+- Favicon Generator https://favicon.io/favicon-converter/
+- Screenshot Generator https://brave-sand-0d1e1301e.azurestaticapps.net/
+- SVG Repo - Free SVG Vectors and Icons https://www.svgrepo.com/
+- Flowbite - Free and open-source SVG Icons https://flowbite.com/
+- SVG Minifier https://www.svgminify.com/
+- https://www.shapedivider.app/
+- PX to REM converter https://nekocalc.com/px-to-rem-converter
+- Fonts https://gwfh.mranftl.com/fonts
+- Colors https://colorbase.app/
+- https://logo.com/dashboard
+- Image Resizer | Easily Resize Images Online for FREE https://imageresizer.com/

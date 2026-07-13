@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta http-equiv="cleartype" content="on" />
+        <meta name="description" content="{{meta_description}}">
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#1a1a1a" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta http-equiv="x-rim-auto-match" content="none" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta charset="UTF-8" />
+        <script type="text/javascript">
+            // Sets data-theme on <html> before CSS loads/paints, so there's no
+            // flash of the wrong theme. Intentionally inline + non-module (runs
+            // synchronously) rather than living in utils/theme.mjs, which loads
+            // too late for this specific job. Kept tiny and defensive since it
+            // blocks rendering until it finishes.
+            (function () {
+                try {
+                    var saved = localStorage.getItem("lor-theme");
+                    var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+                    document.documentElement.setAttribute("data-theme", theme);
+                } catch (error) {
+                    // localStorage can throw in some privacy modes; fall back to
+                    // no attribute, which CSS should treat as the default theme.
+                }
+            })();
+        </script>
+        <link rel="author" href="{{@site.url}}/humans.txt" type="text/plain" />
+        <link rel="apple-touch-icon" href="{{asset 'icons/icon-192x192.jpg'}}" />
+        <link rel="preload" href="{{asset 'css/screen.css'}}" type="text/css" as="style" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
+        <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js" type="text/javascript" />
+        <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" type="text/javascript" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
+        <link rel="icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
+        <link rel="stylesheet" href="{{asset 'css/screen.css'}}" {{!-- hasMinFile='true' --}} type="text/css" media="all" />
+        <link rel="manifest" href="/app.webmanifest" type="application/manifest+json" crossorigin="anonymous" />
+        <script type="importmap">
+            {
+                "imports": {
+                    "video": "/assets/js/lib/jquery.fitvids.js",
+                    "helpers": "/assets/js/mods/helpers.mjs",
+                    "nav": "/assets/js/mods/navigation.mjs"
+                }
+            }
+        </script>
+        <title>{{meta_title}}</title>
+        {{ghost_head}}
+    </head>
+    <body class="{{body_class}}">
+        {{> "header"}}
+        {{{body}}}
+        {{> "footer"}}
+        <script type="module" src="{{asset 'js/application.mjs'}}"></script>
+        {{{block "scripts"}}}
+        {{ghost_foot}}
+    </body>
+</html>

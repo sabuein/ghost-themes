@@ -1,0 +1,24 @@
+<article class="product-card">
+
+    <!-- Product Image -->
+    <a href="{{url}}" class="product-card-image">
+        {{#if feature_image}}<img src="{{feature_image}}" alt="{{title}}" />{{else}}<div class="product-card-placeholder"></div>{{/if}}
+    </a>
+
+    <!-- Product Content -->
+    <div class="product-card-content">
+
+        <!-- Title -->
+        <h2 class="product-card-title"><a href="{{url}}">{{title}}</a></h2>
+
+        <!-- Excerpt -->
+        {{#if excerpt}}<p class="product-card-excerpt">{{excerpt}}</p>{{/if}}
+
+        <!-- Price (static for now) -->
+        <div class="product-card-price">150₪</div>
+
+        <!-- CTA -->
+        <a href="{{url}}" class="btn btn-primary">View Product</a>
+
+    </div>
+</article>

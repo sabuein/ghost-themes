@@ -1,0 +1,13 @@
+{{!< default}}
+<main class="post-page container">
+    {{#post}}<article class="post">
+        <h1>{{title}}</h1>
+        {{#if feature_image}}<img src="{{feature_image}}" alt="{{title}}" />{{/if}}
+        <div class="post-content">
+            {{content}}
+        </div>
+        {{#if comments}}<section class="post-comments">
+            {{comments}}
+        </section>{{/if}}
+    </article>{{/post}}
+</main>

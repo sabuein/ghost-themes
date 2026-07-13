@@ -1,0 +1,31 @@
+{
+  "name": "L'OR Organic - Pure Prickly Pear Seed Oil",
+  "short_name": "L'OR",
+  "description": "Experience the power of green gold. L'OR Organic prickly pear seed oil from Tunisia - pure, natural skincare for radiant skin.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a2e1f",
+  "theme_color": "#c9a45c",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": [
+    "beauty",
+    "shopping",
+    "lifestyle"
+  ],
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192x192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

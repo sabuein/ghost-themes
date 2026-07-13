@@ -1,0 +1,6 @@
+<!-- Requires JS to trigger open as a modal -->
+{{!-- Use this for critical mobile interruptions like an "Are you sure you want to delete your data?" prompt or a full-screen Settings Menu. --}}
+<dialog id="delete-modal">
+  <p>Delete all app data?</p>
+  <button onclick="this.closest('dialog').close()">Cancel</button>
+</dialog>
