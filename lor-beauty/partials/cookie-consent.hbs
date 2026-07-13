@@ -1,10 +1,10 @@
-<dialog id="cookie-consent" open="open">
-    <h2>We value your privacy</h2>
-    <p>We use cookies and other technologies to personalise your experience, show you ads and perform analytics. Learn more in our Privacy Policy</p>
-    <form>
-        <button type="button" title="Manage preferences">Manage preferences</button>
-        <button type="submit" title="Accept">Accept</button>
-        <button type="submit" title="Decline">Decline</button>
-    </form>
+<dialog id="cookie-consent" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-desc">
+    <h2 id="cookie-consent-title">We value your privacy</h2>
+    <p id="cookie-consent-desc">We use cookies and similar technologies to improve your experience, analyze traffic, and (if you allow) personalize content. Learn more in our Privacy Policy.</p>
+    <menu class="cookie-consent-actions">
+        <button type="button" data-cookie-action="manage">Manage preferences</button>
+        <button type="button" data-cookie-action="decline">Decline</button>
+        <button type="button" data-cookie-action="accept">Accept</button>
+    </menu>
 </dialog>
-<button type="cookie-consent" title="Cookie consent" data-dialog-open="cookie-consent">Cookie consent</button>
+<button type="button" title="Cookie consent" data-dialog-open="cookie-consent">Cookie consent</button>
