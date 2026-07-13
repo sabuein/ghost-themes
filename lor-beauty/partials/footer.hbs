@@ -2,8 +2,10 @@
     <div class="container site-footer-inner">
         <nav class="site-nav-secondary" aria-label="{{t "Secondary"}}">
             {{navigation type="secondary"}}
+            <button type="button" data-dialog-open="contact-dialog">Contact</button>
         </nav>
         {{> "social-accounts-site"}}
         <p class="site-footer-copyright">&copy; {{date format="YYYY"}} {{@site.title}}</p>
     </div>
+    {{> "contact-dialog"}}
 </footer>

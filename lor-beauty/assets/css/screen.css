@@ -1,3 +1,6 @@
+@import url("./components/ghost.css");
+@import url("./components/globals.css");
+@import url("./components/pwa.css");
 @import url("./components/shop.css");
 
 .product-grid {
