@@ -1,76 +1,94 @@
-const CACHE_NAME = "lor-beauty-v1";
+const VERSION = "v1";
+const STATIC_CACHE = `lor-beauty-static-${VERSION}`;
+const RUNTIME_CACHE = `lor-beauty-runtime-${VERSION}`;
 const OFFLINE_URL = "/offline";
 
-// Assets to cache immediately on install
-const PRECACHE_ASSETS = ["/", "/offline", "/app.webmanifest"];
+const PRECACHE_ASSETS = ["/", OFFLINE_URL, "/app.webmanifest"];
 
-// Install event - cache essential assets
+// ---------- Install ----------
 self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(PRECACHE_ASSETS);
-        }),
+        caches
+            .open(STATIC_CACHE)
+            .then((cache) => cache.addAll(PRECACHE_ASSETS)),
     );
     self.skipWaiting();
 });
 
-// Activate event - clean up old caches
+// ---------- Activate ----------
 self.addEventListener("activate", (event) => {
     event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames
-                    .filter((name) => name !== CACHE_NAME)
+        (async () => {
+            const names = await caches.keys();
+            await Promise.all(
+                names
+                    .filter(
+                        (name) => ![STATIC_CACHE, RUNTIME_CACHE].includes(name),
+                    )
                     .map((name) => caches.delete(name)),
             );
-        }),
+            await self.clients.claim();
+        })(),
     );
-    self.clients.claim();
 });
 
-// Fetch event - network first, fallback to cache, then offline page
+// ---------- Fetch ----------
 self.addEventListener("fetch", (event) => {
-    // Only handle GET requests
-    if (event.request.method !== "GET") return;
+    const { request } = event;
 
-    // Skip cross-origin requests
-    if (!event.request.url.startsWith(self.location.origin)) return;
+    if (request.method !== "GET") return;
+    const url = new URL(request.url);
+    if (url.origin !== self.location.origin) return;
 
-    event.respondWith(
-        fetch(event.request)
-            .then((response) => {
-                // Clone the response before caching
-                const responseClone = response.clone();
+    // HTML navigation: network-first with offline fallback
+    if (request.mode === "navigate") {
+        event.respondWith(networkFirstPage(request));
+        return;
+    }
 
-                // Cache successful responses
-                if (response.status === 200) {
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, responseClone);
-                    });
-                }
+    // Static assets: stale-while-revalidate
+    event.respondWith(staleWhileRevalidate(request));
+});
 
-                return response;
-            })
-            .catch(async () => {
-                // Try to get from cache
-                const cachedResponse = await caches.match(event.request);
-                if (cachedResponse) {
-                    return cachedResponse;
-                }
+async function networkFirstPage(request) {
+    try {
+        const fresh = await fetch(request);
+        const cache = await caches.open(RUNTIME_CACHE);
+        cache.put(request, fresh.clone());
+        return fresh;
+    } catch {
+        const cached = await caches.match(request);
+        if (cached) return cached;
 
-                // For navigation requests, show offline page
-                if (event.request.mode === "navigate") {
-                    const offlineResponse = await caches.match(OFFLINE_URL);
-                    if (offlineResponse) {
-                        return offlineResponse;
-                    }
-                }
+        const offline = await caches.match(OFFLINE_URL);
+        if (offline) return offline;
 
-                // Return a basic offline response for other requests
-                return new Response("Offline", {
-                    status: 503,
-                    statusText: "Service Unavailable",
-                });
-            }),
-    );
+        return new Response("Offline", {
+            status: 503,
+            statusText: "Service Unavailable",
+        });
+    }
+}
+
+async function staleWhileRevalidate(request) {
+    const cache = await caches.open(RUNTIME_CACHE);
+    const cached = await cache.match(request);
+
+    const fetchPromise = fetch(request)
+        .then((response) => {
+            if (response && response.status === 200) {
+                cache.put(request, response.clone());
+            }
+            return response;
+        })
+        .catch(() => null);
+
+    return cached || (await fetchPromise) || new Response("", { status: 504 });
+}
+
+// ---------- Optional: immediate activation message ----------
+self.addEventListener("message", (event) => {
+    if (event.data?.type === "SKIP_WAITING") {
+        self.skipWaiting();
+    }
 });
