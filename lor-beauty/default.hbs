@@ -2,19 +2,15 @@
 <html lang="{{@site.locale}}" data-theme="light">
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta http-equiv="cleartype" content="on" />
-        <meta name="description" content="{{meta_description}}">
+        <meta name="description" content="{{meta_description}}" />
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
         <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#1a1a1a" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta http-equiv="x-rim-auto-match" content="none" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="theme-color" content="#c9a45c" />
+        <meta name="format-detection" content="telephone=no" />
         <script type="text/javascript">
             // Sets data-theme on <html> before CSS loads/paints, so there's no
             // flash of the wrong theme. Intentionally inline + non-module (runs
@@ -27,6 +23,7 @@
                     var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
                     document.documentElement.setAttribute("data-theme", theme);
                 } catch (error) {
+                    // no-op
                     // localStorage can throw in some privacy modes; fall back to
                     // no attribute, which CSS should treat as the default theme.
                 }
