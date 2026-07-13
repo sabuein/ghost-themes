@@ -1,3 +1,50 @@
-// Handles the service worker registration lifecycle and triggers updates when a new version of the app is deployed.
+import { showToast } from "../ui/toast.mjs";
 
-// Handle Updates Gracefully: When you update your service worker, register.js should show a snackbar or toast saying: "A new version is available. [Refresh Now]" rather than force-reloading on the user unexpectedly.
+export async function registerServiceWorker() {
+    if (!("serviceWorker" in navigator)) return null;
+
+    try {
+        const registration = await navigator.serviceWorker.register(
+            "/service-worker.mjs",
+            {
+                scope: "/",
+            },
+        );
+
+        registration.addEventListener("updatefound", () => {
+            const newWorker = registration.installing;
+            if (!newWorker) return;
+
+            newWorker.addEventListener("statechange", () => {
+                // New SW installed while current page is controlled => update available
+                if (
+                    newWorker.state === "installed" &&
+                    navigator.serviceWorker.controller
+                ) {
+                    showToast("A new version is available.", {
+                        duration: 0,
+                        action: {
+                            label: "Refresh Now",
+                            onClick: () => {
+                                newWorker.postMessage({ type: "SKIP_WAITING" });
+                            },
+                        },
+                    });
+                }
+            });
+        });
+
+        // Reload once the new SW takes control
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+            if (refreshing) return;
+            refreshing = true;
+            window.location.reload();
+        });
+
+        return registration;
+    } catch (error) {
+        console.error("[PWA] SW registration failed:", error);
+        return null;
+    }
+}
