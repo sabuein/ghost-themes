@@ -1,70 +1,25 @@
-// assets/js/utils/audio.mjs
-//
-// Plays short one-shot UI sound effects (an add-to-cart chime, a
-// notification ping, that kind of thing) using plain HTMLAudioElement
-// rather than the full Web Audio API.
-//
-// Why not the Web Audio API? It's the right tool when you need to mix
-// multiple sounds together, apply effects/filters, or do sample-accurate
-// timing — none of which applies here. For "play this short clip when X
-// happens," a cached <audio> element is simpler, needs no AudioContext
-// setup/teardown, and does the job in a handful of lines. If this theme
-// later grows real audio needs (a game, a synth, live mixing), that's a
-// separate module built on the Web Audio API — this one stays small.
-//
-// ---------------------------------------------------------------------
-// AUTOPLAY POLICY — read this before relying on it for anything important
-// ---------------------------------------------------------------------
-// Browsers block audio.play() from firing until the visitor has interacted
-// with the page at least once (a click, a tap, a keypress). Calling play()
-// before that returns a rejected Promise — this module swallows that
-// rejection rather than throwing, since "audio was silently blocked" is
-// expected, ordinary behavior, not a bug to surface to the visitor.
-//
-// If you know a sound needs to play reliably right after the *first*
-// interaction (e.g. a click on a "mute/unmute" button that immediately
-// plays a confirmation chime), that click IS the qualifying interaction,
-// so it'll work fine — the restriction only bites sounds that try to
-// autoplay before any interaction has happened at all.
-//
-// ---------------------------------------------------------------------
-// USAGE
-// ---------------------------------------------------------------------
-//   import { preload, play, setMuted, isMuted } from '../utils/audio.mjs';
-//
-//   // Warm the cache early so there's no delay on first play (optional —
-//   // play() will lazily create+cache the element anyway if you skip this).
-//   preload('/assets/audio/add-to-cart.mp3');
-//
-//   addToCartButton.addEventListener('click', () => {
-//     play('/assets/audio/add-to-cart.mp3');
-//     addToCart(product);
-//   });
-//
-//   muteButton.addEventListener('click', () => {
-//     setMuted(!isMuted());
-//     muteButton.setAttribute('aria-pressed', String(isMuted()));
-//   });
-//
-//   // A quieter variant, and a looping ambient sound:
-//   play('/assets/audio/notification.mp3', { volume: 0.4 });
-//   play('/assets/audio/ambient-loop.mp3', { loop: true });
-//   stop('/assets/audio/ambient-loop.mp3'); // later, to stop the loop
-
 const MUTED_KEY = "lor-audio-muted";
 const VOLUME_KEY = "lor-audio-volume";
+const BACKEND_KEY = "lor-audio-backend";
+const NUDGE_SRC_KEY = "lor-audio-nudge-src";
+
+// Allowed: "file" | "tone" | "system" | "off"
+const DEFAULT_BACKEND = "tone";
+const DEFAULT_NUDGE_SRC = "/assets/audio/nudge.mp3";
 
 /** @type {Map<string, HTMLAudioElement>} */
 const cache = new Map();
 
-// --- Mute state -------------------------------------------------------
+/** @typedef {"file" | "tone" | "system" | "off"} AudioBackend */
+
+// ---------- State ----------
 
 export function isMuted() {
-    return localStorage.getItem(MUTED_KEY) === "true";
+    return safeStorageGet(MUTED_KEY) === "true";
 }
 
 export function setMuted(muted) {
-    localStorage.setItem(MUTED_KEY, String(Boolean(muted)));
+    safeStorageSet(MUTED_KEY, String(Boolean(muted)));
 }
 
 export function toggleMuted() {
@@ -73,22 +28,44 @@ export function toggleMuted() {
     return next;
 }
 
-// --- Global volume (0–1), applied on top of each play() call's volume -
-
 export function getVolume() {
-    const stored = Number.parseFloat(localStorage.getItem(VOLUME_KEY));
+    const stored = Number.parseFloat(safeStorageGet(VOLUME_KEY));
     return Number.isFinite(stored) ? clamp(stored, 0, 1) : 1;
 }
 
 export function setVolume(volume) {
-    localStorage.setItem(VOLUME_KEY, String(clamp(volume, 0, 1)));
+    safeStorageSet(VOLUME_KEY, String(clamp(volume, 0, 1)));
 }
 
-function clamp(value, min, max) {
-    return Math.min(max, Math.max(min, value));
+export function getBackend() {
+    const stored = safeStorageGet(BACKEND_KEY);
+    if (
+        stored === "file" ||
+        stored === "tone" ||
+        stored === "system" ||
+        stored === "off"
+    ) {
+        return stored;
+    }
+    return DEFAULT_BACKEND;
 }
 
-// --- Playback -----------------------------------------------------------
+/** @param {AudioBackend} backend */
+export function setBackend(backend) {
+    if (!["file", "tone", "system", "off"].includes(backend)) return;
+    safeStorageSet(BACKEND_KEY, backend);
+}
+
+export function getNudgeSrc() {
+    return safeStorageGet(NUDGE_SRC_KEY) || DEFAULT_NUDGE_SRC;
+}
+
+export function setNudgeSrc(src) {
+    if (!src || typeof src !== "string") return;
+    safeStorageSet(NUDGE_SRC_KEY, src);
+}
+
+// ---------- File backend helpers ----------
 
 function getAudio(src) {
     if (!cache.has(src)) {
@@ -99,24 +76,14 @@ function getAudio(src) {
     return cache.get(src);
 }
 
-/** Creates and caches the <audio> element for `src` without playing it. */
 export function preload(src) {
     getAudio(src);
 }
 
-/** Convenience for warming several sounds at once, e.g. on app init. */
 export function preloadAll(sources) {
     sources.forEach(preload);
 }
 
-/**
- * Plays a cached (or newly created) audio clip from the start.
- *
- * @param {string} src
- * @param {{ volume?: number, loop?: boolean }} [options]
- *   volume: 0–1, multiplied against the visitor's global volume setting.
- *   loop: keep repeating until stop(src) is called.
- */
 export function play(src, options = {}) {
     if (isMuted()) return;
 
@@ -128,12 +95,10 @@ export function play(src, options = {}) {
     audio.currentTime = 0;
 
     audio.play().catch(() => {
-        // Blocked by the browser's autoplay policy (no user interaction yet) —
-        // expected in normal use, not worth surfacing as an error.
+        // Autoplay policy block or transient playback issue.
     });
 }
 
-/** Pauses a clip and resets it to the start. No-op if it isn't playing. */
 export function stop(src) {
     const audio = cache.get(src);
     if (!audio) return;
@@ -141,10 +106,131 @@ export function stop(src) {
     audio.currentTime = 0;
 }
 
-/** Pauses every currently-cached clip (e.g. when the tab loses focus). */
 export function stopAll() {
     cache.forEach((audio) => {
         audio.pause();
         audio.currentTime = 0;
     });
+}
+
+// ---------- Nudge API (toast can call this only) ----------
+
+/**
+ * Play a short "nudge" notification according to selected backend.
+ * @param {{ backend?: AudioBackend, title?: string, body?: string, volume?: number, nudgeSrc?: string }} [options]
+ */
+export async function playNudge(options = {}) {
+    if (isMuted()) return false;
+
+    const backend = options.backend || getBackend();
+    const volume = clamp(options.volume ?? 1, 0, 1);
+
+    if (backend === "off") return false;
+
+    if (backend === "file") {
+        play(options.nudgeSrc || getNudgeSrc(), { volume });
+        return true;
+    }
+
+    if (backend === "tone") {
+        return playToneNudge({ volume });
+    }
+
+    if (backend === "system") {
+        // Try system notification sound first; fallback to tone.
+        const ok = await playSystemNudge({
+            title: options.title || "Nudge Alert",
+            body: options.body || "You have a new update.",
+        });
+        if (ok) return true;
+        return playToneNudge({ volume });
+    }
+
+    // Unknown backend => safe fallback
+    return playToneNudge({ volume });
+}
+
+// ---------- Backend implementations ----------
+
+function playToneNudge({ volume = 1 } = {}) {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return false;
+
+    try {
+        const audioCtx = new AudioCtx();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(880, audioCtx.currentTime);
+
+        const scaled = clamp(volume, 0, 1) * getVolume();
+        gainNode.gain.setValueAtTime(
+            Math.max(0.0001, 0.5 * scaled),
+            audioCtx.currentTime,
+        );
+        gainNode.gain.exponentialRampToValueAtTime(
+            0.001,
+            audioCtx.currentTime + 0.3,
+        );
+
+        oscillator.start(audioCtx.currentTime);
+        oscillator.stop(audioCtx.currentTime + 0.3);
+
+        oscillator.onended = () => {
+            audioCtx.close().catch(() => {});
+        };
+
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+async function playSystemNudge({ title, body }) {
+    if (!("Notification" in window)) return false;
+
+    try {
+        if (Notification.permission === "granted") {
+            new Notification(title, { body, silent: false });
+            return true;
+        }
+
+        if (Notification.permission !== "denied") {
+            const permission = await Notification.requestPermission();
+            if (permission === "granted") {
+                new Notification(title, { body, silent: false });
+                return true;
+            }
+        }
+    } catch {
+        // Ignore and let caller fallback
+    }
+
+    return false;
+}
+
+// ---------- Utils ----------
+
+function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+}
+
+function safeStorageGet(key) {
+    try {
+        return localStorage.getItem(key);
+    } catch {
+        return null;
+    }
+}
+
+function safeStorageSet(key, value) {
+    try {
+        localStorage.setItem(key, value);
+    } catch {
+        // ignore storage errors (privacy mode/quota)
+    }
 }
