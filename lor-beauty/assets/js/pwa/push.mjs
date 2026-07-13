@@ -1,0 +1,1 @@
+// Manages Web Push API permissions, token generation, and subscription updates with the backend server.

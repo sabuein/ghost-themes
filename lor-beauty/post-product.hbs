@@ -1,0 +1,77 @@
+{{!< default}}
+<main class="product-page">
+    <div class="container">
+        {{#post}}
+
+        <!-- Product Header -->
+        <section class="product-header">
+            <div class="product-grid">
+
+                <!-- Product Image -->
+                <div class="product-image">
+                    {{#if feature_image}}<img src="{{feature_image}}" alt="{{title}}" />{{/if}}
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <h1 class="product-title">{{title}}</h1>
+                    {{#if excerpt}}<p class="product-excerpt">{{excerpt}}</p>{{/if}}
+
+                    <!-- Price (temporary static) -->
+                    <div class="product-price">150₪</div>
+
+                    <!-- CTA -->
+                    <div class="product-cta"><a href="#" class="btn btn-primary">Buy Now</a></div>
+
+                    <!-- Quick Benefits -->
+                    <ul class="product-benefits">
+                        <li>Brightens dark circles</li>
+                        <li>Restores natural glow</li>
+                        <li>Helps reduce acne marks</li>
+                        <li>Improves skin texture</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Content (from Ghost editor) -->
+        <section class="product-content">
+            <div class="content-wrapper">
+                {{content}}
+                {{!-- <div class="product-meta" data-price="150₪"></div> --}}
+            </div>
+        </section>
+
+        <!-- How to Use -->
+        <section class="product-usage">
+            <h2>How to Use</h2>
+            <p>Apply 2&mdash;3 drops at night on clean skin. Gently tap untilfully absorbed.</p>
+        </section>
+
+        <!-- Ingredients -->
+        <section class="product-ingredients">
+            <h2>Ingredients</h2>
+            <p>100% Pure Prickly Pear Seed Oil</p>
+        </section>
+
+        <!-- Reviews Placeholder -->
+        <section class="product-reviews">
+            <h2>Customer Reviews</h2>
+            <div class="review">
+                <p>“My skin feels brighter and smoother within days.”</p>
+            </div>
+            <div class="review">
+                <p>“Lightweight and very effective.”</p>
+            </div>
+        </section>
+
+        {{#if comments}}<section class="post-comments">
+            {{comments}}
+        </section>{{/if}}
+
+        <!-- Back to Shop -->
+        <div class="back-to-shop">
+            <a href="/shop/">← Back to Shop</a>
+        </div>{{/post}}
+    </div>
+</main>

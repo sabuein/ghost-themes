@@ -1,0 +1,7 @@
+{{!< default}}
+<main class="offline-page container">
+    <h1>{{@site.title}}</h1>
+    <p class="offline-page-status">{{t "You're Currently Offline"}}</p>
+    <p class="offline-page-message">{{t "It looks like you've lost your internet connection. Please check your network settings and try again."}}</p>
+    <button type="button" class="btn btn-primary" onclick="window.location.reload()">{{t "Try Again"}}</button>
+</main>

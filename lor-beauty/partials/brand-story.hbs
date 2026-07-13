@@ -1,0 +1,18 @@
+{{!--
+    Pulls its copy from a Ghost Page with the slug "about", so the brand
+    story can be edited in Ghost Admin without touching theme code. Falls
+    back to nothing if that page doesn't exist yet.
+--}}
+{{#get "pages" slug="about" limit="1"}}
+    {{#if pages}}
+        {{#foreach pages}}
+            <section class="brand-story" aria-labelledby="brand-story-heading">
+                <div class="container">
+                    <h2 id="brand-story-heading">{{title}}</h2>
+                    {{#if excerpt}}<p class="brand-story-excerpt">{{excerpt}}</p>{{/if}}
+                    <a href="{{url}}" class="brand-story-link">{{t "Read More"}}</a>
+                </div>
+            </section>
+        {{/foreach}}
+    {{/if}}
+{{/get}}

@@ -1,0 +1,1 @@
+// Captures the browser's beforeinstallprompt event to trigger custom "Install App" banners.

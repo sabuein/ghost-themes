@@ -1,0 +1,1 @@
+// Uses the Background Sync API to queue user actions (like form submissions or data deletion) made offline and sends them when connectivity returns.

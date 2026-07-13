@@ -1,0 +1,13 @@
+{{!< default}}
+<main class="tag-page container">
+    <header>
+        <h1>{{tag.name}}</h1>
+        {{#if tag.description}}<p>{{tag.description}}</p>{{/if}}
+    </header>
+    <div class="post-grid">
+        {{#foreach posts}}{{#if primary_tag.slug "product"}}{{> "product-card"}}{{else}}<article>
+            <h2><a href="{{url}}">{{title}}</a></h2>
+        </article>{{/if}}{{/foreach}}
+    </div>
+    {{pagination}}
+</main>

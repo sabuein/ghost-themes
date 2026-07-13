@@ -1,0 +1,19 @@
+{{!< default}}
+<main class="shop-page">
+    <div class="container">
+        <!-- Page Header -->
+        <header class="shop-header">
+            <h1>{{title}}</h1>
+            {{#if excerpt}}
+                <p class="shop-description">{{excerpt}}</p>
+            {{/if}}
+        </header>
+
+        <!-- Product Grid -->
+        <section class="shop-grid">
+            {{#get "posts" filter="tag:product" limit="all" include="tags"}}{{#if posts}}<div class="product-grid">
+                {{#foreach posts}}{{> "product-card"}}{{/foreach}}
+            </div>{{else}}<p>No products available at the moment.</p>{{/if}}{{/get}}
+        </section>
+    </div>
+</main>

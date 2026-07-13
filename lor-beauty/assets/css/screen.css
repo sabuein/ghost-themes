@@ -1,0 +1,29 @@
+@import url("./components/shop.css");
+
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.product-title {
+    font-size: 2rem;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.btn-primary {
+    background: black;
+    color: white;
+    padding: 12px 20px;
+    display: inline-block;
+}
