@@ -1,7 +1,7 @@
 {{!< default}}
 <main class="page container">
     {{#post}}<article>
-        <h1>{{title}}</h1>
+        {{#match @page.show_title_and_feature_image}}<h1>{{title}}</h1>{{/match}}
         <div class="page-content">
             {{content}}
         </div>

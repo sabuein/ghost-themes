@@ -11,7 +11,7 @@
 
         <!-- Product Grid -->
         <section class="shop-grid">
-            {{#get "posts" filter="tag:product" limit="all" include="tags"}}{{#if posts}}<div class="product-grid">
+            {{#get "posts" filter="tag:product" limit="99" include="tags"}}{{#if posts}}<div class="product-grid">
                 {{#foreach posts}}{{> "product-card"}}{{/foreach}}
             </div>{{else}}<p>No products available at the moment.</p>{{/if}}{{/get}}
         </section>
