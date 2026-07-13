@@ -8,3 +8,9 @@
     </menu>
 </dialog>
 <button type="button" title="Cookie consent" data-dialog-open="cookie-consent">Cookie consent</button>
+{{#contentFor "scripts"}}
+<script type="module">
+    import { initCookieConsent } from "cookies";
+    initCookieConsent();
+</script>
+{{/contentFor}}
