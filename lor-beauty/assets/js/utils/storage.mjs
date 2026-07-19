@@ -46,7 +46,10 @@ function runRequest(storeName, mode, fn) {
                 request.addEventListener("success", () =>
                     resolve(request.result),
                 );
-                request.addEventListener("error", () => reject(request.error));
+                request.addEventListener("error", () => {
+                    dbPromise = null;
+                    reject(request.error);
+                });
             }),
     );
 }
@@ -65,8 +68,19 @@ export const enqueue = (item) =>
 export const peekQueue = () =>
     runRequest("sync-queue", "readonly", (store) => store.getAll());
 
-export async function dequeueAll() {
-    const items = await peekQueue();
-    await runRequest("sync-queue", "readwrite", (store) => store.clear());
-    return items;
+export function dequeueAll() {
+    return openDatabase().then(
+        (db) =>
+            new Promise((resolve, reject) => {
+                const tx = db.transaction("sync-queue", "readwrite");
+                const store = tx.objectStore("sync-queue");
+                const getAll = store.getAll();
+                getAll.addEventListener("success", () => {
+                    const items = getAll.result;
+                    store.clear();
+                    tx.addEventListener("complete", () => resolve(items));
+                });
+                tx.addEventListener("error", () => reject(tx.error));
+            }),
+    );
 }

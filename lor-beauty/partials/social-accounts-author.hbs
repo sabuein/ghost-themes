@@ -1,6 +1,5 @@
-{{#social_accounts author}}<a href="{{href}}" target="_blank" rel="noopener" aria-label="{{t (name)}}">
+{{#social_accounts author}}<a href="{{href}}" target="_blank" rel="noopener" aria-label="{{t (name)}} ({{t 'opens in new tab'}})">
     {{#> (concat "icons/" type)}}
-    {{!-- Fallback rendered when no per-platform icon partial exists --}}
-    <span class="icon icon-web">{{t (name)}}</span>
+    <span class="icon icon-web" aria-hidden="true">{{t (name)}}</span>
     {{/undefined}}
-</a>{{else}}<p class="no-social-accounts">{{t "No social accounts connected yet."}}</p>{{/social_accounts}}
+</a>{{else}}<p class="no-social-accounts">{{t "No social accounts connected yet"}}&period;</p>{{/social_accounts}}

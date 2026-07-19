@@ -1,10 +1,5 @@
-{{!--
-    Homepage — page 1 only. Ghost automatically routes /page/2/ and beyond to
-    index.hbs instead, so this template is free to be "the marketing page"
-    rather than a generic post list.
---}}
 {{!< default}}
-<main class="home-page">
+<main id="main-content" class="home-page" tabindex="-1">
     {{> "hero-section"}}
     {{> "trust-strip"}}
     {{> "featured-product"}}
@@ -15,31 +10,18 @@
     <section class="home-latest-posts" aria-labelledby="home-latest-posts-heading">
         <hgroup>
             <h2 id="home-latest-posts-heading">{{t "Latest posts"}}</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error officiis aut nesciunt unde perferendis alias neque repellendus iusto consequatur modi vel autem quisquam, magni ea? Totam officia illo quos? Exercitationem.</p>
         </hgroup>
-        {{#get "posts" filter="tag:-product" limit="3" as |latestPosts|}}<div class="post-list">
-            {{#foreach latestPosts}}
-                <article class="post-list-item">
-                    <h3><a href="{{url}}">{{title}}</a></h3>
-                    {{#if excerpt}}<p class="post-list-item-excerpt">{{excerpt words="24"}}</p>{{/if}}
-                </article>
-            {{else}}
-                <p>{{t "No posts"}}</p>
-            {{/foreach}}
-        </div>{{/get}}
+        {{> "latest-posts"}}
     </section>
-    <section class="home-our-authors" aria-labelledby="home-latest-posts-heading">
+    <section class="home-our-authors" aria-labelledby="home-our-authors-heading">
         <hgroup>
             <h2 id="home-our-authors-heading">{{t "Our authors"}}</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore unde maxime rem corrupti assumenda nemo magni ducimus ipsum asperiores esse alias, fuga iure quod laboriosam quo fugit aperiam tempora quibusdam!</p>
         </hgroup>
-        <ul class="authors-list">
-            {{#foreach authors}}<li>
-                <h3>{{name}}</h3>
-                {{> "social-accounts-this"}}
-            {{/foreach}}</li>
-        </ul>
+        {{> "our-authors"}}
     </section>
     {{> "final-cta"}}
-    {{> "cookie-consent"}}
 </main>
 {{#contentFor "scripts"}}<script type="text/javascript">
     console.log("Welcome to {{@site.title}} homepage!");

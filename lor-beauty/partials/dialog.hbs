@@ -1,32 +1,14 @@
-<dialog
-    id="{{id}}"
-    class="lor-dialog {{#if class}}{{class}}{{/if}}"
-    {{#if title}}aria-labelledby="{{id}}-title"{{/if}}
-    {{#if description}}aria-describedby="{{id}}-desc"{{/if}}
->
-    <header class="lor-dialog-header">
+<dialog id="{{id}}" class="lor-dialog{{#if class}} {{class}}{{/if}}"{{#if title}} aria-labelledby="{{id}}-title"{{/if}}{{#if description}} aria-describedby="{{id}}-desc"{{/if}}>
+    <hgroup class="lor-dialog-header">
         {{#if title}}<h2 id="{{id}}-title">{{title}}</h2>{{/if}}
-        <button type="button" data-dialog-close aria-label="Close">×</button>
-    </header>
-
+        <button type="button" title="{{t 'Close'}}" data-dialog-close="data-dialog-close" aria-label="{{t 'Close'}}"><span aria-hidden="true">&times;</span></button>
+    </hgroup>
     <section class="lor-dialog-body">
         {{#if description}}<p id="{{id}}-desc">{{description}}</p>{{/if}}
         {{#if body}}{{body}}{{/if}}
     </section>
-
-    <footer class="lor-dialog-actions">
-        {{#if cancelLabel}}
-            <button type="button" data-dialog-close>{{cancelLabel}}</button>
-        {{/if}}
-        {{#if confirmLabel}}
-            <button
-                type="button"
-                class="dialog-confirm"
-                data-dialog-confirm
-                {{#if confirmValue}}data-dialog-confirm-value="{{confirmValue}}"{{/if}}
-            >
-                {{confirmLabel}}
-            </button>
-        {{/if}}
-    </footer>
+    {{#if confirmLabel}}<footer class="lor-dialog-actions">
+        {{#if cancelLabel}}<button type="button" class="btn btn-secondary" title="{{cancelLabel}}" data-dialog-close="data-dialog-close" autofocus="autofocus">{{cancelLabel}}</button>{{/if}}
+        <button type="submit" class="btn btn-primary" title="{{confirmLabel}}" data-dialog-confirm="data-dialog-confirm"{{#if confirmValue}} data-dialog-confirm-value="{{confirmValue}}"{{/if}}>{{confirmLabel}}</button>
+    </footer>{{/if}}
 </dialog>

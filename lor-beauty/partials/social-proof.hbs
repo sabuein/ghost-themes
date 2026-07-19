@@ -1,23 +1,19 @@
-{{!--
-    Static placeholder testimonials — same note as trust-strip.hbs. If a
-    review/rating system gets added later, this loop is the place to wire it.
---}}
 <section class="social-proof" aria-labelledby="social-proof-heading">
-    <div class="container">
+    <hgroup>
         <h2 id="social-proof-heading">{{t "Customer Reviews"}}</h2>
-        <ul class="testimonial-list">
-            <li class="testimonial-item">
-                <blockquote>
-                    <p>My skin feels brighter and smoother within days.</p>
-                    <cite>&mdash; Verified Customer</cite>
-                </blockquote>
-            </li>
-            <li class="testimonial-item">
-                <blockquote>
-                    <p>Lightweight and very effective.</p>
-                    <cite>&mdash; Verified Customer</cite>
-                </blockquote>
-            </li>
-        </ul>
-    </div>
+    </hgroup>
+    <ul class="testimonial-list" role="list">
+        <li class="testimonial-item">
+            <figure>
+                <blockquote><p>My skin feels brighter and smoother within days.</p></blockquote>
+                <figcaption>&mdash; {{t "Verified Customer"}}</figcaption>
+            </figure>
+        </li>
+        <li class="testimonial-item">
+            <figure>
+                <blockquote><p>Lightweight and very effective.</p></blockquote>
+                <figcaption>&mdash; {{t "Verified Customer"}}</figcaption>
+            </figure>
+        </li>
+    </ul>
 </section>

@@ -3,14 +3,12 @@
     data-members-signout attribute) rather than made-up routes, and the
     native Popover API for the open/close behavior — no JS required.
 --}}
-{{#if @member}}
-    <button type="button" popovertarget="user-menu" class="user-menu-toggle" aria-label="{{t "Account"}}">
-        {{t "Account"}}
-    </button>
-    <div id="user-menu" popover class="user-menu">
-        <a href="#/portal/account">{{t "My Account"}}</a>
-        <a href="javascript:" data-members-signout>{{t "Log Out"}}</a>
-    </div>
-{{else}}
-    <a href="#/portal/signin" class="btn btn-secondary">{{t "Sign In"}}</a>
-{{/if}}
+{{#if @member}}<button type="button" title="{{t 'Account'}}" popovertarget="user-menu" class="user-menu-toggle" aria-label="{{t 'Account'}}">{{t "Account"}}</button>
+<nav id="user-menu" popover="popover" class="user-menu" aria-label="{{t 'Account'}}">
+    <a href="#/portal/account" title="{{t 'My Account'}}" target="_top">{{t "My Account"}}</a>
+    <a href="#" title="{{t 'Log Out'}}" target="_top" data-members-signout="data-members-signout">{{t "Log Out"}}</a>
+</nav>{{else}}<a href="#/portal/signin" class="btn btn-secondary" title="{{t 'Sign In'}}" target="_top">{{t "Sign In"}}</a>{{/if}}
+{{#contentFor "scripts"}}<script type="module">
+    import { initPopovers } from "popover";
+    initPopovers();
+</script>{{/contentFor}}

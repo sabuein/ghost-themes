@@ -18,3 +18,10 @@ h6 {
 .kg-width-full {
     width: 100%;
 }
+
+.kg-image-card,
+.kg-gallery-card,
+.kg-callout-card,
+.kg-button-card {
+    color: currentColor;
+}

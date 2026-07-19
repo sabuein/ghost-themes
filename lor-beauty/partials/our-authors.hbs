@@ -1,0 +1,6 @@
+{{#get "authors" limit="99"}}<div class="authors-list">
+    {{#foreach authors}}<article>
+        <h3><a href="{{url}}" title="{{name}}" target="_top">{{name}}</a></h3>
+        {{!-- {{> "social-accounts-this"}} --}}
+    </article>{{else}}<p>{{t "No authors"}}</p>{{/foreach}}
+</div>{{/get}}

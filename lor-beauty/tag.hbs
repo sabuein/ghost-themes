@@ -1,10 +1,10 @@
 {{!< default}}
-<main class="tag-page container">
+<main id="main-content" class="tag-page container" tabindex="-1">
     <header>
         <h1>{{tag.name}}</h1>
         {{#if tag.description}}<p>{{tag.description}}</p>{{/if}}
     </header>
-    <div class="post-grid">
+    <div class="card-grid">
         {{#foreach posts}}{{#has tag="product"}}{{> "product-card"}}{{else}}<article>
             <h2><a href="{{url}}">{{title}}</a></h2>
         </article>{{/has}}{{/foreach}}

@@ -1,0 +1,6 @@
+{{#get "posts" filter="tag:-product" limit="3" as |latestPosts|}}<div class="post-list">
+    {{#foreach latestPosts}}<article class="post-list-item">
+        <h3><a href="{{url}}" title="{{title}}" target="_top">{{title}}</a></h3>
+        {{#if excerpt}}<p class="post-list-item-excerpt">{{excerpt words="24"}}</p>{{/if}}
+    </article>{{else}}<p>{{t "No posts"}}</p>{{/foreach}}
+</div>{{/get}}

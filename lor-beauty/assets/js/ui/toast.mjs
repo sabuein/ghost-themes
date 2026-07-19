@@ -43,7 +43,10 @@ export function showToast(message, options = {}) {
     const toast = document.createElement("div");
     toast.id = id;
     toast.className = `toast toast-${type}`;
-    toast.setAttribute("role", "alert");
+    if (type === "error") {
+        toast.setAttribute("role", "alert");
+        toast.setAttribute("aria-live", "assertive");
+    }
 
     const text = document.createElement("p");
     text.className = "toast-message";
@@ -77,6 +80,10 @@ export function showToast(message, options = {}) {
     closeButton.className = "toast-close";
     closeButton.setAttribute("aria-label", "Dismiss");
     closeButton.addEventListener("click", dismiss);
+    const glyph = document.createElement("span");
+    glyph.setAttribute("aria-hidden", "true");
+    glyph.textContent = "×";
+    closeButton.appendChild(glyph);
     toast.appendChild(closeButton);
 
     region.appendChild(toast);

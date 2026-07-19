@@ -62,11 +62,11 @@ export function isHapticsSupported() {
  * same idea as utils/audio.mjs's mute toggle.
  */
 export function isHapticsEnabled() {
-    return localStorage.getItem(STORAGE_KEY) !== "false";
+    return safeStorageGet(STORAGE_KEY) !== "false";
 }
 
 export function setHapticsEnabled(enabled) {
-    localStorage.setItem(STORAGE_KEY, String(Boolean(enabled)));
+    safeStorageSet(STORAGE_KEY, String(Boolean(enabled)));
 }
 
 /**
@@ -131,4 +131,22 @@ export function vibrateWarning() {
 /** Longer, more insistent pattern — something failed. Use sparingly. */
 export function vibrateError() {
     return vibrate([30, 50, 30, 50, 30]);
+}
+
+// ---------- Utils ----------
+
+function safeStorageGet(key) {
+    try {
+        return localStorage.getItem(key);
+    } catch {
+        return null;
+    }
+}
+
+function safeStorageSet(key, value) {
+    try {
+        localStorage.setItem(key, value);
+    } catch {
+        // ignore storage errors (privacy mode/quota)
+    }
 }

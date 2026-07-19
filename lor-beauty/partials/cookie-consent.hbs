@@ -1,16 +1,16 @@
-<dialog id="cookie-consent" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-desc">
-    <h2 id="cookie-consent-title">We value your privacy</h2>
-    <p id="cookie-consent-desc">We use cookies and similar technologies to improve your experience, marketing, analyze traffic, and (if you allow) personalize content. Learn more in our <a href="/cookie-policy" title="Cookie policy" target="_top">Cookie policy</a>.</p>
-    <menu class="cookie-consent-actions">
-        <button type="button" data-cookie-action="manage">Manage preferences</button>
-        <button type="button" data-cookie-action="decline">Reject all</button>
-        <button type="button" data-cookie-action="accept">Accept all</button>
+<dialog id="cookie-consent" class="lor-dialog cookie-consent" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-desc">
+    <hgroup class="lor-dialog-header">
+        <h2 id="cookie-consent-title">{{t "We value your privacy"}}</h2>
+        <p id="cookie-consent-desc">We use cookies and similar technologies to improve your experience, marketing, analyze traffic, and (if you allow) personalize content. Learn more in our <a href="/cookie-policy" title="{{t 'Cookie policy'}}" target="_top">{{t "Cookie policy"}}</a>.</p>
+    </hgroup>
+    <menu class="lor-dialog-actions">
+        <li><button type="button" class="btn btn-secondary" title="{{t 'Manage preferences'}}" data-cookie-action="manage">{{t "Manage preferences"}}</button></li>
+        <li><button type="button" class="btn btn-secondary" title="{{t 'Reject all'}}" data-cookie-action="decline" autofocus="autofocus">{{t "Reject all"}}</button></li>
+        <li><button type="button" class="btn btn-primary" title="{{t 'Accept all'}}" data-cookie-action="accept">{{t "Accept all"}}</button></li>
     </menu>
 </dialog>
-<button type="button" title="Cookie consent" data-dialog-open="cookie-consent">Cookie consent</button>
-{{#contentFor "scripts"}}
-<script type="module">
+<button type="button" class="btn btn-link" title="{{t 'Cookie settings'}}" data-dialog-open="cookie-consent">{{t "Cookie settings"}}</button>
+{{#contentFor "scripts"}}<script type="module">
     import { initCookieConsent } from "cookies";
     initCookieConsent();
-</script>
-{{/contentFor}}
+</script>{{/contentFor}}
