@@ -1,51 +1,32 @@
 {{!< default}}
-<!-- author.hbs -->
-{{#is "author"}}{{#author}}<main class="author-page container">
-    {{#if cover_image}}<div class="post-card-image-link">
-        {{!-- This is a responsive image, it loads different sizes depending on device
-        https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-        <img class="post-card-image"
-            srcset="{{img_url cover_image size="s"}} 300w,
-                    {{img_url cover_image size="m"}} 600w,
-                    {{img_url cover_image size="l"}} 1000w,
-                    {{img_url cover_image size="xl"}} 2000w"
-            sizes="(max-width: 1000px) 400px, 800px"
-            src="{{img_url cover_image size="m"}}"
-            alt="{{title}}"
-        />
-    </div>{{/if}}
-    {{#if profile_image}}<figure>
-        <img src="{{img_url profile_image}}" alt="{{name}}'s Picture" />
+<main id="main-content" class="author-page container" tabindex="-1">
+    {{#author}}{{#if cover_image}}<figure class="author-cover">
+        <img class="author-cover-image" srcset="{{img_url cover_image size="s"}} 300w, {{img_url cover_image size="m"}} 600w, {{img_url cover_image size="l"}} 1200w, {{img_url cover_image size="xl"}} 2000w" sizes="(max-width: 1000px) 400px, 800px" src="{{img_url cover_image size="m"}}" alt="" loading="eager" decoding="auto" />
     </figure>{{/if}}
-    <header>
+    {{#if profile_image}}<figure>
+        <img src="{{img_url profile_image size="s"}}" alt="{{name}}" width="100" height="100" loading="lazy" decoding="async" />
+    </figure>{{/if}}
+    <hgroup>
         <h1>{{name}}</h1>
         {{#if bio}}<p>{{bio}}</p>{{/if}}
-        {{#if threads}}<a href="{{social_url type="threads"}}">Follow me on Threads</a>{{/if}}
-    </header>
-    <div class="author-meta">
-        {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}
-    </div>{{/author}}
+        {{#if threads}}<a href="{{social_url type="threads"}}" target="_blank" rel="noopener">{{t "Follow me on Threads"}}</a>{{/if}}
+    </hgroup>
+    <p class="author-meta">
+        {{plural pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
+    </p>{{/author}}
     <div class="post-list">
-        {{#foreach posts}}
-            <article>
-                <h2><a href="{{url}}">{{title}}</a></h2>
-            </article>
-        {{/foreach}}
+        {{#foreach posts}}<article>
+            <h2><a href="{{url}}">{{title}}</a></h2>
+        </article>{{/foreach}}
     </div>
     {{#author}}<footer class="author-profile-footer">
-        {{#if location}}<div class="author-profile-location">{{location}}</div>{{/if}}
+        {{#if location}}<p class="author-profile-location">{{location}}</p>{{/if}}
         <div class="author-profile-meta">
-            {{#if website}}
-                <a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>
-            {{/if}}
-            {{#if twitter}}
-                <a class="author-profile-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "brands/x"}}</a>
-            {{/if}}
-            {{#if facebook}}
-                <a class="author-profile-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> "brands/facebook"}}</a>
-            {{/if}}
+            {{#if website}}<a class="author-profile-social-link" href="{{website}}" target="_blank" rel="noopener">{{website}}</a>{{/if}}
+            {{#if twitter}}<a class="author-profile-social-link" href="{{social_url type="twitter"}}" target="_blank" rel="noopener">{{> "brands/x"}}</a>{{/if}}
+            {{#if facebook}}<a class="author-profile-social-link" href="{{social_url type="facebook"}}" target="_blank" rel="noopener">{{> "brands/facebook"}}</a>{{/if}}
         </div>
-        {{> "social-accounts-author"}}
+        {{!-- {{> "social-accounts-author"}} --}}
     </footer>{{/author}}
     {{pagination}}
-</main>{{/is}}
+</main>

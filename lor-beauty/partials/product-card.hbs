@@ -1,24 +1,13 @@
 <article class="product-card">
-
-    <!-- Product Image -->
-    <a href="{{url}}" class="product-card-image">
-        {{#if feature_image}}<img src="{{feature_image}}" alt="{{title}}" />{{else}}<div class="product-card-placeholder"></div>{{/if}}
-    </a>
-
-    <!-- Product Content -->
+    {{#if feature_image}}<figure>
+        <a href="{{url}}" class="product-card-image" aria-hidden="true" tabindex="-1"><img srcset="{{img_url feature_image size="s"}} 300w, {{img_url feature_image size="m"}} 600w, {{img_url feature_image size="l"}} 1200w" sizes="(max-width: 700px) 100vw, 700px" src="{{img_url feature_image size="l"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" decoding="async" />{{else}}<img class="product-card-placeholder" />
+        </a>
+    </figure>{{/if}}
     <div class="product-card-content">
-
-        <!-- Title -->
-        <h2 class="product-card-title"><a href="{{url}}">{{title}}</a></h2>
-
-        <!-- Excerpt -->
+        <h3 class="product-card-title"><a href="{{url}}" title="{{title}}" target="_top">{{title}}</a></h3>
         {{#if excerpt}}<p class="product-card-excerpt">{{excerpt}}</p>{{/if}}
-
         <!-- Price (static for now) -->
-        <div class="product-card-price">150₪</div>
-
-        <!-- CTA -->
-        <a href="{{url}}" class="btn btn-primary">View Product</a>
-
+        <p class="product-card-price">{{@custom.default_price}}</p>
+        <a href="{{url}}" class="btn btn-primary" title="{{t "View product"}}: {{title}}" aria-label="{{t "View product"}}: {{title}}" target="_top">{{t "View Product"}}</a>
     </div>
 </article>

@@ -1,8 +1,14 @@
 {{!< default}}
-<main class="page container">
+<main id="main-content" class="page container" tabindex="-1">
     {{#post}}<article>
-        {{#match @page.show_title_and_feature_image}}<h1>{{title}}</h1>{{/match}}
-        <div class="page-content">
+        {{#match @page.show_title_and_feature_image}}<hgroup class="page-header">
+            <h1>{{title}}</h1>
+            <p class="post-meta">
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                <span>{{reading_time}}</span>
+            </p>
+        </hgroup>{{/match}}
+        <div class="gh-content">
             {{content}}
         </div>
     </article>{{/post}}

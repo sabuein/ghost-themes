@@ -2,10 +2,13 @@
     <div class="container site-footer-inner">
         <nav class="site-nav-secondary" aria-label="{{t "Secondary"}}">
             {{navigation type="secondary"}}
-            <button type="button" data-dialog-open="contact-dialog">Contact</button>
         </nav>
-        {{> "social-accounts-site"}}
-        <p class="site-footer-copyright">&copy; {{date format="YYYY"}} {{@site.title}}</p>
+        {{> "contact-dialog"}}
+        {{> "cookie-consent"}}
+        <button type="button" class="btn btn-link" title="{{t 'Install app'}}" data-pwa-install="data-pwa-install" hidden="hidden">{{t "Install app"}}</button>
+        {{!-- {{> "social-accounts-site"}} --}}
+        <p class="site-footer-copyright">
+            <small>&copy; <time datetime="{{date format="YYYY"}}">{{date format="YYYY"}}</time> {{@site.title}}</small>
+        </p>
     </div>
-    {{> "contact-dialog"}}
 </footer>

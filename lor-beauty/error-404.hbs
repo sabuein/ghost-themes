@@ -1,6 +1,14 @@
 {{!< default}}
-<main class="error-page container">
-    <h1>Page Not Found</h1>
-    <p>Sorry, we couldn’t find what you’re looking for.</p>
-    <a href="/" class="btn btn-primary">Back to Home</a>
+<main id="main-content" class="error-page container" tabindex="-1">
+    <hgroup>
+        <h1>{{t "Page Not Found"}}</h1>
+        <p>{{t "Sorry, we couldn't find what you're looking for."}}</p>
+        <a href="{{@site.url}}" class="btn btn-primary" title="{{t "Back to Home"}}" target="_top">{{t "Back to Home"}}</a>
+    </hgroup>
+    <section class="error-latest-posts" aria-labelledby="error-latest-posts-heading">
+        <hgroup>
+            <h2 id="error-latest-posts-heading">{{t "Latest posts"}}</h2>
+        </hgroup>
+        {{> "latest-posts"}}
+    </section>
 </main>

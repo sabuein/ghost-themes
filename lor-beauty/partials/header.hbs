@@ -1,15 +1,13 @@
 <header class="site-header">
     <div class="container site-header-inner">
-
         <a href="{{@site.url}}" class="site-logo">
             {{#if @site.logo}}
-                <img src="{{@site.logo}}" alt="{{@site.title}}" />
+                <img src="{{@site.logo}}" alt="{{@site.title}} — {{t "Home"}}" width="120" height="40" />
             {{else}}
                 <span class="site-logo-text">{{@site.title}}</span>
             {{/if}}
         </a>
-
-        {{! Native HTML5 Popover API drives the mobile menu — no JS required to open/close it. }}
+        {{! Native HTML5 Popover API drives the mobile menu; no JS required to open/close it. }}
         <button type="button" class="nav-toggle" popovertarget="primary-nav" aria-label="{{t "Menu"}}">
             <span class="nav-toggle-icon" aria-hidden="true"></span>
         </button>
@@ -18,7 +16,7 @@
             {{navigation}}
         </nav>
 
-        <button type="button" class="sound-toggle" data-sound-toggle aria-pressed="false" aria-label="{{t "Toggle notification sounds"}}">
+        <button type="button" class="sound-toggle" data-sound-toggle="data-sound-toggle" aria-pressed="false" aria-label="{{t "Notification sounds"}}">
             <span class="sound-toggle-icon" aria-hidden="true"></span>
         </button>
         <div class="site-header-account">

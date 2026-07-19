@@ -133,10 +133,6 @@ export function initDialogs(root = document) {
         if (trigger.dataset.dialogTriggerWired) return;
         trigger.dataset.dialogTriggerWired = "true";
 
-        trigger.addEventListener("click", () =>
-            openDialog(trigger.dataset.dialogOpen),
-        );
-
         trigger.addEventListener("click", () => {
             const id = trigger.dataset.dialogOpen;
             const dialog = document.getElementById(id);
@@ -170,15 +166,17 @@ let transientCounter = 0;
 function buildTransientDialog({ message, buttons }) {
     const dialog = document.createElement("dialog");
     dialog.id = `lor-transient-dialog-${++transientCounter}`;
-    dialog.className = "transient-dialog";
+    dialog.className = "lor-dialog lor-dialog-transient";
 
     const text = document.createElement("p");
-    text.className = "transient-dialog-message";
+    text.id = `${dialog.id}-message`;
+    text.className = "lor-dialog-message";
     text.textContent = message;
+    dialog.setAttribute("aria-labelledby", text.id);
     dialog.appendChild(text);
 
     const actions = document.createElement("div");
-    actions.className = "transient-dialog-actions";
+    actions.className = "lor-dialog-actions";
 
     buttons.forEach(({ label, value, autofocus }) => {
         const button = document.createElement("button");

@@ -27,6 +27,7 @@ export function onConnectivityChange(callback) {
     const handleOffline = () => callback(false);
 
     window.addEventListener("online", handleOnline);
+    // TODO: "You're offline; pages you've visited are still available.";
     window.addEventListener("offline", handleOffline);
 
     return () => {

@@ -1,22 +1,22 @@
-<dialog id="contact-dialog" aria-labelledby="contact-dialog-title">
-    <header class="lor-dialog-header">
-        <h2 id="contact-dialog-title">Contact us</h2>
-        <button type="button" data-dialog-close="" aria-label="Close">&cross;</button>
-    </header>
+<dialog id="contact-dialog" class="lor-dialog" aria-labelledby="contact-dialog-title">
+    <hgroup class="lor-dialog-header">
+        <h2 id="contact-dialog-title">{{t "Contact us"}}</h2>
+        <button type="button" title="{{t 'Close'}}" data-dialog-close="data-dialog-close" aria-label="{{t 'Close'}}"><span aria-hidden="true">&cross;</span></button>
+    </hgroup>
     <section class="lor-dialog-body">
         <form id="contact-form" class="contact-form">
-            <label>Name<input name="name" type="text" required /></label>
-            <label>Email<input name="email" type="email" required /></label>
-            <label>Message<textarea name="message" rows="5" required></textarea></label>
+            <label>{{t "Name"}}<input name="name" type="text" autocomplete="name" required="required" /></label>
+            <label>{{t "Email"}}<input name="email" type="email" autocomplete="email" spellcheck="false" required="required" /></label>
+            <label>{{t "Message"}}<textarea name="message" rows="5" required="required"></textarea></label>
             <div class="lor-dialog-actions">
-                <button type="button" title="Cancel" data-dialog-close="">Cancel</button>
-                <button type="submit" title="Send">Send</button>
+                <button type="button" class="btn btn-secondary" title="{{t 'Cancel'}}" data-dialog-close="data-dialog-close">{{t "Cancel"}}</button>
+                <button type="submit" class="btn btn-primary" title="{{t 'Send'}}">{{t "Send"}}</button>
             </div>
         </form>
     </section>
 </dialog>
-<script type="module">
+<button type="button" class="btn btn-link" title="{{t 'Contact'}}" data-dialog-open="contact-dialog">{{t "Contact"}}</button>
+{{#contentFor "scripts"}}<script type="module">
     import { initContactForm } from "contact";
     initContactForm();
-</script>
-{{/contentFor}}
+</script>{{/contentFor}}

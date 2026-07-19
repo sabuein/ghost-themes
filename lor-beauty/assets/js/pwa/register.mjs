@@ -1,5 +1,7 @@
 import { showToast } from "../ui/toast.mjs";
 
+let userRequestedUpdate = false;
+
 export async function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) return null;
 
@@ -26,6 +28,7 @@ export async function registerServiceWorker() {
                         action: {
                             label: "Refresh Now",
                             onClick: () => {
+                                userRequestedUpdate = true;
                                 newWorker.postMessage({ type: "SKIP_WAITING" });
                             },
                         },
@@ -37,9 +40,13 @@ export async function registerServiceWorker() {
         // Reload once the new SW takes control
         let refreshing = false;
         navigator.serviceWorker.addEventListener("controllerchange", () => {
-            if (refreshing) return;
+            if (!userRequestedUpdate || refreshing) return;
             refreshing = true;
             window.location.reload();
+        });
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === "visible") registration.update();
         });
 
         return registration;

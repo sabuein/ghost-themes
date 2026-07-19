@@ -8,8 +8,8 @@
     },
     "main": "/assets/js/application.mjs",
     "screenshots": {
-        "desktop": "assets/screenshot-desktop.jpg",
-        "mobile": "assets/screenshot-mobile.jpg"
+        "desktop": "/assets/images/screenshot-desktop.jpg",
+        "mobile": "/assets/images/screenshot-mobile.jpg"
     },
     "scripts": {
         "start": "ghost start -d ~/my/instances/ghost-25",
@@ -18,9 +18,9 @@
         "stop": "ghost stop -d ~/my/instances/ghost-25",
         "debug": "ghost run -D -d ~/my/instances/ghost-25",
         "log": "ghost log -d ~/my/instances/ghost-25",
-        "zip": "zip -r ./lor-beauty.zip . -x '*.zip' 'assets/audio/*' 'assets/files/*' 'assets/labs/*' 'assets/videos/*' '.git/*' '.github/*' 'node_modules/*' '.DS_Store' '*.log'",
+        "zip": "zip -r ~/Desktop/lor-beauty.zip . -x '*.zip' 'assets/audio/*' 'assets/files/*' 'assets/labs/*' 'assets/videos/*' '.git/*' '.github/*' 'node_modules/*' '.DS_Store' '*.log'",
         "scan": "npx gscan .",
-        "scan-zip": "npm run zip && npx gscan -z ./lor-beauty.zip",
+        "scan-zip": "npm run zip && npx gscan -z ~/Desktop/lor-beauty.zip",
         "pwa:manifest:check": "node -e \"const fs=require('fs'); const p='./app.webmanifest'; const m=JSON.parse(fs.readFileSync(p,'utf8')); const required=['name','short_name','start_url','display','icons']; const missing=required.filter(k=>!(k in m)); if(missing.length){console.error('Missing manifest fields:', missing.join(', ')); process.exit(1);} if(!Array.isArray(m.icons)||!m.icons.length){console.error('Manifest icons missing'); process.exit(1);} console.log('Manifest looks valid:', p);\"",
         "pwa:sw:check": "node -e \"const fs=require('fs'); const p='./service-worker.mjs'; if(!fs.existsSync(p)){console.error('Missing service-worker.mjs'); process.exit(1);} const s=fs.readFileSync(p,'utf8'); const required=['self.addEventListener','install','activate','fetch']; const missing=required.filter(t=>!s.includes(t)); if(missing.length){console.error('SW missing expected hooks:', missing.join(', ')); process.exit(1);} console.log('SW structure looks valid:', p);\"",
         "pwa:check": "npm run pwa:manifest:check && npm run pwa:sw:check",
@@ -47,6 +47,13 @@
             },
             "xl": {
                 "width": 2000
+            }
+        },
+        "custom": {
+            "default_price": {
+                "type": "text",
+                "default": "200₪",
+                "group": "post"
             }
         }
     },
