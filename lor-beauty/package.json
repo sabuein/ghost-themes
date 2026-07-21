@@ -52,7 +52,7 @@
         "custom": {
             "default_price": {
                 "type": "text",
-                "default": "200₪",
+                "default": "200",
                 "group": "post"
             }
         }
