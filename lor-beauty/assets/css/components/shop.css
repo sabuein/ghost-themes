@@ -1,40 +1,212 @@
-/* Shop */
+/* L'OR — Shop: grids, product cards, product page */
 
+/* Markup uses .card-grid (page-shop, tag); .product-grid kept for compatibility */
+.card-grid,
 .product-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: var(--block-gap);
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.shop-page {
+    padding-block: var(--section-y);
+}
+
+.shop-header {
+    text-align: center;
+    margin-bottom: var(--section-y);
+}
+
+.shop-description {
+    color: var(--muted-foreground);
+    font-size: 1.1rem;
 }
 
 .product-card {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.75rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.product-card>figure {
+    margin: 0;
+}
+
+.product-card-image {
+    display: block;
+    aspect-ratio: 4/5;
+    overflow: hidden;
 }
 
 .product-card-image img {
     width: 100%;
-    border-radius: 12px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--muted);
+    object-fit: cover;
+}
+
+.product-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1.25rem 1.25rem;
 }
 
 .product-card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.product-card-title a {
+    text-decoration: none;
 }
 
 .product-card-excerpt {
+    color: var(--muted-foreground);
     font-size: 0.9rem;
-    color: #666;
+    margin: 0;
 }
 
 .product-card-price {
-    font-weight: bold;
-    margin-top: 5px;
+    font-family: var(--gh-font-heading);
+    font-size: 1.3rem;
+    color: var(--gold-dark);
+    margin: 0;
 }
 
-.btn-primary {
-    display: inline-block;
-    padding: 10px 16px;
-    background: black;
-    color: white;
+.product-card .btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Product page */
+.product-page {
+    padding-block: var(--section-y);
+}
+
+.product-layout {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    grid-template-columns: 1fr;
+    align-items: start;
+}
+
+@media (min-width: 800px) {
+    .product-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-image {
+        position: sticky;
+        top: 90px;
+    }
+}
+
+.product-image {
+    margin: 0;
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+.product-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0 0 0.5rem;
+}
+
+.product-excerpt {
+    font-size: 1.15rem;
+    color: var(--muted-foreground);
+}
+
+.product-price {
+    font-family: var(--gh-font-heading);
+    font-size: 1.8rem;
+    color: var(--gold-dark);
+    margin: 1rem 0;
+}
+
+.product-cta {
+    margin: 1.5rem 0;
+}
+
+.product-benefits {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+}
+
+.product-benefits li {
+    padding-left: 1.6rem;
+    position: relative;
+}
+
+.product-benefits li::before {
+    content: "\2726";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+.product-content,
+.product-usage,
+.product-ingredients,
+.product-reviews {
+    max-width: var(--container-narrow);
+    margin-inline: auto;
+    padding-top: var(--section-y);
+}
+
+.review {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-left: 3px solid var(--gold);
+    background: var(--muted);
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.review blockquote {
+    margin: 0 0 0.75rem;
+    font-family: var(--gh-font-heading);
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.review figcaption {
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+}
+
+.back-to-shop {
+    max-width: var(--container-narrow);
+    margin: var(--section-y) auto 0;
+}
+
+.back-to-shop a {
+    color: var(--gold-dark);
+    text-decoration: none;
+    font-weight: 600;
 }
