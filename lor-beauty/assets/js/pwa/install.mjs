@@ -18,7 +18,7 @@ function initInstallButton() {
     window.addEventListener("appinstalled", () => {
         buttons.forEach((b) => (b.hidden = true));
     });
-};
+}
 
 export function initInstallPrompt() {
     window.addEventListener("beforeinstallprompt", (event) => {
