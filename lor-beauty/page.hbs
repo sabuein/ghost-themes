@@ -5,7 +5,7 @@
             <h1>{{title}}</h1>
             <p class="post-meta">
                 <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
-                <span>{{reading_time}}</span>
+                <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
             </p>
         </hgroup>{{/match}}
         <div class="gh-content">

@@ -6,7 +6,7 @@
             <p class="post-meta">
                 <a href="{{primary_author.url}}" rel="author">{{primary_author.name}}</a>
                 <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
-                <span>{{reading_time}}</span>
+                <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
             </p>
         </hgroup>
         {{#if feature_image}}<figure class="post-feature-image">
