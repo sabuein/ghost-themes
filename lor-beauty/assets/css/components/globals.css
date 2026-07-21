@@ -1,5 +1,13 @@
+/* L'OR — design system, base, chrome (header/nav/footer), buttons, dialogs, toasts, forms.
+   Styles only existing HBS classes. ghost.css & pwa.css untouched. */
+
 :root {
-    /* L'OR Light Theme - Cream/Gold/Green */
+    color-scheme: light dark;
+
+    /* Fonts — fall back gracefully; Ghost overrides via ghost_head when a font is set in Admin */
+    --gh-font-heading: "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman", serif;
+    --gh-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
     --background: oklch(0.98 0.005 90);
     --foreground: oklch(0.15 0.02 150);
     --card: oklch(1 0 0);
