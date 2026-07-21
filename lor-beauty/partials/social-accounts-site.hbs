@@ -1,5 +1,5 @@
 {{#social_accounts @site}}<a href="{{href}}" target="_blank" rel="noopener" aria-label="{{t (name)}} ({{t 'opens in new tab'}})">
-    {{#> (concat "icons/" type)}}
+    {{#> (concat "brands" type)}}
     <span class="icon icon-web" aria-hidden="true">{{t (name)}}</span>
     {{/undefined}}
 </a>{{else}}<p class="no-social-accounts">{{t "No social accounts connected yet"}}&period;</p>{{/social_accounts}}

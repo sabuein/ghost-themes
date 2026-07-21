@@ -12,7 +12,7 @@
         {{#if threads}}<a href="{{social_url type="threads"}}" target="_blank" rel="noopener">{{t "Follow me on Threads"}}</a>{{/if}}
     </hgroup>
     <p class="author-meta">
-        {{plural pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
+        {{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}
     </p>{{/author}}
     <div class="post-list">
         {{#foreach posts}}<article>

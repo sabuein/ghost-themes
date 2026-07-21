@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{@site.locale}}" data-theme="light">
+<html lang="{{@site.locale}}" dir="{{#match @site.locale "ar-PS"}}rtl{{else}}ltr{{/match}}" data-theme="light">
     <head>
         <meta charset="UTF-8" />
         <meta name="HandheldFriendly" content="True" />
@@ -50,7 +50,7 @@
                 }
             }
         </script>
-        <title>{{meta_title}}</title>
+        <title>{{meta_title page=(t "Page %")}}</title>
         {{ghost_head}}
     </head>
     <body class="{{body_class}}">
