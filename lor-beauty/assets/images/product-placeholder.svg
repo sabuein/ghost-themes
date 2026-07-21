@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800" role="img" aria-label="L'OR — image coming soon">
+    <defs>
+        <radialGradient id="lor-glow" cx="50%" cy="40%" r="65%">
+            <stop offset="0%" stop-color="#24402d" />
+            <stop offset="100%" stop-color="#1a2e1f" />
+        </radialGradient>
+    </defs>
+
+    <rect width="640" height="800" fill="url(#lor-glow)" />
+
+    <!-- thin gold frame -->
+    <rect x="48" y="48" width="544" height="704" fill="none" stroke="#c9a45c" stroke-opacity="0.45" stroke-width="1.5" />
+
+    <!-- oil droplet -->
+    <path d="M320 250 C 350 294 366 320 366 344 a 46 46 0 1 1 -92 0 C 274 320 290 294 320 250 Z"
+        fill="none" stroke="#c9a45c" stroke-opacity="0.85" stroke-width="2" />
+
+    <!-- wordmark -->
+    <text x="320" y="470" text-anchor="middle" fill="#c9a45c"
+        font-family="Georgia, 'Times New Roman', serif" font-size="80" letter-spacing="2">L'OR</text>
+
+    <!-- divider -->
+    <line x1="264" y1="502" x2="376" y2="502" stroke="#c9a45c" stroke-opacity="0.55" stroke-width="1" />
+
+    <!-- tagline -->
+    <text x="320" y="536" text-anchor="middle" fill="#c9a45c" fill-opacity="0.75"
+        font-family="Georgia, 'Times New Roman', serif" font-size="16" letter-spacing="3">IMAGE COMING SOON</text>
+</svg>
