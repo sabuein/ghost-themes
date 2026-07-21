@@ -66,6 +66,6 @@ export function initCookieConsent() {
     manageBtn?.addEventListener("click", () => {
         // Placeholder for category-level preferences dialog later.
         // For now just keep it open (or you can route to privacy page).
-        window.location.href = "/privacy/";
+        window.location.href = "/cookie-policy/";
     });
 }
