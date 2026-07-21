@@ -9,11 +9,21 @@ const PRECACHE_ASSETS = [
     "/app.webmanifest",
     "/assets/css/screen.css",
     "/assets/js/application.mjs",
+    "/assets/js/ui/contact-form.mjs",
+    "/assets/js/ui/cookies.mjs",
     "/assets/js/ui/dialog.mjs",
+    "/assets/js/ui/popover.mjs",
     "/assets/js/ui/toast.mjs",
     "/assets/js/utils/audio.mjs",
-    "/assets/js/pwa/register.mjs",
+    "/assets/js/utils/device.mjs",
+    "/assets/js/utils/haptics.mjs",
+    "/assets/js/utils/storage.mjs",
+    "/assets/js/utils/theme.mjs",
     "/assets/js/pwa/install.mjs",
+    "/assets/js/pwa/push.mjs",
+    "/assets/js/pwa/register.mjs",
+    "/assets/js/pwa/sync.mjs",
+    "/assets/images/product-placeholder.svg",
 ];
 
 // ---------- Install ----------
@@ -40,12 +50,12 @@ self.addEventListener("activate", (event) => {
                     )
                     .map((name) => caches.delete(name)),
             );
+            if (self.registration.navigationPreload) {
+                await self.registration.navigationPreload.enable();
+            }
             await self.clients.claim();
         })(),
     );
-    if (self.registration.navigationPreload) {
-        await self.registration.navigationPreload.enable();
-    }
 });
 
 // ---------- Fetch ----------
@@ -84,24 +94,22 @@ self.addEventListener("sync", (event) => {
 });
 
 async function networkFirstPage(event) {
+    const { request } = event;
     try {
-        const fresh = (await event.preloadResponse) || (await fetch(event.request));
-        const cache = await caches.open(RUNTIME_CACHE);
-        if (fresh.ok) {
+        const fresh = (await event.preloadResponse) || (await fetch(request));
+        if (fresh && fresh.ok) {
+            const cache = await caches.open(RUNTIME_CACHE);
             cache.put(request, fresh.clone());
-            return fresh;
         }
+        // return even non-ok responses
+        if (fresh) return fresh;
+        throw new Error("no response");
     } catch {
         const cached = await caches.match(request);
         if (cached) return cached;
-
         const offline = await caches.match(OFFLINE_URL);
         if (offline) return offline;
-
-        return new Response("Offline", {
-            status: 503,
-            statusText: "Service Unavailable",
-        });
+        return new Response("Offline", { status: 503, statusText: "Service Unavailable" });
     }
 }
 
@@ -123,6 +131,11 @@ async function staleWhileRevalidate(request) {
         .catch(() => null);
 
     return cached || (await fetchPromise) || new Response("", { status: 504 });
+}
+
+async function replayQueue() {
+    // TODO: drain the IndexedDB "sync-queue" store (see utils/storage.mjs dequeueAll)
+    // and replay each queued request. No-op for now so the sync event resolves cleanly.
 }
 
 // ---------- Optional: immediate activation message ----------
