@@ -1,7 +1,7 @@
 import { initDialogs } from "dialog";
 import { registerServiceWorker } from "./pwa/register.mjs";
 import { initInstallPrompt } from "./pwa/install.mjs";
-import { initTheme } from "./utils/theme.mjs";
+import { initTheme, getTheme, toggleTheme } from "./utils/theme.mjs";
 import { isMuted, toggleMuted } from "./utils/audio.mjs";
 
 function initSoundToggle() {
@@ -10,6 +10,17 @@ function initSoundToggle() {
         button.addEventListener("click", () => {
             const muted = toggleMuted();
             button.setAttribute("aria-pressed", String(!muted));
+        });
+    });
+}
+
+function initThemeToggle() {
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+        const sync = () => button.setAttribute("aria-pressed", String(getTheme() === "dark"));
+        sync();
+        button.addEventListener("click", () => {
+            toggleTheme();
+            sync();
         });
     });
 }
@@ -27,6 +38,7 @@ function domReady() {
 async function bootstrap() {
     // Required global UI behavior
     initTheme();
+    initThemeToggle();
     initDialogs();
     initSoundToggle();
 
