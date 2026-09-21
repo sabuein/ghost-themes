@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" role="img" aria-label="Grace GS">
+  <title>Grace GS</title>
+  <!-- Swap #35C13F for your exact Ghost accent colour -->
+  <g fill="#35C13F">
+    <rect x="0"  y="0"  width="13" height="13" rx="2"/>
+    <rect x="15" y="0"  width="13" height="13" rx="2"/>
+    <rect x="0"  y="15" width="28" height="13" rx="2"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 133 28" role="img" aria-label="Grace GS">
+  <title>Grace GS</title>
+  <g fill="#35C13F">
+    <rect x="0"  y="0"  width="13" height="13" rx="2"/>
+    <rect x="15" y="0"  width="13" height="13" rx="2"/>
+    <rect x="0"  y="15" width="28" height="13" rx="2"/>
+    <text x="38" y="20.5" font-family="'Space Grotesk','Inter',sans-serif" font-size="18" font-weight="700" textLength="92" lengthAdjust="spacingAndGlyphs">Grace GS</text>
+  </g>
+</svg>
