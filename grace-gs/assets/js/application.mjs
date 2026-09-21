@@ -107,26 +107,6 @@ function initContactDialog() {
  * Form Submissions
  */
 function initForms() {
-  // Contact Form
-  const contactForm = document.getElementById('contact-form');
-  contactForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    // Native validation before we proceed
-    if (!contactForm.checkValidity()) {
-      contactForm.reportValidity();
-      return;
-    }
-
-    const data = Object.fromEntries(new FormData(contactForm));
-    console.log("Contact form submitted:", data);
-
-    contactForm.reset();
-    /** @type {HTMLDialogElement | null} */
-    const dialog = document.getElementById('contact-dialog');
-    dialog?.close('submitted');
-  });
-
   // Newsletter Form
   const newsletterForm = document.getElementById("newsletter-form");
   if (!newsletterForm) return;
@@ -142,7 +122,7 @@ function initForms() {
       newsletterForm.classList.remove(...["loading", "success", "error", "invalid"]);
     }, 5000);
     */
-   newsletterForm.classList.remove(...["loading", "success", "error", "invalid"]);
-   newsletterForm.querySelector('input[type="text"]').focus();
+    newsletterForm.classList.remove(...["loading", "success", "error", "invalid"]);
+    newsletterForm.querySelector('input[type="text"]').focus();
   });
 }

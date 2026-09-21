@@ -11,16 +11,17 @@
  * offline queueing, honeypot + timing checks.
  */
 
-const MIN_FILL_TIME_MS = 1500;   // humans take >1.5s to fill the form
+const MIN_FILL_TIME_MS = 400;   // catches instant bot fill+submit, tolerates autofill
 
 export function initEmail() {
     const form = document.getElementById("contact-form");
     if (!form) return;
 
-    // Stamp the start time when the user first interacts
+    // Stamp the start time when the user first interacts; stamp() only
+    // writes when empty, so this can safely re-arm after form.reset().
     const started = form.querySelector('[name="_started"]');
     const stamp = () => { if (!started.value) started.value = String(Date.now()); };
-    form.addEventListener("focusin", stamp, { once: true });
+    form.addEventListener("focusin", stamp);
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -28,7 +29,7 @@ export function initEmail() {
         if (!form.checkValidity()) { form.reportValidity(); return; }
 
         // Bot checks (honeypot + timing)
-        const hp = form.querySelector('[name="company_url"]');
+        const hp = form.querySelector('[name="hp_notes"]');
         if (hp && hp.value) return setStatus(form, "ok", "Thanks!"); // silently drop
         const elapsed = Date.now() - Number(started.value || 0);
         if (elapsed < MIN_FILL_TIME_MS) return setStatus(form, "ok", "Thanks!");
