@@ -28,6 +28,10 @@
 	Name: Google's structured-data guidelines
 	URL: https://developers.google.com/search/docs/appearance/structured-data/sd-policies
 
+	Name: ButtonAI AEO Tool
+	Description: Step-by-step AEO-targeted FAQ generation and publishing to Ghost, Webflow or Wordpress.
+	URL: https://aeotool.thebutton.ai/
+
 /* SITE */
 	Last update:2026/05/07
 	Language: English
