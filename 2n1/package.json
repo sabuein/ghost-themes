@@ -2,7 +2,7 @@
     "name": "2n1",
     "description": "A ghost theme for a UK-based holding company",
     "demo": "https://2n1.co.uk/",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "engines": {
         "ghost": ">=6.17.0"
     },
@@ -23,10 +23,12 @@
         "stop": "ghost stop -d ~/my/instances/ghost-en",
         "debug": "ghost run -D -d ~/my/instances/ghost-en",
         "log": "ghost log -d ~/my/instances/ghost-en",
-        "zip": "zip -r /home/sabuein/Desktop/247lep.zip * -x *.zip /assets/labs/* .gitignore",
+        "zip": "zip -r /home/sabuein/Desktop/2n1.zip * -x *.zip /assets/labs/* .gitignore",
+        "zip:win": "powershell -NoProfile -Command \"$out = Join-Path ([Environment]::GetFolderPath('Desktop')) '2n1.zip'; Get-ChildItem -Exclude node_modules,*.zip,.gitignore | Compress-Archive -DestinationPath $out -Force; Write-Host ('Created ' + $out)\"",
         "scan": "npx gscan .",
-        "scan-zip": "npx gscan -z /home/sabuein/Desktop/247lep.zip",
-        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/247lep ~/my/instances/ghost-en/content/themes"
+        "scan-zip": "npx gscan -z /home/sabuein/Desktop/2n1.zip",
+        "scan-zip:win": "powershell -NoProfile -Command \"npx gscan -z (Join-Path ([Environment]::GetFolderPath('Desktop')) '2n1.zip')\"",
+        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/2n1 ~/my/instances/ghost-en/content/themes"
     },
     "config": {
         "posts_per_page": 10,
