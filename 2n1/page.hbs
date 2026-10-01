@@ -7,7 +7,7 @@
     {{#match @page.show_title_and_feature_image}}<header class="page-header">
         <hgroup class="container">
             <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
-            <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}&hellip;{{/if}}</p>
+            {{#if custom_excerpt}}<p>{{custom_excerpt}}</p>{{else if excerpt}}<p>{{excerpt}}&hellip;</p>{{/if}}
         </hgroup>
         {{#if feature_image}}<figure class="flexy apply-full-cover"
             style="{{#primary_tag}}{{#if accent_color}}--cover-color: {{accent_color}}; {{/if}}{{/primary_tag}}--cover-url: url({{img_url feature_image}});">
@@ -37,21 +37,21 @@
 
                 <div class="strategy-grid">
                     <div class="strategy-item">
-                        <h4>Technology Enhancement</h4>
+                        <h3>Technology Enhancement</h3>
                         <p>Supporting the development and deployment of AI-driven solutions and advanced
                             technologies.</p>
                     </div>
                     <div class="strategy-item">
-                        <h4>Market Expansion</h4>
+                        <h3>Market Expansion</h3>
                         <p>Identifying and pursuing new market opportunities and customer segments.</p>
                     </div>
                     <div class="strategy-item">
-                        <h4>Operational Excellence</h4>
+                        <h3>Operational Excellence</h3>
                         <p>Implementing best practices and process improvements to enhance efficiency and
                             scalability.</p>
                     </div>
                     <div class="strategy-item">
-                        <h4>Strategic Partnerships</h4>
+                        <h3>Strategic Partnerships</h3>
                         <p>Facilitating partnerships and collaborations that drive mutual growth and innovation.</p>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
 {{#contentFor "scripts"}}
 <script type="text/javascript">
     // FitVids - Makes video embeds responsive
-    $(document).ready(() => $("*.html5-main-video").fitVids());
-    console.log("Hello from page.hbs!");
+    // $(document).ready(() => $("*.html5-main-video").fitVids());
+    // console.log("Hello from page.hbs!");
 </script>{{/contentFor}}
 {{/post}}
 {{/is}}
