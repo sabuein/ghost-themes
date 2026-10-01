@@ -2,7 +2,7 @@
 <!-- partials/companies.hbs -->
 <section class="companies-section fade-in-up">
     <div class="container">
-        <!-- Rapid Information Systems -->
+        {{!-- Rapid Information Systems --}}
         <div id="rapid-information-systems" class="company-detail">
             <div class="company-content">
                 <div class="company-text">
@@ -17,18 +17,18 @@
                     </div>
 
                     <div class="company-features">
-                        <h4>Key Capabilities</h4>
+                        <h3>Key Capabilities</h3>
                         <ul>
                             <li>Enterprise data integration solutions</li>
                             <li>Digital transformation consulting</li>
                             <li>Scalable software architecture</li>
-                            <li>Cost optimization strategies</li>
+                            <li>Cost optimisation strategies</li>
                             <li>Business intelligence and analytics</li>
                         </ul>
                     </div>
 
                     <div class="company-sectors">
-                        <h4>Target Sectors</h4>
+                        <h3>Target Sectors</h3>
                         <div class="sector-tags">
                             <span class="sector-tag">Enterprise Software</span>
                             <span class="sector-tag">Data Analytics</span>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="company-url">
-                        <a href="https://rapid-is.co.uk/" class="btn btn-primary" title="Website" target="_blank">Website</a>
+                        <a href="https://rapid-is.co.uk/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Visit the Rapid Information Systems website (opens in a new tab)">Website</a>
                     </div>
                 </div>
                 <figure class="company-image">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <!-- Swifton Solutions -->
+        {{!-- Swifton Solutions --}}
         <div id="swifton-solutions" class="company-detail">
             <div class="company-content reverse">
                 <div class="company-text">
@@ -61,18 +61,18 @@
                     </div>
 
                     <div class="company-features">
-                        <h4>Key Capabilities</h4>
+                        <h3>Key Capabilities</h3>
                         <ul>
                             <li>Custom software development</li>
                             <li>System integration services</li>
-                            <li>Workflow optimization</li>
-                            <li>Legacy system modernization</li>
+                            <li>Workflow optimisation</li>
+                            <li>Legacy system modernisation</li>
                             <li>Cross-industry expertise</li>
                         </ul>
                     </div>
 
                     <div class="company-sectors">
-                        <h4>Industry Experience</h4>
+                        <h3>Industry Experience</h3>
                         <div class="sector-tags">
                             <span class="sector-tag">Manufacturing</span>
                             <span class="sector-tag">Healthcare</span>
@@ -83,12 +83,58 @@
                     </div>
 
                     <div class="company-url">
-                        <a href="https://swifton.co.uk/" class="btn btn-primary" title="Website" target="_blank">Website</a>
+                        <a href="https://swifton.co.uk/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Visit the Swifton Solutions website (opens in a new tab)">Website</a>
                     </div>
                 </div>
                 <figure class="company-image">
                     <!-- <img src="https://placehold.co/500x400" alt="Swifton Solutions" height="400" width="500" loading="lazy" /> -->
                     {{> "icons/swifton-solutions"}}
+                </figure>
+            </div>
+        </div>
+        
+        {{!-- Grace Governance Solutions --}}
+        <div id="grace-governance-solutions" class="company-detail">
+            <div class="company-content">
+                <div class="company-text">
+                    <div class="company-header">
+                        <h2>Grace Governance Solutions</h2>
+                        <p class="company-tagline">Governance&comma; Risk &amp; Compliance Software</p>
+                    </div>
+
+                    <div class="company-description">
+                        <p>Keeping public sector organisations in control since 2003&comma; Grace provides governance&comma; risk management&comma; compliance and internal audit software trusted by more than 200 organisations&period;</p>
+                        <p>Its web&dash;based platforms help teams build risk registers&comma; evaluate controls&comma; manage health and safety&comma; plan for business continuity and run the full audit lifecycle&comma; all with enterprise&dash;grade security and full audit trails&period;</p>
+                    </div>
+
+                    <div class="company-features">
+                        <h3>Key Capabilities</h3>
+                        <ul>
+                            <li>GRACE &ndash; governance&comma; risk and control evaluation</li>
+                            <li>HARRIET &ndash; health and safety risk management</li>
+                            <li>CONNIE &ndash; business continuity management</li>
+                            <li>ANNIE &ndash; internal audit management</li>
+                            <li>180&plus; pre&dash;built risk profiles and visual risk maps</li>
+                        </ul>
+                    </div>
+
+                    <div class="company-sectors">
+                        <h3>Sectors Served</h3>
+                        <div class="sector-tags">
+                            <span class="sector-tag">Local Authorities</span>
+                            <span class="sector-tag">NHS Trusts</span>
+                            <span class="sector-tag">Universities</span>
+                            <span class="sector-tag">Police Services</span>
+                            <span class="sector-tag">Financial Services</span>
+                        </div>
+                    </div>
+
+                    <div class="company-url">
+                        <a href="https://gracegs.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Visit the Grace Governance Solutions website (opens in a new tab)">Website</a>
+                    </div>
+                </div>
+                <figure class="company-image">
+                    {{> "icons/grace-governance-solutions"}}
                 </figure>
             </div>
         </div>
