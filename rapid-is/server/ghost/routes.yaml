@@ -1,0 +1,28 @@
+## routes.yaml
+## For more information https://ghost.org/docs/themes/routing/
+
+routes:
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    template: tag
+    filter: primary_tag:[blog]
+    data: tag.blog
+  /case-studies/:
+    permalink: /case-studies/{slug}/
+    template: tag
+    filter: primary_tag:[case-studies]
+    data: 'tag.case-studies'
+  /solutions/:
+    permalink: /solutions/{slug}/
+    template: tag
+    filter: primary_tag:[solutions]
+    data: tag.solutions
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

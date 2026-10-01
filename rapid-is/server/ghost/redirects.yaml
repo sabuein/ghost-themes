@@ -1,0 +1,12 @@
+## redirects.yaml
+## For more information https://ghost.org/tutorials/implementing-redirects/
+
+301:
+  ^/demo/?$: https://demo.rapid-is.co.uk/
+  ^/demo/(.*)$: https://demo.rapid-is.co.uk/$1
+  ^/support/?$: https://support.rapid-is.co.uk/
+  ^/support/(.*)$: https://support.rapid-is.co.uk/$1
+  /permanent-redirect-from: /permanent-redirect-to
+
+302:
+  /temporary-redirect-from: /temporary-redirect-to
