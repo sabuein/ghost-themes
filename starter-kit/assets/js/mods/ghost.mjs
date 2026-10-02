@@ -12,8 +12,8 @@ import * as path from "node:path";
 
 const api_url = "http://localhost:2368",
     api_version = "v5.0",
-    admin_api_key =  "66816db2df8b677484b260cb:dfb86d18e1352f06dfb989278f0af43ba4e88756f37a15089cc70969d3f0cb33",
-    content_api_key = "8822edafa03c01847065770684";
+    admin_api_key = process.env.GHOST_ADMIN_API_KEY ?? "",
+    content_api_key = process.env.GHOST_CONTENT_API_KEY ?? "";
 
 const processHTML = (title, html) => {
     try {
