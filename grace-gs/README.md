@@ -4,14 +4,14 @@ A modern, accessible, PWA-ready Ghost theme. Built with vanilla HTML5, CSS3,
 and ES6+ JavaScript — no frameworks, no runtime dependencies.
 
 This is the first theme in a planned series of Ghost themes and PWA-first
-templates by **AbuEin Technologies**. Originally tailored for **Grace
+templates by **Salaheddin AbuEin**. Originally tailored for **Grace
 Governance Solutions Ltd** (the launch deployment), it is released under the
 MIT license so others can adopt, fork, and adapt it for their own Ghost
 sites.
 
 - **Live deployment:** https://gracegs.com/
-- **Author:** Salaheddin AbuEin / AbuEin Technologies — https://abuein.dev/
-- **Engine:** Ghost `>= 6.36.0 < 7.0.0`
+- **Author:** [Salaheddin AbuEin](https://abuein.dev/)
+- **Engine:** Ghost `>= 6.67.0`
 - **License:** MIT — see [LICENSE](LICENSE)
 
 ## Highlights
@@ -101,72 +101,41 @@ grace-gs/
 
 ## Quick start
 
-### 1. Symlink into a local Ghost instance
+From the repo root (one-off setup is in the [main README](../README.md#getting-started)):
 
 ```bash
-# macOS / Linux
-npm run ghost:symlink
-
-# Windows (PowerShell, run as Administrator or with Developer Mode on)
-npm run win:symlink
+npm install
+npm run link -w grace-gs      # junction on Windows, symlink on Linux. No admin rights needed.
+npm restart -w grace-gs
 ```
 
-Activate the theme: Ghost Admin → Settings → Design → Change theme.
+Activate the theme in Ghost Admin under **Settings → Design & branding → Change theme**.
 
-### 2. Run Ghost
+### Build for production
 
 ```bash
-npm run ghost:start       # ghost start
-npm run ghost:debug       # ghost run -D (verbose)
-npm run ghost:log         # tail logs
-npm run ghost:stop
-npm run ghost:restart
-npm run ghost:update
+npm run build -w grace-gs
 ```
 
-Windows: `win:start` for the Windows install path. Other ghost-cli commands work the same on both.
-
-### 3. Validate with gscan
-
-```bash
-npm run scan              # scan working dir
-npm run scan:zip          # scan packaged zip on Desktop
-```
-
-Combined dev loop:
-
-```bash
-npm run dev               # start Ghost + run gscan
-```
-
-### 4. Build for production
-
-```bash
-npm run build
-```
-
-Runs in order: `clean:min` → `build:css` (concat) → `minify:css` (lightningcss) → `minify:js` (terser).
+This runs, in order: `clean:min` → `build:css` (concat) → `minify:css` (lightningcss) → `minify:css:files` → `minify:js` (terser).
 
 Outputs:
-- `assets/css/screen.css` — concatenated bundle in cascade-layer order
-- `assets/css/screen.min.css` — minified bundle
-- `assets/css/<each>.min.css` — per-file minified CSS (optional, via `minify:css:files`)
-- `assets/**/*.min.mjs` — minified JS modules + service worker
+- `assets/css/screen.css`: the concatenated bundle, in cascade-layer order
+- `assets/css/screen.min.css`: the minified bundle
+- `assets/css/<each>.min.css`: each CSS file, minified
+- `assets/**/*.min.mjs`: minified JS modules and the service worker
 
 `default.hbs` references assets with `hasMinFile='true'`, so Ghost serves the
 `.min` versions in production.
 
-### 5. Package for upload
+### Package and validate
 
 ```bash
-# macOS / Linux
-npm run zip
-
-# Windows
-npm run win:zip
+npm run scan:zip -w grace-gs  # build → zip → gscan the zip
 ```
 
-Uploads via Ghost Admin → Settings → Design → Change theme → Upload theme.
+Upload `grace-gs.zip` in Ghost Admin under **Settings → Design & branding → Change theme → Upload theme**.
+`assets/audio`, `assets/files`, `assets/videos`, `assets/scripts` and `ghost-config` are left out of the zip.
 
 ## Customisation
 
@@ -273,41 +242,28 @@ Older browsers degrade gracefully to a static, no-JS page.
 
 ## npm scripts reference
 
-### Ghost lifecycle
+Run these inside `grace-gs/`, or from the repo root with `-w grace-gs` added.
 
-| Script             | Purpose                                              |
-|--------------------|------------------------------------------------------|
-| `ghost:start`      | `ghost start -d ~/my/instances/ghost-25`             |
-| `ghost:restart`    | `ghost restart`                                      |
-| `ghost:stop`       | `ghost stop`                                         |
-| `ghost:update`     | `ghost update`                                       |
-| `ghost:debug`      | `ghost run -D` (foreground, verbose)                 |
-| `ghost:log`        | `ghost log`                                          |
-| `ghost:symlink`    | Symlink theme into Ghost `content/themes` (POSIX)    |
-| `win:start`        | Windows variant of `ghost:start`                     |
-| `win:symlink`      | Windows symlink (PowerShell, requires elevation)     |
+| Command | What it does |
+| --- | --- |
+| `npm start` / `npm stop` / `npm restart` | Control your local Ghost |
+| `npm run debug` | `ghost run -D` (foreground, development mode) |
+| `npm run log` / `npm run update` | `ghost log` / `ghost update` |
+| `npm run link` / `npm run unlink` | Link this theme into Ghost's `content/themes` |
+| `npm run scan` | Validate with gscan |
+| `npm run zip` | Write `grace-gs.zip`, ready to upload |
+| `npm run scan:zip` | Zip, then validate the zip |
+| `npm run build` | Build the production CSS and JS (runs before `zip`) |
 
-### Build / package
+Build steps, which `build` runs in order:
 
-| Script            | Purpose                                          |
-|-------------------|--------------------------------------------------|
-| `clean:min`       | Remove all `*.min.*` artefacts under `assets/`   |
-| `build:css`       | Concatenate component CSS into `screen.css`      |
-| `minify:css`      | Bundle + minify `screen.css` → `screen.min.css`  |
-| `minify:css:files`| Minify each component CSS file in place          |
-| `minify:js`       | Walk `assets/js/` + `service-worker.mjs`, emit `.min.mjs` |
-| `build`           | Full pipeline: clean → build:css → minify:css → minify:js |
-| `zip`             | Package as zip (POSIX `zip` CLI)                 |
-| `win:zip`         | Package as zip (PowerShell)                      |
-
-### Validation
-
-| Script      | Purpose                                  |
-|-------------|------------------------------------------|
-| `scan`      | `gscan .` against working directory      |
-| `scan:zip`  | `gscan -z` against packaged zip          |
-| `dev`       | `ghost:start && scan`                    |
-| `verify`    | Print keys under `package.json` `config` |
+| Script | Purpose |
+| --- | --- |
+| `clean:min` | Remove all `*.min.*` artefacts under `assets/` |
+| `build:css` | Concatenate component CSS into `screen.css` |
+| `minify:css` | Bundle and minify `screen.css` → `screen.min.css` |
+| `minify:css:files` | Minify each component CSS file |
+| `minify:js` | Walk `assets/js/` and `service-worker.mjs`, emitting `.min.mjs` |
 
 ## Using this theme
 
@@ -319,7 +275,7 @@ the terms of the MIT license. In short:
 - Use it commercially
 
 The only requirement is that the copyright notice and the MIT license text
-travel with the code. Attribution back to AbuEin Technologies is appreciated
+travel with the code. Attribution back to [abuein.dev](https://abuein.dev/) is appreciated
 but not required.
 
 If you build something with it, drop a line to
@@ -338,16 +294,13 @@ When opening a PR:
 4. Preserve accessibility (semantic HTML, ARIA, keyboard navigation, `prefers-reduced-motion`, forced-colors)
 5. Don't introduce external runtime dependencies beyond what's already in the importmap
 
-## License
+## Licence
 
-Copyright (c) 2026 AbuEin Technologies — Salaheddin AbuEin
-
-Released under the [MIT License](LICENSE). See `LICENSE` for the full text.
+[MIT](LICENSE) © 2026 Salaheddin AbuEin
 
 ## Author
 
-**Salaheddin AbuEin** — AbuEin Technologies
-- Web: https://abuein.dev/
+**[Salaheddin AbuEin](https://abuein.dev/)**
 - Email: [salaheddin@abuein.dev](mailto:salaheddin@abuein.dev)
 - Issues: https://github.com/sabuein/ghost-themes/issues
 

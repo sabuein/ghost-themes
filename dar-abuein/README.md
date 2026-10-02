@@ -1,49 +1,60 @@
-AbuEin.com Ghost\'s theme
-=========================
+# Dar AbuEin
 
-Here I'll be creating a Ghost custom theme for [abuein.com][domain] that supports RTL languages, mainly Arabic.
+A Ghost theme for abuein.com, with RTL support.
 
-## Dar AbuEin
+- **Live site:** [abuein.com](https://abuein.com/)
+- **Version:** 1.0.0 · **Ghost:** `>=6.67.0` · **Licence:** [MIT](LICENSE)
+- **Author:** [Salaheddin AbuEin](https://abuein.dev/)
 
-The [domain][domain] name, which has been given the title of ***Dar AbuEin***, has been registered on [Google Domains][google-domains] for a while and is currently being built with [Ghost][ghost] v5.8.0 while hosted by [Linode][linode], they are great.
+## About
 
-**Dar AbuEin** is prefixed with the word `Dar`, which can mean a publishing house, and that\'s precisely the main aim of this project\'s [repository][repo], to help with publishing content, elegantly, together, with the use of modern technologies while providing support to the Right-to-Left languages, especially Arabic.
+The site is called ***Dar AbuEin***. *Dar* can mean a publishing house, and that is the aim of this project: to help publish content, elegantly and together, with modern web technologies and proper support for right-to-left languages.
 
-To continue, the [domain][domain] name\'s title is suffixd by my last name, my family name, `AbuEin`, which means the *father* of the *eye*, first as a tribute to my family, and secondly, as a way to show myself, and what\'s inside me to you, and to the world, insha\'Allah, and to become a good magician.
+*AbuEin* is my family name, which means the *father* of the *eye*. It is a tribute to my family, and a way to show myself, and what's inside me, to you and to the world, insha'Allah.
 
-#### Technologies used / to be used:
+## Features
 
-+ [HTML5][html]
-+ [CSS3][css]
-+ [JavaScript ES6][javascript]
-+ [Handlebars.js][handle]
+- Plain HTML5, CSS3 and ES6+ JavaScript, with no front-end frameworks
+- Responsive, mobile-first layout
+- Installable PWA, with a web app manifest, a service worker and an offline page
+- Translations: Arabic (right-to-left), English, Spanish
+- Ghost members, sign-up and account pages
 
-#### Connect with me:
+## Getting started
 
-- [LinkedIn][linkedin]
-- [Twitter][twitter]
-- [Facebook][facebook]
-- [GitHub][git]
-- [Google Developer][google-developer]
+From the repo root (one-off setup is in the [main README](../README.md#getting-started)):
 
-I will work on developing this theme with time, wish me luck!
+```bash
+npm install
+npm run link -w dar-abuein
+npm restart -w dar-abuein
+```
 
-`### To be continued...`
+Then activate **dar-abuein** in Ghost Admin under **Settings → Design & branding → Change theme**.
 
-Peace and love,\
-Salah.
+## Scripts
 
-[domain]: https://abuein.com/ "Dar AbuEin"
-[google-domains]: https://domains.google/ "Google Domains: Register your domain name"
-[ghost]: https://ghost.org/?via=sabuein "Ghost: Turn your audience into a business"
-[linode]: https://www.linode.com/ "Linode: Cloud computing & Linux servers, alternative to AWS"
-[repo]: https://github.com/sabuein/ghost.abuein.com "sabuein/ghost.abuein.com: Viva la familia!"
-[handle]: https://handlebarsjs.com/ "Handlebars.js"
-[linkedin]: https://www.linkedin.com/in/sabuein "Salaheddin (Salah) AbuEin on LinkedIn"
-[twitter]: https://twitter.com/sabuein "Salaheddin AbuEin (@sabuein) on Twitter"
-[git]: https://github.com/sabuein "sabuein (Salaheddin AbuEin) on GitHub"
-[facebook]: https://www.facebook.com/sabuein "Salaheddin AbuEin on Facebook"
-[google-developer]: https://g.dev/sabuein "Salaheddin AbuEin on Google Developers"
-[javascript]: https://www.w3schools.com/js/js_es6.asp "JavaScript ES6 on W3Schools"
-[css]: https://developer.mozilla.org/en-US/docs/Web/CSS "CSS: Cascading Style Sheets on MDN Web Docs"
-[html]: https://developer.mozilla.org/en-US/docs/Glossary/HTML5 "HTML5 on MDN Web Docs"
+Run these inside `dar-abuein/`, or from the repo root with `-w dar-abuein` added.
+
+| Command | What it does |
+| --- | --- |
+| `npm start` / `npm stop` / `npm restart` | Control your local Ghost |
+| `npm run debug` | `ghost run -D` (foreground, development mode) |
+| `npm run log` / `npm run update` | `ghost log` / `ghost update` |
+| `npm run link` / `npm run unlink` | Link this theme into Ghost's `content/themes` |
+| `npm run scan` | Validate with gscan |
+| `npm run zip` | Write `dar-abuein.zip`, ready to upload |
+| `npm run scan:zip` | Zip, then validate the zip |
+
+## Custom templates
+
+- `custom-gallery.hbs`
+- `custom-video.hbs`
+
+## Credits
+
+Designed and built by **[Salaheddin AbuEin](https://abuein.dev/)**. Part of the [ghost-themes](../README.md) collection.
+
+## Licence
+
+[MIT](LICENSE) © 2022-2026 Salaheddin AbuEin

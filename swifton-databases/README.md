@@ -1,50 +1,65 @@
-## Design explanation
+# Swifton Databases
 
-This website design for Swifton Databases Limited features:
+A custom Ghost theme for Swifton Databases Limited.
 
-1. **Modern, Professional Aesthetic**
+- **Live site:** [swifton.co.uk](https://swifton.co.uk/)
+- **Version:** 1.0.0 · **Ghost:** `>=6.67.0` · **Licence:** [MIT](LICENSE)
+- **Author:** [Salaheddin AbuEin](https://abuein.dev/)
 
-1. Clean blue colour scheme that conveys trust and professionalism
-2. Consistent layout across all pages
-3. Responsive design that works on all devices
+## Design
 
+- **Look and feel:** a clean blue palette that conveys trust and professionalism, with a consistent, responsive layout on every page.
+- **Home:** hero with a clear value proposition, services overview with icons, an industry sectors grid and a call to action.
+- **About:** company history, a milestones timeline and key team members.
+- **Case studies:** challenge, solution and results, with industry tags.
+- **Solutions:** detail on each service, a process timeline and clear calls to action.
+- **Contact:** enquiry form, contact details, office hours and social links.
 
+## Features
 
-2. **Home Page**
+- Plain HTML5, CSS3 and ES6+ JavaScript, with no front-end frameworks
+- Responsive, mobile-first layout
 
-1. Hero section with clear value proposition
-2. Services overview with visual icons
-3. Industry sectors grid
-4. Call-to-action section
+## Getting started
 
+From the repo root (one-off setup is in the [main README](../README.md#getting-started)):
 
+```bash
+npm install
+npm run link -w swifton-databases
+npm restart -w swifton-databases
+```
 
-3. **About Page**
+Then activate **swifton-databases** in Ghost Admin under **Settings → Design & branding → Change theme**.
 
-1. Company information and history
-2. Timeline showing company milestones
-3. Team section with key personnel
+## Scripts
 
+Run these inside `swifton-databases/`, or from the repo root with `-w swifton-databases` added.
 
+| Command | What it does |
+| --- | --- |
+| `npm start` / `npm stop` / `npm restart` | Control your local Ghost |
+| `npm run debug` | `ghost run -D` (foreground, development mode) |
+| `npm run log` / `npm run update` | `ghost log` / `ghost update` |
+| `npm run link` / `npm run unlink` | Link this theme into Ghost's `content/themes` |
+| `npm run scan` | Validate with gscan |
+| `npm run zip` | Write `swifton-databases.zip`, ready to upload |
+| `npm run scan:zip` | Zip, then validate the zip |
 
-4. **Case Studies Page**
+## Custom templates
 
-1. Detailed case studies with challenges, solutions, and results
-2. Industry tags for easy categorisation
-3. Visual elements to break up text
+- `custom-solutions.hbs`
+- `page-about.hbs`
+- `page-case-studies.hbs`
+- `page-contact.hbs`
+- `page-industries.hbs`
+- `page-solutions.hbs`
+- `page-team.hbs`
 
+## Credits
 
+Designed and built by **[Salaheddin AbuEin](https://abuein.dev/)**. Part of the [ghost-themes](../README.md) collection.
 
-5. **Solutions Page**
+## Licence
 
-1. Detailed information about each service offering
-2. Visual process timeline
-3. Clear calls-to-action
-
-
-
-6. **Contact Page**
-
-1. Contact form for enquiries
-2. Contact information clearly displayed
-3. Office hours and social links
+[MIT](LICENSE) © 2024-2026 Salaheddin AbuEin

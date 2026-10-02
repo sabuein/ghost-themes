@@ -1,88 +1,85 @@
-AbuEin.dev Ghost\'s theme
-=========================
+# AbuEin.dev
 
-Salaheddin AbuEin
-32 Malvern Road
-Thornton Heath, Surrey CR7 7LH 
-GB
+A Ghost theme for abuein.dev, with RTL support.
 
-=========================
+- **Live site:** [abuein.dev](https://abuein.dev/)
+- **Version:** 0.1.0 · **Ghost:** `>=6.67.0` · **Licence:** [MIT](LICENSE)
+- **Author:** [Salaheddin AbuEin](https://abuein.dev/)
 
-/home/sabuein/my/instances/ghost-25/content/data
-sqlite3 ghost-local.db
+## About
 
-https://www.devglan.com/online-tools/bcrypt-hash-generator
+The theme for [abuein.dev](https://abuein.dev/), my own site, with support for right-to-left languages, mainly Arabic.
 
-sA#1785002134
-$2a$12$qe10cvQ/i3tvcykMnqBOg.dh7PzDy3bcaVpTeLbgxLDbuAEmrlIye
+## Portal links
 
-UPDATE users SET password='<<PASTE_HASH_HERE>>' WHERE email = '<<YOUR_EMAIL_ADDRESS>>';
+Add these data attributes to any element to open a Ghost Portal screen.
 
-UPDATE users SET password='$2a$12$qe10cvQ/i3tvcykMnqBOg.dh7PzDy3bcaVpTeLbgxLDbuAEmrlIye' WHERE email = 'sabuein@gmail.com';
+| Screen | Attribute |
+| --- | --- |
+| Default | `data-portal` |
+| Sign in | `data-portal="signin"` |
+| Sign up | `data-portal="signup"` |
+| Account | `data-portal="account"` |
+| Account / Plans | `data-portal="account/plans"` |
+| Account / Profile | `data-portal="account/profile"` |
+| Account / Newsletters | `data-portal="account/newsletters"` |
+| Account / Newsletter help | `data-portal="account/newsletters/help"` |
 
-=========================
+See also the [PWA checklist](https://web.dev/articles/pwa-checklist).
 
-Here I'll be creating a Ghost custom theme for [abuein.dev][domain] that supports RTL languages, mainly Arabic.
+## Features
 
-### AbuEin ###
+- Plain HTML5, CSS3 and ES6+ JavaScript, with no front-end frameworks
+- Responsive, mobile-first layout
+- Installable PWA, with a web app manifest, a service worker and an offline page
+- Translations: Arabic (right-to-left), English, Spanish
+- Ghost members, sign-up and account pages
 
-#### Technologies used / to be used: ####
+## Getting started
 
-Built with vanilla HTML5, CSS3, and JavaScript ES6+.
+From the repo root (one-off setup is in the [main README](../README.md#getting-started)):
 
-+ [HTML5][html]
-+ [CSS3][css]
-+ [JavaScript ES6][javascript]
-+ [Handlebars.js][handle]
+```bash
+npm install
+npm run link -w abuein-dev
+npm restart -w abuein-dev
+```
 
-#### Connect with me:
+Then activate **abuein-dev** in Ghost Admin under **Settings → Design & branding → Change theme**.
 
-- [LinkedIn][linkedin]
-- [Twitter][twitter]
-- [Facebook][facebook]
-- [GitHub][git]
-- [Google Developer][google-developer]
+## Scripts
 
-I will work on developing this theme with time, wish me luck!
+Run these inside `abuein-dev/`, or from the repo root with `-w abuein-dev` added.
 
-#### Ghost Links ####
+| Command | What it does |
+| --- | --- |
+| `npm start` / `npm stop` / `npm restart` | Control your local Ghost |
+| `npm run debug` | `ghost run -D` (foreground, development mode) |
+| `npm run log` / `npm run update` | `ghost log` / `ghost update` |
+| `npm run link` / `npm run unlink` | Link this theme into Ghost's `content/themes` |
+| `npm run scan` | Validate with gscan |
+| `npm run zip` | Write `abuein-dev.zip`, ready to upload |
+| `npm run scan:zip` | Zip, then validate the zip |
 
-Use these data attributes in your theme to show pages of Portal.
+## Custom templates
 
-**Generic**
+- `custom-gallery.hbs`
+- `custom-video.hbs`
+- `page-about.hbs`
+- `page-ai.hbs`
+- `page-careers.hbs`
+- `page-contact.hbs`
+- `page-faq.hbs`
+- `page-offline.hbs`
+- `page-portfolio.hbs`
+- `page-pwa.hbs`
+- `page-services.hbs`
+- `page-testing.hbs`
 
-* Default: ```data-portal```
-* Sign in: ```data-portal="signin"```
-* Sign up: ```data-portal="signup"```
+## Credits
 
-**Account**
+Designed and built by **[Salaheddin AbuEin](https://abuein.dev/)**. Part of the [ghost-themes](../README.md) collection.
 
-* Account: ```data-portal="account"```
-* Account / Plans: ```data-portal="account/plans"```
-* Account / Profile: ```data-portal="account/profile"```
-* Account / Newsletters: ```data-portal="account/newsletters"```
-* Account / Newsletter help: ```data-portal="account/newsletters/help"```
+## Licence
 
-#### Learn more:
-
-- https://web.dev/articles/pwa-checklist
-
-Peace and love,\
-Salah.
-
-### To be continued...
-
-[domain]: https://abuein.dev/ "AbuEin"
-[google-domains]: https://domains.google/ "Google Domains: Register your domain name"
-[ghost]: https://ghost.org/ "Ghost: Turn your audience into a business"
-[linode]: https://www.linode.com/ "Linode: Cloud computing & Linux servers, alternative to AWS"
-[repo]: https://github.com/sabuein/ghost.abuein.com "sabuein/ghost.abuein.com: Viva la familia!"
-[handle]: https://handlebarsjs.com/ "Handlebars.js"
-[linkedin]: https://www.linkedin.com/in/sabuein/ "Salaheddin (Salah) AbuEin on LinkedIn"
-[twitter]: https://twitter.com/sabuein "Salaheddin AbuEin (@sabuein) on Twitter"
-[git]: https://github.com/sabuein "sabuein (Salaheddin AbuEin) on GitHub"
-[facebook]: https://www.facebook.com/sabuein "Salaheddin AbuEin on Facebook"
-[google-developer]: https://g.dev/sabuein "Salaheddin AbuEin on Google Developers"
-[javascript]: https://www.w3schools.com/js/js_es6.asp "JavaScript ES6 on W3Schools"
-[css]: https://developer.mozilla.org/en-US/docs/Web/CSS "CSS: Cascading Style Sheets on MDN Web Docs"
-[html]: https://developer.mozilla.org/en-US/docs/Glossary/HTML5 "HTML5 on MDN Web Docs"
+[MIT](LICENSE) © 2022-2026 Salaheddin AbuEin

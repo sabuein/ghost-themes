@@ -1,4 +1,8 @@
-# 🌊 Tufan – Indie Publishing & Community Media Platform (MVP)
+# 🌊 Tufan: indie publishing and community media platform (MVP)
+
+- **Live site:** [tufan.uk](https://tufan.uk/)
+- **Version:** 1.0.0 · **Ghost:** `>=6.67.0` · **Licence:** [MIT](LICENSE)
+- **Author:** [Salaheddin AbuEin](https://abuein.dev/)
 
 **Tufan** is a progressive web app (PWA) powered by **Ghost CMS** with a minimal custom backend.  
 We treat Ghost as our modern, headless CMS — handling authentication, memberships, subscriptions, roles, editing, and APIs — while Tufan focuses on the viewer experience and media extras.
@@ -142,7 +146,6 @@ Optional site‑level feeds:
 - One static page per channel for About/Store/Playlists.  
 - If an author (channel) slug changes, update mappings and URLs accordingly (or restrict outside Admin).
 
-
 ## Resources
 
 - [Ghost Configuration](https://ghost.org/docs/config/)
@@ -157,3 +160,46 @@ Optional site‑level feeds:
 - [How To Configure rDNS (Reverse DNS) on a Compute Instance](https://www.linode.com/docs/products/compute/compute-instances/guides/configure-rdns/)
 - [The upload limit is effectively determined by the web server that's serving your Ghost site and you have full control over that: Navigate to your Ghost installation folder, open the NGINX config file, and modify the client_max_body_size value.](https://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size)
 - [URLs & Dynamic Routing - Ghost Developer Docs](https://docs.ghost.org/themes/routing)
+
+## Getting started
+
+From the repo root (one-off setup is in the [main README](../README.md#getting-started)):
+
+```bash
+npm install
+npm run link -w tufan
+npm restart -w tufan
+```
+
+Then activate **tufan** in Ghost Admin under **Settings → Design & branding → Change theme**.
+
+## Scripts
+
+Run these inside `tufan/`, or from the repo root with `-w tufan` added.
+
+| Command | What it does |
+| --- | --- |
+| `npm start` / `npm stop` / `npm restart` | Control your local Ghost |
+| `npm run debug` | `ghost run -D` (foreground, development mode) |
+| `npm run log` / `npm run update` | `ghost log` / `ghost update` |
+| `npm run link` / `npm run unlink` | Link this theme into Ghost's `content/themes` |
+| `npm run scan` | Validate with gscan |
+| `npm run zip` | Write `tufan.zip`, ready to upload |
+| `npm run scan:zip` | Zip, then validate the zip |
+
+## Theme settings
+
+Edit these in Ghost Admin under **Settings → Design & branding → Customise**.
+
+| Setting | Type | Default | Description |
+| --- | --- | --- | --- |
+| `linkedin_url` | text | `https://www.linkedin.com/in/sabuein/` |  |
+| `github_url` | text | `https://github.com/sabuein/ghost-themes/tree/main/tufan` |  |
+
+## Credits
+
+Designed and built by **[Salaheddin AbuEin](https://abuein.dev/)**. Part of the [ghost-themes](../README.md) collection.
+
+## Licence
+
+[MIT](LICENSE) © 2023-2026 Salaheddin AbuEin

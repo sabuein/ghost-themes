@@ -1,108 +1,62 @@
-# Bdde Zawake *i.e.* I demand sweets
+# Bdde Zawake
 
-A Ghost theme for [Zawake][zawake] project, an e-commerce venture between a brother (myself) and his sister (Hanan).
+A Ghost theme for Zawake project, an e-commerce venture between a brother (myself) and his sister (Hanan).
 
-## Testing theme compatibility with the latest version of Ghost...
+- **Live site:** [zawake.com](https://zawake.com/)
+- **Version:** 1.0.0 · **Ghost:** `>=6.67.0` · **Licence:** [MIT](LICENSE)
+- **Author:** [Salaheddin AbuEin](https://abuein.dev/)
 
-Input:
-```shell
-npm run theme
+## About
+
+*Bdde Zawake* means “I want sweets”. This is the theme for [Zawake](https://zawake.com/), an e-commerce venture between my sister Hanan and me, selling sweets from the kitchen straight to your door.
+
+## Resources
+
+- [gscan](https://gscan.ghost.org/): the official online tool for testing Ghost themes
+- [google-webfonts-helper](https://gwfh.mranftl.com/fonts): self-host Google Fonts
+- [Icons8](https://icons8.com/): icons, illustrations and photos
+
+## Features
+
+- Plain HTML5, CSS3 and ES6+ JavaScript, with no front-end frameworks
+- Responsive, mobile-first layout
+- Translations: Arabic (right-to-left), English, Spanish
+- Shop powered by [Snipcart](https://snipcart.com/)
+
+## Getting started
+
+From the repo root (one-off setup is in the [main README](../README.md#getting-started)):
+
+```bash
+npm install
+npm run link -w bdde-zawake
+npm restart -w bdde-zawake
 ```
 
-Example output:
-```shell
-Checking theme compatibility...
+Then activate **bdde-zawake** in Ghost Admin under **Settings → Design & branding → Change theme**.
 
-✓ Your theme is compatible with Ghost 5.x
+## Scripts
 
-Get more help at https://ghost.org/docs/themes/
-You can also check theme compatibility at https://gscan.ghost.org/
-```
+Run these inside `bdde-zawake/`, or from the repo root with `-w bdde-zawake` added.
 
-## Checking and comparing between the current and the latest version of Ghost...
+| Command | What it does |
+| --- | --- |
+| `npm start` / `npm stop` / `npm restart` | Control your local Ghost |
+| `npm run debug` | `ghost run -D` (foreground, development mode) |
+| `npm run log` / `npm run update` | `ghost log` / `ghost update` |
+| `npm run link` / `npm run unlink` | Link this theme into Ghost's `content/themes` |
+| `npm run scan` | Validate with gscan |
+| `npm run zip` | Write `bdde-zawake.zip`, ready to upload |
+| `npm run scan:zip` | Zip, then validate the zip |
 
-Input:
-```shell
-npm run version
-```
+## Custom templates
 
-Example output:
-```shell
-Checking current version...
+- `custom-thawra.hbs`
 
-Running in development mode
+## Credits
 
-Ghost-CLI version: 1.23.1
-Ghost version: 5.24.0 (at ~/my/instances/ghost)
+Designed and built by **[Salaheddin AbuEin](https://abuein.dev/)**. Part of the [ghost-themes](../README.md) collection.
 
-Checking latest version...
+## Licence
 
-Running in development mode
-
-Current version: 5.24.0
-Latest version: 5.24.0
-You're up to date!
-```
-
-## Zipping the theme and checking its compatibility with the latest version of Ghost...
-
-Input:
-```shell
-npm run zip
-```
-
-Example output:
-```shell
-  adding: package.json (deflated 60%)
-  adding: README.md (deflated 55%)
-  adding: private.hbs (stored 0%)
-  adding: default.hbs (deflated 60%)
-  adding: error.hbs (stored 0%)
-  adding: home.hbs (deflated 9%)
-  adding: tag.hbs (stored 0%)
-  adding: amp.hbs (stored 0%)
-  adding: author.hbs (stored 0%)
-  adding: locales/ (stored 0%)
-  adding: locales/es.json (deflated 61%)
-  adding: locales/ar.json (deflated 66%)
-  adding: locales/en.json (deflated 71%)
-  adding: partials/ (stored 0%)
-  adding: partials/marhaba.hbs (deflated 41%)
-  adding: page.hbs (stored 0%)
-  adding: index.hbs (stored 0%)
-  adding: custom-thawra.hbs (stored 0%)
-  adding: post.hbs (stored 0%)
-  adding: assets/ (stored 0%)
-  adding: assets/js/ (stored 0%)
-  adding: assets/js/index.js (stored 0%)
-  adding: assets/images/ (stored 0%)
-  adding: assets/fonts/ (stored 0%)
-  adding: assets/css/ (stored 0%)
-  adding: assets/css/screen.css (deflated 14%)
-  adding: robots.txt (stored 0%)
-
-Checking theme compatibility...
-
-✓ Your theme is compatible with Ghost 5.x
-```
-
-## Links
-
-- [GScan][gscan] – a free online tool to scan your Ghost theme
-- [google-webfonts-helper][fonts] – a hassle-free way to self-host Google fonts
-- [Icons8][icons8] – a free service provides icons, clipart illustrations, photos, and music
-- [All Emojis][emojis] – a freeCodeCamp's emoji list for copy and paste
-
-# To be continued...
-
-Thank you!
-
-Peace and love,
-
-Salah.
-
-[zawake]: https://zawake.com/ "زواكي - حلويات من المطبخ إلى الفم مباشرة"
-[fonts]: https://gwfh.mranftl.com/fonts "google webfonts helper"
-[icons8]: https://icons8.com/ "Free Icons, Clipart Illustrations, Photos, and Music"
-[emojis]: https://www.freecodecamp.org/news/all-emojis-emoji-list-for-copy-and-paste/ "All Emojis – Emoji List for Copy and Paste"
-[gscan]: https://gscan.ghost.org/ "The official tool to test your Ghost theme from Ghost.org"
+[MIT](LICENSE) © 2024-2026 Salaheddin AbuEin

@@ -1,44 +1,79 @@
-# L’OR Beauty Ghost Theme
+# L’OR Beauty
 
-## Overview
-This project is a custom Ghost CMS theme for L’OR Beauty, a premium skincare brand. It's a modern, production-ready PWA.
+This project is a custom Ghost CMS theme for L'OR Beauty, a premium skincare brand.
 
-## Goals
-- Clean, minimal homepage
-- Product-focused layout
-- Fast performance
-- Optimized for Meta Pixel & conversions
+- **Live site:** [lor.beauty](https://lor.beauty/)
+- **Version:** 1.0.0 · **Ghost:** `>=6.67.0` · **Licence:** [MIT](LICENSE)
+- **Author:** [Salaheddin AbuEin](https://abuein.dev/)
 
-## Pages to Implement
-- Home
-- Shop (listing)
-- Product (template for reuse)
-- About
-- Contact
-- FAQ
+## About
 
-## Key Features
-- Responsive design
-- SEO-friendly structure
-- Easy content editing via Ghost Admin
-- Support for future blog posts
+A custom theme for L’OR Beauty, a premium skincare brand: a clean, product-focused, production-ready PWA, optimised for fast performance and Meta Pixel conversions.
 
-## Tech Notes
-- Built using Ghost theme structure (Handlebars)
-- Follow Ghost best practices: https://ghost.org/docs/themes/
-- Use partials for reusable components (header, footer, product card)
+### Pages
 
-## Future Enhancements
+Home · Shop (listing) · Product (reusable template) · About · Contact · FAQ
+
+### Roadmap
+
 - Multi-product support
 - Blog integration
-- Reviews system
-- Multi-language (EN/AR)
+- Reviews
+- Multi-language (English/Arabic)
 
-## Setup
-1. Install Ghost locally
-2. Add theme to /content/themes/
-3. Activate via Ghost Admin
-4. Customize branding, colors, and content
+## Features
 
-## Contact
-Project owner will provide assets and feedback during development.
+- Plain HTML5, CSS3 and ES6+ JavaScript, with no front-end frameworks
+- Responsive, mobile-first layout
+- Installable PWA, with a web app manifest, a service worker and an offline page
+- Translations: Arabic (right-to-left), English
+- Custom theme settings in Ghost Admin
+
+## Getting started
+
+From the repo root (one-off setup is in the [main README](../README.md#getting-started)):
+
+```bash
+npm install
+npm run link -w lor-beauty
+npm restart -w lor-beauty
+```
+
+Then activate **lor-beauty** in Ghost Admin under **Settings → Design & branding → Change theme**.
+
+## Scripts
+
+Run these inside `lor-beauty/`, or from the repo root with `-w lor-beauty` added.
+
+| Command | What it does |
+| --- | --- |
+| `npm start` / `npm stop` / `npm restart` | Control your local Ghost |
+| `npm run debug` | `ghost run -D` (foreground, development mode) |
+| `npm run log` / `npm run update` | `ghost log` / `ghost update` |
+| `npm run link` / `npm run unlink` | Link this theme into Ghost's `content/themes` |
+| `npm run scan` | Validate with gscan |
+| `npm run zip` | Write `lor-beauty.zip`, ready to upload |
+| `npm run scan:zip` | Zip, then validate the zip |
+| `npm run pwa:check` | Check the web app manifest and service worker |
+
+## Theme settings
+
+Edit these in Ghost Admin under **Settings → Design & branding → Customise**.
+
+| Setting | Type | Default | Description |
+| --- | --- | --- | --- |
+| `default_price` | text | `200` |  |
+
+## Custom templates
+
+- `page-offline.hbs`
+- `page-shop.hbs`
+- `post-product.hbs`
+
+## Credits
+
+Designed and built by **[Salaheddin AbuEin](https://abuein.dev/)**. Part of the [ghost-themes](../README.md) collection.
+
+## Licence
+
+[MIT](LICENSE) © 2026 Salaheddin AbuEin

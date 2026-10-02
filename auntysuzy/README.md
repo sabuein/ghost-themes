@@ -1,9 +1,9 @@
-# Elite Drivers Hertfordshire
+# Aunty Suzy
 
-A Ghost theme for airport transfer and ground transportation services.
+A theme for sole traders.
 
-- **Live site:** [servex.business](https://servex.business/)
-- **Version:** 0.5.0 · **Ghost:** `>=6.67.0` · **Licence:** [MIT](LICENSE)
+- **Live site:** [auntysuzy.co.uk](https://auntysuzy.co.uk/)
+- **Version:** 0.1.0 · **Ghost:** `>=6.67.0` · **Licence:** [MIT](LICENSE)
 - **Author:** [Salaheddin AbuEin](https://abuein.dev/)
 
 ## Features
@@ -11,6 +11,9 @@ A Ghost theme for airport transfer and ground transportation services.
 - Plain HTML5, CSS3 and ES6+ JavaScript, with no front-end frameworks
 - Responsive, mobile-first layout
 - Installable PWA, with a web app manifest, a service worker and an offline page
+- Translations: English, Spanish
+- Ghost members, sign-up and account pages
+- Shop powered by [Snipcart](https://snipcart.com/)
 
 ## Getting started
 
@@ -18,15 +21,15 @@ From the repo root (one-off setup is in the [main README](../README.md#getting-s
 
 ```bash
 npm install
-npm run link -w elite-drivers-hertfordshire
-npm restart -w elite-drivers-hertfordshire
+npm run link -w auntysuzy
+npm restart -w auntysuzy
 ```
 
-Then activate **elite-drivers-hertfordshire** in Ghost Admin under **Settings → Design & branding → Change theme**.
+Then activate **auntysuzy** in Ghost Admin under **Settings → Design & branding → Change theme**.
 
 ## Scripts
 
-Run these inside `elite-drivers-hertfordshire/`, or from the repo root with `-w elite-drivers-hertfordshire` added.
+Run these inside `auntysuzy/`, or from the repo root with `-w auntysuzy` added.
 
 | Command | What it does |
 | --- | --- |
@@ -35,13 +38,18 @@ Run these inside `elite-drivers-hertfordshire/`, or from the repo root with `-w 
 | `npm run log` / `npm run update` | `ghost log` / `ghost update` |
 | `npm run link` / `npm run unlink` | Link this theme into Ghost's `content/themes` |
 | `npm run scan` | Validate with gscan |
-| `npm run zip` | Write `elite-drivers-hertfordshire.zip`, ready to upload |
+| `npm run zip` | Write `auntysuzy.zip`, ready to upload |
 | `npm run scan:zip` | Zip, then validate the zip |
 
 ## Custom templates
 
-- `custom-offline.hbs`
-- `custom-service.hbs`
+- `page-about.hbs`
+- `page-blog.hbs`
+- `page-cookie-policy.hbs`
+- `page-privacy-policy.hbs`
+- `page-returns-policy.hbs`
+- `page-support.hbs`
+- `page-terms-conditions.hbs`
 
 ## Credits
 
@@ -49,4 +57,4 @@ Designed and built by **[Salaheddin AbuEin](https://abuein.dev/)**. Part of the 
 
 ## Licence
 
-[MIT](LICENSE) © 2024-2026 Salaheddin AbuEin
+[MIT](LICENSE) © 2022-2026 Salaheddin AbuEin
