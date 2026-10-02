@@ -1,51 +1,67 @@
 {
-  "name": "bdde-zawake",
-  "description": "A Ghost theme for Zawake project, an e-commerce venture between a brother (myself) and his sister (Hanan)",
-  "homepage": "https://zawake.com/",
-  "demo": "https://zawake.com/",
-  "version": "1.0.0",
-  "engines": {
-    "ghost": ">=6.17.0"
-  },
-  "license": "MIT",
+    "name": "bdde-zawake",
+    "description": "A Ghost theme for Zawake project, an e-commerce venture between a brother (myself) and his sister (Hanan)",
+    "version": "1.0.0",
+    "private": true,
+    "license": "MIT",
     "author": {
         "name": "Salaheddin AbuEin",
         "email": "salaheddin@abuein.dev",
         "url": "https://abuein.dev/"
     },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sabuein/bdde-zawake.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sabuein/bdde-zawake/issues"
-  },
-  "readme": "https://github.com/sabuein/bdde-zawake#readme",
-  "screenshots": {
-    "desktop": "assets/screenshot-desktop.jpg",
-    "mobile": "assets/screenshot-mobile.jpg"
-  },
-  "keywords": [
-    "ghost",
-    "theme",
-    "ghost-theme",
-    "arabic",
-    "rtl",
-    "sweets",
-    "ecommerce"
-  ],
-  "config": {
-    "posts_per_page": 21,
-    "card_assets": true,
-    "image_sizes": {}
-  },
-  "scripts": {
-    "ghost": "./assets/labs/scripts/ghost.sh",
-    "start": "./assets/labs/scripts/start.sh",
-    "restart": "./assets/labs/scripts/restart.sh",
-    "hash": "./assets/labs/scripts/hash.sh",
-    "theme": "./assets/labs/scripts/theme.sh",
-    "version": "./assets/labs/scripts/version.sh",
-    "zip": "./assets/labs/scripts/zip.sh"
-  }
+    "homepage": "https://github.com/sabuein/ghost-themes/tree/main/bdde-zawake#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sabuein/ghost-themes.git",
+        "directory": "bdde-zawake"
+    },
+    "bugs": {
+        "url": "https://github.com/sabuein/ghost-themes/issues"
+    },
+    "keywords": [
+        "ghost",
+        "ghost-theme",
+        "theme",
+        "arabic",
+        "rtl",
+        "sweets",
+        "ecommerce"
+    ],
+    "engines": {
+        "ghost": ">=6.67.0"
+    },
+    "demo": "https://zawake.com/",
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg",
+        "mobile": "assets/screenshot-mobile.jpg"
+    },
+    "config": {
+        "posts_per_page": 21,
+        "card_assets": true,
+        "image_sizes": {}
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine"
+        ]
+    },
+    "themeZip": {
+        "exclude": []
+    },
+    "scripts": {
+        "start": "node ../tools/theme.mjs start",
+        "stop": "node ../tools/theme.mjs stop",
+        "restart": "node ../tools/theme.mjs restart",
+        "debug": "node ../tools/theme.mjs debug",
+        "log": "node ../tools/theme.mjs log",
+        "update": "node ../tools/theme.mjs update",
+        "link": "node ../tools/theme.mjs link",
+        "unlink": "node ../tools/theme.mjs unlink",
+        "scan": "gscan .",
+        "zip": "npm run build --if-present && node ../tools/theme.mjs zip",
+        "scan:zip": "npm run zip && node ../tools/theme.mjs scan-zip",
+        "test": "npm run scan"
+    }
 }

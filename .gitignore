@@ -1,6 +1,8 @@
 # General
 **/assets/labs/
 **/*.zip
+ghost.local.json
+package-lock.json
 
 # Custom
 **/z23/**/*.txt

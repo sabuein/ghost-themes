@@ -1,10 +1,6 @@
 {
-    "name": "abuein-technologies",
-    "description": "A theme with RTL support",
-    "demo": "https://abuein.dev/",
-    "engines": {
-        "ghost": ">=6.17.0"
-    },
+    "name": "abuein-dev",
+    "description": "A Ghost theme for abuein.dev, with RTL support",
     "version": "0.1.0",
     "private": true,
     "license": "MIT",
@@ -13,43 +9,60 @@
         "email": "salaheddin@abuein.dev",
         "url": "https://abuein.dev/"
     },
-    "keywords": ["ghost-theme", "ghost-theme-rtl", "ghost-rtl", "ghost"],
-    "screenshots": {
-        "desktop": "assets/images/screenshot-desktop.jpg",
-        "mobile": "assets/images/screenshot-mobile.jpg"
+    "homepage": "https://github.com/sabuein/ghost-themes/tree/main/abuein-dev#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sabuein/ghost-themes.git",
+        "directory": "abuein-dev"
     },
-    "scripts": {
-        "install": "nvm install 22.13.1",
-        "node": "nvm use 22.13.1",
-        "ghost": "npm install ghost-cli@latest -g",
-        "start": "ghost start -d ~/my/instances/ghost-25",
-        "restart": "ghost restart -d ~/my/instances/ghost-25",
-        "update": "ghost update -d ~/my/instances/ghost-25",
-        "stop": "ghost stop -d ~/my/instances/ghost-25",
-        "debug": "ghost run -D -d ~/my/instances/ghost-25",
-        "log": "ghost log -d ~/my/instances/ghost-25",
-        "zip": "zip -r /home/sabuein/Desktop/abuein-dev.zip * -x *.zip /assets/labs/* /assets/js/config.* .gitignore",
-        "scan": "npx gscan .",
-        "scan-zip": "npx gscan -z /home/sabuein/Desktop/abuein-dev.zip",
-        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/abuein-dev ~/my/instances/ghost-25/content/themes",
-        "build": "echo 'no build script'"
+    "bugs": {
+        "url": "https://github.com/sabuein/ghost-themes/issues"
+    },
+    "keywords": [
+        "ghost",
+        "ghost-theme",
+        "theme",
+        "rtl",
+        "pwa"
+    ],
+    "engines": {
+        "ghost": ">=6.67.0"
+    },
+    "demo": "https://abuein.dev/",
+    "screenshots": {
+        "desktop": "assets/images/screenshotFullScreen.png",
+        "mobile": "assets/images/screenshotPhone.png"
     },
     "config": {
         "posts_per_page": 10,
         "card_assets": true,
         "image_sizes": {}
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/sabuein/ghost-themes.git"
-    },
-    "bugs": "https://github.com/sabuein/ghost-themes/issues",
     "gpm": {
         "type": "theme",
         "categories": [
             "Minimal",
             "Magazine"
         ]
+    },
+    "themeZip": {
+        "exclude": [
+            "assets/js/config.*"
+        ]
+    },
+    "scripts": {
+        "start": "node ../tools/theme.mjs start",
+        "stop": "node ../tools/theme.mjs stop",
+        "restart": "node ../tools/theme.mjs restart",
+        "debug": "node ../tools/theme.mjs debug",
+        "log": "node ../tools/theme.mjs log",
+        "update": "node ../tools/theme.mjs update",
+        "link": "node ../tools/theme.mjs link",
+        "unlink": "node ../tools/theme.mjs unlink",
+        "scan": "gscan .",
+        "zip": "npm run build --if-present && node ../tools/theme.mjs zip",
+        "scan:zip": "npm run zip && node ../tools/theme.mjs scan-zip",
+        "test": "npm run scan"
     },
     "type": "module"
 }

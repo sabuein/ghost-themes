@@ -1,0 +1,8 @@
+{
+    "ghostDir": "~/my/instances/ghost-25",
+    "zipDir": "~/Desktop",
+    "themes": {
+        "247lep": { "ghostDir": "~/my/instances/ghost-en" },
+        "elite-drivers-hertfordshire": { "ghostDir": "~/my/instances/ghost-servex" }
+    }
+}

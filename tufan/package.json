@@ -1,22 +1,37 @@
 {
     "name": "tufan",
-    "description": "A brief explanation of your theme",
-    "demo": "demo",
+    "description": "An indie publishing and community media PWA powered by Ghost",
     "version": "1.0.0",
-    "engines": {
-        "ghost": ">=6.17.0"
-    },
+    "private": true,
     "license": "MIT",
     "author": {
         "name": "Salaheddin AbuEin",
         "email": "salaheddin@abuein.dev",
         "url": "https://abuein.dev/"
     },
+    "homepage": "https://github.com/sabuein/ghost-themes/tree/main/tufan#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sabuein/ghost-themes.git",
+        "directory": "tufan"
+    },
+    "bugs": {
+        "url": "https://github.com/sabuein/ghost-themes/issues"
+    },
+    "keywords": [
+        "ghost",
+        "ghost-theme",
+        "theme",
+        "rtl"
+    ],
+    "engines": {
+        "ghost": ">=6.67.0"
+    },
+    "demo": "https://tufan.uk/",
     "screenshots": {
         "desktop": "assets/screenshot-desktop.jpg",
         "mobile": "assets/screenshot-mobile.jpg"
     },
-    "docs": "https://tufan.uk/docs/",
     "config": {
         "posts_per_page": 9,
         "image_sizes": {},
@@ -32,35 +47,29 @@
             }
         }
     },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Magazine"
+        ]
+    },
+    "themeZip": {
+        "exclude": []
+    },
     "scripts": {
-        "link": "ln -s /home/sabuein/my/projects/ghost-themes/tufan /home/sabuein/my/instances/ghost-25/content/themes | ls ../../../instances/ghost-25/content/themes/",
-        "test": "npx gscan .",
-        "start": "ghost start -d ~/my/instances/ghost-25/",
-        "restart": "ghost restart -d ~/my/instances/ghost-25/",
-        "stop": "ghost stop -d ~/my/instances/ghost-25/",
-        "update": "ghost update -d ~/my/instances/ghost-25/",
-        "debug": "ghost run -D -d ~/my/instances/ghost-25/",
-        "log": "ghost log -d ~/my/instances/ghost-25/",
-        "ls": "ghost ls",
-        "help": "ghost help",
-        "zip": "zip -r /home/sabuein/Desktop/tufan.zip * -x *.zip /assets/labs/* .gitignore",
-        "check": "gscan -z /home/sabuein/Desktop/tufan.zip"
+        "start": "node ../tools/theme.mjs start",
+        "stop": "node ../tools/theme.mjs stop",
+        "restart": "node ../tools/theme.mjs restart",
+        "debug": "node ../tools/theme.mjs debug",
+        "log": "node ../tools/theme.mjs log",
+        "update": "node ../tools/theme.mjs update",
+        "link": "node ../tools/theme.mjs link",
+        "unlink": "node ../tools/theme.mjs unlink",
+        "scan": "gscan .",
+        "zip": "npm run build --if-present && node ../tools/theme.mjs zip",
+        "scan:zip": "npm run zip && node ../tools/theme.mjs scan-zip",
+        "test": "npm run scan"
     },
-    "keywords": [
-        "ghost",
-        "theme",
-        "ghost-theme"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/sabuein/ghost-themes/tree/main/tufan"
-    },
-    "bugs": "https://github.com/sabuein/ghost-themes/issues",
-    "contributors": [
-        "https://github.com/sabuein/ghost-themes/graphs/contributors"
-    ],
-    "browserslist": [
-        "defaults"
-    ],
     "type": "module"
 }

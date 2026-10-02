@@ -1,53 +1,48 @@
 {
     "name": "lor-beauty",
+    "description": "This project is a custom Ghost CMS theme for L'OR Beauty, a premium skincare brand",
     "version": "1.0.0",
-    "description": "This project is a custom Ghost CMS theme for L'OR Beauty, a premium skincare brand.",
-    "demo": "https://lor.beauty/",
+    "private": true,
+    "license": "MIT",
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "salaheddin@abuein.dev",
+        "url": "https://abuein.dev/"
+    },
+    "homepage": "https://github.com/sabuein/ghost-themes/tree/main/lor-beauty#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sabuein/ghost-themes.git",
+        "directory": "lor-beauty"
+    },
+    "bugs": {
+        "url": "https://github.com/sabuein/ghost-themes/issues"
+    },
+    "keywords": [
+        "ghost",
+        "ghost-theme",
+        "theme",
+        "rtl",
+        "pwa"
+    ],
     "engines": {
-        "ghost": ">=6.52.1"
+        "ghost": ">=6.67.0"
     },
-    "main": "/assets/js/application.mjs",
+    "demo": "https://lor.beauty/",
     "screenshots": {
-        "desktop": "/assets/images/screenshot-desktop.jpg",
-        "mobile": "/assets/images/screenshot-mobile.jpg"
-    },
-    "scripts": {
-        "start": "ghost start -d ~/my/instances/ghost-25",
-        "restart": "ghost restart -d ~/my/instances/ghost-25",
-        "update": "ghost update -d ~/my/instances/ghost-25",
-        "stop": "ghost stop -d ~/my/instances/ghost-25",
-        "debug": "ghost run -D -d ~/my/instances/ghost-25",
-        "log": "ghost log -d ~/my/instances/ghost-25",
-        "zip": "zip -r ~/Desktop/lor-beauty.zip . -x '*.zip' 'assets/audio/*' 'assets/files/*' 'assets/labs/*' 'assets/videos/*' '.git/*' '.github/*' 'node_modules/*' '.DS_Store' '*.log'",
-        "scan": "npx gscan .",
-        "scan-zip": "npm run zip && npx gscan -z ~/Desktop/lor-beauty.zip",
-        "pwa:manifest:check": "node -e \"const fs=require('fs'); const p='./app.webmanifest'; const m=JSON.parse(fs.readFileSync(p,'utf8')); const required=['name','short_name','start_url','display','icons']; const missing=required.filter(k=>!(k in m)); if(missing.length){console.error('Missing manifest fields:', missing.join(', ')); process.exit(1);} if(!Array.isArray(m.icons)||!m.icons.length){console.error('Manifest icons missing'); process.exit(1);} console.log('Manifest looks valid:', p);\"",
-        "pwa:sw:check": "node -e \"const fs=require('fs'); const p='./service-worker.mjs'; if(!fs.existsSync(p)){console.error('Missing service-worker.mjs'); process.exit(1);} const s=fs.readFileSync(p,'utf8'); const required=['self.addEventListener','install','activate','fetch']; const missing=required.filter(t=>!s.includes(t)); if(missing.length){console.error('SW missing expected hooks:', missing.join(', ')); process.exit(1);} console.log('SW structure looks valid:', p);\"",
-        "pwa:check": "npm run pwa:manifest:check && npm run pwa:sw:check",
-        "symlink": "ln -s /home/sabuein/my/projects/ghost-themes/lor-beauty ~/my/instances/ghost-25/content/themes"
+        "desktop": "assets/images/screenshot-desktop.jpg",
+        "mobile": "assets/images/screenshot-mobile.jpg"
     },
     "config": {
         "posts_per_page": 10,
         "card_assets": true,
         "image_sizes": {
-            "xxs": {
-                "width": 30
-            },
-            "xs": {
-                "width": 100
-            },
-            "s": {
-                "width": 300
-            },
-            "m": {
-                "width": 600
-            },
-            "l": {
-                "width": 1200
-            },
-            "xl": {
-                "width": 2000
-            }
+            "xxs": { "width": 30 },
+            "xs": { "width": 100 },
+            "s": { "width": 300 },
+            "m": { "width": 600 },
+            "l": { "width": 1200 },
+            "xl": { "width": 2000 }
         },
         "custom": {
             "default_price": {
@@ -57,32 +52,36 @@
             }
         }
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/sabuein/ghost-themes.git"
-    },
-    "keywords": [
-        "ghost",
-        "theme",
-        "ghost-theme",
-        "rtl"
-    ],
-    "author": {
-        "name": "Salaheddin AbuEin",
-        "email": "salaheddin@abuein.dev",
-        "url": "https://abuein.dev/"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/sabuein/ghost-themes/issues"
-    },
-    "homepage": "https://github.com/sabuein/ghost-themes#readme",
     "gpm": {
         "type": "theme",
         "categories": [
             "Minimal",
             "Magazine"
         ]
+    },
+    "themeZip": {
+        "exclude": [
+            "assets/audio/**",
+            "assets/files/**",
+            "assets/videos/**"
+        ]
+    },
+    "scripts": {
+        "start": "node ../tools/theme.mjs start",
+        "stop": "node ../tools/theme.mjs stop",
+        "restart": "node ../tools/theme.mjs restart",
+        "debug": "node ../tools/theme.mjs debug",
+        "log": "node ../tools/theme.mjs log",
+        "update": "node ../tools/theme.mjs update",
+        "link": "node ../tools/theme.mjs link",
+        "unlink": "node ../tools/theme.mjs unlink",
+        "scan": "gscan .",
+        "zip": "npm run build --if-present && node ../tools/theme.mjs zip",
+        "scan:zip": "npm run zip && node ../tools/theme.mjs scan-zip",
+        "test": "npm run scan",
+        "pwa:manifest:check": "node -e \"const fs=require('fs'); const p='./app.webmanifest'; const m=JSON.parse(fs.readFileSync(p,'utf8')); const required=['name','short_name','start_url','display','icons']; const missing=required.filter(k=>!(k in m)); if(missing.length){console.error('Missing manifest fields:', missing.join(', ')); process.exit(1);} if(!Array.isArray(m.icons)||!m.icons.length){console.error('Manifest icons missing'); process.exit(1);} console.log('Manifest looks valid:', p);\"",
+        "pwa:sw:check": "node -e \"const fs=require('fs'); const p='./service-worker.mjs'; if(!fs.existsSync(p)){console.error('Missing service-worker.mjs'); process.exit(1);} const s=fs.readFileSync(p,'utf8'); const required=['self.addEventListener','install','activate','fetch']; const missing=required.filter(t=>!s.includes(t)); if(missing.length){console.error('SW missing expected hooks:', missing.join(', ')); process.exit(1);} console.log('SW structure looks valid:', p);\"",
+        "pwa:check": "npm run pwa:manifest:check && npm run pwa:sw:check"
     },
     "type": "module"
 }

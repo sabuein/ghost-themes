@@ -1,30 +1,47 @@
 {
     "name": "swifton-databases",
     "description": "A custom Ghost theme for Swifton Databases Limited",
-    "demo": "https://swifton.co.uk/",
     "version": "1.0.0",
-    "engines": {
-        "ghost": ">=6.17.0"
-    },
-    "license": "NA",
-    "screenshots": {
-        "mobile": "assets/screenshot-mobile.jpg",
-        "desktop": "assets/screenshot-desktop.jpg"
-    },
-    "scripts": {
-        "link": "ln -s /home/sabuein/my/projects/swifton-databases /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
-        "check": "npx gscan .",
-        "start": "ghost start -d C:\\Users\\sala\\my\\ghost-cms",
-        "restart": "ghost restart -d ~/my/instances/ghost/",
-        "stop": "ghost stop -d ~/my/instances/ghost/",
-        "update": "ghost update -d ~/my/instances/ghost/",
-        "debug": "ghost run -D -d ~/my/instances/ghost/",
-        "zip": "zip -r /home/sabuein/Desktop/swifton-databases.zip * -x *.zip /assets/labs/* .gitignore"
-    },
+    "private": true,
+    "license": "MIT",
     "author": {
         "name": "Salaheddin AbuEin",
-        "email": "salaheddin.abuein@rapid-is.co.uk",
-        "url": "https://sabuein.github.io/"
+        "email": "salaheddin@abuein.dev",
+        "url": "https://abuein.dev/"
+    },
+    "homepage": "https://github.com/sabuein/ghost-themes/tree/main/swifton-databases#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sabuein/ghost-themes.git",
+        "directory": "swifton-databases"
+    },
+    "bugs": {
+        "url": "https://github.com/sabuein/ghost-themes/issues"
+    },
+    "keywords": [
+        "ghost",
+        "ghost-theme",
+        "theme"
+    ],
+    "engines": {
+        "ghost": ">=6.67.0"
+    },
+    "demo": "https://swifton.co.uk/",
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg",
+        "mobile": "assets/screenshot-mobile.jpg"
+    },
+    "config": {
+        "card_assets": true,
+        "posts_per_page": 9,
+        "image_sizes": {
+            "xxs": { "width": 30 },
+            "xs": { "width": 100 },
+            "s": { "width": 300 },
+            "m": { "width": 600 },
+            "l": { "width": 1200 },
+            "xl": { "width": 2000 }
+        }
     },
     "gpm": {
         "type": "theme",
@@ -33,45 +50,22 @@
             "Magazine"
         ]
     },
-    "keywords": [
-        "ghost",
-        "theme",
-        "ghost-theme"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/sabuein/ghost-themes.git"
+    "themeZip": {
+        "exclude": []
     },
-    "bugs": "https://github.com/sabuein/ghost-themes/issues",
-    "contributors": [
-        "https://github.com/sabuein/ghost-themes/graphs/contributors"
-    ],
-    "browserslist": [
-        "defaults"
-    ],
-    "config": {
-        "card_assets": true,
-        "posts_per_page": 9,
-        "image_sizes": {
-            "xxs": {
-                "width": 30
-            },
-            "xs": {
-                "width": 100
-            },
-            "s": {
-                "width": 300
-            },
-            "m": {
-                "width": 600
-            },
-            "l": {
-                "width": 1200
-            },
-            "xl": {
-                "width": 2000
-            }
-        }
+    "scripts": {
+        "start": "node ../tools/theme.mjs start",
+        "stop": "node ../tools/theme.mjs stop",
+        "restart": "node ../tools/theme.mjs restart",
+        "debug": "node ../tools/theme.mjs debug",
+        "log": "node ../tools/theme.mjs log",
+        "update": "node ../tools/theme.mjs update",
+        "link": "node ../tools/theme.mjs link",
+        "unlink": "node ../tools/theme.mjs unlink",
+        "scan": "gscan .",
+        "zip": "npm run build --if-present && node ../tools/theme.mjs zip",
+        "scan:zip": "npm run zip && node ../tools/theme.mjs scan-zip",
+        "test": "npm run scan"
     },
     "type": "module"
 }

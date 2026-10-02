@@ -1,0 +1,54 @@
+{
+    "name": "ghost-themes",
+    "description": "Ghost CMS themes by Salaheddin AbuEin — vanilla HTML, CSS and JavaScript, responsive, accessible and PWA-ready.",
+    "version": "1.0.0",
+    "private": true,
+    "license": "MIT",
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "salaheddin@abuein.dev",
+        "url": "https://abuein.dev/"
+    },
+    "homepage": "https://github.com/sabuein/ghost-themes#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sabuein/ghost-themes.git"
+    },
+    "bugs": {
+        "url": "https://github.com/sabuein/ghost-themes/issues"
+    },
+    "engines": {
+        "node": "^22.17.0 || ^24.0.0"
+    },
+    "workspaces": [
+        "247lep",
+        "2n1",
+        "abuein-dev",
+        "auntysuzy",
+        "bdde-zawake",
+        "dar-abuein",
+        "elite-drivers-hertfordshire",
+        "grace-gs",
+        "greenrock",
+        "lor-beauty",
+        "palestine-riders",
+        "rapid-is",
+        "starter-kit",
+        "swifton-databases",
+        "tufan",
+        "z23"
+    ],
+    "scripts": {
+        "scan": "npm run scan --workspaces --if-present",
+        "zip": "npm run zip --workspaces --if-present",
+        "build": "npm run build --workspaces --if-present",
+        "work:link": "npm run link -w 2n1 -w rapid-is -w swifton-databases -w grace-gs",
+        "work:scan": "npm run scan -w 2n1 -w rapid-is -w swifton-databases -w grace-gs",
+        "work:zip": "npm run zip -w 2n1 -w rapid-is -w swifton-databases -w grace-gs"
+    },
+    "devDependencies": {
+        "archiver": "^8.0.0",
+        "gscan": "^6.6.1"
+    },
+    "type": "module"
+}
