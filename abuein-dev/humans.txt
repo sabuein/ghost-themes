@@ -8,3 +8,5 @@ Thank you! :)
 - FormSubmit https://formsubmit.co/
 - Random User Generator https://randomuser.me/
 - TestLocally https://testlocal.ly/
+- Capture a website screenshot online https://pikwy.com/
+- Mailto link generator https://mailtolinkgenerator.com/
