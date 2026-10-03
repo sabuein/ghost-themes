@@ -1,0 +1,39 @@
+{{!-- partials/video-card.hbs
+
+     Portrait, TikTok-style card for posts tagged "video".
+
+     - Poster  = feature image (fast paint, OG image, no-JS fallback).
+
+     - <template> carries the post's Ghost video card so
+
+       assets/js/ui/video.mjs can build a muted autoplay preview on demand.
+
+     Used inside {{#foreach posts}} by tag-video.hbs, index.hbs and tag.hbs. --}}
+
+<article class="video-card">
+
+    <a class="video-card-link" href="{{url}}" aria-hidden="true" tabindex="-1">
+
+        <figure class="video-card-media">
+
+            {{#if feature_image}}<img class="video-card-poster" src="{{img_url feature_image size="s"}}" srcset="{{img_url feature_image size="s"}} 300w, {{img_url feature_image size="m"}} 600w" sizes="(max-width: 700px) 50vw, 220px" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" decoding="async" />{{/if}}
+
+            <span class="video-card-badge" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.14 10.608 2.253.164A1.559 1.559 0 0 0 0 1.557v20.887a1.558 1.558 0 0 0 2.253 1.392L23.14 13.393a1.557 1.557 0 0 0 0-2.785Z"/></svg></span>
+
+        </figure>
+
+    </a>
+
+    {{!-- Inert carrier for the clip; JS reads the first <video> from here. --}}
+
+    <template class="video-card-clip">{{content}}</template>
+
+    <div class="video-card-body">
+
+        <h3 class="video-card-title"><a href="{{url}}" title="{{title}}">{{title}}</a></h3>
+
+        {{#if custom_excerpt}}<p class="video-card-excerpt">{{excerpt words="12"}}</p>{{/if}}
+
+    </div>
+
+</article>

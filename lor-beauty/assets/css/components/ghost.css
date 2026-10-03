@@ -11,17 +11,39 @@ h6 {
     font-family: var(--gh-font-heading);
 }
 
-.kg-width-wide {
-    width: 85%;
-}
+.gh-content {
+    .kg-width-wide {
+        width: 85%;
+    }
 
-.kg-width-full {
-    width: 100%;
-}
+    .kg-width-full {
+        width: 100%;
+    }
 
-.kg-image-card,
-.kg-gallery-card,
-.kg-callout-card,
-.kg-button-card {
-    color: currentColor;
+    .kg-image-card,
+    .kg-gallery-card,
+    .kg-callout-card,
+    .kg-button-card {
+        color: currentColor;
+    }
+
+    .kg-gallery-card,
+    .kg-gallery-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .kg-gallery-card,
+    .kg-gallery-container,
+    .kg-gallery-row {
+        gap: 1rem;
+    }
+
+    .kg-gallery-row:not(:first-of-type),
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0;
+    }
 }

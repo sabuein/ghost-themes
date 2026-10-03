@@ -1,0 +1,7 @@
+{{!-- partials/newsletter-dialog.hbs --}}
+{{#> "dialog" id="newsletter-dialog" title=(t "Join the list") confirmLabel=(t "Subscribe") cancelLabel=(t "Not now")}}
+    <form id="newsletter-form">
+        <label>{{t "Email"}}<input name="email" type="email" autocomplete="email" autofocus="autofocus" required="required" /></label>
+    </form>
+{{/dialog}}
+<button type="button" class="btn btn-link" data-dialog-open="newsletter-dialog">{{t "Subscribe"}}</button>

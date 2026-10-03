@@ -6,7 +6,7 @@
         <h3 class="product-card-title"><a href="{{url}}" title="{{title}}" target="_top">{{title}}</a></h3>
         {{#if excerpt}}<p class="product-card-excerpt">{{excerpt}}</p>{{/if}}
         <!-- Price (static for now) -->
-        <p class="product-card-price"><data value="{{@custom.default_price}}₪">{{@custom.default_price}}₪</data></p>
+        <p class="product-card-price"><data value="{{@custom.default_price}}">{{#match @site.locale "ar"}}₪{{@custom.default_price}}{{else}}{{@custom.default_price}}₪{{/match}}</data></p>
         <a href="{{url}}" class="btn btn-primary" title="{{t "View product"}}: {{title}}" aria-label="{{t "View product"}}: {{title}}" target="_top">{{t "View Product"}}</a>
     </div>
 </article>

@@ -5,7 +5,7 @@
     </hgroup>
     <section class="lor-dialog-body">
         {{#if description}}<p id="{{id}}-desc">{{description}}</p>{{/if}}
-        {{#if body}}{{body}}{{/if}}
+        {{#if body}}{{{body}}}{{else}}{{> @partial-block}}{{/if}}
     </section>
     {{#if confirmLabel}}<footer class="lor-dialog-actions">
         {{#if cancelLabel}}<button type="button" class="btn btn-secondary" title="{{cancelLabel}}" data-dialog-close="data-dialog-close" autofocus="autofocus">{{cancelLabel}}</button>{{/if}}

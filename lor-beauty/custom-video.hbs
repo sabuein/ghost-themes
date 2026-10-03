@@ -1,0 +1,39 @@
+{{!< default}}
+
+<main id="main-content" class="video-page" tabindex="-1">
+
+    {{#post}}<article class="video-post">
+
+        <div class="video-post-stage gh-content">
+
+            {{content}}
+
+        </div>
+
+        <div class="video-post-info">
+
+            <h1 class="video-post-title">{{title}}</h1>
+
+            <p class="video-post-meta">
+
+                <a href="{{primary_author.url}}" rel="author">{{primary_author.name}}</a>
+
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+
+            </p>
+
+            {{#if custom_excerpt}}<p class="video-post-excerpt">{{excerpt}}</p>{{/if}}
+
+            <a class="video-back" href="{{@site.url}}/tag/video/">&larr; {{t "All videos"}}</a>
+
+        </div>
+
+        {{#if comments}}<section class="post-comments" aria-label="{{t "Comments"}}">
+
+            {{comments}}
+
+        </section>{{/if}}
+
+    </article>{{/post}}
+
+</main>

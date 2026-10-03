@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{@site.locale}}" dir="{{#match @site.locale "ar-PS"}}rtl{{else}}ltr{{/match}}" data-theme="light">
+<html lang="{{@site.locale}}" dir="{{#match @site.locale "ar"}}rtl{{else}}ltr{{/match}}" data-theme="light">
     <head>
         <meta charset="UTF-8" />
         <meta name="HandheldFriendly" content="True" />
@@ -31,22 +31,25 @@
             })();
         </script>
         <link rel="author" href="{{@site.url}}/humans.txt" type="text/plain" />
-        <link rel="apple-touch-icon" href="{{asset 'icons/icon-192x192.jpg'}}" />
+        <link rel="apple-touch-icon" href="{{asset 'icons/android-chrome-192x192.png'}}" />
         <link rel="preload" href="{{asset 'css/screen.css'}}" type="text/css" as="style" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
-        <link rel="icon" type="image/x-icon" href="{{asset 'favicon.ico'}}" />
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset 'icons/favicon.ico'}}" />
+        <link rel="icon" type="image/x-icon" href="{{asset 'icons/favicon.ico'}}" />
         <link rel="manifest" href="/app.webmanifest" type="application/manifest+json" crossorigin="anonymous" />
         <link rel="stylesheet" href="{{asset 'css/screen.css'}}" {{!-- hasMinFile='true' --}} type="text/css" media="all" />
         <script type="importmap">
             {
                 "imports": {
+                    "back-to-top": "/assets/js/ui/back-to-top.mjs",
                     "contact": "/assets/js/ui/contact-form.mjs",
                     "cookies": "/assets/js/ui/cookies.mjs",
                     "dialog": "/assets/js/ui/dialog.mjs",
                     "popover": "/assets/js/ui/popover.mjs",
-                    "toast": "/assets/js/ui/toast.mjs"
+                    "toast": "/assets/js/ui/toast.mjs",
+                    "audio": "/assets/js/utils/audio.mjs",
+                    "theme": "/assets/js/utils/theme.mjs"
                 }
             }
         </script>
@@ -54,10 +57,21 @@
         {{ghost_head}}
     </head>
     <body class="{{body_class}}">
-        <a class="skip-link" href="#main-content">{{t "Skip to content"}}</a>
+        <a href="#main-content" class="skip-link" aria-label="{{t 'Skip to content'}}">{{t "Skip to content"}}</a>
         {{> "header"}}
         {{{body}}}
         {{> "footer"}}
+        <a href="#main-content" id="back-to-top" class="back-to-top" aria-label="{{t 'Back to top'}}"><span class="back-to-top-icon" aria-hidden="true"></span></a>
+        <noscript>
+            <style>
+                /* No JS to toggle .is-visible on scroll; show it plainly instead */
+                .back-to-top {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: none;
+                }
+            </style>
+        </noscript>
         <script type="module" src="{{asset 'js/application.mjs'}}"></script>
         {{{block "scripts"}}}
         {{ghost_foot}}

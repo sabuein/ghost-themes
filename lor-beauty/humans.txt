@@ -24,5 +24,4 @@ Many thanks to the people behind:
 - PX to REM converter https://nekocalc.com/px-to-rem-converter
 - Fonts https://gwfh.mranftl.com/fonts
 - Colors https://colorbase.app/
-- https://logo.com/dashboard
 - Image Resizer | Easily Resize Images Online for FREE https://imageresizer.com/

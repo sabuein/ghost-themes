@@ -1,0 +1,20 @@
+routes:
+
+collections:
+  /product/:
+    permalink: /product/{slug}/
+    filter: tag:product
+    template: custom-product
+  
+  /journal/:
+    permalink: /journal/{slug}/
+    filter: tag:-product
+    template: index
+
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

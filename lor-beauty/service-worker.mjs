@@ -1,4 +1,4 @@
-const VERSION = "1.0.0";
+const VERSION = "1.0.1";
 const STATIC_CACHE = `lor-beauty-static-${VERSION}`;
 const RUNTIME_CACHE = `lor-beauty-runtime-${VERSION}`;
 const OFFLINE_URL = "/offline/";

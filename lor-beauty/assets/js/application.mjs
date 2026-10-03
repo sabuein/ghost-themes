@@ -1,8 +1,11 @@
 import { initDialogs } from "dialog";
+import { initPopovers } from "popover";
+import { initBackToTop } from "back-to-top";
 import { registerServiceWorker } from "./pwa/register.mjs";
 import { initInstallPrompt } from "./pwa/install.mjs";
-import { initTheme, getTheme, toggleTheme } from "./utils/theme.mjs";
-import { isMuted, toggleMuted } from "./utils/audio.mjs";
+import { isMuted, toggleMuted, playNudge } from "audio";
+import { initTheme, getTheme, toggleTheme } from "theme";
+import { initVideoPreviews } from "./ui/video.mjs";
 
 function initSoundToggle() {
     document.querySelectorAll("[data-sound-toggle]").forEach((button) => {
@@ -10,6 +13,8 @@ function initSoundToggle() {
         button.addEventListener("click", () => {
             const muted = toggleMuted();
             button.setAttribute("aria-pressed", String(!muted));
+            // audible confirmation when turning sound on
+            if (!muted) playNudge();
         });
     });
 }
@@ -40,7 +45,10 @@ async function bootstrap() {
     initTheme();
     initThemeToggle();
     initDialogs();
+    initPopovers();
     initSoundToggle();
+    initVideoPreviews();
+    initBackToTop();
 
     // Required PWA hooks
     initInstallPrompt();

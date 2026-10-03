@@ -1,0 +1,21 @@
+{{!< default}}
+
+<main id="main-content" class="video-archive" tabindex="-1">
+
+    <header class="video-archive-header">
+
+        <h1>{{tag.name}}</h1>
+
+        {{#if tag.description}}<p>{{tag.description}}</p>{{/if}}
+
+    </header>
+
+    <div class="video-grid" data-video-grid>
+
+        {{#foreach posts}}{{> "video-card"}}{{else}}<p>{{t "No posts"}}</p>{{/foreach}}
+
+    </div>
+
+    {{pagination}}
+
+</main>

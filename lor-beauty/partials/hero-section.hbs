@@ -1,8 +1,9 @@
-{{!--
-    Driven by Ghost Admin > Settings > General (title, description) and
-    Settings > Design & branding (cover image) — no hardcoded copy here.
---}}
-<section class="hero-section" aria-labelledby="hero-heading"{{#if @site.cover_image}} style="--hero-cover-image: url({{@site.cover_image}})"{{/if}}>
+<section class="hero-section" aria-labelledby="hero-heading">
+    {{#if @custom.hero_video_url}}<video class="hero-video" autoplay muted loop playsinline poster="{{@site.cover_image}}" aria-hidden="true">
+        <source src="{{asset 'videos/promo.mp4'}}" type="video/mp4">
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>{{else if @site.cover_image}}<figure class="hero-bg" style="--hero-cover-image: url({{@site.cover_image}})"></figure>
+    <div class="hero-overlay" aria-hidden="true"></div>{{/if}}
     <hgroup>
         <h1 id="hero-heading">{{@site.title}}</h1>
         {{#if @site.description}}<p class="hero-section-tagline">{{@site.description}}</p>{{/if}}

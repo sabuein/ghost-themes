@@ -66,10 +66,15 @@
 
 // --- Part 1: declarative wiring -----------------------------------------
 
+const FOCUSABLE = "input, textarea, select, button, a[href], [tabindex]:not([tabindex='-1'])";
+
 export function openDialog(id) {
     const dialog = document.getElementById(id);
     if (dialog instanceof HTMLDialogElement && !dialog.open) {
         dialog.showModal();
+        if (!dialog.querySelector("[autofocus]")) {
+            dialog.querySelector(FOCUSABLE)?.focus();
+        }
         dialog.dispatchEvent(
             new CustomEvent("lor:dialog-open", { bubbles: true }),
         );

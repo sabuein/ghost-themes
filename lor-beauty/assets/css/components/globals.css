@@ -5,8 +5,12 @@
     color-scheme: light dark;
 
     /* Fonts — fall back gracefully; Ghost overrides via ghost_head when a font is set in Admin */
-    --gh-font-heading: "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman", serif;
-    --gh-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --gh-font-heading:
+        "Cormorant Garamond", "Playfair Display", Georgia, "Times New Roman",
+        serif;
+    --gh-font-body:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
 
     --background: oklch(0.98 0.005 90);
     --foreground: oklch(0.15 0.02 150);
@@ -40,23 +44,34 @@
     --gutter: clamp(1.25rem, 4vw, 3rem);
     --section-y: clamp(3.5rem, 8vw, 7.5rem);
     --block-gap: clamp(1.5rem, 3vw, 2.5rem);
+
+    --shadow-sm:
+        0 1px 2px rgba(20, 30, 20, 0.06), 0 1px 1px rgba(20, 30, 20, 0.04);
+    --shadow-md:
+        0 8px 24px rgba(20, 30, 20, 0.1), 0 2px 8px rgba(20, 30, 20, 0.06);
+    --shadow-lift:
+        0 16px 36px rgba(20, 30, 20, 0.16), 0 4px 12px rgba(20, 30, 20, 0.08);
 }
 
 [data-theme="dark"] {
-    --background: oklch(0.18 0.05 155);
+    --background: oklch(0.16 0.035 155);
     --foreground: oklch(0.95 0.02 90);
-    --card: oklch(0.22 0.06 155);
+    --card: oklch(0.245 0.05 155);
     --card-foreground: oklch(0.95 0.02 90);
-    --popover: oklch(0.22 0.06 155);
+    --popover: oklch(0.245 0.05 155);
     --popover-foreground: oklch(0.95 0.02 90);
-    --muted: oklch(0.25 0.05 155);
-    --muted-foreground: oklch(0.65 0.03 90);
-    --border: oklch(0.32 0.06 155);
+    --muted: oklch(0.22 0.045 155);
+    --muted-foreground: oklch(0.68 0.03 90);
+    --border: oklch(0.34 0.06 155);
     --input: oklch(0.28 0.05 155);
     --gold-light: oklch(0.85 0.12 85);
     --gold-dark: oklch(0.72 0.15 85);
     --green-forest: oklch(0.25 0.08 155);
+    --green-dark: oklch(0.13 0.045 155);
     --cream: oklch(0.95 0.02 90);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-lift: 0 16px 36px rgba(0, 0, 0, 0.45);
 }
 
 *,
@@ -87,7 +102,7 @@ h4,
 h5,
 h6 {
     line-height: 1.1;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -0.01em;
     margin: 0 0 0.5em;
 }
@@ -106,6 +121,7 @@ h3 {
 
 p {
     margin: 0 0 1rem;
+    text-align: start;
 }
 
 a {
@@ -185,7 +201,12 @@ hgroup {
 }
 
 .text-gold-gradient {
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+    background: linear-gradient(
+        135deg,
+        var(--gold-light) 0%,
+        var(--gold) 50%,
+        var(--gold-dark) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -207,7 +228,11 @@ hgroup {
     border-radius: 999px;
     cursor: pointer;
     text-decoration: none;
-    transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition:
+        transform 0.15s ease,
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .btn:hover {
@@ -297,7 +322,8 @@ hgroup {
 
 .nav-toggle,
 .sound-toggle,
-.theme-toggle {
+.theme-toggle,
+.search-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -329,6 +355,25 @@ hgroup {
 .nav-toggle-icon::after {
     position: absolute;
     top: 6px;
+}
+
+.search-toggle-icon {
+    width: 13px;
+    height: 13px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    position: relative;
+}
+
+.search-toggle-icon::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 7px;
+    background: currentColor;
+    bottom: -7px;
+    right: -2px;
+    transform: rotate(-45deg);
 }
 
 /* crescent-moon icon (pure CSS) */
@@ -421,9 +466,21 @@ hgroup {
         width: auto;
         height: auto;
         padding: 0;
+        margin: 0;
+        border: 0;
+        overflow: visible;
         background: none;
         color: inherit;
         box-shadow: none;
+    }
+
+    .site-nav[popover] .nav-list {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
+    .site-nav[popover] .nav-item a {
+        color: inherit;
     }
 }
 
@@ -496,6 +553,68 @@ hgroup {
 .site-footer-copyright {
     color: color-mix(in oklab, var(--cream) 70%, transparent);
     font-size: 0.85rem;
+}
+
+/* Back to top */
+.back-to-top {
+    position: fixed;
+    left: 50%;
+    bottom: max(1.25rem, env(safe-area-inset-bottom, 0) + 1rem);
+    translate: -50% 0;
+    z-index: 90;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    background: var(--card);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--muted);
+}
+
+.back-to-top-icon {
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(-45deg);
+    margin-top: 3px; /* optical centering of the chevron inside the circle */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    /* fall back to poster/cover_image */
+    .hero-video {
+        display: none;
+    }
+
+    .back-to-top {
+        transition: opacity 0.01ms;
+    }
 }
 
 /* Dialogs */

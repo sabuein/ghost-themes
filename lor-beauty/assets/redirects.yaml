@@ -1,0 +1,3 @@
+# See https://ghost.org/docs/themes/routing/#redirects
+301: {}
+302: {}
