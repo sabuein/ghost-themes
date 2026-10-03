@@ -42,14 +42,9 @@
     {{!-- Get all tags and order them by post count --}}
     <h2>Keywords</h2>
     <hr />
-    {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}{{#foreach tags}}<a href="{{url}}" title="{{name}}" target="_top">{{name}} ({{count.posts}})</a>{{/foreach}}{{/get}}
+    {{#get "tags" limit="50" include="count.posts" order="count.posts desc"}}{{#foreach tags}}<a href="{{url}}" title="{{name}}" target="_top">{{name}} ({{count.posts}})</a>{{/foreach}}{{/get}}
 </section>
 {{> "footer"}}
-{{#contentFor "scripts"}}<script type="text/javascript">
-    // FitVids - Makes video embeds responsive
-    $(document).ready(() => $(".gh-content").fitVids());
-    console.log("Hello from home.hbs!");
-</script>{{/contentFor}}
 <a href="#site-header" title="Scroll back to top">&#x21eb;</a>
 {{> "cookies"}}
 {{/is}}

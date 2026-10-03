@@ -27,14 +27,9 @@
     </div>
 </article>
 {{#contentFor "scripts"}}<script type="text/javascript">
-    // FitVids - Makes video embeds responsive
-    $(document).ready(() => {
-        $("*.html5-main-video").fitVids();
-        document.getElementById("back-btn").addEventListener("click", (e) => {
-            e.preventDefault();
-            window.history.back();
-        });
+    document.getElementById("back-btn")?.addEventListener("click", (event) => {
+        event.preventDefault();
+        history.back();
     });
-    console.log("Hello from post.hbs!");
 </script>{{/contentFor}}
 {{/post}}{{/is}}

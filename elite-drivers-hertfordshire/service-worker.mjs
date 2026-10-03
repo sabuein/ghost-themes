@@ -1,211 +1,194 @@
+/*
+  service-worker.mjs — elite-drivers-hertfordshire
+  Classic service worker (no imports), so register it WITHOUT { type: "module" }.
+
+  Strategies
+    • Pages (navigations) ...... network-first → cached copy → /offline/
+    • /assets/ with ?v=hash .... cache-first (Ghost's {{asset}} hash changes on every theme upload)
+    • /assets/ without ?v ...... stale-while-revalidate (e.g. files loaded through the import map)
+    • Images ................... stale-while-revalidate, capped
+    • Never touched ............ non-GET, other origins, Ghost Admin, Members API, previews,
+                                 link redirects, RSS/sitemaps, and range (video) requests
+
+  Bump VERSION whenever you change this file; old caches are removed on activate.
+*/
 "use strict";
 
-const appName = "elite-drivers-",
-    version = "v1:",
-    sw_caches = {
-        assets: {
-            name: `${appName}${version}assets`,
-            drivers: {
-                name: `${appName}${version}drivers`,
-                limit: 50
-            },
-            cars: {
-                name: `${appName}${version}cars`,
-                limit: 10
-            }
-        }
-    },
-    INITIAL_APP_FONTS = [
-        "/assets/fonts/epilogue-v17-latin-100.woff",
-        "/assets/fonts/epilogue-v17-latin-100.woff2",
-        "/assets/fonts/epilogue-v17-latin-100.ttf",
-        "/assets/fonts/epilogue-v17-latin-100.svg",
-        "/assets/fonts/epilogue-v17-latin-300.woff",
-        "/assets/fonts/epilogue-v17-latin-300.woff2",
-        "/assets/fonts/epilogue-v17-latin-300.ttf",
-        "/assets/fonts/epilogue-v17-latin-300.svg",
-        "/assets/fonts/epilogue-v17-latin-regular.woff",
-        "/assets/fonts/epilogue-v17-latin-regular.woff2",
-        "/assets/fonts/epilogue-v17-latin-regular.ttf",
-        "/assets/fonts/epilogue-v17-latin-regular.svg",
-        "/assets/fonts/epilogue-v17-latin-500.woff",
-        "/assets/fonts/epilogue-v17-latin-500.woff2",
-        "/assets/fonts/epilogue-v17-latin-500.ttf",
-        "/assets/fonts/epilogue-v17-latin-500.svg",
-        "/assets/fonts/epilogue-v17-latin-700.woff",
-        "/assets/fonts/epilogue-v17-latin-700.woff2",
-        "/assets/fonts/epilogue-v17-latin-700.ttf",
-        "/assets/fonts/epilogue-v17-latin-700.svg",
-    ],
-    OFFLINE_URL = "/offline/",
-    INITIAL_CACHED_RESOURCES = [
-        OFFLINE_URL,
-        "/app.webmanifest",
-        "/assets/css/screen.css",
-        "/assets/css/breakpoints.css",
-        "/assets/css/pwa.css",
-        "/assets/favicon.ico",
-        "/assets/js/application.mjs",
-        "/assets/js/modules/helpers.mjs",
-        "/assets/js/modules/view.mjs",
-        "https://cdn.jsdelivr.net/ghost/portal@~2.37/umd/portal.min.js",
-        "https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js",
-        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css",
-    ];
-INITIAL_CACHED_RESOURCES.push(...INITIAL_APP_FONTS);
+const VERSION = "v3";
+const PREFIX = "elite-drivers";
 
-// install event handler (note async operation)
-// opens named cache, pre-caches identified resources above
-self.addEventListener("install", event => {
-    console.log("[Service Worker]: install event in progress...");
-    // Cache on install to improve performance
-    event.waitUntil(
-        (async () => {
-            const cache = await caches.open(sw_caches.assets.name);
-            console.log("[Service Worker]: caching initial resources...");
-            await cache.addAll(INITIAL_CACHED_RESOURCES);
-        })(),
-    );
-});
+const CACHES = {
+    core: `${PREFIX}-core-${VERSION}`,      // precached shell: never trimmed
+    static: `${PREFIX}-static-${VERSION}`,
+    pages: `${PREFIX}-pages-${VERSION}`,
+    images: `${PREFIX}-images-${VERSION}`
+};
 
-self.addEventListener("activate", event => {
-    console.log("[Service Worker]: activation event in progress...");
-    const cacheWhitelist = [sw_caches.assets.name];
-    event.waitUntil(
-        caches.keys().then(keys => {
-            return Promise.all(
-                keys.filter(key => {
-                    return !key.startsWith(`${appName}${version}`);
-                }).map(key => {
-                    return caches.delete(key);
-                }).map((cacheName) => {
-                    if (!cacheWhitelist.includes(cacheName)) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        }).then(() => clients.claim()));
-    console.log("[Service Worker]: all clients are now controlled by me! Mwahahaha!");
-});
+const LIMITS = {
+    [CACHES.static]: 80,
+    [CACHES.pages]: 30,
+    [CACHES.images]: 60
+};
 
-// We have a cache-first strategy, 
-// where we look for resources in the cache first
-// and only on the network if this fails.
-self.addEventListener("fetch", event => {
-    // Destination gives us a clue as to the type of resource
-    const destination = event.request.destination;
-    /*
-    switch (destination) {
-        case "image":
-            event.respondWith(
-                // check the cache first,
-                // fall back to the network
-                // and store a copy in 
-                // sw_caches.images.name
-            );
-            break;
-        case "document":
-            event.respondWith(
-                // check the network first
-                // and store a copy in
-                // sw_caches.pages.name,
-                // fall back to the cache
-            );
-            break;
-        default:
-            event.respondWith(
-                // network only
-            );
-        }
-    */
+// Create a Ghost page with the slug "offline" and the template "custom-offline".
+const OFFLINE_URL = "/offline/";
 
-    if (event.request.mode === "navigate") {
-        event.respondWith(
-            fetch(event.request).catch(async () => {
-                return caches.open(sw_caches.assets.name).then((cache) => {
-                    return cache.match(OFFLINE_URL);
-                });
-            })
-        );
-    } else if (event.request.destination === "style" || event.request.destination === "script" || event.request.destination === "image" || event.request.destination === "font") {
-        console.log(`[Service Worker]: fetching resource of destination style/script/image/font...`);
-        fetchCacheFirst(event);
-    } else {
-        fetchCacheFirst(event);
-    }
-});
+const PRECACHE = [
+    OFFLINE_URL,
+    "/app.webmanifest",
+    "/assets/css/screen.css",
+    "/assets/js/application.mjs"
+];
 
-const fetchCacheFirst = (event) => {
+const BYPASS = /^\/(ghost|members|\.ghost|p|r|email|unsubscribe|webmentions)(\/|$)|\/(rss\/?|sitemap[^/]*\.xml)$/;
+
+/* ---------- helpers ---------- */
+
+const trimCache = async (cacheName, max) => {
+    if (!max) return;
+    const cache = await caches.open(cacheName);
+    const keys = await cache.keys();
+    const excess = keys.length - max;
+    if (excess > 0) await Promise.all(keys.slice(0, excess).map((key) => cache.delete(key)));
+};
+
+// Only store complete, public, same-origin responses.
+// Ghost sends "private"/"no-store" for signed-in member pages, so those are skipped.
+const putSafe = async (cacheName, request, response) => {
+    if (!response || !response.ok || response.type !== "basic") return;
+    if (/no-store|private/i.test(response.headers.get("Cache-Control") ?? "")) return;
+    const cache = await caches.open(cacheName);
+    await cache.put(request, response);
+    await trimCache(cacheName, LIMITS[cacheName]);
+};
+
+const offlineResponse = () => new Response(
+    "<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width'><title>Offline</title><p>You are offline. Please check your connection and try again.</p>",
+    { status: 503, headers: { "Content-Type": "text/html; charset=utf-8" } }
+);
+
+/* ---------- strategies ---------- */
+
+const networkFirst = async (event) => {
+    const { request } = event;
     try {
-        // Cache-first on (fetch) retrieval
-        const CACHE_NAME = sw_caches.assets.name;
-        event.respondWith(
-            (async () => {
-
-                const cache = await caches.open(CACHE_NAME);
-
-                // Try the cache first.
-                const cachedResponse = await cache.match(event.request);
-                if (cachedResponse !== undefined) {
-                    console.log(`[Service Worker]: fetching resource (${event.request.url})...`);
-                    // Cache hit, let's send the cached resource.
-                    return cachedResponse;
-                } else {
-                    // Nothing in cache, let's go to the network.
-                    const response = await fetch(event.request);
-                    console.log(`[Service Worker]: caching new resource (${event.request.url})...`);
-                    cache.put(event.request, response.clone());
-                    return response;
-                }
-            })(),
-        );
-    } catch (error) {
-        console.log(error);
+        const response = (await event.preloadResponse) ?? (await fetch(request));
+        event.waitUntil(putSafe(CACHES.pages, request, response.clone()));
+        return response;
+    } catch {
+        return (await caches.match(request, { ignoreSearch: true }))
+            ?? (await caches.match(OFFLINE_URL))
+            ?? offlineResponse();
     }
 };
+
+const cacheFirst = async (event, cacheName) => {
+    const { request } = event;
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    const response = await fetch(request);
+    event.waitUntil(putSafe(cacheName, request, response.clone()));
+    return response;
+};
+
+const staleWhileRevalidate = async (event, cacheName) => {
+    const { request } = event;
+    const network = fetch(request).then(async (response) => {
+        await putSafe(cacheName, request, response.clone());
+        return response;
+    });
+    event.waitUntil(network.catch(() => {})); // keep the worker alive for the background update
+    const cached = await caches.match(request);
+    return cached ?? network;
+};
+
+/* ---------- lifecycle ---------- */
+
+self.addEventListener("install", (event) => {
+    event.waitUntil((async () => {
+        const cache = await caches.open(CACHES.core);
+        // allSettled: one missing file must not abort the whole install
+        const results = await Promise.allSettled(
+            PRECACHE.map((url) => cache.add(new Request(url, { cache: "reload" })))
+        );
+        results.forEach((result, i) => {
+            if (result.status === "rejected") console.warn("[SW] Could not precache", PRECACHE[i]);
+        });
+    })());
+});
+
+self.addEventListener("activate", (event) => {
+    event.waitUntil((async () => {
+        const keep = new Set(Object.values(CACHES));
+        const keys = await caches.keys();
+        await Promise.all(
+            keys.filter((key) => !keep.has(key)) // also clears caches left by older workers
+                .map((key) => caches.delete(key))
+        );
+        if (self.registration.navigationPreload) await self.registration.navigationPreload.enable();
+        await self.clients.claim();
+    })());
+});
+
+/* ---------- routing ---------- */
+
+self.addEventListener("fetch", (event) => {
+    const { request } = event;
+    if (request.method !== "GET" || request.headers.has("range")) return;
+
+    const url = new URL(request.url);
+    if (url.origin !== self.location.origin || BYPASS.test(url.pathname)) return;
+
+    if (request.mode === "navigate") {
+        event.respondWith(networkFirst(event));
+        return;
+    }
+
+    if (url.pathname.startsWith("/assets/")) {
+        event.respondWith(url.searchParams.has("v")
+            ? cacheFirst(event, CACHES.static)
+            : staleWhileRevalidate(event, CACHES.static));
+        return;
+    }
+
+    if (request.destination === "image") {
+        event.respondWith(staleWhileRevalidate(event, CACHES.images));
+    }
+});
+
+/* ---------- messages & push ---------- */
 
 self.addEventListener("message", (event) => {
-    if (event.data && event.data.type === "IS_OFFLINE") {
-        console.log("[Service Worker]: the network connection was lost.");
-    }
-
-    if (event.data && event.data.type === "SKIP_WAITING") {
-        self.skipWaiting();
-    }
-
-    if (event.data && event.data.type === "CLEAN_UP") {
-        for (let key in sw_caches) {
-            if (sw_caches[key].limit != undefined) {
-                trimCache(sw_caches[key].name, sw_caches[key].limit);
-            }
-        }
+    switch (event.data?.type) {
+        case "SKIP_WAITING":
+            self.skipWaiting();
+            break;
+        case "CLEAN_UP":
+            event.waitUntil(Promise.all(
+                Object.entries(LIMITS).map(([name, max]) => trimCache(name, max))
+            ));
+            break;
     }
 });
 
-self.addEventListener("push", event => {
-    console.log("[Service Worker]: received notification...", event.data);
+self.addEventListener("push", (event) => {
+    let data = {};
+    try { data = event.data?.json() ?? {}; }
+    catch { data = { message: event.data?.text() }; }
 
-    const notificationData = JSON.parse(event.data.text());
-
-    event.waitUntil(
-        self.registration.showNotification(notificationData.title, {
-            body: notificationData.message,
-            icon: notificationData.icon
-        }));
+    event.waitUntil(self.registration.showNotification(data.title ?? "New update", {
+        body: data.message ?? "",
+        icon: data.icon ?? "/assets/images/android/android-launchericon-192-192.png",
+        data: { url: data.url ?? "/" }
+    }));
 });
 
-const trimCache = (cache_name, limit) => {
-    caches.open(cache_name).then(cache => {
-        cache.keys().then(items => {
-            if (items.length > limit) {
-                (async () => {
-                    let i = 0, end = items.length - limit;
-                    while (i < end) {
-                        console.log(`[Service Worker]: deleting resource (${i}-${items[i]}).`);
-                        cache.delete(items[i++]);
-                    }
-                })();
-            }
-        });
-    });
-};
+self.addEventListener("notificationclick", (event) => {
+    event.notification.close();
+    const target = new URL(event.notification.data?.url ?? "/", self.location.origin).href;
+    event.waitUntil((async () => {
+        const windows = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
+        const open = windows.find((client) => client.url === target);
+        return open ? open.focus() : self.clients.openWindow(target);
+    })());
+});

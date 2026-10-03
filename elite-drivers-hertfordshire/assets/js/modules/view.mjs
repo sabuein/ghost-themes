@@ -1,20 +1,29 @@
 "use strict";
 
-const closeCookiesButton = (event) => $(event.currentTarget).parent().fadeOut(150);
+const closeCookiesButton = (event) => {
+    const banner = event?.currentTarget?.closest(".cookies") ?? document.getElementById("cookies");
+    if (!banner) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return banner.remove();
+    banner.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 150, easing: "ease-out" })
+        .finished.then(() => banner.remove());
+};
 
-//check to determine if an overflow is happening
-const isOverflowing = (element) => (element.get(0).scrollWidth - element.get(0).offsetWidth) > element.scrollLeft();
+const isOverflowing = (el) => el.scrollWidth - el.clientWidth > el.scrollLeft;
 
-const horizontalScrolling = (container = null, distance = 100, milliseconds = 1000) => {
-    if (!!container) {
-        const intervalID = setInterval(() => {
-            if (isOverflowing(container)) container.scrollLeft(container.scrollLeft() + distance);
-            else container.scrollLeft(0);
-        }, milliseconds);
-
-        container.on("mouseenter", () => clearInterval(intervalID));
-        container.on("mouseleave", () => horizontalScrolling(container, distance, milliseconds));
-    } else false;
+const horizontalScrolling = (container, distance = 100, ms = 1000) => {
+    if (!container || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let timer;
+    const start = () => {
+        clearInterval(timer);
+        timer = setInterval(() => {
+            container.scrollLeft = isOverflowing(container) ? container.scrollLeft + distance : 0;
+        }, ms);
+    };
+    const stop = () => clearInterval(timer);
+    container.addEventListener("mouseenter", stop);
+    container.addEventListener("focusin", stop);
+    container.addEventListener("mouseleave", start);
+    start();
 };
 
 // When the user scrolls down 150px from the top of the document, show the button
@@ -67,7 +76,7 @@ const copyTextToClipboard = (copyText) => {
 
         // Copy the text inside the text field
         navigator.clipboard.writeText(copyText.value);
-        
+
         // Alert the copied text
         alert("Copied the text: " + copyText.value);
     } catch (error) {
@@ -103,10 +112,10 @@ const includeHTML = () => {
             if (file) {
                 /* Make an HTTP request using the attribute value as the file name: */
                 xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
+                xhttp.onreadystatechange = function () {
                     if (this.readyState == 4) {
-                        if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-                        if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                        if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                        if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
                         /* Remove the attribute, and call this function once more: */
                         elmnt.removeAttribute("w3-include-html");
                         includeHTML();
@@ -165,7 +174,7 @@ const setupDialogs = () => {
         }));
 
         closeButtons.forEach((button, index, arr) => button.addEventListener("click", () => dialogs[index].close()));
-        
+
         submitButtons.forEach((button, index, arr) => {
             button.addEventListener("click", (event) => {
                 event.preventDefault();

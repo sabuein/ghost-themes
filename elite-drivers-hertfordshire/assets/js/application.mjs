@@ -47,12 +47,16 @@ switch (document.readyState) {
                     window.localStorage.setItem("isCookiesVisible", false);
                     closeCookies?.click();
                 });
-                $(closeCookies).parent().fadeIn(150).css("display", "flex");
+                const banner = closeCookies?.closest(".cookies");
+                if (banner) {
+                    banner.style.display = "flex";
+                    banner.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150, easing: "ease-in" });
+                }
             }
         }
 
         const menuButton = qs(`button[data-html-symbol="trigram-for-heaven"]`);
-        if(!!menuButton) {
+        if (!!menuButton) {
             // Toggle the menu
             const menu = qs(`ul.primary-nav`);
             if (!!menu) menuButton.addEventListener("click", () => menu.classList.toggle("menu-visible"));
@@ -68,8 +72,7 @@ switch (document.readyState) {
         window.onscroll = () => toggleBackToTopButton(backToTop);
 
         // Enable client left auto-scrolling
-        const clients = $("*.inner-clients");
-        if (!!clients.length) horizontalScrolling(clients.first(), 850, 3000);
+        horizontalScrolling(document.querySelector(".inner-clients"), 850, 3000);
         break;
     }
 

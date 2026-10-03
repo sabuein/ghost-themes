@@ -5,5 +5,5 @@
     </hgroup>
     <ol class="flexy gapy-half content-width">
         {{#foreach result}}<li data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}" title="{{title}}">{{title}}</a></li>{{/foreach}}
-    </ol>{{else}}<p title="{{t 'There were no posts'}}">{{t "There were no posts"}}&hellip;</p>{{/if}}{{else}}<p><small>This is an error with the context. Seek help.</small><span>{{log this}}</span></p>
+    </ol>{{else}}<p title="{{t 'There were no posts'}}">{{t "There were no posts"}}&hellip;</p>{{/if}}{{else}}<p><small>This is an error with the context. Seek help.</small></p>
 {{/get}}</section>

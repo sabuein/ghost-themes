@@ -1,7 +1,7 @@
 <!-- social-links.hbs -->
 <div class="social-links">
-    {{#if @site.facebook}}<a href="{{facebook_url @site.facebook}}" title="Facebook" aria-label="Facebook" target="_blank" rel="nofollow noopener">{{> "icons/facebook"}}</a>{{/if}}
-    {{#if @site.twitter}}<a href="{{twitter_url @site.twitter}}" title="X" aria-label="X" target="_blank" rel="nofollow noopener">{{> "icons/twitter"}}</a>{{/if}}
+    {{#if @site.facebook}}<a href="{{social_url type="facebook"}}" title="Facebook" aria-label="Facebook" target="_blank" rel="nofollow noopener">{{> "icons/facebook"}}</a>{{/if}}
+    {{#if @site.twitter}}<a href="{{social_url type="twitter"}}" title="X" aria-label="X" target="_blank" rel="nofollow noopener">{{> "icons/twitter"}}</a>{{/if}}
     <a href="https://www.linkedin.com/company/abuein-technologies/" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="nofollow noopener">{{> "icons/linkedin"}}</a>
     <a href="https://nextdoor.co.uk/pages/abuein-technologies/" title="Nextdoor" aria-label="Nextdoor" target="_blank" rel="nofollow noopener">Nextdoor</a>
     <a href="https://github.com/sabuein" title="GitHub" aria-label="GitHub" target="_blank" rel="nofollow noopener">{{> "icons/github"}}</a>

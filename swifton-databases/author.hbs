@@ -17,10 +17,10 @@
                 {{#if website}}<a href="{{website}}" title="Website" target="_blank" rel="noopener">{{readable_url
                     website}}</a>{{/if}}
                 <a href="{{url absolute='true'}}">{{readable_url url}}</a>
-                {{#if twitter}}<a href="{{twitter_url twitter}}" title="X" target="_blank" rel="noopener">
+                {{#if twitter}}<a href="{{social_url type="twitter"}}" title="X" target="_blank" rel="noopener">
                     {{> "icons/x"}}
                 </a>{{/if}}
-                {{#if facebook}}<a href="{{facebook_url facebook}}" title="Facebook" target="_blank" rel="noopener"><img
+                {{#if facebook}}<a href="{{social_url type="facebook"}}" title="Facebook" target="_blank" rel="noopener"><img
                         src="{{asset 'images/social/facebook.png'}}" alt="Facebook" loading="lazy" /></a>{{/if}}
             </p>
             <p class="author-fixed flexy">

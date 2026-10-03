@@ -32,8 +32,8 @@ document.onreadystatechange = (event) => {
         case "interactive": {
             // The document has finished loading and we can access DOM elements.
             // Sub-resources such as scripts, images, stylesheets and frames are still loading.
-            
-            
+
+
             break;
         }
 
@@ -63,7 +63,7 @@ document.onreadystatechange = (event) => {
             id(`appShowMenu`).addEventListener("click", showMobileMenu, false);
             id(`appHideMenu`).addEventListener("click", hideMobileMenu, false);
 
-            document.onkeydown = function(ev) {
+            document.onkeydown = function (ev) {
                 const event = ev || window.event;
                 let isEscape = false;
                 if ("key" in event) isEscape = (event.key === "Escape" || event.key === "Esc");
@@ -86,7 +86,7 @@ document.onreadystatechange = (event) => {
             };
 
             const menuButton = qs(`button[data-html-symbol="trigram-for-heaven"]`);
-            if(!!menuButton) {
+            if (!!menuButton) {
                 // Toggle the menu
                 const menu = qs(`ul.primary-nav`);
                 if (!!menu) menuButton.addEventListener("click", () => menu.classList.toggle("menu-visible"));
@@ -102,14 +102,13 @@ document.onreadystatechange = (event) => {
             window.onscroll = () => toggleBackToTop(qs(`:has(> a[href="#site-header"])`));
 
             // Enable client left auto-scrolling
-            const clients = $("*.inner-clients");
-            if (!!clients.length) horizontalScrolling(clients.first(), 850, 3000);
+            horizontalScrolling(document.querySelector(".inner-clients"), 850, 3000);
 
             addAppInstallButton();
             registerServiceWorker();
             offlineDetection();
             setupDialogs();
-            
+
             break;
     }
 };

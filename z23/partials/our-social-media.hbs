@@ -5,12 +5,12 @@
     </figure>
     {{#if @site.facebook}}
     <figure class="social-icon">
-        <a href= "{{facebook_url @site.facebook}}" title="Facebook" target="_blank">{{> "icons/facebook"}}</a>
+        <a href= "{{social_url type="facebook"}}" title="Facebook" target="_blank">{{> "icons/facebook"}}</a>
     </figure>
     {{/if}}
     {{#if @site.twitter}}
     <figure class="social-icon">
-        <a href= "{{twitter_url @site.twitter}}" title="Twitter" target="_blank" class="twitter-follow-button" data-show-count="false">{{> "icons/twitter"}}</a><!--script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script-->
+        <a href= "{{social_url type="twitter"}}" title="Twitter" target="_blank" class="twitter-follow-button" data-show-count="false">{{> "icons/twitter"}}</a><!--script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script-->
     </figure>
     {{/if}}
     <figure class="social-icon">

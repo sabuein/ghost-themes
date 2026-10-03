@@ -6,8 +6,8 @@
         <a href="{{url}}" title="{{name}}" class="author-{{id}} {{slug}}">{{name}}</a>
         {{#if profile_image}}<figure><img src="{{img_url profile_image absolute='true'}}" title="{{name}}" alt="{{bio}}" /></figure>{{/if}}
     </header>
-    {{#if facebook}}<a href="{{facebook_url}}">Follow on Facebook</a>{{/if}}
-    {{#if twitter}}<a href="{{twitter_url}}">Follow on Twitter</a>{{/if}}
+    {{#if facebook}}<a href="{{social_url type="facebook"}}">Follow on Facebook</a>{{/if}}
+    {{#if twitter}}<a href="{{social_url type="twitter"}}">Follow on Twitter</a>{{/if}}
     {{#if website}}<a href="{{website_url}}">Visit website</a>{{/if}}
     {{#if location}}<p>{{location}}</p>{{/if}}
     {{#if bio}}<p>{{bio}}</p>{{/if}}

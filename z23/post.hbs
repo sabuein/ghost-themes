@@ -53,8 +53,8 @@
     </figure>
     {{/if}}
     <footer class="flex row start start-items">
-        {{#if facebook}}<a href="{{facebook_url}}" title="Follow on Facebook" target="_blank">{{> "icons/facebook"}}</a>{{/if}}
-        {{#if twitter}}<a href="{{twitter_url}}" title="Follow on Twitter" target="_blank">{{> "icons/twitter"}}</a>{{/if}}
+        {{#if facebook}}<a href="{{social_url type="facebook"}}" title="Follow on Facebook" target="_blank">{{> "icons/facebook"}}</a>{{/if}}
+        {{#if twitter}}<a href="{{social_url type="twitter"}}" title="Follow on Twitter" target="_blank">{{> "icons/twitter"}}</a>{{/if}}
         {{#if website}}<a href="{{website}}" title="Visit website" target="_blank">{{> "icons/instagram"}}</a>{{/if}}
     </footer>
 </section>

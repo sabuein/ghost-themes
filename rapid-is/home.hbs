@@ -1,7 +1,7 @@
 {{!< default}}
 <!-- home.hbs -->
 {{#is "home"}}
-{{#get "posts" filter="featured:true+tag:hash-palettes+visibility:public" order="published_at asc" limit="all" as |palettes|}}
+{{#get "posts" filter="featured:true+tag:hash-palettes+visibility:public" order="published_at asc" limit="50" as |palettes|}}
 {{#foreach palettes}}
 {{#has slug="do-more-with-less"}}<section id="main-message" class="{{post_class}} palette flexy row reverse">
     <hgroup class="flexy" title="{{title}}">

@@ -3,6 +3,8 @@
 **/*.zip
 ghost.local.json
 package-lock.json
+**/backups/
+*.ghost.*.json
 
 # Custom
 **/z23/**/*.txt

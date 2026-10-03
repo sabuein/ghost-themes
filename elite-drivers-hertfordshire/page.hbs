@@ -33,11 +33,6 @@
 {{> "loop-ours"}}{{else}}<section class="flexy primary-content">{{content}}</section>
 </article>
 {{> "footer"}}{{/has}}
-{{#contentFor "scripts"}}<script type="text/javascript">
-    // FitVids - Makes video embeds responsive
-    $(document).ready(() => $("*.html5-main-video").fitVids());
-    console.log("Hello from page.hbs!");
-</script>{{/contentFor}}
 {{/post}}
 <a href="#site-header" title="Scroll back to top">&#x21eb;</a>
 {{> "cookies"}}

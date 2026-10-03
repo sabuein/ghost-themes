@@ -1,6 +1,6 @@
 <!-- partners.hbs -->
 <section id="partner-with-leaders" class="palette flexy">
-    {{#get "posts" filter="featured:true+tag:hash-palettes+visibility:public" order="published_at asc" limit="all" as |palettes|}}{{#foreach palettes}}{{#has slug="accreditation-frameworks-and-partners"}}<hgroup class="flexy" title="{{title}}">
+    {{#get "posts" filter="featured:true+tag:hash-palettes+visibility:public" order="published_at asc" limit="50" as |palettes|}}{{#foreach palettes}}{{#has slug="accreditation-frameworks-and-partners"}}<hgroup class="flexy" title="{{title}}">
         <h2 id="{{slug}}">{{title}}</h2>
         {{content}}
     </hgroup>{{/has}}{{else}}<p>No search results found&period;</p>{{/foreach}}{{else}}<p class="get-posts-error">{{error}}</p>{{/get}}

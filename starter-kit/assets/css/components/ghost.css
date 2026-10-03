@@ -19,3 +19,15 @@
 [data-theme="dark"] .ghost-orb-logo {
     background-image: url(../../images/logos/ghost-logo-light.png);
 }
+
+/* Responsive video embeds (replaces FitVids) */
+iframe:is(
+    [src*="youtube.com"],
+    [src*="youtube-nocookie.com"],
+    [src*="vimeo.com"],
+    [src*="dailymotion.com"]
+) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}

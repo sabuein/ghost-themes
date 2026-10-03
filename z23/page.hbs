@@ -3,6 +3,7 @@
 {{#post}}
 <progress class="reading-bar" value="0" max="100" aria-label="Reading progress"></progress>
 <article class="{{post_class}}">
+    {{#match @page.show_title_and_feature_image}}
     <header tabindex="0">
         <h2 role="heading" aria-level="2">{{title}}</h2>
     </header>
@@ -12,6 +13,7 @@
         <figcaption>{{#if feature_image_caption}}{{feature_image_caption}}{{else}}{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}} &dash; {{@site.title}}{{/if}}{{/if}}</figcaption>
     </figure>
     {{/if}}
+    {{/match}}
     <div class="flex start-items gap-x1" tabindex="0">{{content}}</div>
     <footer class="footer-{{post_class}} flex">
         <aside class="flex" tabindex="0">{{> "sharing"}}</aside>

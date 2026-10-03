@@ -29,7 +29,6 @@ export async function initPWA() {
     try {
         const reg = await navigator.serviceWorker.register(SW_URL, {
             scope: SW_SCOPE,
-            type: "module",     // because we ship .mjs
             updateViaCache: "none"
         });
 

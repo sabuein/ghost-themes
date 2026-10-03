@@ -2,7 +2,7 @@
 <!-- page-everything.hbs -->
 <progress class="reading-bar" value="0" max="100" aria-label="Reading progress"></progress>
 <section class="everything {{post_class}} flex gap-x2" tabindex="0">
-    {{#get "posts" include="tags" limit="all" as |post|}}
+    {{#get "posts" include="tags" limit="50" as |post|}}
     <div class="flex row wrap start-items gap-x2">
         {{#foreach post}}
         <article class="flex row start start-items gap-x1" tabindex="0" data-article-index={{@index}} data-article-number={{@number}}>

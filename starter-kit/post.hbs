@@ -1,0 +1,40 @@
+{{!< default}}
+{{!-- post.hbs --}}
+{{#post}}
+<article class="{{post_class}}">
+    <header class="post-header">
+        {{#primary_tag}}<a class="post-tag" href="{{url}}">{{name}}</a>{{/primary_tag}}
+        <h1 class="post-title">{{title}}</h1>
+        {{#if custom_excerpt}}<p class="post-excerpt">{{custom_excerpt}}</p>{{/if}}
+        <p class="post-meta">
+            <span>{{authors separator=", "}}</span>
+            <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+            {{#if reading_time}}<span>{{reading_time}}</span>{{/if}}
+        </p>
+        {{#if feature_image}}<figure class="post-feature-image">
+            <img
+                srcset="{{img_url feature_image size="s"}} 300w,
+                        {{img_url feature_image size="m"}} 600w,
+                        {{img_url feature_image size="l"}} 1200w,
+                        {{img_url feature_image size="xl"}} 2000w"
+                sizes="(min-width: 1200px) 1200px, 92vw"
+                src="{{img_url feature_image size="l"}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                fetchpriority="high"
+            />
+            {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        </figure>{{/if}}
+    </header>
+
+    <section class="gh-content">
+        {{content}}
+    </section>
+
+    <footer class="post-footer">
+        {{tags prefix="<p class='post-tags'>" separator=" " suffix="</p>"}}
+        {{> "sharing"}}
+        {{> "prev-next"}}
+    </footer>
+</article>
+{{> "discussion"}}
+{{/post}}

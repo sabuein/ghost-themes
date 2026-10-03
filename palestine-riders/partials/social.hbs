@@ -1,15 +1,17 @@
 {{!--
-{{#social_accounts @site}}
-{{#social_accounts author}}
+    partials/social.hbs
+    Site-wide:            {{> "social" account=@site}}
+    Inside an author block:  {{> "social" account=this}}
+    {{social_url}} reads the author first and falls back to @site.
 --}}
-<a href="{{href}}" target="_blank" rel="noopener" aria-label="{{name}}">
-  {{#> (concat "icons/" type)}}
-    {{!-- Fallback rendered when no per-platform icon partial exists --}}
-    <span class="icon icon-web">{{name}}</span>
-  {{/undefined}}
-</a>
-{{else}}
-<p>No social accounts connected yet.</p>
-{{!--
-{{/social_accounts}}
---}}
+<ul class="social-links" role="list">
+    {{#if account.twitter}}<li><a href="{{social_url type="twitter"}}" target="_blank" rel="noopener me" aria-label="X">{{> "brands/x"}}</a></li>{{/if}}
+    {{#if account.facebook}}<li><a href="{{social_url type="facebook"}}" target="_blank" rel="noopener me" aria-label="Facebook">{{> "brands/facebook"}}</a></li>{{/if}}
+    {{#if account.instagram}}<li><a href="{{social_url type="instagram"}}" target="_blank" rel="noopener me" aria-label="Instagram">{{> "brands/instagram"}}</a></li>{{/if}}
+    {{#if account.linkedin}}<li><a href="{{social_url type="linkedin"}}" target="_blank" rel="noopener me" aria-label="LinkedIn">{{> "brands/linkedin"}}</a></li>{{/if}}
+    {{#if account.mastodon}}<li><a href="{{social_url type="mastodon"}}" target="_blank" rel="noopener me" aria-label="Mastodon">{{> "brands/mastodon"}}</a></li>{{/if}}
+    {{#if account.tiktok}}<li><a href="{{social_url type="tiktok"}}" target="_blank" rel="noopener me" aria-label="TikTok">{{> "brands/tiktok"}}</a></li>{{/if}}
+    {{#if account.threads}}<li><a href="{{social_url type="threads"}}" target="_blank" rel="noopener me">Threads</a></li>{{/if}}
+    {{#if account.bluesky}}<li><a href="{{social_url type="bluesky"}}" target="_blank" rel="noopener me">Bluesky</a></li>{{/if}}
+    {{#if account.youtube}}<li><a href="{{social_url type="youtube"}}" target="_blank" rel="noopener me">YouTube</a></li>{{/if}}
+</ul>

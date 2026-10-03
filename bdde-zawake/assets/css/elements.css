@@ -5,36 +5,40 @@
     font-weight: 500;
     src: url("../fonts/cairo-play-v6-arabic-500.eot");
     /* IE9 Compat Modes */
-    src: local(""),
-        url("../fonts/cairo-play-v6-arabic-500.eot?#iefix") format("embedded-opentype"),
-        /* IE6-IE8 */
-        url("../fonts/cairo-play-v6-arabic-500.woff2") format("woff2"),
+    src:
+        local(""),
+        url("../fonts/cairo-play-v6-arabic-500.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */ url("../fonts/cairo-play-v6-arabic-500.woff2")
+            format("woff2"),
         /* Super Modern Browsers */
-        url("../fonts/cairo-play-v6-arabic-500.woff") format("woff"),
-        /* Modern Browsers */
-        url("../fonts/cairo-play-v6-arabic-500.ttf") format("truetype"),
+            url("../fonts/cairo-play-v6-arabic-500.woff") format("woff"),
+        /* Modern Browsers */ url("../fonts/cairo-play-v6-arabic-500.ttf")
+            format("truetype"),
         /* Safari, Android, iOS */
-        url("../fonts/cairo-play-v6-arabic-500.svg#CairoPlay") format("svg");
+            url("../fonts/cairo-play-v6-arabic-500.svg#CairoPlay") format("svg");
     /* Legacy iOS */
 }
 
 /* lalezar-regular - arabic */
 @font-face {
-    font-family: 'Lalezar';
+    font-family: "Lalezar";
     font-style: normal;
     font-weight: 400;
     src: url("../fonts/lalezar-v14-arabic-regular.eot");
     /* IE9 Compat Modes */
-    src: local(""),
-        url("../fonts/lalezar-v14-arabic-regular.eot?#iefix") format("embedded-opentype"),
-        /* IE6-IE8 */
-        url("../fonts/lalezar-v14-arabic-regular.woff2") format("woff2"),
+    src:
+        local(""),
+        url("../fonts/lalezar-v14-arabic-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */ url("../fonts/lalezar-v14-arabic-regular.woff2")
+            format("woff2"),
         /* Super Modern Browsers */
-        url("../fonts/lalezar-v14-arabic-regular.woff") format("woff"),
-        /* Modern Browsers */
-        url("../fonts/lalezar-v14-arabic-regular.ttf") format("truetype"),
+            url("../fonts/lalezar-v14-arabic-regular.woff") format("woff"),
+        /* Modern Browsers */ url("../fonts/lalezar-v14-arabic-regular.ttf")
+            format("truetype"),
         /* Safari, Android, iOS */
-        url("../fonts/lalezar-v14-arabic-regular.svg#Lalezar") format("svg");
+            url("../fonts/lalezar-v14-arabic-regular.svg#Lalezar") format("svg");
     /* Legacy iOS */
 }
 
@@ -114,9 +118,19 @@ a:active {
     color: var(--brand-color-active);
 }
 
-h1, h2 {
+h1,
+h2 {
     font-family: var(--font-family-heading);
     font-style: var(--font-style-heading);
     font-weight: var(--font-weight-heading);
     color: inherit;
+}
+
+/* Ghost custom fonts (Design settings): theme fonts stay the default */
+body {
+    font-family: var(--gh-font-body, "Cairo Play"), "Cairo Play", Arial;
+}
+h1,
+h2 {
+    font-family: var(--gh-font-heading, "Lalezar"), "Lalezar";
 }

@@ -3,7 +3,7 @@
     <h3 title="{{heading}}" role="heading" aria-level="3">{{heading}}</h3>
 </header>
 {{#if secondary}}
-{{#get "posts" include="tags,authors" filter="primary_tag:{{section}}" limit="all" as |post|}}
+{{#get "posts" include="tags,authors" filter="primary_tag:{{section}}" limit="50" as |post|}}
 <article class="list-artists-secondary flex">
     <div class="content-container flex row wrap start-items gap-x2">
         {{#foreach post}}

@@ -286,7 +286,6 @@ const registerServiceWorker = (env = "LIVE") => {
             // Use ES Module version of our Service Worker in development
             if (env === "DEV") {
                 registration = await navigator.serviceWorker.register("/service-worker.mjs", {
-                    type: "module",
                     scope: "/"
                 });
                 console.log("Service worker registered in development! 😎", registration);
@@ -294,7 +293,6 @@ const registerServiceWorker = (env = "LIVE") => {
                 // In production, use the normal service worker registration
                 // registration = await navigator.serviceWorker.register("/service-worker.js");
                 registration = await navigator.serviceWorker.register("/service-worker.mjs", {
-                    type: "module",
                     scope: "/"
                 });
                 console.log("Service worker registered in production! 😎", registration);
