@@ -7,10 +7,10 @@
  */
 
 /**
- * Enhances the contact form: AJAX submit, inline status,
- * offline queueing, honeypot + timing checks.
+ * Enhances the contact form: validation, inline status,
+ * honeypot + timing checks, then a native submit so
+ * Formspree's CAPTCHA redirect works.
  */
-
 const MIN_FILL_TIME_MS = 400;   // catches instant bot fill+submit, tolerates autofill
 
 export function initEmail() {
@@ -22,6 +22,13 @@ export function initEmail() {
     const started = form.querySelector('[name="_started"]');
     const stamp = () => { if (!started.value) started.value = String(Date.now()); };
     form.addEventListener("focusin", stamp);
+
+    // Back button from Formspree may restore this page from bfcache mid-"Sending…"
+    window.addEventListener("pageshow", (e) => {
+        if (!e.persisted) return;
+        form.querySelector('[type="submit"]').disabled = false;
+        form.querySelector(".form-status")?.remove();
+    });
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -35,40 +42,19 @@ export function initEmail() {
         if (elapsed < MIN_FILL_TIME_MS) return setStatus(form, "ok", "Thanks!");
 
         const submitBtn = form.querySelector('[type="submit"]');
+
+        // Formspree CAPTCHA needs a real page navigation, so it can't run offline or via fetch()
+        if (!navigator.onLine) {
+            setStatus(form, "error", "You're offline. Please try again when you're back online.");
+            return;
+        }
+
         submitBtn.disabled = true;
         setStatus(form, "loading", "Sending…");
 
-        const payload = Object.fromEntries(new FormData(form));
-
-        try {
-            const res = await fetch(form.action, {
-                method: "POST",
-                headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                body: JSON.stringify(payload)
-            });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-            form.reset();
-            started.value = "";
-            setStatus(form, "ok", "Thanks — we'll get back to you shortly.");
-
-            // Close the dialog after a short delay
-            setTimeout(() => {
-                document.getElementById("contact-dialog")?.close("submitted");
-            }, 1500);
-        } catch (err) {
-            // If we're offline (or the worker is down), queue for later
-            if (!navigator.onLine && "serviceWorker" in navigator) {
-                await queueForBackgroundSync(form.action, payload);
-                setStatus(form, "ok", "You're offline — we'll send this when you're back.");
-                form.reset();
-            } else {
-                setStatus(form, "error", "Something went wrong. Please email us directly.");
-                console.warn("[email] submit failed:", err);
-            }
-        } finally {
-            submitBtn.disabled = false;
-        }
+        // Native submit: follows Formspree's CAPTCHA redirect like the other themes
+        // (form.submit() doesn't fire the submit event, so no loop)
+        form.submit();
     });
 }
 
@@ -83,11 +69,4 @@ function setStatus(form, kind, message) {
     }
     el.dataset.kind = kind;
     el.textContent = message;
-}
-
-async function queueForBackgroundSync(url, payload) {
-    const reg = await navigator.serviceWorker.ready;
-    // Send to SW via postMessage; SW will use Background Sync API
-    reg.active?.postMessage({ type: "queue-contact", url, payload });
-    if ("sync" in reg) await reg.sync.register("contact-submit");
 }

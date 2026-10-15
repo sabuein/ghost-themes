@@ -14,7 +14,7 @@
  * @license MIT
  */
 
-const CACHE_VERSION = 2;
+const CACHE_VERSION = 3;
 const CACHE_NAME = `grace-gs-v${CACHE_VERSION}`;
 
 // Assets to pre-cache during install
