@@ -8,6 +8,7 @@ package-lock.json
 
 # Custom
 **/z23/**/*.txt
+**/assets/js/vendor/
 
 # Logs
 logs

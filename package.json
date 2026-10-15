@@ -21,6 +21,7 @@
         "node": "^22.17.0 || ^24.0.0"
     },
     "workspaces": [
+        "packages/*",
         "247lep",
         "2n1",
         "abuein-dev",

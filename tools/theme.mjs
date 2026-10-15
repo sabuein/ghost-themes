@@ -33,6 +33,7 @@ import {
 import { homedir } from "node:os";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { cp, rm } from "node:fs/promises";
 
 const IS_WIN = process.platform === "win32";
 const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -130,6 +131,7 @@ function zipFile(s) {
 }
 
 async function zip(s) {
+    await vendor(s);
     let ZipArchive;
     try { ({ ZipArchive } = await import("archiver")); }  // archiver >= 8
     catch { fail("archiver is not installed. Run `npm install` at the repo root."); }
@@ -159,6 +161,20 @@ function scanZip(s) {
     run("gscan", ["-z", out]);
 }
 
+// Copy shared package files into a theme so Ghost can serve them from its own assets.
+async function vendor(s) {
+    // opt in: "ghostPwa": true
+    if (!s.pkg.ghostPwa) return;
+    const src = join(REPO_ROOT, "packages", "pwa");
+    const out = join(THEME_DIR, "assets", "js", "vendor", "ghost-pwa");
+    await rm(out, { recursive: true, force: true });
+    await cp(src, out, {
+        recursive: true,
+        filter: (p) => !p.includes("node_modules") && !p.endsWith("package.json")
+    });
+    ok(`Vendored packages/pwa → ${out}`);
+}
+
 const COMMANDS = {
     start: (s) => ghost(s, "start"),
     stop: (s) => ghost(s, "stop"),
@@ -170,6 +186,7 @@ const COMMANDS = {
     unlink,
     zip,
     "scan-zip": scanZip,
+    vendor,
     info: (s) => console.log({
         theme: THEME, themeDir: THEME_DIR, ghostDir: s.ghostDir ?? null,
         zip: zipFile(s), excludes: s.excludes

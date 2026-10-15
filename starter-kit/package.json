@@ -67,5 +67,6 @@
         "scan:zip": "npm run zip && node ../tools/theme.mjs scan-zip",
         "test": "npm run scan"
     },
-    "type": "module"
+    "type": "module",
+    "ghostPwa": true
 }
